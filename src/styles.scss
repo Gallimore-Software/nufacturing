@@ -1,1 +1,41 @@
 /* You can add global styles to this file, and also import other style files */
+
+body, html {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+mat-sidenav[style] {
+  visibility: visible !important;
+}
+.mat-drawer {
+  display: flex !important;
+}
+mat-drawer[style*="visibility: hidden"] {
+    display: flex !important;
+}
+
+mat-sidenav{
+    visibility: visible !important;
+}
+
+/* For Chrome, Safari, and other WebKit-based browsers */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent; 
+}
+
+::-webkit-scrollbar-thumb {
+  background: #000000;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
