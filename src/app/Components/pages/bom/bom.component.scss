@@ -1,0 +1,53 @@
+.container {
+    padding: 20px;
+  }
+  
+  section {
+    margin-bottom: 40px;
+  }
+  
+  h2 {
+    color: #3f51b5;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .mat-table {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .mat-form-field {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  
+  form {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  form .mat-form-field {
+    flex: 1 1 100%;
+    min-width: 200px;
+  }
+  
+  .mat-elevation-z8 {
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16), 0px 3px 6px rgba(0, 0, 0, 0.23);
+    border-radius: 8px;
+    padding: 20px;
+  }
+  
+  table.mat-table th {
+    background-color: #f1f1f1;
+    font-weight: bold;
+  }
+  
+  table.mat-table td, table.mat-table th {
+    padding: 8px;
+  }
+  
+  .mat-form-field {
+    padding-right: 15px;
+  }
+  
