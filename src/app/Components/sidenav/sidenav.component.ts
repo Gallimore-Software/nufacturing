@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidenav',
@@ -6,14 +7,15 @@ import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
   styleUrls: ['./sidenav.component.scss']
 })
 export class SidenavComponent {
-  @Input()
   @Input() isExpanded: boolean = true;
   @Output() toggleMenu = new EventEmitter<void>();
+
+  constructor(private router: Router) {}
 
   toggle() {
     this.toggleMenu.emit();
   }
-  
+
   public routeLinks = [
     { link: "app-info", name: "Info", icon: "info" },
     { link: "app-ingredients", name: "Ingredients", icon: "restaurant_menu" },
@@ -38,9 +40,8 @@ export class SidenavComponent {
     { link: 'app-bottling-batch-records', name: 'Bottling Batch Records', icon: 'local_drink' },
     { link: 'app-final-testing-qc-sign-off', name: 'Final Testing QC Sign Off', icon: 'done' },
   ];
-  
 
-  onInit(){
- 
-  }   
+  navigateTo(link: string) {
+    this.router.navigate([link]);
+  }
 }

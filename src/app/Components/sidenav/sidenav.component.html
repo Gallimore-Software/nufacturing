@@ -10,14 +10,14 @@
       mat-list-item
       routerLinkActive="active-link"
       class="hover"
-      [routerLink]="route.link"
+      (click)="navigateTo(route.link)"
     >
       <mat-icon
         mat-list-icon
         [matTooltip]="!isExpanded ? route.name : ''"
         matTooltipPosition="right"
       >
-        {{ isExpanded? '' : route.icon }}
+        {{isExpanded ?'': route.icon }}
       </mat-icon>
       <p matLine *ngIf="isExpanded">{{ route.name }}</p>
     </a>

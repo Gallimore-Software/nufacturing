@@ -2,15 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'app-info',
-  templateUrl: './info.component.html',
-  styleUrls: ['./info.component.scss']
+  selector: 'app-account-info',
+  templateUrl: './account-info.component.html',
+  styleUrls: ['./account-info.component.scss']
 })
-export class InfoComponent implements OnInit {
+export class AccountInfoComponent implements OnInit {
   accountInfoForm: FormGroup;
-  dataSource: any[];
+  accountManagers = ['Logan Adair', 'Eli Griffin', 'Jordan Adair', 'Anson Zonar', 'Tony Gorris'];
   displayedColumns: string[] = ['property', 'value'];
-  accountManagers = ['Manager 1', 'Manager 2', 'Manager 3', 'Manager 4', 'Manager 5'];
+  dataSource: any[];
 
   constructor(private fb: FormBuilder) {
     this.accountInfoForm = this.fb.group({

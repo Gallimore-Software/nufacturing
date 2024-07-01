@@ -16,7 +16,6 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidenavComponent } from './Components/sidenav/sidenav.component';
-import { InfoComponent } from './Components/pages/info/info.component';
 import { IngredientsComponent } from './Components/pages/ingredients/ingredients.component';
 import { BomComponent } from './Components/pages/bom/bom.component';
 import { QuoteSheetComponent } from './Components/pages/quote-sheet/quote-sheet.component';
@@ -38,13 +37,13 @@ import { BottlingBatchRecordsComponent } from './Components/pages/bottling-batch
 import { FinalTestingQcSignOffComponent } from './Components/pages/final-testing-qc-sign-off/final-testing-qc-sign-off.component';
 import { LabelComponent } from './Components/pages/label/label.component';
 import { MixingBatchRecordsComponent } from './Components/pages/mixing-batch-records/mixing-batch-records.component';
+import { InfoModule } from './Components/pages/info/info.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
     SidenavComponent,
-    InfoComponent,
     IngredientsComponent,
     BomComponent,
     QuoteSheetComponent,
@@ -77,6 +76,7 @@ import { MixingBatchRecordsComponent } from './Components/pages/mixing-batch-rec
     MatToolbarModule,
     MatTooltipModule,
     MatButtonModule,
+    InfoModule
     MatFormFieldModule,
     MatTableModule,
     ReactiveFormsModule,
