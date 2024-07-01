@@ -6,9 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
-  isExpanded: boolean = true;
+  isExpanded = false;
+  selectedRoute = 'app-info';
 
   toggleMenu() {
     this.isExpanded = !this.isExpanded;
+  }
+
+  handleNavigation(route: string) {
+    this.selectedRoute = route;
   }
 }

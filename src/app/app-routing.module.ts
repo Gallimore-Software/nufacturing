@@ -25,9 +25,10 @@ import { LabelComponent } from './Components/pages/label/label.component';
 import { MixingBatchRecordsComponent } from './Components/pages/mixing-batch-records/mixing-batch-records.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'app-info', component: InfoComponent },
+  // { path: '', component: DashboardComponent, pathMatch: 'full' },
+  // { path: 'dashboard', component: DashboardComponent },
+  { path: 'app-info', loadChildren: () => import('./Components/pages/info/info.module').then(m => m.InfoModule) },  {path:'app-ingredients', component:IngredientsComponent},
+  // { path: 'app-info', component: InfoComponent },
   {path:'app-ingredients', component:IngredientsComponent},
   {path:'app-bom', component:BomComponent},
   { path: 'app-label', component: LabelComponent },
