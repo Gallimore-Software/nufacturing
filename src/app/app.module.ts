@@ -76,7 +76,7 @@ import { InfoModule } from './Components/pages/info/info.module';
     MatToolbarModule,
     MatTooltipModule,
     MatButtonModule,
-    InfoModule
+    InfoModule,
     MatFormFieldModule,
     MatTableModule,
     ReactiveFormsModule,

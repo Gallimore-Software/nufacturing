@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-order-costs',
@@ -6,19 +7,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./order-costs.component.scss']
 })
 export class OrderCostsComponent implements OnInit {
-  dataSource: any[];
-  displayedColumns: string[] = ['property', 'value'];
+  orderCostForm: FormGroup;
 
-  constructor() {
-    this.dataSource = this.createDataSource();
+  constructor(private fb: FormBuilder) {
+    this.orderCostForm = this.fb.group({
+      ngfCostPerBottle: ['$6.09'],
+      customerSalePricePerBottle: ['$8.05']
+    });
+
+    // Subscribe to form changes to update the preview dynamically
+    this.orderCostForm.valueChanges.subscribe(value => {
+      // Update preview data dynamically
+      // The view will automatically update due to Angular's change detection
+    });
   }
 
   ngOnInit(): void {}
-
-  private createDataSource(): any[] {
-    return [
-      { property: 'NGF Cost (per bottle)', value: '$5.70' },
-      { property: 'Customer Sale Price (per bottle)', value: '$8.05' }
-    ];
-  }
 }
