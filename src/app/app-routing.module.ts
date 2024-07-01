@@ -27,9 +27,10 @@ import { MixingBatchRecordsComponent } from './Components/pages/mixing-batch-rec
 const routes: Routes = [
   // { path: '', component: DashboardComponent, pathMatch: 'full' },
   // { path: 'dashboard', component: DashboardComponent },
-  { path: 'app-info', loadChildren: () => import('./Components/pages/info/info.module').then(m => m.InfoModule) },  {path:'app-ingredients', component:IngredientsComponent},
+  { path: 'app-info', loadChildren: () => import('./Components/pages/info/info.module').then(m => m.InfoModule) }, 
+  { path: 'app-ingredients', loadChildren: () => import('./Components/pages/ingredients/ingredients.module').then(m => m.IngredientsModule) },
   // { path: 'app-info', component: InfoComponent },
-  {path:'app-ingredients', component:IngredientsComponent},
+  // {path:'app-ingredients', component:IngredientsComponent},
   {path:'app-bom', component:BomComponent},
   { path: 'app-label', component: LabelComponent },
   { path: 'app-quote-sheet', component: QuoteSheetComponent },
