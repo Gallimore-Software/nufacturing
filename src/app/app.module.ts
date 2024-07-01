@@ -38,13 +38,13 @@ import { LabelComponent } from './Components/pages/label/label.component';
 import { MixingBatchRecordsComponent } from './Components/pages/mixing-batch-records/mixing-batch-records.component';
 import { InfoModule } from './Components/pages/info/info.module';
 import { IngredientsModule } from './Components/pages/ingredients/ingredients.module';
+import { BomModule } from './Components/pages/bom/bom.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
     SidenavComponent,
-    BomComponent,
     QuoteSheetComponent,
     ComponentPricingComponent,
     NfgSampleBomComponent,
@@ -80,7 +80,8 @@ import { IngredientsModule } from './Components/pages/ingredients/ingredients.mo
     MatTableModule,
     ReactiveFormsModule,
     MatInputModule,
-    IngredientsModule
+    IngredientsModule,
+    BomModule
   ],
   providers: [],
   bootstrap: [AppComponent]
