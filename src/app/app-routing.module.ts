@@ -25,13 +25,9 @@ import { LabelComponent } from './Components/pages/label/label.component';
 import { MixingBatchRecordsComponent } from './Components/pages/mixing-batch-records/mixing-batch-records.component';
 
 const routes: Routes = [
-  // { path: '', component: DashboardComponent, pathMatch: 'full' },
-  // { path: 'dashboard', component: DashboardComponent },
   { path: 'app-info', loadChildren: () => import('./Components/pages/info/info.module').then(m => m.InfoModule) }, 
   { path: 'app-ingredients', loadChildren: () => import('./Components/pages/ingredients/ingredients.module').then(m => m.IngredientsModule) },
-  // { path: 'app-info', component: InfoComponent },
-  // {path:'app-ingredients', component:IngredientsComponent},
-  {path:'app-bom', component:BomComponent},
+  {path:'app-bom', loadChildren: () => import('./Components/pages/bom/bom.module').then(m => m.BomModule)},
   { path: 'app-label', component: LabelComponent },
   { path: 'app-quote-sheet', component: QuoteSheetComponent },
   { path: 'app-component-pricing', component: ComponentPricingComponent },

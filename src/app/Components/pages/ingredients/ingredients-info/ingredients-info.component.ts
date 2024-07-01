@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
+import { GlobalServiceService } from 'src/app/Services/global-service.service';
 
 @Component({
   selector: 'app-ingredients-info',
@@ -13,24 +14,8 @@ export class IngredientsInfoComponent implements OnInit {
   displayedColumns: string[] = ['name', 'perCapsule', 'pricePerKg', 'moqKg', 'vendor', 'leadTime'];
   selectedIngredient: any;
 
-  ingredients = [
-    { name: 'Vitamin C (as absorbic acid)', perCapsule: 51, pricePerKg: '$6.00', moqKg: 25.0, vendor: 'Trafa', leadTime: 'In Stock' },
-    { name: 'Vitamin B1 (thiamine)', perCapsule: 25, pricePerKg: '$24', moqKg: 25.0, vendor: 'Trafa', leadTime: 'In Stock' },
-    { name: 'Vitamin B2 (riboflavin)', perCapsule: 25, pricePerKg: '$38', moqKg: 25.0, vendor: 'JHD', leadTime: '' },
-    { name: 'Niacin (niacinamide)', perCapsule: 10, pricePerKg: '$10', moqKg: 25.0, vendor: 'Trafa', leadTime: 'In Stock' },
-    { name: 'Vitamin B6 (pyridoxyl 5 phosphate)', perCapsule: 25, pricePerKg: '$125', moqKg: 25.0, vendor: 'Trafa', leadTime: 'In Stock' },
-    { name: 'Pantothenic acid (d-calcium pantothenate)', perCapsule: 25, pricePerKg: '$17', moqKg: 25.0, vendor: 'Trafa', leadTime: 'In Stock' },
-    { name: 'Manganese (manganese aminomin)', perCapsule: 12.5, pricePerKg: '$16', moqKg: 25.0, vendor: 'Trafa', leadTime: '5 Days' },
-    { name: 'Calcium', perCapsule: 4.5, pricePerKg: '$14', moqKg: 25.0, vendor: 'Trafa', leadTime: '5 Days' },
-    { name: 'Manganese (manganese glycinate)', perCapsule: 300, pricePerKg: '$26', moqKg: 25.0, vendor: 'Jia Herb', leadTime: '1 Week' },
-    { name: 'Zinc (Zinc aspartate)', perCapsule: 50, pricePerKg: '$14', moqKg: 25.0, vendor: 'Trafa', leadTime: '5 Days' },
-    { name: 'Cysteine (L)', perCapsule: 100, pricePerKg: '$17', moqKg: 25.0, vendor: 'Trafa', leadTime: '5 Days' },
-    { name: 'Magnesium stearate', perCapsule: 100, pricePerKg: '$8', moqKg: 1.0, vendor: '', leadTime: '' },
-    // Add more ingredients as needed
-  ];
-
-  constructor(private fb: FormBuilder) {
-    this.dataSource = new MatTableDataSource(this.ingredients);
+  constructor(private fb: FormBuilder, private globalService: GlobalServiceService) {
+    this.dataSource = new MatTableDataSource(this.globalService.getIngredients());
 
     this.ingredientForm = this.fb.group({
       name: [''],
@@ -56,13 +41,14 @@ export class IngredientsInfoComponent implements OnInit {
 
   onSubmit() {
     const formValue = this.ingredientForm.value;
-    const existingIngredientIndex = this.ingredients.findIndex(ing => ing.name === formValue.name);
+    const ingredients = this.globalService.getIngredients();
+    const existingIngredientIndex = ingredients.findIndex(ing => ing.name === formValue.name);
     if (existingIngredientIndex >= 0) {
-      this.ingredients[existingIngredientIndex] = formValue;
+      ingredients[existingIngredientIndex] = formValue;
     } else {
-      this.ingredients.push(formValue);
+      ingredients.push(formValue);
     }
-    this.dataSource.data = this.ingredients;
+    this.dataSource.data = ingredients;
     this.ingredientForm.reset();
   }
 }
