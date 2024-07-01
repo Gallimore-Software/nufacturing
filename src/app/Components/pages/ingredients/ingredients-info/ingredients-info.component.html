@@ -1,0 +1,98 @@
+<div fxLayout="column" fxLayoutGap="20px" class="container">
+    <!-- Header -->
+    <header>
+      <h1>Ingredients Info</h1>
+      <p>Manage and review the ingredients used in the product formulation.</p>
+    </header>
+  
+    <!-- Search and Filter -->
+    <div class="search-filter-container">
+      <mat-form-field appearance="fill">
+        <mat-label>Search Ingredients</mat-label>
+        <input matInput (input)="applyFilter($event)">
+      </mat-form-field>
+    </div>
+  
+    <!-- Table Display -->
+    <mat-card>
+      <mat-card-title>Ingredients List</mat-card-title>
+      <mat-card-content>
+        <table mat-table [dataSource]="dataSource" matSort>
+  
+          <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Ingredient </mat-header-cell>
+            <mat-cell *matCellDef="let ingredient"> {{ingredient.name}} </mat-cell>
+          </ng-container>
+  
+          <ng-container matColumnDef="perCapsule">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Per Capsule (Mg) </mat-header-cell>
+            <mat-cell *matCellDef="let ingredient"> {{ingredient.perCapsule}} </mat-cell>
+          </ng-container>
+  
+          <ng-container matColumnDef="pricePerKg">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Price Per (KG) </mat-header-cell>
+            <mat-cell *matCellDef="let ingredient"> {{ingredient.pricePerKg}} </mat-cell>
+          </ng-container>
+  
+          <ng-container matColumnDef="moqKg">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> MOQ (KG) </mat-header-cell>
+            <mat-cell *matCellDef="let ingredient"> {{ingredient.moqKg}} </mat-cell>
+          </ng-container>
+  
+          <ng-container matColumnDef="vendor">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Vendor </mat-header-cell>
+            <mat-cell *matCellDef="let ingredient"> {{ingredient.vendor}} </mat-cell>
+          </ng-container>
+  
+          <ng-container matColumnDef="leadTime">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Lead Time </mat-header-cell>
+            <mat-cell *matCellDef="let ingredient"> {{ingredient.leadTime}} </mat-cell>
+          </ng-container>
+  
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="viewIngredientDetails(row)"></mat-row>
+        </table>
+      </mat-card-content>
+    </mat-card>
+  
+    <!-- Add/Edit Form -->
+    <mat-card>
+      <mat-card-title>Add/Edit Ingredient</mat-card-title>
+      <mat-card-content>
+        <form [formGroup]="ingredientForm" (ngSubmit)="onSubmit()">
+          <mat-form-field appearance="fill">
+            <mat-label>Ingredient</mat-label>
+            <input matInput formControlName="name">
+          </mat-form-field>
+  
+          <mat-form-field appearance="fill">
+            <mat-label>Per Capsule (Mg)</mat-label>
+            <input matInput formControlName="perCapsule">
+          </mat-form-field>
+  
+          <mat-form-field appearance="fill">
+            <mat-label>Price Per (KG)</mat-label>
+            <input matInput formControlName="pricePerKg">
+          </mat-form-field>
+  
+          <mat-form-field appearance="fill">
+            <mat-label>MOQ (KG)</mat-label>
+            <input matInput formControlName="moqKg">
+          </mat-form-field>
+  
+          <mat-form-field appearance="fill">
+            <mat-label>Vendor</mat-label>
+            <input matInput formControlName="vendor">
+          </mat-form-field>
+  
+          <mat-form-field appearance="fill">
+            <mat-label>Lead Time</mat-label>
+            <input matInput formControlName="leadTime">
+          </mat-form-field>
+  
+          <button mat-raised-button color="primary" type="submit">Save</button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  

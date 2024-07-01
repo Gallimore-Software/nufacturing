@@ -16,7 +16,6 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidenavComponent } from './Components/sidenav/sidenav.component';
-import { IngredientsComponent } from './Components/pages/ingredients/ingredients.component';
 import { BomComponent } from './Components/pages/bom/bom.component';
 import { QuoteSheetComponent } from './Components/pages/quote-sheet/quote-sheet.component';
 import { ComponentPricingComponent } from './Components/pages/component-pricing/component-pricing.component';
@@ -38,13 +37,13 @@ import { FinalTestingQcSignOffComponent } from './Components/pages/final-testing
 import { LabelComponent } from './Components/pages/label/label.component';
 import { MixingBatchRecordsComponent } from './Components/pages/mixing-batch-records/mixing-batch-records.component';
 import { InfoModule } from './Components/pages/info/info.module';
+import { IngredientsModule } from './Components/pages/ingredients/ingredients.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
     SidenavComponent,
-    IngredientsComponent,
     BomComponent,
     QuoteSheetComponent,
     ComponentPricingComponent,
@@ -80,7 +79,8 @@ import { InfoModule } from './Components/pages/info/info.module';
     MatFormFieldModule,
     MatTableModule,
     ReactiveFormsModule,
-    MatInputModule
+    MatInputModule,
+    IngredientsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
