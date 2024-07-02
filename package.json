@@ -37,5 +37,13 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
     "typescript": "~5.1.3"
+  },
+  "engines": {
+    // Versions: https://nodejs.org/en/about/previous-releases
+    // "npm": ">=2.15.11 <10.8.1",
+    // "node": ">=0.12.18 <22.4.0",
+    "npm": "10.7.0",
+    "node": "20.14.0"
+    // In .npmrc file: set engine-strict=true
   }
 }
