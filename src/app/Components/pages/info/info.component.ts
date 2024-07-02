@@ -40,9 +40,9 @@ export class InfoComponent implements OnInit {
   private createDataSource(formValues: any): any[] {
     return [
       { property: 'Account Manager', value: formValues.accountManager === 'other' ? formValues.newAccountManager : formValues.accountManager },
-      { property: 'Customer Code', value: formValues.customerCode },
-      { property: 'SKU #', value: formValues.sku },
-      { property: 'Formula Code', value: formValues.formulaCode },
+      { property: 'NFG Customer Code', value: formValues.customerCode },
+      { property: 'NFG SKU #', value: formValues.sku },
+      { property: 'NFG Formula Code', value: formValues.formulaCode },
       { property: 'Batch #', value: formValues.batchNumber },
       { property: 'Customer Batch #', value: formValues.customerBatchNumber },
       { property: 'NFG Batch Code', value: this.accountInfoForm.get('nfgBatchCode')?.value },
