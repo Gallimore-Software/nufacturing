@@ -14,12 +14,16 @@ import { BomRoutingModule } from './bom-routing.module';
 import { BomComponent } from './bom.component';
 import { BomFormComponent } from './bom-form/bom-form.component';
 import { IngredientCalculationComponent } from './ingredient-calculation/ingredient-calculation.component';
+import { IngredientBreakdownWithoutMoqComponent } from './ingredient-breakdown-without-moq/ingredient-breakdown-without-moq.component';
+import { IngredientBreakdownWithMoqComponent } from './ingredient-breakdown-with-moq/ingredient-breakdown-with-moq.component';
 
 @NgModule({
   declarations: [
     BomComponent,
     BomFormComponent,
-    IngredientCalculationComponent
+    IngredientCalculationComponent,
+    IngredientBreakdownWithoutMoqComponent,
+    IngredientBreakdownWithMoqComponent
   ],
   imports: [
     CommonModule,
