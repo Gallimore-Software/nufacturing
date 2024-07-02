@@ -6,7 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
-  isExpanded = false;
+  isExpanded = Number(document.body.style.width) > 1024;
+  // mobile not expanded
+  // tablet not expanded
+  // desktop expanded
+  
   selectedRoute = 'app-info';
 
   toggleMenu() {
