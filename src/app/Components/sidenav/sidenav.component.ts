@@ -17,21 +17,20 @@ export class SidenavComponent {
   }
 
   public routeLinks = [
-    { link: 'accounting', name: "Accounting", icon: 'monetization_on' },
-    { link: 'admin', name: "Admin", icon: 'admin' },
+    { link: 'inventory', name: "Inventory", icon: 'inventory_2' },
+    { link: 'customers', name: "Customers", icon: 'groups' },
+    { link: 'quotes', name: "Quotes", icon: 'request_quote'},
+    { link: 'orders', name: "Orders", icon: 'receipt_long'},
     { link: 'assets', name: "Assets", icon: 'balance' },
-    { link: 'customers', name: "Customers", icon: 'account_circle' },
-    { link: 'inventory', name: "Inventory", icon: '' },
-    { link: 'orders', name: "Orders", icon: ''},
-    { link: 'production', name: "Production", icon: ''},
-    { link: 'purchasing', name: "Purchasing", icon: ''},
-    { link: 'quality', name: "Quality", icon: ''},
-    { link: 'quotes', name: "Quotes", icon: ''},
-    { link: 'receiving', name: "Receiving", icon: ''},
-    { link: 'reporting', name: "Reporting", icon: ''},
-    { link: 'sales', name: "Sales", icon: ''},
-    { link: 'training', name: "Training", icon: ''},
-    { link: 'vendors', name: "Vendors", icon: ''},
+    { link: 'vendors', name: "Vendors", icon: 'partner_exchange'},
+    { link: 'purchasing', name: "Purchasing", icon: 'storefront'},
+    { link: 'receiving', name: "Receiving", icon: 'package_2'},
+    { link: 'training', name: "Training", icon: 'school'},
+    { link: 'production', name: "Production", icon: 'conveyor_belt'},
+    { link: 'quality', name: "Quality", icon: 'lab_panel'},
+    { link: 'reporting', name: "Reporting", icon: 'monitoring'},
+    { link: 'accounting', name: "Accounting", icon: 'account_balance' },
+    { link: 'admin', name: "Admin", icon: 'admin_panel_settings' },
   ];
 
   navigateTo(link: string) {

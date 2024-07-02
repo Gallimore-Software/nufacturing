@@ -6,10 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
-  isExpanded = Number(document.body.style.width) > 1024;
-  // mobile not expanded
-  // tablet not expanded
-  // desktop expanded
+  isExpanded = true;
   
   selectedRoute = 'app-info';
 
