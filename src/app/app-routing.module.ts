@@ -17,6 +17,7 @@ import { VendorsComponent } from './pages/vendors/vendors.component';
 import { QuoteComponent } from './pages/quotes/quote.component';
 
 const routes: Routes = [
+  { path: '', pathMatch: 'full', component: QuoteComponent},
   { path: 'accounting', component: AccountingComponent },
   { path: 'admin', component: AdminComponent },
   { path: 'assets', component: AssetsComponent },
