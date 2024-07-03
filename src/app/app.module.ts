@@ -16,8 +16,8 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
-import { IngredientsModule } from './pages/quotes/components/ingredients/ingredients.module';
 import { QuoteModule } from './pages/quotes/quote.module';
+import { IngredientsModule } from './pages/quotes/ingredients/ingredients.module';
 
 @NgModule({
   declarations: [

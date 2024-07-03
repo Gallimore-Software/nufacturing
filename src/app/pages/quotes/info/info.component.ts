@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
 
 @Component({
   selector: 'app-info',

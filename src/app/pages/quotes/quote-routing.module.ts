@@ -7,6 +7,7 @@ import { BomFormComponent } from './bom-form/bom-form.component';
 import { QuoteComponent } from './quote.component';
 import { InfoComponent } from './info/info.component';
 import { IngredientsComponent } from './ingredients/ingredients.component';
+import { IngredientsModule } from './ingredients/ingredients.module';
 
 const routes: Routes = [
   {
@@ -26,7 +27,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [RouterModule.forChild(routes), IngredientsModule],
   exports: [RouterModule]
 })
 export class QuoteRoutingModule { }
