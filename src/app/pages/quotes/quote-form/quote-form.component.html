@@ -2,9 +2,9 @@
     <!-- Form Section (50%) -->
     <div fxFlex="50%">
       <mat-card>
-        <mat-card-title>BOM Form</mat-card-title>
+        <mat-card-title>Quote Form</mat-card-title>
         <mat-card-content>
-          <form [formGroup]="bomForm" (ngSubmit)="onSubmit()">
+          <form [formGroup]="quoteForm" (ngSubmit)="onSubmit()">
             <!-- Product Name -->
             <mat-form-field appearance="fill">
               <mat-label>Product Name</mat-label>
@@ -58,13 +58,13 @@
       <mat-card>
         <mat-card-title>Preview</mat-card-title>
         <mat-card-content>
-          <p><strong>Product Name:</strong> {{ bomForm.get('productName')?.value }}</p>
-          <p><strong>Bottles per Master Case:</strong> {{ bomForm.get('bottlesPerMasterCase')?.value }}</p>
-          <p><strong>Capsules per Bottle:</strong> {{ bomForm.get('capsulesPerBottle')?.value }}</p>
-          <p><strong>Bottles:</strong> {{ bomForm.get('bottles')?.value }}</p>
-          <p><strong>Capsules Needed For Order:</strong> {{ bomForm.get('capsulesNeededForOrder')?.value }}</p>
-          <p><strong>Setup Capsules:</strong> {{ bomForm.get('setupCapsules')?.value }}</p>
-          <p><strong>Total Capsules Needed:</strong> {{ bomForm.get('totalCapsulesNeeded')?.value }}</p>
+          <p><strong>Product Name:</strong> {{ quoteForm.get('productName')?.value }}</p>
+          <p><strong>Bottles per Master Case:</strong> {{ quoteForm.get('bottlesPerMasterCase')?.value }}</p>
+          <p><strong>Capsules per Bottle:</strong> {{ quoteForm.get('capsulesPerBottle')?.value }}</p>
+          <p><strong>Bottles:</strong> {{ quoteForm.get('bottles')?.value }}</p>
+          <p><strong>Capsules Needed For Order:</strong> {{ quoteForm.get('capsulesNeededForOrder')?.value }}</p>
+          <p><strong>Setup Capsules:</strong> {{ quoteForm.get('setupCapsules')?.value }}</p>
+          <p><strong>Total Capsules Needed:</strong> {{ quoteForm.get('totalCapsulesNeeded')?.value }}</p>
         </mat-card-content>
       </mat-card>
     </div>

@@ -3,18 +3,18 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { GlobalServiceService } from 'src/app/services/global-service.service';
 
 @Component({
-  selector: 'app-bom-form',
-  templateUrl: './bom-form.component.html',
-  styleUrls: ['./bom-form.component.scss']
+  selector: 'app-quote-form',
+  templateUrl: './quote-form.component.html',
+  styleUrls: ['./quote-form.component.scss']
 })
-export class BomFormComponent implements OnInit {
-  bomForm: FormGroup;
+export class QuoteFormComponent implements OnInit {
+  quoteForm: FormGroup;
 
   constructor(
     private fb: FormBuilder,
     private globalService: GlobalServiceService
   ) {
-    this.bomForm = this.fb.group({
+    this.quoteForm = this.fb.group({
       productName: ['Hangover Dog 50ct'],
       bottlesPerMasterCase: [''],
       capsulesPerBottle: [''],
@@ -33,7 +33,7 @@ export class BomFormComponent implements OnInit {
     const orderInfo = this.globalService.getOrderInfo();
     const masterCartonInfo = this.globalService.getMasterCartonInfo();
 
-    this.bomForm.patchValue({
+    this.quoteForm.patchValue({
       bottlesPerMasterCase: masterCartonInfo.bottlesPerMasterCase,
       capsulesPerBottle: orderInfo.capsulesPerBottle,
       bottles: orderInfo.launchQty,
@@ -43,11 +43,11 @@ export class BomFormComponent implements OnInit {
   }
 
   private updateCapsulesNeededForOrder() {
-    const capsulesPerBottle = this.bomForm.get('capsulesPerBottle')?.value;
-    const bottles = this.bomForm.get('bottles')?.value;
+    const capsulesPerBottle = this.quoteForm.get('capsulesPerBottle')?.value;
+    const bottles = this.quoteForm.get('bottles')?.value;
     const capsulesNeededForOrder = capsulesPerBottle * bottles;
 
-    this.bomForm.patchValue({
+    this.quoteForm.patchValue({
       capsulesNeededForOrder: capsulesNeededForOrder
     });
 
@@ -55,16 +55,16 @@ export class BomFormComponent implements OnInit {
   }
 
   updateTotalCapsulesNeeded() {
-    const setupCapsules = this.bomForm.get('setupCapsules')?.value;
-    const capsulesNeededForOrder = this.bomForm.get('capsulesNeededForOrder')?.value;
+    const setupCapsules = this.quoteForm.get('setupCapsules')?.value;
+    const capsulesNeededForOrder = this.quoteForm.get('capsulesNeededForOrder')?.value;
     const totalCapsulesNeeded = setupCapsules + capsulesNeededForOrder;
 
-    this.bomForm.patchValue({
+    this.quoteForm.patchValue({
       totalCapsulesNeeded: totalCapsulesNeeded
     });
   }
 
   onSubmit() {
-    console.log(this.bomForm.value);
+    console.log(this.quoteForm.value);
   }
 }

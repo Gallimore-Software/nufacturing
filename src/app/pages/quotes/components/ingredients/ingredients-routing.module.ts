@@ -10,7 +10,6 @@ const routes: Routes = [
     path: '',
     component: IngredientsComponent,
     children: [
-      { path: '', redirectTo: 'ingredients-info', pathMatch: 'full' },
       { path: 'ingredients-info', component: IngredientsInfoComponent },
       { path: 'suppliment-facts-only', component:SupplimentFactsOnlyComponent },
       { path: 'suppliment-facts-details', component: SupplementFactsDetailsComponent }

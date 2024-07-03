@@ -1,21 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BomComponent } from './bom.component';
-import { BomFormComponent } from './bom-form/bom-form.component';
 import { IngredientCalculationComponent } from './ingredient-calculation/ingredient-calculation.component';
 import { IngredientBreakdownWithoutMoqComponent } from './ingredient-breakdown-without-moq/ingredient-breakdown-without-moq.component';
 import { IngredientBreakdownWithMoqComponent } from './ingredient-breakdown-with-moq/ingredient-breakdown-with-moq.component';
+import { QuoteFormComponent } from './quote-form/quote-form.component';
+import { QuoteComponent } from './quote.component';
 
 const routes: Routes = [
   {
-    path: '',
-    component: BomComponent,
+    path: 'quotes',
+    component: QuoteComponent,
     children: [
-      { path: '', redirectTo: 'bom-form', pathMatch: 'full' },
-      { path: 'bom-form', component: BomFormComponent },
+      { path: '', redirectTo: 'create', pathMatch: 'full' },
+      { path: 'create', component: QuoteFormComponent },
       { path: 'ingredient-calculation', component: IngredientCalculationComponent },
-      {path:'ingredient-breakdown-without-moq', component: IngredientBreakdownWithoutMoqComponent},
-      {path:'ingredient-breakdown-with-moq', component: IngredientBreakdownWithMoqComponent}
+      { path:'ingredient-breakdown-without-moq', component: IngredientBreakdownWithoutMoqComponent},
+      { path:'ingredient-breakdown-with-moq', component: IngredientBreakdownWithMoqComponent}
     ]
   }
 ];
@@ -24,4 +24,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class BomRoutingModule { }
+export class QuoteRoutingModule { }

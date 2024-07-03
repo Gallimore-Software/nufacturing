@@ -10,17 +10,17 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
-import { BomRoutingModule } from './bom-routing.module';
-import { BomComponent } from './bom.component';
-import { BomFormComponent } from './bom-form/bom-form.component';
+import { QuoteComponent } from './quote.component';
 import { IngredientCalculationComponent } from './ingredient-calculation/ingredient-calculation.component';
 import { IngredientBreakdownWithoutMoqComponent } from './ingredient-breakdown-without-moq/ingredient-breakdown-without-moq.component';
 import { IngredientBreakdownWithMoqComponent } from './ingredient-breakdown-with-moq/ingredient-breakdown-with-moq.component';
+import { QuoteFormComponent } from './quote-form/quote-form.component';
+import { QuoteRoutingModule } from './quote-routing.module';
 
 @NgModule({
   declarations: [
-    BomComponent,
-    BomFormComponent,
+    QuoteComponent,
+    QuoteFormComponent,
     IngredientCalculationComponent,
     IngredientBreakdownWithoutMoqComponent,
     IngredientBreakdownWithMoqComponent
@@ -36,7 +36,7 @@ import { IngredientBreakdownWithMoqComponent } from './ingredient-breakdown-with
     MatButtonModule,
     MatIconModule,
     MatToolbarModule,
-    BomRoutingModule
+    QuoteRoutingModule
   ]
 })
-export class BomModule { }
+export class QuoteModule { }
