@@ -16,7 +16,9 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: '', pathMatch: 'full' },
       { path: '', component: QuoteComponent },
-      { path: 'info', component: InfoComponent },
+      { path: 'info', loadChildren: () => import('./info/info.module').then(m => m.InfoModule) }, 
+      { path: 'ingredients', loadChildren: () => import('./ingredients/ingredients.module').then(m => m.IngredientsModule) },
+      // { path: 'info', component: InfoComponent },
       { path: 'bom-form', component: BomFormComponent },
       { path: 'ingredients', component: IngredientsComponent },
       { path: 'ingredient-calculation', component: IngredientCalculationComponent },

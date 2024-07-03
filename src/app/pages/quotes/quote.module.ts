@@ -15,6 +15,8 @@ import { IngredientBreakdownWithoutMoqComponent } from './ingredient-breakdown-w
 import { IngredientBreakdownWithMoqComponent } from './ingredient-breakdown-with-moq/ingredient-breakdown-with-moq.component';
 import { QuoteRoutingModule } from './quote-routing.module';
 import { BomFormComponent } from './bom-form/bom-form.component';
+import { IngredientsModule } from './ingredients/ingredients.module';
+import { InfoModule } from './info/info.module';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { BomFormComponent } from './bom-form/bom-form.component';
     MatButtonModule,
     MatIconModule,
     MatToolbarModule,
-    QuoteRoutingModule
+    QuoteRoutingModule,
+    IngredientsModule,
+    InfoModule
   ]
 })
 export class QuoteModule { }

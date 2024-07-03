@@ -18,6 +18,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { QuoteModule } from './pages/quotes/quote.module';
 import { IngredientsModule } from './pages/quotes/ingredients/ingredients.module';
+import { InfoModule } from './pages/quotes/info/info.module';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { IngredientsModule } from './pages/quotes/ingredients/ingredients.module
     ReactiveFormsModule,
     MatInputModule,
     IngredientsModule,
-    QuoteModule
+    QuoteModule,
+    InfoModule
   ],
   providers: [],
   bootstrap: [AppComponent]
