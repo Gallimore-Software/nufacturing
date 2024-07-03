@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AccountingComponent } from './pages/accounting/accounting.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { AssetsComponent } from './pages/assets/assets.component';
@@ -18,6 +17,7 @@ import { TrainingComponent } from './pages/training/training.component';
 import { VendorsComponent } from './pages/vendors/vendors.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: 'quotes', pathMatch: 'full' },
   { path: 'accounting', component: AccountingComponent },
   { path: 'admin', component: AdminComponent },
   { path: 'assets', component: AssetsComponent },
