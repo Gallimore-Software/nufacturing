@@ -1,6 +1,8 @@
 <section class="subnav">
   <div>
-    <button mat-button routerLink="quote-form">Create Quote</button>
+    <button mat-button routerLink="info">Info</button>
+    <button mat-button routerLink="ingredients">Ingredients</button>
+    <button mat-button routerLink="quote-form">Bill of Materials</button>
     <button mat-button routerLink="ingredient-calculation">Calculate Ingredients</button>
     <button mat-button routerLink="ingredient-breakdown-without-moq">Calculate Profits without MOQ</button>
     <button mat-button routerLink="ingredient-breakdown-with-moq">Calculate Profits with MOQ</button>
@@ -8,5 +10,5 @@
 </section>
 
 <section class="nufacturing_quote">
-<router-outlet></router-outlet>
+  <router-outlet></router-outlet>
 </section>

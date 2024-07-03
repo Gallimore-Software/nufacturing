@@ -9,18 +9,17 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
-
 import { QuoteComponent } from './quote.component';
 import { IngredientCalculationComponent } from './ingredient-calculation/ingredient-calculation.component';
 import { IngredientBreakdownWithoutMoqComponent } from './ingredient-breakdown-without-moq/ingredient-breakdown-without-moq.component';
 import { IngredientBreakdownWithMoqComponent } from './ingredient-breakdown-with-moq/ingredient-breakdown-with-moq.component';
-import { QuoteFormComponent } from './quote-form/quote-form.component';
 import { QuoteRoutingModule } from './quote-routing.module';
+import { BomFormComponent } from './bom-form/bom-form.component';
 
 @NgModule({
   declarations: [
     QuoteComponent,
-    QuoteFormComponent,
+    BomFormComponent,
     IngredientCalculationComponent,
     IngredientBreakdownWithoutMoqComponent,
     IngredientBreakdownWithMoqComponent

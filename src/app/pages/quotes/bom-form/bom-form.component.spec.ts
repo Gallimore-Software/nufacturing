@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { QuoteFormComponent } from './quote-form.component';
+import { BomFormComponent } from './quote-form.component';
 
-describe('QuoteFormComponent', () => {
-  let component: QuoteFormComponent;
-  let fixture: ComponentFixture<QuoteFormComponent>;
+describe('BomFormComponent', () => {
+  let component: BomFormComponent;
+  let fixture: ComponentFixture<BomFormComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [QuoteFormComponent]
+      declarations: [BomFormComponent]
     });
-    fixture = TestBed.createComponent(QuoteFormComponent);
+    fixture = TestBed.createComponent(BomFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -3,11 +3,11 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { GlobalServiceService } from 'src/app/services/global-service.service';
 
 @Component({
-  selector: 'app-quote-form',
-  templateUrl: './quote-form.component.html',
-  styleUrls: ['./quote-form.component.scss']
+  selector: 'quotes-bom-form',
+  templateUrl: './bom-form.component.html',
+  styleUrls: ['./bom-form.component.scss']
 })
-export class QuoteFormComponent implements OnInit {
+export class BomFormComponent implements OnInit {
   quoteForm: FormGroup;
 
   constructor(
