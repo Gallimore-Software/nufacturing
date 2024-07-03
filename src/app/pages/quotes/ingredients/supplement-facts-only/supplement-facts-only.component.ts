@@ -3,11 +3,11 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
-  selector: 'app-suppliment-facts-only',
-  templateUrl: './suppliment-facts-only.component.html',
-  styleUrls: ['./suppliment-facts-only.component.scss']
+  selector: 'app-supplement-facts-only',
+  templateUrl: './supplement-facts-only.component.html',
+  styleUrls: ['./supplement-facts-only.component.scss']
 })
-export class SupplimentFactsOnlyComponent implements OnInit {
+export class supplementFactsOnlyComponent implements OnInit {
   factForm: FormGroup;
   dataSource: MatTableDataSource<any>;
   displayedColumns: string[] = ['ingredient', 'twoCapsulePerServing', 'intentionalOverages', 'fiftyCapsulesPerBottle', 'dailyValue'];
