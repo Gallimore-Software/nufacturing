@@ -17,6 +17,8 @@ import { QuoteRoutingModule } from './quote-routing.module';
 import { BomFormComponent } from './bom-form/bom-form.component';
 import { IngredientsModule } from './ingredients/ingredients.module';
 import { InfoModule } from './info/info.module';
+import { PackageBreakdownComponent } from './package-breakdown/package-breakdown.component';
+import { SalesAnalysisComponent } from './sales-analysis/sales-analysis.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { InfoModule } from './info/info.module';
     BomFormComponent,
     IngredientCalculationComponent,
     IngredientBreakdownWithoutMoqComponent,
-    IngredientBreakdownWithMoqComponent
+    IngredientBreakdownWithMoqComponent,
+    PackageBreakdownComponent,
+    SalesAnalysisComponent
   ],
   imports: [
     CommonModule,

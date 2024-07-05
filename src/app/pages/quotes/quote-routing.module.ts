@@ -8,6 +8,8 @@ import { QuoteComponent } from './quote.component';
 import { InfoComponent } from './info/info.component';
 import { IngredientsComponent } from './ingredients/ingredients.component';
 import { IngredientsModule } from './ingredients/ingredients.module';
+import { PackageBreakdownComponent } from './package-breakdown/package-breakdown.component';
+import { SalesAnalysisComponent } from './sales-analysis/sales-analysis.component';
 
 const routes: Routes = [
   {
@@ -20,16 +22,18 @@ const routes: Routes = [
       { path: 'ingredients', loadChildren: () => import('./ingredients/ingredients.module').then(m => m.IngredientsModule) },
       // { path: 'info', component: InfoComponent },
       { path: 'bom-form', component: BomFormComponent },
-      { path: 'ingredients', component: IngredientsComponent },
+      // { path: 'ingredients', component: IngredientsComponent },
       { path: 'ingredient-calculation', component: IngredientCalculationComponent },
       { path:'ingredient-breakdown-without-moq', component: IngredientBreakdownWithoutMoqComponent},
-      { path:'ingredient-breakdown-with-moq', component: IngredientBreakdownWithMoqComponent}
+      { path:'ingredient-breakdown-with-moq', component: IngredientBreakdownWithMoqComponent},
+      { path: 'package-breakdown', component: PackageBreakdownComponent},
+      {path: 'sales-analysis', component: SalesAnalysisComponent}
     ]
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [RouterModule.forChild(routes), IngredientsModule],
   exports: [RouterModule]
 })
 export class QuoteRoutingModule { }
