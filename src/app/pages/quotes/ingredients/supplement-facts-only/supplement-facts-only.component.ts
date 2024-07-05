@@ -10,7 +10,14 @@ import { MatTableDataSource } from '@angular/material/table';
 export class supplementFactsOnlyComponent implements OnInit {
   factForm: FormGroup;
   dataSource: MatTableDataSource<any>;
-  displayedColumns: string[] = ['ingredient', 'twoCapsulePerServing', 'intentionalOverages', 'fiftyCapsulesPerBottle', 'dailyValue'];
+  displayedColumns: string[] = [
+    'ingredient', 
+    'twoCapsulePerServing', 
+    'intentionalOverages', 
+    'fiftyCapsulesPerBottle', 
+    'dailyValue',
+    'actions'
+  ];
   selectedFact: any;
 
   facts = [
@@ -62,5 +69,17 @@ export class supplementFactsOnlyComponent implements OnInit {
     }
     this.dataSource.data = this.facts;
     this.factForm.reset();
+  }
+
+  editFact(fact: any) {
+    this.viewFactDetails(fact);
+  }
+
+  deleteFact(fact: any) {
+    const index = this.facts.indexOf(fact);
+    if (index >= 0) {
+      this.facts.splice(index, 1);
+      this.dataSource.data = this.facts;
+    }
   }
 }

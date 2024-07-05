@@ -11,7 +11,7 @@ import { GlobalServiceService } from 'src/app/services/global-service.service';
 export class IngredientsInfoComponent implements OnInit {
   ingredientForm: FormGroup;
   dataSource: MatTableDataSource<any>;
-  displayedColumns: string[] = ['name', 'perCapsule', 'pricePerKg', 'moqKg', 'vendor', 'leadTime'];
+  displayedColumns: string[] = ['name', 'perCapsule', 'pricePerKg', 'moqKg', 'vendor', 'leadTime', 'actions'];
   selectedIngredient: any;
 
   constructor(private fb: FormBuilder, private globalService: GlobalServiceService) {
@@ -37,6 +37,20 @@ export class IngredientsInfoComponent implements OnInit {
   viewIngredientDetails(ingredient: any) {
     this.selectedIngredient = ingredient;
     // Open modal or detailed view
+  }
+
+  editIngredient(ingredient: any) {
+    this.ingredientForm.patchValue(ingredient);
+    this.selectedIngredient = ingredient;
+  }
+
+  deleteIngredient(ingredient: any) {
+    const ingredients = this.globalService.getIngredients();
+    const index = ingredients.findIndex(ing => ing.name === ingredient.name);
+    if (index >= 0) {
+      ingredients.splice(index, 1);
+      this.dataSource.data = ingredients;
+    }
   }
 
   onSubmit() {

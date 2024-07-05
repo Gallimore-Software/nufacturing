@@ -13,7 +13,7 @@ export class IngredientBreakdownWithoutMoqComponent implements OnInit {
   dataSource: MatTableDataSource<any>;
 
   displayedColumns: string[] = [
-    'item', 'qtyNeeded', 'cost', 'moq', 'withoutMoq', 'costQtyOrdered', 'costPerBottle'
+    'item', 'qtyNeeded', 'cost', 'moq', 'withoutMoq', 'costQtyOrdered', 'costPerBottle', 'actions'
   ];
   totalCostPerBottle: number = 0;
 
@@ -99,5 +99,17 @@ export class IngredientBreakdownWithoutMoqComponent implements OnInit {
 
   onSubmit(): void {
     console.log('Form Submitted', this.breakdownForm.value);
+  }
+
+  editIngredient(item: any): void {
+    // Implement the logic to edit the ingredient.
+    console.log('Edit ingredient', item);
+  }
+
+  deleteIngredient(item: any): void {
+    // Implement the logic to delete the ingredient.
+    console.log('Delete ingredient', item);
+    this.dataSource.data = this.dataSource.data.filter(data => data !== item);
+    this.calculateBreakdown();
   }
 }

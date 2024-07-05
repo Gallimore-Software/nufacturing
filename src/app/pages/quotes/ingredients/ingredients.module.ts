@@ -15,6 +15,7 @@ import { IngredientsComponent } from './ingredients.component';
 import { IngredientsInfoComponent } from './ingredients-info/ingredients-info.component';
 import { SupplementFactsDetailsComponent } from './supplement-facts-details/supplement-facts-details.component';
 import { supplementFactsOnlyComponent } from './supplement-facts-only/supplement-facts-only.component';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { supplementFactsOnlyComponent } from './supplement-facts-only/supplement
     MatSelectModule,
     MatTableModule,
     MatSortModule,
-    MatButtonModule
+    MatButtonModule,
+    MatIconModule
   ]
 })
 export class IngredientsModule { }

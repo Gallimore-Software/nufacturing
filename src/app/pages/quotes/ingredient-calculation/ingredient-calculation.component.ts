@@ -12,7 +12,7 @@ export class IngredientCalculationComponent implements OnInit {
   displayedColumns: string[] = [
     'name', 'perCapsule', 'nfgTargetCapsule', 'perBottle', 'mgPerBottle', 'totalMgNeeded',
     'conversionToKg', 'percentOfTotalKg', 'extraKgOfWaste', 'totalKg', 'extraKgOfWasteMg',
-    'extraMgToBottle', 'intentionalOverages'
+    'extraMgToBottle', 'intentionalOverages', 'actions'
   ];
   totalOfPowder: number = 0;
   totalOfFinishedCapsule: number = 0;
@@ -135,5 +135,16 @@ export class IngredientCalculationComponent implements OnInit {
 
   onSubmit(): void {
     console.log('Form Submitted', this.ingredientForm.value);
+  }
+
+  editIngredient(ingredient:any) {
+    ingredient.get('perCapsule').enable();
+    ingredient.get('perBottle').enable();
+    // Add more controls to enable if necessary
+  }
+
+  deleteIngredient(ingredientIndex: number): void {
+    this.ingredients.removeAt(ingredientIndex);
+    this.calculateSummary(); // Recalculate the summary after deleting an ingredient
   }
 }

@@ -12,7 +12,7 @@ export class IngredientBreakdownWithMoqComponent implements OnInit {
   breakdownForm: FormGroup;
   dataSource: MatTableDataSource<any>;
   displayedColumns: string[] = [
-    'item', 'qtyNeeded', 'cost', 'moq', 'withMoq', 'costQtyOrdered', 'costPerBottle', 'maxBottlePerMoq', 'moqInMg'
+    'item', 'qtyNeeded', 'cost', 'moq', 'withMoq', 'costQtyOrdered', 'costPerBottle', 'maxBottlePerMoq', 'moqInMg', 'actions'
   ];
   totalCostPerBottle: number = 0;
   totalCost: number = 0;
@@ -30,8 +30,6 @@ export class IngredientBreakdownWithMoqComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.breakdownForm.get('search')?.valueChanges.subscribe(value => {
-    // });
     this.calculateBreakdown();
   }
 
@@ -96,5 +94,31 @@ export class IngredientBreakdownWithMoqComponent implements OnInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  editItem(item: any): void {
+    // Edit functionality is commented out for now
+    // const dialogRef = this.dialog.open(EditItemDialogComponent, {
+    //   width: '250px',
+    //   data: item
+    // });
+
+    // dialogRef.afterClosed().subscribe(result => {
+    //   if (result) {
+    //     const index = this.dataSource.data.findIndex(i => i.item === item.item);
+    //     this.dataSource.data[index] = result;
+    //     this.dataSource = new MatTableDataSource(this.dataSource.data);
+    //     this.calculateBreakdown();
+    //   }
+    // });
+  }
+
+  deleteItem(item: any): void {
+    const index = this.dataSource.data.findIndex(i => i.item === item.item);
+    if (index > -1) {
+      this.dataSource.data.splice(index, 1);
+      this.dataSource = new MatTableDataSource(this.dataSource.data);
+      this.calculateBreakdown();
+    }
   }
 }
