@@ -14,10 +14,15 @@ export class SalesAnalysisComponent implements OnInit {
   dataTable: any[] = [];
   filteredDataTable: any[] = [];
 
+  suggestedPricesWithMOQ: any[] = [];
+  suggestedPricesWithoutMOQ: any[] = [];
+  totalCostPerBottleWithMOQ: number = 6.10; // Example value
+  totalCostPerBottleWithoutMOQ: number = 2.90; // Example value
+
   constructor(private fb: FormBuilder) {
     this.salesAnalysisForm = this.fb.group({
       targetRevenue: [100000, Validators.required],
-      salesVolume: [0, Validators.required],
+      salesVolume: [{value: 0, disabled: true}, Validators.required],
       price: [0, Validators.required]
     });
 
@@ -124,5 +129,19 @@ export class SalesAnalysisComponent implements OnInit {
 
   onSubmit(): void {
     console.log('Form Submitted', this.salesAnalysisForm.value);
+  }
+
+  calculateSuggestedPrices(): void {
+    const margins = [10, 15, 20, 25, 30, 35, 40, 45, 50];
+    this.suggestedPricesWithMOQ = [];
+    this.suggestedPricesWithoutMOQ = [];
+
+    margins.forEach(margin => {
+      const priceWithMOQ = this.totalCostPerBottleWithMOQ * (1 + margin / 100);
+      const priceWithoutMOQ = this.totalCostPerBottleWithoutMOQ * (1 + margin / 100);
+
+      this.suggestedPricesWithMOQ.push({ margin: `${margin}%`, price: `$${priceWithMOQ.toFixed(2)}` });
+      this.suggestedPricesWithoutMOQ.push({ margin: `${margin}%`, price: `$${priceWithoutMOQ.toFixed(2)}` });
+    });
   }
 }

@@ -107,5 +107,58 @@
         </div>
       </mat-card-content>
     </mat-card>
+
+    <!-- Input Fields for Costs Per Bottle -->
+  <mat-card>
+    <mat-card-title>Costs Per Bottle</mat-card-title>
+    <mat-card-content>
+      <mat-form-field appearance="fill">
+        <mat-label>Total Cost Per Bottle (With MOQ)</mat-label>
+        <input matInput [(ngModel)]="totalCostPerBottleWithMOQ" type="number">
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Total Cost Per Bottle (Without MOQ)</mat-label>
+        <input matInput [(ngModel)]="totalCostPerBottleWithoutMOQ" type="number">
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="calculateSuggestedPrices()">Calculate</button>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Suggested Prices Tables -->
+  <mat-card>
+    <mat-card-title>Suggested Prices With MOQ</mat-card-title>
+    <mat-card-content>
+      <table mat-table [dataSource]="suggestedPricesWithMOQ" class="mat-elevation-z8">
+        <ng-container matColumnDef="margin">
+          <mat-header-cell *matHeaderCellDef> Margin </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.margin}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="price">
+          <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.price}} </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="['margin', 'price']"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: ['margin', 'price'];"></mat-row>
+      </table>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-title>Suggested Prices Without MOQ</mat-card-title>
+    <mat-card-content>
+      <table mat-table [dataSource]="suggestedPricesWithoutMOQ" class="mat-elevation-z8">
+        <ng-container matColumnDef="margin">
+          <mat-header-cell *matHeaderCellDef> Margin </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.margin}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="price">
+          <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.price}} </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="['margin', 'price']"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: ['margin', 'price'];"></mat-row>
+      </table>
+    </mat-card-content>
+  </mat-card>
   </div>
   
