@@ -1,0 +1,72 @@
+<div fxLayout="row" fxLayoutGap="20px" class="container">
+    <!-- Form Section (50%) -->
+    <div fxFlex="50%">
+      <mat-card>
+        <mat-card-title>Bill of Materials Form</mat-card-title>
+        <mat-card-content>
+          <form [formGroup]="quoteForm" (ngSubmit)="onSubmit()">
+            <!-- Product Name -->
+            <mat-form-field appearance="fill">
+              <mat-label>Product Name</mat-label>
+              <input matInput formControlName="productName" readonly>
+            </mat-form-field>
+  
+            <!-- Bottles per Master Case -->
+            <mat-form-field appearance="fill">
+              <mat-label>Bottles per Master Case</mat-label>
+              <input matInput formControlName="bottlesPerMasterCase" readonly>
+            </mat-form-field>
+  
+            <!-- Capsules per Bottle -->
+            <mat-form-field appearance="fill">
+              <mat-label>Capsules per Bottle</mat-label>
+              <input matInput formControlName="capsulesPerBottle" readonly>
+            </mat-form-field>
+  
+            <!-- Bottles -->
+            <mat-form-field appearance="fill">
+              <mat-label>Bottles</mat-label>
+              <input matInput formControlName="bottles" readonly>
+            </mat-form-field>
+  
+            <!-- Capsules Needed For Order -->
+            <mat-form-field appearance="fill">
+              <mat-label>Capsules Needed For Order</mat-label>
+              <input matInput formControlName="capsulesNeededForOrder" readonly>
+            </mat-form-field>
+  
+            <!-- Setup Capsules -->
+            <mat-form-field appearance="fill">
+              <mat-label>Setup Capsules</mat-label>
+              <input matInput formControlName="setupCapsules" (input)="updateTotalCapsulesNeeded()">
+            </mat-form-field>
+  
+            <!-- Total Capsules Needed -->
+            <mat-form-field appearance="fill">
+              <mat-label>Total Capsules Needed</mat-label>
+              <input matInput formControlName="totalCapsulesNeeded" readonly>
+            </mat-form-field>
+  
+            <button mat-raised-button color="primary" type="submit">Save</button>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  
+    <!-- Preview Section (50%) -->
+    <div fxFlex="50%">
+      <mat-card>
+        <mat-card-title>Preview</mat-card-title>
+        <mat-card-content>
+          <p><strong>Product Name:</strong> {{ quoteForm.get('productName')?.value }}</p>
+          <p><strong>Bottles per Master Case:</strong> {{ quoteForm.get('bottlesPerMasterCase')?.value }}</p>
+          <p><strong>Capsules per Bottle:</strong> {{ quoteForm.get('capsulesPerBottle')?.value }}</p>
+          <p><strong>Bottles:</strong> {{ quoteForm.get('bottles')?.value }}</p>
+          <p><strong>Capsules Needed For Order:</strong> {{ quoteForm.get('capsulesNeededForOrder')?.value }}</p>
+          <p><strong>Setup Capsules:</strong> {{ quoteForm.get('setupCapsules')?.value }}</p>
+          <p><strong>Total Capsules Needed:</strong> {{ quoteForm.get('totalCapsulesNeeded')?.value }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  
