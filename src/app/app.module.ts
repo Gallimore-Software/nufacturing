@@ -16,8 +16,9 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
-import { IngredientsModule } from './components/ingredients/ingredients.module';
-import { BomModule } from './components/bom/bom.module';
+import { QuoteModule } from './pages/quotes/quote.module';
+import { IngredientsModule } from './pages/quotes/ingredients/ingredients.module';
+import { InfoModule } from './pages/quotes/info/info.module';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { BomModule } from './components/bom/bom.module';
     ReactiveFormsModule,
     MatInputModule,
     IngredientsModule,
-    BomModule
+    QuoteModule,
+    InfoModule
   ],
   providers: [],
   bootstrap: [AppComponent]
