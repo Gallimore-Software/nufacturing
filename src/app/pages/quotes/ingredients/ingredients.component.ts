@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./ingredients.component.scss']
 })
 export class IngredientsComponent {
-
+  dock: boolean = false;
+  
+  toggleDock() {
+    this.dock = !this.dock;
+  }
 }
