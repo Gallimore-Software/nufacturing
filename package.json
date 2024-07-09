@@ -41,7 +41,4 @@
   "engines": {
     "node": "20.x"
   }
-  "engines": {
-    "node": "20.x"
-  }
 }
