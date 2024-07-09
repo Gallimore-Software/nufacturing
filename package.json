@@ -39,8 +39,7 @@
     "typescript": "~5.1.3"
   },
   "engines": {
-    "npm": "10.7.0",
-    "node": "20.14.0"
+    "node": "20.x"
   }
   "engines": {
     "node": "20.x"
