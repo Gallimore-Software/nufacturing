@@ -10,25 +10,21 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { QuoteComponent } from './quote.component';
-import { IngredientCalculationComponent } from './ingredient-calculation/ingredient-calculation.component';
-import { IngredientBreakdownWithoutMoqComponent } from './ingredient-breakdown-without-moq/ingredient-breakdown-without-moq.component';
-import { IngredientBreakdownWithMoqComponent } from './ingredient-breakdown-with-moq/ingredient-breakdown-with-moq.component';
+import { IngredientCalculationComponent } from './bom/ingredient-calculation/ingredient-calculation.component';
+import { IngredientBreakdownWithoutMoqComponent } from './bom/ingredient-breakdown-without-moq/ingredient-breakdown-without-moq.component';
+import { IngredientBreakdownWithMoqComponent } from './bom/ingredient-breakdown-with-moq/ingredient-breakdown-with-moq.component';
 import { QuoteRoutingModule } from './quote-routing.module';
-import { BomFormComponent } from './bom-form/bom-form.component';
 import { IngredientsModule } from './ingredients/ingredients.module';
 import { InfoModule } from './info/info.module';
-import { PackageBreakdownComponent } from './package-breakdown/package-breakdown.component';
-import { SalesAnalysisComponent } from './sales-analysis/sales-analysis.component';
+import { PackageBreakdownComponent } from './bom/package-breakdown/package-breakdown.component';
+import { SalesAnalysisComponent } from './bom/sales-analysis/sales-analysis.component';
+import { BomComponent } from './bom/bom.component';
+import { BomModule } from './bom/bom.module';
 
 @NgModule({
   declarations: [
     QuoteComponent,
-    BomFormComponent,
-    IngredientCalculationComponent,
-    IngredientBreakdownWithoutMoqComponent,
-    IngredientBreakdownWithMoqComponent,
-    PackageBreakdownComponent,
-    SalesAnalysisComponent
+    BomComponent
   ],
   imports: [
     CommonModule,
@@ -44,7 +40,8 @@ import { SalesAnalysisComponent } from './sales-analysis/sales-analysis.componen
     QuoteRoutingModule,
     IngredientsModule,
     InfoModule,
-    FormsModule
+    FormsModule,
+    BomModule
   ]
 })
 export class QuoteModule { }

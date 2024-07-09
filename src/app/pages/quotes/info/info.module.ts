@@ -22,6 +22,7 @@ import { MasterCartonInfoComponent } from './master-carton-info/master-carton-in
 import { OtherComponentsComponent } from './other-components/other-components.component';
 import { LabelInfoComponent } from './label-info/label-info.component';
 import { InfoRoutingModule } from './info-routing.module';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { InfoRoutingModule } from './info-routing.module';
     MatInputModule,
     MatTableModule,
     MatSelectModule,
-    MatListModule, 
+    MatListModule,
+    MatIconModule, 
     FlexLayoutModule,
     InfoRoutingModule
   ]
