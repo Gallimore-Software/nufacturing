@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-dashboard',
@@ -6,14 +6,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
-  isExpanded = false;
-  selectedRoute = 'app-info';
+  isExpanded = true;
+  
+  @Input() route: string = "";
 
   toggleMenu() {
     this.isExpanded = !this.isExpanded;
   }
 
   handleNavigation(route: string) {
-    this.selectedRoute = route;
+    this.route = route;
   }
 }
