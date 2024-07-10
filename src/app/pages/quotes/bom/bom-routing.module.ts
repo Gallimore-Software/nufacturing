@@ -8,6 +8,7 @@ import { IngredientCalculationComponent } from './ingredient-calculation/ingredi
 import { PackageBreakdownComponent } from './package-breakdown/package-breakdown.component';
 import { SalesAnalysisComponent } from './sales-analysis/sales-analysis.component';
 import { CalculateProfitComponent } from './calculate-profit/calculate-profit.component';
+import { CalculateQuotePricingComponent } from './calculate-quote-pricing/calculate-quote-pricing.component';
 
 
 const routes: Routes = [
@@ -22,8 +23,8 @@ const routes: Routes = [
       { path: 'ingredient-calculation', component: IngredientCalculationComponent},
       { path: 'package-breakdown', component: PackageBreakdownComponent},
       { path: 'sales-analysis', component: SalesAnalysisComponent},
-      { path: 'calculate-profit', component: CalculateProfitComponent }
-
+      { path: 'calculate-profit', component: CalculateProfitComponent},
+      { path: 'calculate-quote-pricing', component: CalculateQuotePricingComponent}
     ]
   }
 ];
