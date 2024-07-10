@@ -1,0 +1,38 @@
+.calculate-quote-pricing {
+    mat-card {
+      margin: 10px;
+      padding: 20px;
+    }
+  
+    mat-card-title {
+      font-size: 1.5rem;
+      font-weight: 500;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+  
+    mat-form-field {
+      width: 100%;
+      margin-bottom: 15px;
+    }
+  
+    .quote-pricing {
+      margin-top: 20px;
+    }
+  
+    table {
+      width: 100%;
+    }
+    
+    th {
+      text-align: left;
+      font-weight: bold;
+    }
+  
+    td {
+      background: #ff0;
+      color: #000000;
+      padding: 8px;
+    }
+  }
+  

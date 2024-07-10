@@ -19,6 +19,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { SalesAnalysisComponent } from './sales-analysis/sales-analysis.component';
 import { PackageBreakdownComponent } from './package-breakdown/package-breakdown.component';
 import { CalculateProfitComponent } from './calculate-profit/calculate-profit.component';
+import { CalculateQuotePricingComponent } from './calculate-quote-pricing/calculate-quote-pricing.component';
 
 
 
@@ -31,6 +32,7 @@ import { CalculateProfitComponent } from './calculate-profit/calculate-profit.co
     PackageBreakdownComponent,
     SalesAnalysisComponent,
     CalculateProfitComponent,
+    CalculateQuotePricingComponent,
   ],
   imports: [
     CommonModule,
