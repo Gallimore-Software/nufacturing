@@ -15,9 +15,10 @@ import { SalesComponent } from './pages/sales/sales.component';
 import { TrainingComponent } from './pages/training/training.component';
 import { VendorsComponent } from './pages/vendors/vendors.component';
 import { QuoteComponent } from './pages/quotes/quote.component';
+import { OverviewComponent } from './pages/overview/overview.component';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'quotes' },
+  { path: '', pathMatch: 'full', redirectTo: 'overview' },
   { path: 'accounting', component: AccountingComponent },
   { path: 'admin', component: AdminComponent },
   { path: 'assets', component: AssetsComponent },
@@ -33,6 +34,7 @@ const routes: Routes = [
   { path: 'sales', component: SalesComponent },
   { path: 'training', component: TrainingComponent },
   { path: 'vendors', component: VendorsComponent },
+  { path: 'overview', component: OverviewComponent}
 ];
 
 @NgModule({

@@ -1,0 +1,84 @@
+<div class="overview-page">
+    <header>
+      <nav>
+        <!-- Navigation Links -->
+        <a routerLink="/orders">Orders</a>
+        <a routerLink="/quotes">Quotes</a>
+        <a routerLink="/customers">Customers</a>
+        <a routerLink="/settings">Settings</a>
+      </nav>
+    </header>
+  
+    <main>
+      <section class="overview">
+        <h1>Dashboard Overview</h1>
+        <p>Welcome to your business dashboard. Here, you can get a quick summary of your key business metrics, recent activities, and important alerts.</p>
+      </section>
+  
+      <section class="metrics-overview">
+        <div class="metrics-container">
+          <div class="metric-card">
+            <h3>Total Orders</h3>
+            <p>{{ keyMetrics.totalOrders }}</p>
+          </div>
+          <div class="metric-card">
+            <h3>Orders In Process</h3>
+            <p>{{ keyMetrics.ordersInProcess }}</p>
+          </div>
+          <div class="metric-card">
+            <h3>Total Quotes</h3>
+            <p>{{ keyMetrics.totalQuotes }}</p>
+          </div>
+          <div class="metric-card">
+            <h3>Active Quotes</h3>
+            <p>{{ keyMetrics.activeQuotes }}</p>
+          </div>
+          <div class="metric-card">
+            <h3>Expired Quotes</h3>
+            <p>{{ keyMetrics.expiredQuotes }}</p>
+          </div>
+          <!-- Additional Metrics -->
+        </div>
+      </section>
+  
+      <section class="visualizations">
+        <div class="chart-container">
+          <h2>Sales & Purchase Overview</h2>
+          <canvas id="salesPurchaseChart"></canvas>
+        </div>
+        <div class="chart-container">
+          <h2>Order Summary</h2>
+          <canvas id="orderSummaryChart"></canvas>
+        </div>
+      </section>
+  
+      <section class="recent-activity">
+        <h2>Recent Activity</h2>
+        <ul>
+          <li *ngFor="let activity of recentActivity">
+            {{ activity.details }} - <span class="date">{{ activity.date | date }}</span>
+          </li>
+        </ul>
+      </section>
+  
+      <section class="alerts">
+        <h2>Alerts/Notifications</h2>
+        <ul>
+          <li *ngFor="let alert of alerts">
+            <div class="alert">
+              <p>{{ alert.message }}</p>
+              <span class="date">{{ alert.date | date }}</span>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </main>
+  
+    <aside class="quick-links">
+      <h2>Quick Links</h2>
+      <a routerLink="/create-order">Create New Order</a>
+      <a routerLink="/create-quote">Create New Quote</a>
+      <!-- More Quick Links -->
+    </aside>
+  </div>
+  
