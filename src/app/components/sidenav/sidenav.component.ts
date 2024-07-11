@@ -17,6 +17,7 @@ export class SidenavComponent {
   }
 
   public routeLinks = [
+    { link: 'dashboard', name: "Dashboard", icon: 'dashboard' },
     { link: 'inventory', name: "Inventory", icon: 'inventory_2' },
     { link: 'customers', name: "Customers", icon: 'groups' },
     { link: 'quotes', name: "Quotes", icon: 'request_quote'},
