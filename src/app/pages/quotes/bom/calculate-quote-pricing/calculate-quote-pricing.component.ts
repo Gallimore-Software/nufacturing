@@ -14,7 +14,7 @@ export class CalculateQuotePricingComponent {
   constructor(private fb: FormBuilder) {
     this.quoteForm = this.fb.group({
       customerSalePrice: [8.05, Validators.required],
-      launchQty: [2000, Validators.required]
+      // launchQty: [2000, Validators.required]
     });
 
     this.quoteForm.valueChanges.subscribe(values => {
@@ -40,12 +40,12 @@ export class CalculateQuotePricingComponent {
       price: customerSalePrice * (tier.price / basePrice)
     }));
 
-    if (launchQty) {
-      this.quotePrices.push({
-        moq: launchQty,
-        price: this.calculateDynamicPrice(customerSalePrice, launchQty)
-      });
-    }
+    // if (launchQty) {
+    //   this.quotePrices.push({
+    //     moq: launchQty,
+    //     price: this.calculateDynamicPrice(customerSalePrice, launchQty)
+    //   });
+    // }
   }
 
   calculateDynamicPrice(customerSalePrice: number, launchQty: number): number {
