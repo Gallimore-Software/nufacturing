@@ -14,19 +14,19 @@ import { MatInputModule } from '@angular/material/input';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { IngredientsModule } from './pages/sales/pages/quotes/ingredients/ingredients.module';
-import { InfoModule } from './pages/sales/pages/quotes/info/info.module';
-import { OverviewComponent } from './pages/overview/overview.component';
-import { DashboardComponent } from './Components/dashboard/dashboard.component';
-import { SidenavComponent } from './Components/sidenav/sidenav.component';
+import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { InfoModule } from './pages/sales/components/quotes/info/info.module';
+import { IngredientsModule } from './pages/sales/components/quotes/ingredients/ingredients.module';
 import { SalesModule } from './pages/sales/sales.module';
+import { ContainerComponent } from './components/container/container.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
     SidenavComponent,
-    OverviewComponent,
+    ContainerComponent,
   ],
   imports: [
     BrowserModule,

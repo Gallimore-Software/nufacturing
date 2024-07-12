@@ -1,52 +1,52 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
-import { OverviewComponent } from './overview.component';
-import { OverviewService } from './overview.service';
+import { DashboardComponent } from './dashboard.component';
+import { DashboardService } from './dashboard.service';
 
-class MockOverviewService {
+class MockDashboardService {
   getKeyMetrics() {
     return of({
       totalOrders: 120,
       ordersInProcess: 45,
       totalQuotes: 30,
       activeQuotes: 20,
-      expiredQuotes: 10
+      expiredQuotes: 10,
     });
   }
 
   getRecentActivity() {
     return of([
       { details: 'Order #1234 - Status: In Process' },
-      { details: 'Quote #5678 - Status: Active' }
+      { details: 'Quote #5678 - Status: Active' },
     ]);
   }
 
   getAlerts() {
     return of([
       { message: 'Payment overdue for Order #1234' },
-      { message: 'New Quote #5678 awaiting approval' }
+      { message: 'New Quote #5678 awaiting approval' },
     ]);
   }
 }
 
-describe('OverviewComponent', () => {
-  let component: OverviewComponent;
-  let fixture: ComponentFixture<OverviewComponent>;
-  let overviewService: OverviewService;
+describe('DashboardComponent', () => {
+  let component: DashboardComponent;
+  let fixture: ComponentFixture<DashboardComponent>;
+  let dashboardService: DashboardService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [OverviewComponent],
+      declarations: [DashboardComponent],
       providers: [
-        { provide: OverviewService, useClass: MockOverviewService }
-      ]
+        { provide: DashboardService, useClass: MockDashboardService },
+      ],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(OverviewComponent);
+    fixture = TestBed.createComponent(DashboardComponent);
     component = fixture.componentInstance;
-    overviewService = TestBed.inject(OverviewService);
+    dashboardService = TestBed.inject(DashboardService);
     fixture.detectChanges();
   });
 
@@ -70,8 +70,12 @@ describe('OverviewComponent', () => {
     fixture.detectChanges();
 
     expect(component.recentActivity.length).toBe(2);
-    expect(component.recentActivity[0].details).toBe('Order #1234 - Status: In Process');
-    expect(component.recentActivity[1].details).toBe('Quote #5678 - Status: Active');
+    expect(component.recentActivity[0].details).toBe(
+      'Order #1234 - Status: In Process'
+    );
+    expect(component.recentActivity[1].details).toBe(
+      'Quote #5678 - Status: Active'
+    );
   });
 
   it('should load alerts on init', () => {
@@ -80,6 +84,8 @@ describe('OverviewComponent', () => {
 
     expect(component.alerts.length).toBe(2);
     expect(component.alerts[0].message).toBe('Payment overdue for Order #1234');
-    expect(component.alerts[1].message).toBe('New Quote #5678 awaiting approval');
+    expect(component.alerts[1].message).toBe(
+      'New Quote #5678 awaiting approval'
+    );
   });
 });

@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { QuoteComponent } from './quote.component';
+import { QuotesComponent } from './quotes.component';
 
 const routes: Routes = [
   {
     path: 'quotes',
-    component: QuoteComponent,
+    component: QuotesComponent,
     children: [
       { path: '', redirectTo: '', pathMatch: 'full' },
-      { path: '', component: QuoteComponent },
+      { path: '', component: QuotesComponent },
       {
         path: 'info',
         loadChildren: () =>

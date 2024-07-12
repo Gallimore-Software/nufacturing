@@ -7,7 +7,7 @@ $gray-light: #f0f0f0;
 $gray-dark: #666666;
 $high-contrast: #ffcc00; // For improved readability
 
-.overview-page {
+.dashboard-page {
   display: grid;
   grid-template-areas: 
     "header header"
@@ -46,7 +46,7 @@ $high-contrast: #ffcc00; // For improved readability
     section {
       margin-bottom: 1.5rem;
 
-      &.overview {
+      &.dashboard {
         h1 {
           font-size: 2rem;
           color: $green-dark;
@@ -58,7 +58,7 @@ $high-contrast: #ffcc00; // For improved readability
         }
       }
 
-      &.metrics-overview {
+      &.metrics-dashboard {
         .metrics-container {
           display: flex;
           gap: 1rem;

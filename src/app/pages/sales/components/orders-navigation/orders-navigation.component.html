@@ -1,0 +1,23 @@
+<div class="orders-navigation">
+    <h2>Orders Summary</h2>
+    <div class="metrics">
+      <div class="metric">
+        <span>Total Orders</span>
+        <span>{{ summaryMetrics.totalOrders }}</span>
+      </div>
+      <div class="metric">
+        <span>In Process</span>
+        <span>{{ summaryMetrics.inProcess }}</span>
+      </div>
+      <div class="metric">
+        <span>Awaiting Shipment</span>
+        <span>{{ summaryMetrics.awaitingShipment }}</span>
+      </div>
+      <div class="metric">
+        <span>Completed</span>
+        <span>{{ summaryMetrics.completed }}</span>
+      </div>
+    </div>
+    <a routerLink="/orders">Go to Orders Page</a>
+  </div>
+  

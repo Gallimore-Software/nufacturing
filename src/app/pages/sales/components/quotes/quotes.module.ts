@@ -9,16 +9,16 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { BomComponent } from 'src/app/pages/sales/pages/quotes/bom/bom.component';
-import { BomModule } from 'src/app/pages/sales/pages/quotes/bom/bom.module';
-import { IngredientsModule } from 'src/app/pages/sales/pages/quotes/ingredients/ingredients.module';
-import { QuoteRoutingModule } from './quote-routing.module';
-import { QuoteComponent } from './quote.component';
+
+import { QuoteRoutingModule } from './quotes-routing.module';
+import { QuotesComponent } from './quotes.component';
 import { InfoModule } from './info/info.module';
 import { RouterModule } from '@angular/router';
+import { BomModule } from './bom/bom.module';
+import { IngredientsModule } from './ingredients/ingredients.module';
 
 @NgModule({
-  declarations: [QuoteComponent, BomComponent],
+  declarations: [QuotesComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -38,4 +38,4 @@ import { RouterModule } from '@angular/router';
     RouterModule,
   ],
 })
-export class QuoteModule {}
+export class QuotesModule {}

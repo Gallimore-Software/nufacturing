@@ -1,0 +1,32 @@
+.sales-dashboard {
+    .metrics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+  
+      .metric {
+        background-color: #007a33;
+        padding: 1rem;
+        border-radius: 4px;
+        color: white;
+        flex: 1 1 calc(33% - 1rem);
+        text-align: center;
+      }
+    }
+  
+    .quick-links {
+      margin-top: 1rem;
+  
+      a {
+        display: block;
+        color: #007a33;
+        text-decoration: none;
+        margin-bottom: 0.5rem;
+  
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+  

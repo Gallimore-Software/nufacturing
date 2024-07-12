@@ -3,22 +3,22 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class OverviewService {
-  private apiUrl = 'api/overview'; // Replace with your actual API endpoint
+export class DashboardService {
+  private apiUrl = 'api/dashboard'; // Replace with your actual API endpoint
 
-  constructor() { }
+  constructor() {}
 
   getKeyMetrics(): Observable<any> {
-    return new Observable<[]>;
+    return new Observable<[]>();
   }
 
   getRecentActivity(): Observable<any[]> {
-    return new Observable<[]>;
+    return new Observable<[]>();
   }
 
   getAlerts(): Observable<any[]> {
-    return new Observable<[]>;
+    return new Observable<[]>();
   }
 }
