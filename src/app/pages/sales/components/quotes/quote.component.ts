@@ -1,0 +1,8 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-quote-sheet',
+  templateUrl: './quote.component.html',
+  styleUrls: ['./quote.component.scss'],
+})
+export class QuoteComponent {}

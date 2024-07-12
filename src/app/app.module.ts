@@ -14,12 +14,12 @@ import { MatInputModule } from '@angular/material/input';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { QuoteModule } from './pages/quotes/quote.module';
-import { IngredientsModule } from './pages/quotes/ingredients/ingredients.module';
-import { InfoModule } from './pages/quotes/info/info.module';
+import { IngredientsModule } from './pages/sales/pages/quotes/ingredients/ingredients.module';
+import { InfoModule } from './pages/sales/pages/quotes/info/info.module';
 import { OverviewComponent } from './pages/overview/overview.component';
 import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import { SidenavComponent } from './Components/sidenav/sidenav.component';
+import { SalesModule } from './pages/sales/sales.module';
 
 @NgModule({
   declarations: [
@@ -43,10 +43,10 @@ import { SidenavComponent } from './Components/sidenav/sidenav.component';
     ReactiveFormsModule,
     MatInputModule,
     IngredientsModule,
-    QuoteModule,
-    InfoModule
+    SalesModule,
+    InfoModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

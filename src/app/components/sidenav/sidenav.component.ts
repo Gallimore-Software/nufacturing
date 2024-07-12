@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-sidenav',
   templateUrl: './sidenav.component.html',
-  styleUrls: ['./sidenav.component.scss']
+  styleUrls: ['./sidenav.component.scss'],
 })
 export class SidenavComponent {
   @Input() isExpanded: boolean = true;
@@ -17,21 +17,17 @@ export class SidenavComponent {
   }
 
   public routeLinks = [
-    { link: 'dashboard', name: "Dashboard", icon: 'dashboard' },
-    { link: 'inventory', name: "Inventory", icon: 'inventory_2' },
-    { link: 'customers', name: "Customers", icon: 'groups' },
-    { link: 'quotes', name: "Quotes", icon: 'request_quote'},
-    { link: 'orders', name: "Orders", icon: 'receipt_long'},
-    { link: 'assets', name: "Assets", icon: 'balance' },
-    { link: 'vendors', name: "Vendors", icon: 'partner_exchange'},
-    { link: 'purchasing', name: "Purchasing", icon: 'storefront'},
-    { link: 'receiving', name: "Receiving", icon: 'package_2'},
-    { link: 'training', name: "Training", icon: 'school'},
-    { link: 'production', name: "Production", icon: 'conveyor_belt'},
-    { link: 'quality', name: "Quality", icon: 'lab_panel'},
-    { link: 'reporting', name: "Reporting", icon: 'monitoring'},
-    { link: 'accounting', name: "Accounting", icon: 'account_balance' },
-    { link: 'admin', name: "Admin", icon: 'admin_panel_settings' },
+    { link: 'dashboard', name: 'Dashboard', icon: 'dashboard' },
+    { link: 'sales', name: 'Sales', icon: 'groups' },
+    { link: 'purchasing', name: 'Purchasing', icon: 'request_quote' },
+    { link: 'production', name: 'Production', icon: 'receipt_long' },
+    {
+      link: 'product_development',
+      name: 'Product Development',
+      icon: 'inventory_2',
+    },
+    { link: 'quality', name: 'Quality', icon: 'lab_panel' },
+    { link: 'human_resources', name: 'Human Resources', icon: 'school' },
   ];
 
   navigateTo(link: string) {

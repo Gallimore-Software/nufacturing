@@ -6,6 +6,7 @@ import { MixingComponent } from './mixing/mixing.component';
 import { EncapsulationComponent } from './encapsulation/encapsulation.component';
 import { BottlingComponent } from './bottling/bottling.component';
 import { ProductionComponent } from './production.component';
+import { BatchRecordsComponent } from './components/batch-records/batch-records.component';
 
 
 
@@ -17,6 +18,7 @@ import { ProductionComponent } from './production.component';
     PlanningComponent,
     WeighingComponent,
     ProductionComponent,
+    BatchRecordsComponent,
   ],
   imports: [
     CommonModule
