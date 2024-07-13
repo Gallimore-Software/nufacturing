@@ -3,9 +3,9 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { GlobalServiceService } from 'src/app/services/global-service.service';
 
 @Component({
-  selector: 'quotes-bom-form',
+  selector: 'app-bom-form',
   templateUrl: './bom-form.component.html',
-  styleUrls: ['./bom-form.component.scss']
+  styleUrls: ['./bom-form.component.scss'],
 })
 export class BomFormComponent implements OnInit {
   quoteForm: FormGroup;
@@ -21,7 +21,7 @@ export class BomFormComponent implements OnInit {
       bottles: [''],
       capsulesNeededForOrder: [''],
       setupCapsules: [2000],
-      totalCapsulesNeeded: ['']
+      totalCapsulesNeeded: [''],
     });
   }
 
@@ -48,7 +48,7 @@ export class BomFormComponent implements OnInit {
     const capsulesNeededForOrder = capsulesPerBottle * bottles;
 
     this.quoteForm.patchValue({
-      capsulesNeededForOrder: capsulesNeededForOrder
+      capsulesNeededForOrder: capsulesNeededForOrder,
     });
 
     this.updateTotalCapsulesNeeded();
@@ -56,11 +56,13 @@ export class BomFormComponent implements OnInit {
 
   updateTotalCapsulesNeeded() {
     const setupCapsules = this.quoteForm.get('setupCapsules')?.value;
-    const capsulesNeededForOrder = this.quoteForm.get('capsulesNeededForOrder')?.value;
+    const capsulesNeededForOrder = this.quoteForm.get(
+      'capsulesNeededForOrder'
+    )?.value;
     const totalCapsulesNeeded = setupCapsules + capsulesNeededForOrder;
 
     this.quoteForm.patchValue({
-      totalCapsulesNeeded: totalCapsulesNeeded
+      totalCapsulesNeeded: totalCapsulesNeeded,
     });
   }
 

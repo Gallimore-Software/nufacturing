@@ -4,11 +4,9 @@ import { QuotesComponent } from './quotes.component';
 
 const routes: Routes = [
   {
-    path: 'quotes',
+    path: '',
     component: QuotesComponent,
     children: [
-      { path: '', redirectTo: '', pathMatch: 'full' },
-      { path: '', component: QuotesComponent },
       {
         path: 'info',
         loadChildren: () =>

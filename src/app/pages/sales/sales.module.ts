@@ -4,6 +4,7 @@ import { SalesComponent } from './sales.component';
 import { OrdersNavigationComponent } from './components/orders-navigation/orders-navigation.component';
 import { QuotesNavigationComponent } from './components/quotes-navigation/quotes-navigation.component';
 import { SalesDashboardComponent } from './components/sales-dashboard/sales-dashboard.component';
+import { SalesRoutingModule } from './sales-routing.module';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,6 @@ import { SalesDashboardComponent } from './components/sales-dashboard/sales-dash
     OrdersNavigationComponent,
     QuotesNavigationComponent,
   ],
-  imports: [CommonModule],
+  imports: [CommonModule, SalesRoutingModule],
 })
 export class SalesModule {}

@@ -1,0 +1,32 @@
+
+
+.customer-list {
+  padding: 1rem;
+  background-color: #fff; /* White background for contrast */
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: 1rem;
+}
+
+.customer-list .customer-item {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  background-color: #fafafa; /* Slightly darker background for items */
+}
+
+.customer-list .customer-item.active {
+  background-color: #e0ffe0; /* Greenish background for active customers */
+  color: #5a5858
+}
+
+.customer-list .customer-item.inactive {
+  background-color: #ffe0e0; /* Reddish background for inactive customers */
+  color: #5a5858
+}
+
+h1 {
+  margin-left: 1rem;
+  margin-top: 1rem;
+}

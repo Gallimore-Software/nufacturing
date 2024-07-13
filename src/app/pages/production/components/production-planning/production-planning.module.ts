@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ProductionPlanningComponent } from './production-planning.component';
 
 @NgModule({
-  declarations: [ProductionPlanningComponent],
+  declarations: [],
   imports: [CommonModule],
 })
 export class ProductionPlanningModule {}

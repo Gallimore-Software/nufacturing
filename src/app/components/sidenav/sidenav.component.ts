@@ -21,13 +21,9 @@ export class SidenavComponent {
     { link: 'sales', name: 'Sales', icon: 'groups' },
     { link: 'purchasing', name: 'Purchasing', icon: 'request_quote' },
     { link: 'production', name: 'Production', icon: 'receipt_long' },
-    {
-      link: 'product_development',
-      name: 'Product Development',
-      icon: 'inventory_2',
-    },
+    { link: 'product-development', name: 'Product Dev', icon: 'inventory_2' },
     { link: 'quality', name: 'Quality', icon: 'lab_panel' },
-    { link: 'human_resources', name: 'Human Resources', icon: 'school' },
+    { link: 'human-resources', name: 'Human Resources', icon: 'school' },
   ];
 
   navigateTo(link: string) {

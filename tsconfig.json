@@ -24,7 +24,9 @@
       "dom"
     ],
     "types": [
-      "node"
+      "node",
+      "mocha",
+      "jest"
     ]
   },
   "angularCompilerOptions": {

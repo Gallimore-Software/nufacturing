@@ -1,7 +1,6 @@
 <section class="subnav" [class.collapsed]="dock">
-  <mat-icon (click)="toggleDock()">{{ dock ? 'keyboard_arrow_left' : 'keyboard_arrow_right' }}</mat-icon>
   <div>
-    <button mat-button routerLink="quotes-bom-form">BOM Form</button>
+    <button mat-button routerLink="bom-form">BOM Form</button>
     <button mat-button routerLink="ingredient-calculation">Calculate Ingredients</button>
     <button mat-button routerLink="package-breakdown">Calculate Package Breakdown</button>
     <button mat-button routerLink="ingredient-breakdown-without-moq">Calculate Profits without MOQ</button>
@@ -12,6 +11,6 @@
   </div>
 </section>
 
-<section class="bom" [class.expanded]="dock">
+<!-- <section class="bom" [class.expanded]="dock">
   <router-outlet></router-outlet>
-</section>
+</section> -->
