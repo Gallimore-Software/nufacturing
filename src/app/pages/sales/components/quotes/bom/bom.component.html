@@ -1,4 +1,5 @@
 <section class="subnav" [class.collapsed]="dock">
+  <mat-icon (click)="toggleDock()">{{ dock ? 'keyboard_arrow_left' : 'keyboard_arrow_right' }}</mat-icon>
   <div>
     <button mat-button routerLink="bom-form">BOM Form</button>
     <button mat-button routerLink="ingredient-calculation">Calculate Ingredients</button>

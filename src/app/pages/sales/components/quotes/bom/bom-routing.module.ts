@@ -15,6 +15,7 @@ const routes: Routes = [
     path: '',
     component: BomComponent,
     children: [
+      { path: '', redirectTo: 'bom-form', pathMatch: 'full' },
       { path: 'bom-form', component: BomFormComponent },
       {
         path: 'ingredient-breakdown-without-moq',
