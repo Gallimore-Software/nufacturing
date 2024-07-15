@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
-import { GlobalServiceService } from 'src/app/services/global-service.service';
+import { GlobalServiceService } from 'src/app/Services/global-service.service';
 
 @Component({
   selector: 'app-ingredient-calculation',

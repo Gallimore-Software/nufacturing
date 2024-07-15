@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GlobalServiceService } from 'src/app/services/global-service.service';
+import { GlobalServiceService } from 'src/app/Services/global-service.service';
 
 @Component({
   selector: 'app-package-breakdown',

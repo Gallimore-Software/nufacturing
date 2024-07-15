@@ -20,6 +20,12 @@ import { InfoModule } from './pages/sales/components/quotes/info/info.module';
 import { IngredientsModule } from './pages/sales/components/quotes/ingredients/ingredients.module';
 import { SalesModule } from './pages/sales/sales.module';
 import { ContainerComponent } from './components/container/container.component';
+import { LoginComponent } from './pages/users/login/login.component';
+import { MatCardModule } from '@angular/material/card';
+import { CarouselComponent } from './Components/carousel/carousel.component';
+import { RegisterComponent } from './pages/users/signup/register.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatPseudoCheckboxModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -27,6 +33,9 @@ import { ContainerComponent } from './components/container/container.component';
     DashboardComponent,
     SidenavComponent,
     ContainerComponent,
+    LoginComponent,
+    CarouselComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,6 +54,9 @@ import { ContainerComponent } from './components/container/container.component';
     IngredientsModule,
     SalesModule,
     InfoModule,
+    MatCardModule,
+    MatSelectModule,
+    MatPseudoCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent],
