@@ -20,9 +20,11 @@ import { IngredientBreakdownWithoutMoqComponent } from './ingredient-breakdown-w
 import { IngredientCalculationComponent } from './ingredient-calculation/ingredient-calculation.component';
 import { PackageBreakdownComponent } from './package-breakdown/package-breakdown.component';
 import { SalesAnalysisComponent } from './sales-analysis/sales-analysis.component';
+import { BomComponent } from './bom.component';
 
 @NgModule({
   declarations: [
+    BomComponent,
     BomFormComponent,
     IngredientCalculationComponent,
     IngredientBreakdownWithoutMoqComponent,
