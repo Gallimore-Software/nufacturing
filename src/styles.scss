@@ -5,7 +5,8 @@ body, html {
   margin: 0;
   overflow: hidden;
 }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background: linear-gradient(90deg, #000000, #1a1a1a);
+}
 
 mat-sidenav[style] {
   visibility: visible !important;
@@ -20,7 +21,7 @@ mat-drawer[style*="visibility: hidden"] {
 mat-sidenav{
     visibility: visible !important;
 }
-
+  
 /* For Chrome, Safari, and other WebKit-based browsers */
 ::-webkit-scrollbar {
   width: 4px;
