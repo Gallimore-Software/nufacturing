@@ -12,6 +12,7 @@ export class AuthService {
   login(email: string, password: string): boolean {
     // Example authentication logic
     if (email === 'admin@admin.com' && password === 'admin123') {
+      localStorage.setItem('isLoggedIn', 'true');
       this.isAuthenticated.next(true);
       return true;
     }
@@ -19,6 +20,7 @@ export class AuthService {
   }
 
   logout() {
+    localStorage.removeItem('isLoggedIn');
     this.isAuthenticated.next(false);
   }
 

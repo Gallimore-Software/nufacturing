@@ -26,6 +26,7 @@ import { CarouselComponent } from './Components/carousel/carousel.component';
 import { RegisterComponent } from './pages/users/signup/register.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatPseudoCheckboxModule } from '@angular/material/core';
+import { ProductDevelopmentModule } from './pages/product-development/product-development.module';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { MatPseudoCheckboxModule } from '@angular/material/core';
     InfoModule,
     MatCardModule,
     MatSelectModule,
-    MatPseudoCheckboxModule
+    MatPseudoCheckboxModule,
+    ProductDevelopmentModule
   ],
   providers: [],
   bootstrap: [AppComponent],

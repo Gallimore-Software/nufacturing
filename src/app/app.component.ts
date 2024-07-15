@@ -14,8 +14,12 @@ export class AppComponent {
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
-    this.authService.isLoggedIn.subscribe((loginStatus) => {
-      this.isLoggedIn = loginStatus;
-    });
+    if(localStorage.getItem('isLoggedIn')==='true'){
+      this.isLoggedIn = true
+    }else{
+      this.authService.isLoggedIn.subscribe((loginStatus) => {
+        this.isLoggedIn = loginStatus;
+      });
+    }
   }
 }
