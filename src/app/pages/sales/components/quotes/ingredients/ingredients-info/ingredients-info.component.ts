@@ -1,21 +1,34 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
-import { GlobalServiceService } from 'src/app/Services/global-service.service';
+import { GlobalServiceService } from 'src/app/services/global-service.service';
 
 @Component({
   selector: 'app-ingredients-info',
   templateUrl: './ingredients-info.component.html',
-  styleUrls: ['./ingredients-info.component.scss']
+  styleUrls: ['./ingredients-info.component.scss'],
 })
 export class IngredientsInfoComponent implements OnInit {
   ingredientForm: FormGroup;
   dataSource: MatTableDataSource<any>;
-  displayedColumns: string[] = ['name', 'perCapsule', 'pricePerKg', 'moqKg', 'vendor', 'leadTime', 'actions'];
+  displayedColumns: string[] = [
+    'name',
+    'perCapsule',
+    'pricePerKg',
+    'moqKg',
+    'vendor',
+    'leadTime',
+    'actions',
+  ];
   selectedIngredient: any;
 
-  constructor(private fb: FormBuilder, private globalService: GlobalServiceService) {
-    this.dataSource = new MatTableDataSource(this.globalService.getIngredients());
+  constructor(
+    private fb: FormBuilder,
+    private globalService: GlobalServiceService
+  ) {
+    this.dataSource = new MatTableDataSource(
+      this.globalService.getIngredients()
+    );
 
     this.ingredientForm = this.fb.group({
       name: [''],
@@ -23,7 +36,7 @@ export class IngredientsInfoComponent implements OnInit {
       pricePerKg: [''],
       moqKg: [''],
       vendor: [''],
-      leadTime: ['']
+      leadTime: [''],
     });
   }
 
@@ -46,7 +59,7 @@ export class IngredientsInfoComponent implements OnInit {
 
   deleteIngredient(ingredient: any) {
     const ingredients = this.globalService.getIngredients();
-    const index = ingredients.findIndex(ing => ing.name === ingredient.name);
+    const index = ingredients.findIndex((ing) => ing.name === ingredient.name);
     if (index >= 0) {
       ingredients.splice(index, 1);
       this.dataSource.data = ingredients;
@@ -56,7 +69,9 @@ export class IngredientsInfoComponent implements OnInit {
   onSubmit() {
     const formValue = this.ingredientForm.value;
     const ingredients = this.globalService.getIngredients();
-    const existingIngredientIndex = ingredients.findIndex(ing => ing.name === formValue.name);
+    const existingIngredientIndex = ingredients.findIndex(
+      (ing) => ing.name === formValue.name
+    );
     if (existingIngredientIndex >= 0) {
       ingredients[existingIngredientIndex] = formValue;
     } else {

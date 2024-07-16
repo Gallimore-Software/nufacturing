@@ -1,18 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
-import { GlobalServiceService } from 'src/app/Services/global-service.service';
+import { GlobalServiceService } from 'src/app/services/global-service.service';
 
 @Component({
   selector: 'app-ingredient-breakdown-with-moq',
   templateUrl: './ingredient-breakdown-with-moq.component.html',
-  styleUrls: ['./ingredient-breakdown-with-moq.component.scss']
+  styleUrls: ['./ingredient-breakdown-with-moq.component.scss'],
 })
 export class IngredientBreakdownWithMoqComponent implements OnInit {
   breakdownForm: FormGroup;
   dataSource: MatTableDataSource<any>;
   displayedColumns: string[] = [
-    'item', 'qtyNeeded', 'cost', 'moq', 'withMoq', 'costQtyOrdered', 'costPerBottle', 'maxBottlePerMoq', 'moqInMg', 'actions'
+    'item',
+    'qtyNeeded',
+    'cost',
+    'moq',
+    'withMoq',
+    'costQtyOrdered',
+    'costPerBottle',
+    'maxBottlePerMoq',
+    'moqInMg',
+    'actions',
   ];
   totalCostPerBottle: number = 0;
   totalCost: number = 0;
@@ -23,7 +32,7 @@ export class IngredientBreakdownWithMoqComponent implements OnInit {
   ) {
     this.breakdownForm = this.fb.group({
       search: [''],
-      items: this.fb.array([])
+      items: this.fb.array([]),
     });
 
     this.dataSource = new MatTableDataSource(this.getItems());
@@ -38,14 +47,15 @@ export class IngredientBreakdownWithMoqComponent implements OnInit {
   }
 
   getItems(): any[] {
-    const items = this.items.map(ingredient => {
+    const items = this.items.map((ingredient) => {
       const qtyNeeded = this.calculateQtyNeeded(ingredient.perCapsule);
       const cost = parseFloat(ingredient.pricePerKg.replace('$', ''));
       const withMoq = ingredient.moqKg;
       const moqInMg = withMoq * 1000000;
       const maxBottlePerMoq = Math.floor(moqInMg / qtyNeeded);
       const costQtyOrdered = cost * withMoq;
-      const costPerBottle = costQtyOrdered / this.globalService.getOrderInfo().launchQty;
+      const costPerBottle =
+        costQtyOrdered / this.globalService.getOrderInfo().launchQty;
 
       return {
         item: ingredient.name,
@@ -56,7 +66,7 @@ export class IngredientBreakdownWithMoqComponent implements OnInit {
         costQtyOrdered: `$${costQtyOrdered.toFixed(2)}`,
         costPerBottle: `$${costPerBottle.toFixed(4)}`,
         maxBottlePerMoq: maxBottlePerMoq,
-        moqInMg: moqInMg
+        moqInMg: moqInMg,
       };
     });
 
@@ -74,7 +84,7 @@ export class IngredientBreakdownWithMoqComponent implements OnInit {
     let totalCostPerBottle = 0;
     let totalCost = 0;
 
-    this.dataSource.data.forEach(item => {
+    this.dataSource.data.forEach((item) => {
       const cost = parseFloat(item.cost.replace('$', ''));
       const withMoq = item.withMoq;
       const costQtyOrdered = cost * withMoq;
@@ -102,7 +112,6 @@ export class IngredientBreakdownWithMoqComponent implements OnInit {
     //   width: '250px',
     //   data: item
     // });
-
     // dialogRef.afterClosed().subscribe(result => {
     //   if (result) {
     //     const index = this.dataSource.data.findIndex(i => i.item === item.item);
@@ -114,7 +123,7 @@ export class IngredientBreakdownWithMoqComponent implements OnInit {
   }
 
   deleteItem(item: any): void {
-    const index = this.dataSource.data.findIndex(i => i.item === item.item);
+    const index = this.dataSource.data.findIndex((i) => i.item === item.item);
     if (index > -1) {
       this.dataSource.data.splice(index, 1);
       this.dataSource = new MatTableDataSource(this.dataSource.data);
