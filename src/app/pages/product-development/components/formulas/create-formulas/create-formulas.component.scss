@@ -1,0 +1,92 @@
+.create-formula {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+
+  mat-card {
+    border-radius: 6px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    mat-card-header {
+      padding: 16px;
+      color: white;
+      border-top-left-radius: 6px;
+      border-top-right-radius: 6px;
+
+      mat-card-title {
+        font-size: 1.2rem;
+        text-align: center;
+        line-height: 64px;
+      }
+    }
+   
+    mat-card-content {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+
+      mat-form-field {
+        width: 100%;
+
+        input, mat-select {
+          font-size: 1rem;
+          padding: 8px;
+        }
+      }
+    }
+    textarea{
+      background-color: rgb(66, 64, 64);
+      height: 100px;
+      color: white;
+    }
+    button {
+      margin-top: 10px;
+      align-self: flex-start;
+      padding: 10px 15px;
+      font-size: 0.875rem;
+      border-radius: 4px;
+      color: white;
+      background-color: #0077b6;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: #023e8a;
+      }
+    }
+  }
+
+  .ingredient-entry, .nutrient-entry {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+
+    mat-form-field {
+      flex-grow: 1;
+    }
+
+    button {
+      min-width: 36px;
+      height: 36px;
+      padding: 0;
+      border-radius: 50%;
+      mat-icon {
+        font-size: 1.2rem;
+      }
+    }
+  }
+
+  .actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+
+    button {
+      flex-grow: 1;
+      &:not(:last-child) {
+        margin-right: 20px;
+      }
+    }
+  }
+}
