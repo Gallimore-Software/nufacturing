@@ -1,0 +1,70 @@
+<div fxLayout="row" fxLayoutGap="20px" class="container">
+    <!-- Form Section (50%) -->
+    <div fxFlex="50%">
+      <mat-card>
+        <mat-card-title>Bottle Info</mat-card-title>
+        <mat-card-content>
+          <form [formGroup]="bottleInfoForm">
+            <mat-form-field appearance="fill">
+              <mat-label>NFG Bottle Part #</mat-label>
+              <mat-select formControlName="bottlePart" (selectionChange)="onBottlePartChange($event)">
+                <mat-option *ngFor="let part of bottleParts" [value]="part.value">{{ part.label }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Bottle Material</mat-label>
+              <input matInput formControlName="bottleMaterial">
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Bottle Size</mat-label>
+              <input matInput formControlName="bottleSize">
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Bottle Color</mat-label>
+              <input matInput formControlName="bottleColor">
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Bottle Shape</mat-label>
+              <input matInput formControlName="bottleShape">
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Label Panel Height</mat-label>
+              <input matInput formControlName="labelPanelHeight">
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Bottle Mouth/Cap Size</mat-label>
+              <input matInput formControlName="bottleMouthSize">
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Bottle Pricing</mat-label>
+              <input matInput formControlName="bottlePricing">
+            </mat-form-field>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  
+    <!-- Preview Section (50%) -->
+    <div fxFlex="50%">
+      <mat-card>
+        <mat-card-title>Bottle Details</mat-card-title>
+        <mat-card-content>
+          <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            <ng-container matColumnDef="property">
+              <th mat-header-cell *matHeaderCellDef> Property </th>
+              <td mat-cell *matCellDef="let element"> {{element.property}} </td>
+            </ng-container>
+  
+            <ng-container matColumnDef="value">
+              <th mat-header-cell *matHeaderCellDef> Value </th>
+              <td mat-cell *matCellDef="let element"> {{element.value}} </td>
+            </ng-container>
+  
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  

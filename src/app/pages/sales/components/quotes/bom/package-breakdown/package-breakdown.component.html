@@ -1,0 +1,93 @@
+<div fxLayout="column" fxLayoutGap="20px" class="container">
+    <!-- Header -->
+    <header>
+      <h1>Package Breakdown</h1>
+      <p>Review the cost breakdown for packaging materials and other associated costs.</p>
+    </header>
+  
+    <!-- Search and Filter -->
+    <div class="search-filter-container">
+      <mat-form-field appearance="fill">
+        <mat-label>Search</mat-label>
+        <input matInput (input)="applyFilter($event)" placeholder="Search items">
+      </mat-form-field>
+    </div>
+  
+    <!-- Table Display -->
+    <mat-card>
+      <mat-card-title>Package Breakdown</mat-card-title>
+      <mat-card-content>
+        <div class="table-container">
+          <table mat-table [dataSource]="filteredDataSource" class="mat-elevation-z8" matSort>
+            <!-- Item Column -->
+            <ng-container matColumnDef="item">
+              <mat-header-cell *matHeaderCellDef> Item </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.item}} </mat-cell>
+            </ng-container>
+  
+            <!-- QTY Needed Column -->
+            <ng-container matColumnDef="qtyNeeded">
+              <mat-header-cell *matHeaderCellDef> QTY Needed </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.qtyNeeded}} </mat-cell>
+            </ng-container>
+  
+            <!-- Cost Column -->
+            <ng-container matColumnDef="cost">
+              <mat-header-cell *matHeaderCellDef> Cost </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.cost}} </mat-cell>
+            </ng-container>
+  
+            <!-- Min Order QTY Column -->
+            <ng-container matColumnDef="minOrderQty">
+              <mat-header-cell *matHeaderCellDef> Min Order QTY </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.minOrderQty}} </mat-cell>
+            </ng-container>
+  
+            <!-- Cost QTY Ordered Column -->
+            <ng-container matColumnDef="costQtyOrdered">
+              <mat-header-cell *matHeaderCellDef> Cost QTY Ordered </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.costQtyOrdered}} </mat-cell>
+            </ng-container>
+  
+            <!-- Cost Per Bottle Column -->
+            <ng-container matColumnDef="costPerBottle">
+              <mat-header-cell *matHeaderCellDef> Cost Per Bottle </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.costPerBottle}} </mat-cell>
+            </ng-container>
+  
+            <!-- Cost Per Order Column -->
+            <ng-container matColumnDef="costPerOrder">
+              <mat-header-cell *matHeaderCellDef> Cost Per Order </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.costPerOrder}} </mat-cell>
+            </ng-container>
+  
+            <!-- Actions Column -->
+            <ng-container matColumnDef="actions">
+              <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+              <mat-cell *matCellDef="let element">
+                <button mat-icon-button color="primary" (click)="editItem(element)">
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button color="warn" (click)="deleteItem(element)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </mat-cell>
+            </ng-container>
+  
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+          </table>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  
+    <!-- Summary -->
+    <mat-card>
+      <mat-card-title>Summary</mat-card-title>
+      <mat-card-content>
+        <p>Total Cost Per Bottle: {{totalCostPerBottle}}</p>
+        <p>Total Cost Per Order: {{totalCostPerOrder}}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  

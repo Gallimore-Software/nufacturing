@@ -1,0 +1,60 @@
+<div fxLayout="column" fxLayoutGap="20px" class="container">
+    <!-- Input Fields for Costs Per Bottle -->
+    <mat-card>
+        <mat-card-title style="box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; font-size: 16px; width: 100%; background: #ff9900; color: black;">
+            Total Cost Per Bottle
+        </mat-card-title>
+        <mat-card-content>
+            <mat-form-field appearance="fill">
+                <mat-label>Total Cost Per Bottle (With MOQ)</mat-label>
+                <input matInput [(ngModel)]="totalCostPerBottleWithMOQ" type="number">
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Total Cost Per Bottle (Without MOQ)</mat-label>
+                <input matInput [(ngModel)]="totalCostPerBottleWithoutMOQ" type="number">
+            </mat-form-field>
+            <button mat-raised-button color="primary" (click)="calculateSuggestedPrices()">Calculate</button>
+        </mat-card-content>
+    </mat-card>
+
+    <!-- Suggested Prices Tables -->
+    <mat-card>
+        <mat-card-content style="display: flex; justify-content: space-evenly; align-items: center;">
+            <div>
+                <mat-card-title style="box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; font-size: 16px; width: 100%; background: #ff9900; color: black;">
+                    Suggested Sales With MOQ
+                </mat-card-title>
+                <table mat-table [dataSource]="suggestedPricesWithMOQ" class="mat-elevation-z8">
+                    <ng-container matColumnDef="margin">
+                        <mat-header-cell *matHeaderCellDef> Margin </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.margin}} </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="price">
+                        <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.price}} </mat-cell>
+                    </ng-container>
+                    <mat-header-row *matHeaderRowDef="['margin', 'price']"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: ['margin', 'price'];"></mat-row>
+                </table>
+            </div>
+
+            <div>
+                <mat-card-title style="box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; font-size: 16px; width: 100%; background: #ff9900; color: black; ">
+                    Suggested Sales Without MOQ
+                </mat-card-title>
+                <table mat-table [dataSource]="suggestedPricesWithoutMOQ" class="mat-elevation-z8">
+                    <ng-container matColumnDef="margin">
+                        <mat-header-cell *matHeaderCellDef> Margin </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.margin}} </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="price">
+                        <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.price}} </mat-cell>
+                    </ng-container>
+                    <mat-header-row *matHeaderRowDef="['margin', 'price']"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: ['margin', 'price'];"></mat-row>
+                </table>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>

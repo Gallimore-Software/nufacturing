@@ -13,18 +13,30 @@ import { MatInputModule } from '@angular/material/input';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
-import { QuoteModule } from './pages/quotes/quote.module';
-import { IngredientsModule } from './pages/quotes/ingredients/ingredients.module';
-import { InfoModule } from './pages/quotes/info/info.module';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { InfoModule } from './pages/sales/components/quotes/info/info.module';
+import { IngredientsModule } from './pages/sales/components/quotes/ingredients/ingredients.module';
+import { SalesModule } from './pages/sales/sales.module';
+import { ContainerComponent } from './components/container/container.component';
+import { LoginComponent } from './pages/users/login/login.component';
+import { MatCardModule } from '@angular/material/card';
+import { CarouselComponent } from './components/carousel/carousel.component';
+import { RegisterComponent } from './pages/users/signup/register.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatPseudoCheckboxModule } from '@angular/material/core';
+import { ProductDevelopmentModule } from './pages/product-development/product-development.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
     SidenavComponent,
+    ContainerComponent,
+    LoginComponent,
+    CarouselComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,10 +53,14 @@ import { InfoModule } from './pages/quotes/info/info.module';
     ReactiveFormsModule,
     MatInputModule,
     IngredientsModule,
-    QuoteModule,
-    InfoModule
+    SalesModule,
+    InfoModule,
+    MatCardModule,
+    MatSelectModule,
+    MatPseudoCheckboxModule,
+    ProductDevelopmentModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

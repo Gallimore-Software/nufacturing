@@ -1,2 +1,2 @@
-<app-dashboard route={{route}}></app-dashboard>
-
+<app-container *ngIf="isLoggedIn" route={{route}}></app-container>
+<router-outlet></router-outlet>

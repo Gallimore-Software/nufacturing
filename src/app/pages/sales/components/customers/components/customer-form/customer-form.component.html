@@ -1,0 +1,104 @@
+<h1>Create New Customer</h1>
+<form [formGroup]="customerForm" (ngSubmit)="onSubmit()" class="customer-form">
+  <div class="form-group">
+    <label>Company Name</label>
+    <input formControlName="companyName" type="text" />
+  </div>
+  <div class="form-group">
+    <label>Company Code (3 Letters)</label>
+    <input formControlName="companyCode" type="text" />
+  </div>
+
+  <div formGroupName="primaryContact" class="form-group">
+    <h3>Primary Contact</h3>
+    <label>First Name</label>
+    <input formControlName="firstName" type="text" />
+    <label>Last Name</label>
+    <input formControlName="lastName" type="text" />
+    <label>Email Address</label>
+    <input formControlName="email" type="email" />
+    <label>Phone</label>
+    <input formControlName="phone" type="text" />
+  </div>
+
+  <div formGroupName="complianceContact" class="form-group">
+    <h3>Compliance Contact</h3>
+    <label>First Name</label>
+    <input formControlName="firstName" type="text" />
+    <label>Last Name</label>
+    <input formControlName="lastName" type="text" />
+    <label>Email Address</label>
+    <input formControlName="email" type="email" />
+    <label>Phone</label>
+    <input formControlName="phone" type="text" />
+  </div>
+
+  <div formGroupName="accountingContact" class="form-group">
+    <h3>Accounting Contact</h3>
+    <label>First Name</label>
+    <input formControlName="firstName" type="text" />
+    <label>Last Name</label>
+    <input formControlName="lastName" type="text" />
+    <label>Email Address</label>
+    <input formControlName="email" type="email" />
+    <label>Phone</label>
+    <input formControlName="phone" type="text" />
+  </div>
+
+  <div class="form-group">
+    <label>Company Website</label>
+    <input formControlName="companyWebsite" type="url" />
+  </div>
+
+  <div formGroupName="businessAddress" class="form-group">
+    <h3>Business Address</h3>
+    <label>Line 1</label>
+    <input formControlName="line1" type="text" />
+    <label>Line 2</label>
+    <input formControlName="line2" type="text" />
+    <label>City</label>
+    <input formControlName="city" type="text" />
+    <label>State</label>
+    <input formControlName="state" type="text" />
+    <label>Zip</label>
+    <input formControlName="zip" type="text" />
+  </div>
+
+  <div formGroupName="fulfillmentAddress" class="form-group">
+    <h3>Fulfillment Address</h3>
+    <label>
+      <input type="checkbox" formControlName="sameAsBusiness" (change)="copyBusinessAddress()" /> 
+      Add same as business address
+    </label>
+    <label>Line 1</label>
+    <input formControlName="line1" type="text" />
+    <label>Line 2</label>
+    <input formControlName="line2" type="text" />
+    <label>City</label>
+    <input formControlName="city" type="text" />
+    <label>State</label>
+    <input formControlName="state" type="text" />
+    <label>Zip</label>
+    <input formControlName="zip" type="text" />
+  </div>
+
+  <div class="form-group">
+    <label>Customer Qualification Form</label>
+    <input formControlName="customerQualificationForm" type="text" />
+  </div>
+
+  <div formArrayName="brands">
+    <div *ngFor="let brand of brands.controls; let i = index" [formGroupName]="i" class="form-group">
+      <h3>Brand {{ i + 1 }}</h3>
+      <label>Customer/Brand Code (3 digits)</label>
+      <input formControlName="brandCode" type="text" />
+      <label>Brand Photo</label>
+      <input formControlName="brandPhoto" type="url" />
+      <label>Brand Website</label>
+      <input formControlName="brandWebsite" type="url" />
+    </div>
+    <button type="button" (click)="addBrand()">Add Brand</button>
+  </div>
+
+  <button type="submit">Create Customer</button>
+</form>

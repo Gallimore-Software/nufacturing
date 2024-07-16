@@ -1,0 +1,94 @@
+<div fxLayout="row" fxLayoutGap="20px" class="container">
+  <!-- Form Section (50%) -->
+  <div fxFlex="50%">
+    <mat-card>
+      <mat-card-title>Account Info Form</mat-card-title>
+      <mat-card-content>
+        <form [formGroup]="accountInfoForm">
+          <!-- Account Manager Dropdown -->
+          <mat-form-field appearance="fill" style="width: 100%;">
+            <mat-label>Account Manager</mat-label>
+            <mat-select formControlName="accountManager">
+              <mat-option *ngFor="let manager of accountManagers" [value]="manager">{{manager}}</mat-option>
+              <mat-option value="other">Other</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <!-- Input for new Account Manager if "Other" is selected -->
+          <div *ngIf="accountInfoForm.get('accountManager')?.value === 'other'">
+            <mat-form-field appearance="fill" style="width: 100%;">
+              <mat-label>New Account Manager</mat-label>
+              <input matInput formControlName="newAccountManager">
+            </mat-form-field>
+          </div>
+
+          <mat-form-field appearance="fill" style="width: 100%;">
+            <mat-label>NFG Customer Code</mat-label>
+            <input matInput formControlName="customerCode">
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" style="width: 100%;">
+            <mat-label>NFG SKU #</mat-label>
+            <input matInput formControlName="sku">
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" style="width: 100%;">
+            <mat-label>NFG Formula Code</mat-label>
+            <input matInput formControlName="formulaCode">
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" style="width: 100%;">
+            <mat-label>Batch #</mat-label>
+            <input matInput formControlName="batchNumber">
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" style="width: 100%;">
+            <mat-label>Customer Batch #</mat-label>
+            <input matInput formControlName="customerBatchNumber">
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" style="width: 100%;">
+            <mat-label>NFG Batch Code</mat-label>
+            <input matInput formControlName="nfgBatchCode" readonly>
+          </mat-form-field>
+
+          <div style="display: flex; justify-content: space-between;">
+            <mat-form-field appearance="fill" style="width: 30%;">
+              <mat-label>Date Month</mat-label>
+              <input matInput formControlName="dateMonth">
+            </mat-form-field>
+            <mat-form-field appearance="fill" style="width: 30%;">
+              <mat-label>Date Day</mat-label>
+              <input matInput formControlName="dateDay">
+            </mat-form-field>
+            <mat-form-field appearance="fill" style="width: 30%;">
+              <mat-label>Date Year</mat-label>
+              <input matInput formControlName="dateYear">
+            </mat-form-field>
+          </div>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <!-- Preview Section (50%) -->
+  <div fxFlex="50%">
+    <mat-card>
+      <mat-card-title>Preview</mat-card-title>
+      <mat-card-content>
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+          <ng-container matColumnDef="property">
+            <th mat-header-cell *matHeaderCellDef> Property </th>
+            <td mat-cell *matCellDef="let element"> {{element.property}} </td>
+          </ng-container>
+          <ng-container matColumnDef="value">
+            <th mat-header-cell *matHeaderCellDef> Value </th>
+            <td mat-cell *matCellDef="let element"> {{element.value}} </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

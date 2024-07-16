@@ -1,0 +1,106 @@
+.subnav {
+  position: fixed;
+  top: 25%;
+  right: 0;
+  width: 20%;
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  align-items: center;
+  background-color: rgba(146, 146, 146, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-left: 1px solid #ddd;
+  z-index: 1000;
+  overflow-y: scroll;
+  padding: 20px;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+  transition: right 0.3s ease;
+
+  &.collapsed {
+    right: -20%;
+  }
+
+  mat-icon {
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
+
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    button {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 10px 20px;
+      font-size: 12px;
+      text-transform: uppercase;
+      color: #fff;
+      background-color: #023f1f;
+      border: none;
+      border-radius: 4px;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+
+      &:hover {
+        background-color: #303f9f;
+      }
+
+      &:active {
+        background-color: #283593;
+      }
+
+      &:focus {
+        outline: none;
+        box-shadow: 0 0 5px rgba(63, 81, 181, 0.5);
+      }
+
+      &.active-link {
+        background-color: #1e88e5; /* Change to the color you prefer for the active link */
+      }
+    }
+  }
+}
+
+.nufacturing_ingredients {
+  margin-right: 20%;
+  padding: 20px;
+  transition: margin-right 0.3s ease;
+
+  &.expanded {
+    margin-right: 0;
+  }
+}
+
+mat-card {
+  margin: 10px;
+  width: 100%;
+}
+
+mat-card-title {
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-align: center;
+  line-height: 64px;
+}
+
+mat-form-field {
+  margin-bottom: 15px;
+}
+
+table {
+  width: 100%;
+}
+
+th {
+  text-align: left;
+  font-weight: bold;
+}
+
+td {
+  padding: 8px;
+}

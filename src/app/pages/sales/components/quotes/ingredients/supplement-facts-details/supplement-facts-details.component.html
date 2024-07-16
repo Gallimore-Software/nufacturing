@@ -1,0 +1,94 @@
+<div fxLayout="column" fxLayoutGap="20px" class="container">
+    <!-- Header -->
+    <header>
+      <h1>Supplement Facts Details</h1>
+      <p>Manage and review detailed supplement facts and additional information for the product.</p>
+    </header>
+  
+    <!-- Suggested Use / Directions -->
+    <mat-card>
+      <mat-card-title>Supplement Facts Form</mat-card-title>
+      <mat-card-content>
+        <form [formGroup]="detailsForm" (ngSubmit)="onSubmit()" fxLayout="row" fxLayoutGap="20px" fxLayout.lt-sm="column">
+          <!-- Form Fields (50%) -->
+          <div fxFlex="50%">
+            <mat-form-field appearance="fill" style="width: 100%;">
+              <mat-label>Suggested Use / Directions</mat-label>
+              <textarea matInput formControlName="directions"></textarea>
+            </mat-form-field>
+  
+            <!-- Allergens -->
+            <mat-card-title>Allergens</mat-card-title>
+            <mat-form-field appearance="fill" style="width: 100%;">
+              <mat-label>Allergens Information</mat-label>
+              <textarea matInput formControlName="allergens" readonly></textarea>
+            </mat-form-field>
+  
+            <!-- Gluten Free -->
+            <mat-form-field appearance="fill" style="width: 100%;">
+              <mat-label>Is this formula Gluten Free?</mat-label>
+              <mat-select formControlName="glutenFree">
+                <mat-option value="Yes">Yes</mat-option>
+                <mat-option value="No">No</mat-option>
+              </mat-select>
+            </mat-form-field>
+  
+            <!-- Vegan Friendly -->
+            <mat-form-field appearance="fill" style="width: 100%;">
+              <mat-label>Is this formula Vegan Friendly?</mat-label>
+              <mat-select formControlName="veganFriendly">
+                <mat-option value="Yes">Yes</mat-option>
+                <mat-option value="No">No</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+  
+          <div fxFlex="50%">
+            <!-- Warning Instructions -->
+            <mat-form-field appearance="fill" style="width: 100%;">
+              <mat-label>Are there any "Warning" instructions?</mat-label>
+              <mat-select formControlName="warnings">
+                <mat-option value="Yes">Yes</mat-option>
+                <mat-option value="No">No</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="fill" *ngIf="detailsForm.get('warnings')?.value === 'Yes'" style="width: 100%;">
+              <mat-label>Warning Instructions</mat-label>
+              <textarea matInput formControlName="warningInstructions"></textarea>
+            </mat-form-field>
+  
+            <!-- Storage Requirements -->
+            <mat-form-field appearance="fill" style="width: 100%;">
+              <mat-label>Are there any storage requirements?</mat-label>
+              <mat-select formControlName="storageRequirements">
+                <mat-option value="Yes">Yes</mat-option>
+                <mat-option value="No">No</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="fill" *ngIf="detailsForm.get('storageRequirements')?.value === 'Yes'" style="width: 100%;">
+              <mat-label>Storage Instructions</mat-label>
+              <textarea matInput formControlName="storageInstructions"></textarea>
+            </mat-form-field>
+  
+            <button mat-raised-button color="primary" type="submit" style="margin-top: 20px;">Save</button>
+          </div>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  
+    <!-- Summary -->
+    <mat-card>
+      <mat-card-title>Summary</mat-card-title>
+      <mat-card-content>
+        <p><strong>Suggested Use / Directions:</strong> {{ detailsForm.get('directions')?.value }}</p>
+        <p><strong>Allergens:</strong> {{ detailsForm.get('allergens')?.value }}</p>
+        <p><strong>Gluten Free:</strong> {{ detailsForm.get('glutenFree')?.value }}</p>
+        <p><strong>Vegan Friendly:</strong> {{ detailsForm.get('veganFriendly')?.value }}</p>
+        <p><strong>Warnings:</strong> {{ detailsForm.get('warnings')?.value }}</p>
+        <p *ngIf="detailsForm.get('warnings')?.value === 'Yes'"><strong>Warning Instructions:</strong> {{ detailsForm.get('warningInstructions')?.value }}</p>
+        <p><strong>Storage Requirements:</strong> {{ detailsForm.get('storageRequirements')?.value }}</p>
+        <p *ngIf="detailsForm.get('storageRequirements')?.value === 'Yes'"><strong>Storage Instructions:</strong> {{ detailsForm.get('storageInstructions')?.value }}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  

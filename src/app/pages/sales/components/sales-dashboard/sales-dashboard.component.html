@@ -1,0 +1,46 @@
+<div class="sales-dashboard">
+    <h2>Sales Dashboard</h2>
+    <div class="metrics">
+      <div class="metric">
+        <span>Total Orders</span>
+        <span>{{ keyMetrics.totalOrders }}</span>
+      </div>
+      <div class="metric">
+        <span>Orders In Process</span>
+        <span>{{ keyMetrics.ordersInProcess }}</span>
+      </div>
+      <div class="metric">
+        <span>Orders Awaiting Shipment</span>
+        <span>{{ keyMetrics.ordersAwaitingShipment }}</span>
+      </div>
+      <div class="metric">
+        <span>Orders Completed</span>
+        <span>{{ keyMetrics.ordersCompleted }}</span>
+      </div>
+      <div class="metric">
+        <span>Total Quotes</span>
+        <span>{{ keyMetrics.totalQuotes }}</span>
+      </div>
+      <div class="metric">
+        <span>Active Quotes</span>
+        <span>{{ keyMetrics.activeQuotes }}</span>
+      </div>
+      <div class="metric">
+        <span>Expired Quotes</span>
+        <span>{{ keyMetrics.expiredQuotes }}</span>
+      </div>
+    </div>
+  
+    <h3>Recent Activity</h3>
+    <ul>
+      <li *ngFor="let activity of recentActivity">
+        {{ activity }}
+      </li>
+    </ul>
+  
+    <div class="quick-links">
+      <a routerLink="/sales/orders">Go to Orders Page</a>
+      <a routerLink="/sales/quotes">Go to Quotes Page</a>
+    </div>
+  </div>
+  

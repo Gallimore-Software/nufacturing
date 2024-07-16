@@ -1,0 +1,20 @@
+<section class="subnav" [class.collapsed]="dock">
+  <mat-icon (click)="toggleDock()">{{ dock ? 'keyboard_arrow_left' : 'keyboard_arrow_right' }}</mat-icon>
+  <div>
+    <button mat-button routerLink="account-info">Account Info</button>
+    <button mat-button routerLink="customer-info">Customer Info</button>
+    <button mat-button routerLink="order-info">Order Info</button>
+    <button mat-button routerLink="testing-info">Testing Info</button>
+    <button mat-button routerLink="order-costs">Order Costs</button>
+    <button mat-button routerLink="capsule-info">Capsule Info</button>
+    <button mat-button routerLink="bottle-info">Bottle Info</button>
+    <button mat-button routerLink="closure-info">Closure Info</button>
+    <button mat-button routerLink="master-carton-info">Master Carton Info</button>
+    <button mat-button routerLink="other-components">Other Components</button>
+    <button mat-button routerLink="label-info">Label Info</button>
+  </div>
+</section>
+
+<section class="nufacturing_info" [class.expanded]="dock">
+  <router-outlet></router-outlet>
+</section>

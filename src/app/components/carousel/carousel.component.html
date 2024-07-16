@@ -1,0 +1,12 @@
+<div class="carousel-container">
+    <div *ngFor="let image of images; let i = index" class="carousel-slide"
+         [@slideAnimation]="{value: i === currentSlide ? 'active' : 'inactive', params: {index: i}}">
+        <img [src]="image" [alt]="'Slide ' + (i + 1)">
+    </div>
+    <button mat-icon-button (click)="previousSlide()">
+        <mat-icon>chevron_left</mat-icon>
+    </button>
+    <button mat-icon-button (click)="nextSlide()">
+        <mat-icon>chevron_right</mat-icon>
+    </button>
+</div>
