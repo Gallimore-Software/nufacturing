@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { GlobalServiceService } from 'src/app/Services/global-service.service';
+import { GlobalServiceService } from 'src/app/services/global-service.service';
 
 @Component({
   selector: 'app-bom-form',

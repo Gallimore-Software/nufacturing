@@ -22,7 +22,7 @@ import { SalesModule } from './pages/sales/sales.module';
 import { ContainerComponent } from './components/container/container.component';
 import { LoginComponent } from './pages/users/login/login.component';
 import { MatCardModule } from '@angular/material/card';
-import { CarouselComponent } from './Components/carousel/carousel.component';
+import { CarouselComponent } from './components/carousel/carousel.component';
 import { RegisterComponent } from './pages/users/signup/register.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatPseudoCheckboxModule } from '@angular/material/core';
@@ -58,7 +58,7 @@ import { ProductDevelopmentModule } from './pages/product-development/product-de
     MatCardModule,
     MatSelectModule,
     MatPseudoCheckboxModule,
-    ProductDevelopmentModule
+    ProductDevelopmentModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

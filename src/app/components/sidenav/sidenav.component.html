@@ -17,7 +17,7 @@
         [matTooltip]="!isExpanded ? route.name : ''"
         matTooltipPosition="right"
       >
-        {{isExpanded ? '': route.icon }}
+        {{ isExpanded ? "" : route.icon }}
       </mat-icon>
       <p matLine *ngIf="isExpanded">{{ route.name }}</p>
     </a>

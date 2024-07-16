@@ -1,19 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
-import { GlobalServiceService } from 'src/app/Services/global-service.service';
+import { GlobalServiceService } from 'src/app/services/global-service.service';
 
 @Component({
   selector: 'app-ingredient-breakdown-without-moq',
   templateUrl: './ingredient-breakdown-without-moq.component.html',
-  styleUrls: ['./ingredient-breakdown-without-moq.component.scss']
+  styleUrls: ['./ingredient-breakdown-without-moq.component.scss'],
 })
 export class IngredientBreakdownWithoutMoqComponent implements OnInit {
   breakdownForm: FormGroup;
   dataSource: MatTableDataSource<any>;
 
   displayedColumns: string[] = [
-    'item', 'qtyNeeded', 'cost', 'moq', 'withoutMoq', 'costQtyOrdered', 'costPerBottle', 'actions'
+    'item',
+    'qtyNeeded',
+    'cost',
+    'moq',
+    'withoutMoq',
+    'costQtyOrdered',
+    'costPerBottle',
+    'actions',
   ];
   totalCostPerBottle: number = 0;
 
@@ -23,7 +30,7 @@ export class IngredientBreakdownWithoutMoqComponent implements OnInit {
   ) {
     this.breakdownForm = this.fb.group({
       search: [''],
-      items: this.fb.array([])
+      items: this.fb.array([]),
     });
 
     this.dataSource = new MatTableDataSource(this.getItems());
@@ -46,7 +53,7 @@ export class IngredientBreakdownWithoutMoqComponent implements OnInit {
     const orderInfo = this.globalService.getOrderInfo();
     const totalBottles = orderInfo.launchQty;
 
-    return ingredients.map(ingredient => {
+    return ingredients.map((ingredient) => {
       const qtyNeeded = this.calculateQtyNeeded(ingredient.perCapsule);
       const cost = parseFloat(ingredient.pricePerKg.replace('$', ''));
       const withoutMoq = this.calculateWithoutMoq(qtyNeeded);
@@ -58,7 +65,7 @@ export class IngredientBreakdownWithoutMoqComponent implements OnInit {
         moq: ingredient.moqKg,
         withoutMoq: withoutMoq,
         costQtyOrdered: `$${(cost * withoutMoq).toFixed(2)}`,
-        costPerBottle: (cost * withoutMoq) / totalBottles
+        costPerBottle: (cost * withoutMoq) / totalBottles,
       };
     });
   }
@@ -77,7 +84,7 @@ export class IngredientBreakdownWithoutMoqComponent implements OnInit {
     const totalBottles = this.globalService.getOrderInfo().launchQty;
     let totalCostPerBottle = 0;
 
-    this.dataSource.data.forEach(item => {
+    this.dataSource.data.forEach((item) => {
       const cost = parseFloat(item.cost.replace('$', ''));
       const withoutMoq = item.withoutMoq;
       const costQtyOrdered = cost * withoutMoq;
@@ -93,7 +100,9 @@ export class IngredientBreakdownWithoutMoqComponent implements OnInit {
   }
 
   applyFilter(event?: Event) {
-    const filterValue = event ? (event.target as HTMLInputElement).value : this.breakdownForm.get('search')?.value || '';
+    const filterValue = event
+      ? (event.target as HTMLInputElement).value
+      : this.breakdownForm.get('search')?.value || '';
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
@@ -109,7 +118,7 @@ export class IngredientBreakdownWithoutMoqComponent implements OnInit {
   deleteIngredient(item: any): void {
     // Implement the logic to delete the ingredient.
     console.log('Delete ingredient', item);
-    this.dataSource.data = this.dataSource.data.filter(data => data !== item);
+    this.dataSource.data = this.dataSource.data.filter((data) => data !== item);
     this.calculateBreakdown();
   }
 }
