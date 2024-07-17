@@ -13,7 +13,7 @@ const routes: Routes = [
     children: [
       {
         path:'formulas',
-        component: FormulasComponent
+        loadChildren: () => import('./components/formulas/formulas.module').then((m) => m.FormulasModule),
       }, {
         path: 'product-skus',
         component: ProductSkusComponent

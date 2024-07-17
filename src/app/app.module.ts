@@ -27,11 +27,11 @@ import { RegisterComponent } from './pages/users/signup/register.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatPseudoCheckboxModule } from '@angular/material/core';
 import { ProductDevelopmentModule } from './pages/product-development/product-development.module';
+import { DashboardModule } from './pages/dashboard/dashboard.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent,
     SidenavComponent,
     ContainerComponent,
     LoginComponent,
@@ -59,6 +59,7 @@ import { ProductDevelopmentModule } from './pages/product-development/product-de
     MatSelectModule,
     MatPseudoCheckboxModule,
     ProductDevelopmentModule,
+    DashboardModule
   ],
   providers: [],
   bootstrap: [AppComponent],

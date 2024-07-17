@@ -1,0 +1,81 @@
+<main>
+    <!-- Dashboard Overview -->
+    <mat-card class="dashboard-overview">
+      <mat-card-header>
+        <mat-card-title>Dashboard Overview</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>Welcome to your business dashboard. Here, you can get a quick summary of your key business metrics, recent activities, and important alerts.</p>
+      </mat-card-content>
+    </mat-card>
+  
+    <!-- Metrics Dashboard -->
+    <mat-card class="metrics-dashboard">
+      <mat-card-header>
+        <mat-card-title>Key Metrics</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="metrics-container">
+            <mat-card class="metric-card" *ngFor="let metric of keyMetrics">
+                <mat-card-header>
+                  <h3>{{ metric.title }}</h3>
+                </mat-card-header>
+                <mat-card-content>
+                  {{ metric.value }}
+                </mat-card-content>
+            </mat-card>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Charts and Visualizations -->
+    <div style="display: flex; justify-content: space-between; gap: 20px;">
+    <mat-card  style="flex: 1;">
+      <mat-card-header>
+        <mat-card-title>Sales & Purchase Overview</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <canvas id="salesPurchaseChart"></canvas>
+      </mat-card-content>
+    </mat-card>
+    <mat-card  style="flex: 1;">
+      <mat-card-header>
+        <mat-card-title>Order Summary</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <canvas id="orderSummaryChart"></canvas>
+      </mat-card-content>
+    </mat-card>
+    </div>
+  
+    <div style="display: flex; justify-content: space-between; gap: 20px;">
+        <!-- Recent Activity Boxes -->
+        <mat-card class="recent-activity" style="flex: 1;">
+          <mat-card-header>
+            <mat-card-title>Recent Activity</mat-card-title>
+          </mat-card-header>
+          <mat-card-content  class="alert-boxes" >
+            <div *ngFor="let activity of recentActivity" class="alert-box" >
+                    <span>{{ activity.details }}</span>
+                    <span class="date" style="font-weight: 400; font-size: 12px;">{{ activity.date | date }}</span>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      
+        <!-- Alerts/Notifications as Boxes -->
+        <mat-card class="alerts" style="flex: 1;">
+          <mat-card-header>
+            <mat-card-title>Alerts/Notifications</mat-card-title>
+          </mat-card-header>
+          <mat-card-content  class="alert-boxes" >
+            <div *ngFor="let alert of alerts" class="alert-box" >
+              <span>{{ alert.message }}</span>
+              <span class="alert-date" style="font-weight: 400; font-size: 12px;">{{ alert.date | date }}</span>
+              <mat-icon class="bell-icon" style="color: teal;">notifications</mat-icon>
+            </div>
+          </mat-card-content>
+        </mat-card>
+    </div>
+    
+  </main>
+  

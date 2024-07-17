@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./formulas.component.scss']
 })
 export class FormulasComponent {
-
+  dock: boolean = false;
+  
+  toggleDock() {
+    this.dock = !this.dock;
+  }
 }
