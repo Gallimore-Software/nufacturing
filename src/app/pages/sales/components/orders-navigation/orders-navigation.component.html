@@ -1,23 +1,20 @@
 <div class="orders-navigation">
-    <h2>Orders Summary</h2>
-    <div class="metrics">
-      <div class="metric">
-        <span>Total Orders</span>
-        <span>{{ summaryMetrics.totalOrders }}</span>
+      <h2>Orders Summary</h2>
+      <div class="metrics">
+        <mat-chip-set class="metric-chip-list">
+          <mat-chip class="metric-chip" selectable="false" color="primary">
+            Total Orders: {{ summaryMetrics.totalOrders }}
+          </mat-chip>
+          <mat-chip class="metric-chip" selectable="false" color="accent">
+            In Process: {{ summaryMetrics.inProcess }}
+          </mat-chip>
+          <mat-chip class="metric-chip" selectable="false" color="warn">
+            Awaiting Shipment: {{ summaryMetrics.awaitingShipment }}
+          </mat-chip>
+          <mat-chip class="metric-chip" selectable="false" color="primary">
+            Completed: {{ summaryMetrics.completed }}
+          </mat-chip>
+        </mat-chip-set>
       </div>
-      <div class="metric">
-        <span>In Process</span>
-        <span>{{ summaryMetrics.inProcess }}</span>
-      </div>
-      <div class="metric">
-        <span>Awaiting Shipment</span>
-        <span>{{ summaryMetrics.awaitingShipment }}</span>
-      </div>
-      <div class="metric">
-        <span>Completed</span>
-        <span>{{ summaryMetrics.completed }}</span>
-      </div>
-    </div>
-    <a routerLink="/sales/orders">Go to Orders Page</a>
-  </div>
-  
+      <button mat-raised-button color="primary" routerLink="/sales/orders">Go to Orders Page</button>
+</div>

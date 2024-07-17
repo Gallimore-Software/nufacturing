@@ -1,28 +1,17 @@
 .quotes-navigation {
-    .metrics {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-  
-      .metric {
-        background-color: #66ff99;
-        padding: 1rem;
-        border-radius: 4px;
-        color: white;
-        flex: 1 1 calc(50% - 1rem);
-        text-align: center;
-      }
-    }
-  
-    a {
-      display: block;
-      margin-top: 1rem;
-      color: #66ff99;
-      text-decoration: none;
-  
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-  }
-  
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+}
+
+.metric-chip-list {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+mat-chip {
+  margin: 5px;
+}
