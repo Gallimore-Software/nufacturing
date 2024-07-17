@@ -1,32 +1,65 @@
-
-
-.customer-list {
-  padding: 1rem;
-  background-color: #fff; /* White background for contrast */
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  margin: 1rem;
+/* Overall card styling */
+mat-card {
+  width: 90%; /* Adjust width as necessary for your layout */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  border-radius: 8px; /* Rounded corners */
+  overflow: hidden; /* Ensures no content overflows the card boundaries */
 }
 
-.customer-list .customer-item {
-  padding: 1rem;
-  margin-bottom: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 3px;
-  background-color: #fafafa; /* Slightly darker background for items */
+/* Styling for the card title */
+mat-card-title {
+  padding: 16px;
+  border-bottom: 1px solid #e0e0e0; /* Visual separator between title and content */
+  font-size: 20px; /* Enhanced font size for better visibility */
+  text-align: center; /* Center-align the title text */
 }
 
-.customer-list .customer-item.active {
-  background-color: #e0ffe0; /* Greenish background for active customers */
-  color: #5a5858
+/* Styling for the chip list container */
+mat-chip-listbox {
+  display: flex;
+  flex-direction: column; /* Align chips vertically */
+  padding: 10px; /* Padding around the chips */
+  gap: 8px; /* Space between individual chips */
 }
 
-.customer-list .customer-item.inactive {
-  background-color: #ffe0e0; /* Reddish background for inactive customers */
-  color: #5a5858
+/* General styling for each chip */
+mat-chip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Space between elements within the chip */
+  margin: 5px;
+  padding: 10px 20px; /* Padding inside chips for spacing around content */
+  font-size: 16px; /* Legible font size */
+  color: white; /* Text color for contrast */
+  background-color: #00796b; /* Default teal background for chips */
+  border: none;
+  border-radius: 4px; /* Rounded corners for chips */
+  cursor: pointer; /* Pointer cursor on hover to indicate interactivity */
+  transition: background-color 0.3s; /* Smooth color transition on hover */
+
+  &:hover {
+    background-color: #005b4f; /* Darker shade on hover for visual feedback */
+  }
 }
 
-h1 {
-  margin-left: 1rem;
-  margin-top: 1rem;
+/* Styling for active and inactive status using icons */
+mat-icon {
+  margin-right: 8px; /* Space between the icon and text */
+}
+
+.active-icon {
+  color: red; /* Icon color for active status */
+}
+
+.inactive-icon {
+  color: lightgrey; /* Icon color for inactive status */
+}
+
+/* Specific styles for active and inactive chips */
+.active {
+  background-color: #2196f3; /* Blue background for active chips */
+}
+
+.inactive {
+  background-color: #f44336; /* Red background for inactive chips */
 }

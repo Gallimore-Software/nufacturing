@@ -1,104 +1,158 @@
 <h1>Create New Customer</h1>
 <form [formGroup]="customerForm" (ngSubmit)="onSubmit()" class="customer-form">
-  <div class="form-group">
-    <label>Company Name</label>
-    <input formControlName="companyName" type="text" />
-  </div>
-  <div class="form-group">
-    <label>Company Code (3 Letters)</label>
-    <input formControlName="companyCode" type="text" />
-  </div>
+  <mat-card>
+    <mat-card-content>
+      <mat-form-field appearance="fill">
+        <mat-label>Company Name</mat-label>
+        <input matInput formControlName="companyName">
+      </mat-form-field>
 
-  <div formGroupName="primaryContact" class="form-group">
-    <h3>Primary Contact</h3>
-    <label>First Name</label>
-    <input formControlName="firstName" type="text" />
-    <label>Last Name</label>
-    <input formControlName="lastName" type="text" />
-    <label>Email Address</label>
-    <input formControlName="email" type="email" />
-    <label>Phone</label>
-    <input formControlName="phone" type="text" />
-  </div>
+      <mat-form-field appearance="fill">
+        <mat-label>Company Code (3 Letters)</mat-label>
+        <input matInput formControlName="companyCode">
+      </mat-form-field>
 
-  <div formGroupName="complianceContact" class="form-group">
-    <h3>Compliance Contact</h3>
-    <label>First Name</label>
-    <input formControlName="firstName" type="text" />
-    <label>Last Name</label>
-    <input formControlName="lastName" type="text" />
-    <label>Email Address</label>
-    <input formControlName="email" type="email" />
-    <label>Phone</label>
-    <input formControlName="phone" type="text" />
-  </div>
+      <div formGroupName="primaryContact">
+        <h3>Primary Contact</h3>
+        <mat-form-field appearance="fill">
+          <mat-label>First Name</mat-label>
+          <input matInput formControlName="firstName">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Last Name</mat-label>
+          <input matInput formControlName="lastName">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Email Address</mat-label>
+          <input matInput formControlName="email">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Phone</mat-label>
+          <input matInput formControlName="phone">
+        </mat-form-field>
+      </div>
 
-  <div formGroupName="accountingContact" class="form-group">
-    <h3>Accounting Contact</h3>
-    <label>First Name</label>
-    <input formControlName="firstName" type="text" />
-    <label>Last Name</label>
-    <input formControlName="lastName" type="text" />
-    <label>Email Address</label>
-    <input formControlName="email" type="email" />
-    <label>Phone</label>
-    <input formControlName="phone" type="text" />
-  </div>
+      <div formGroupName="complianceContact">
+        <h3>Compliance Contact</h3>
+        <mat-form-field appearance="fill">
+          <mat-label>First Name</mat-label>
+          <input matInput formControlName="firstName">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Last Name</mat-label>
+          <input matInput formControlName="lastName">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Email Address</mat-label>
+          <input matInput formControlName="email">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Phone</mat-label>
+          <input matInput formControlName="phone">
+        </mat-form-field>
+      </div>
 
-  <div class="form-group">
-    <label>Company Website</label>
-    <input formControlName="companyWebsite" type="url" />
-  </div>
+      <div formGroupName="accountingContact">
+        <h3>Accounting Contact</h3>
+        <mat-form-field appearance="fill">
+          <mat-label>First Name</mat-label>
+          <input matInput formControlName="firstName">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Last Name</mat-label>
+          <input matInput formControlName="lastName">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Email Address</mat-label>
+          <input matInput formControlName="email">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Phone</mat-label>
+          <input matInput formControlName="phone">
+        </mat-form-field>
+      </div>
 
-  <div formGroupName="businessAddress" class="form-group">
-    <h3>Business Address</h3>
-    <label>Line 1</label>
-    <input formControlName="line1" type="text" />
-    <label>Line 2</label>
-    <input formControlName="line2" type="text" />
-    <label>City</label>
-    <input formControlName="city" type="text" />
-    <label>State</label>
-    <input formControlName="state" type="text" />
-    <label>Zip</label>
-    <input formControlName="zip" type="text" />
-  </div>
+      <mat-form-field appearance="fill">
+        <mat-label>Company Website</mat-label>
+        <input matInput formControlName="companyWebsite">
+      </mat-form-field>
 
-  <div formGroupName="fulfillmentAddress" class="form-group">
-    <h3>Fulfillment Address</h3>
-    <label>
-      <input type="checkbox" formControlName="sameAsBusiness" (change)="copyBusinessAddress()" /> 
-      Add same as business address
-    </label>
-    <label>Line 1</label>
-    <input formControlName="line1" type="text" />
-    <label>Line 2</label>
-    <input formControlName="line2" type="text" />
-    <label>City</label>
-    <input formControlName="city" type="text" />
-    <label>State</label>
-    <input formControlName="state" type="text" />
-    <label>Zip</label>
-    <input formControlName="zip" type="text" />
-  </div>
+      <div formGroupName="businessAddress">
+        <h3>Business Address</h3>
+        <mat-form-field appearance="fill">
+          <mat-label>Line 1</mat-label>
+          <input matInput formControlName="line1">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Line 2</mat-label>
+          <input matInput formControlName="line2">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>City</mat-label>
+          <input matInput formControlName="city">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>State</mat-label>
+          <input matInput formControlName="state">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Zip</mat-label>
+          <input matInput formControlName="zip">
+        </mat-form-field>
+      </div>
 
-  <div class="form-group">
-    <label>Customer Qualification Form</label>
-    <input formControlName="customerQualificationForm" type="text" />
-  </div>
+      <div formGroupName="fulfillmentAddress">
+        <h3>Fulfillment Address</h3>
+        <mat-checkbox formControlName="sameAsBusiness">Add same as business address</mat-checkbox>
+        <mat-form-field appearance="fill">
+          <mat-label>Line 1</mat-label>
+          <input matInput formControlName="line1">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Line 2</mat-label>
+          <input matInput formControlName="line2">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>City</mat-label>
+          <input matInput formControlName="city">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>State</mat-label>
+          <input matInput formControlName="state">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Zip</mat-label>
+          <input matInput formControlName="zip">
+        </mat-form-field>
+      </div>
 
-  <div formArrayName="brands">
-    <div *ngFor="let brand of brands.controls; let i = index" [formGroupName]="i" class="form-group">
-      <h3>Brand {{ i + 1 }}</h3>
-      <label>Customer/Brand Code (3 digits)</label>
-      <input formControlName="brandCode" type="text" />
-      <label>Brand Photo</label>
-      <input formControlName="brandPhoto" type="url" />
-      <label>Brand Website</label>
-      <input formControlName="brandWebsite" type="url" />
-    </div>
-    <button type="button" (click)="addBrand()">Add Brand</button>
-  </div>
+      <mat-form-field appearance="fill">
+        <mat-label>Customer Qualification Form</mat-label>
+        <input matInput formControlName="customerQualificationForm">
+      </mat-form-field>
 
-  <button type="submit">Create Customer</button>
+      <div formArrayName="brands">
+        <div *ngFor="let brand of brands.controls; let i = index" [formGroupName]="i">
+          <h3>Brand {{ i + 1 }}</h3>
+          <mat-form-field appearance="fill">
+            <mat-label>Customer/Brand Code (3 digits)</mat-label>
+            <input matInput formControlName="brandCode">
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Brand Photo</mat-label>
+            <input matInput formControlName="brandPhoto">
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Brand Website</mat-label>
+            <input matInput formControlName="brandWebsite">
+          </mat-form-field>
+        </div>
+        <button mat-button style="background-color: #00796b;" (click)="addBrand()">Add Brand</button>
+        <button mat-button style="background-color: #00b655; margin-left: 20px;" (click)="removeBrand()">Remove Brand</button>
+
+      </div>
+
+      <button mat-raised-button  color="primary" type="submit">Create Customer</button>
+    </mat-card-content>
+  </mat-card>
 </form>
