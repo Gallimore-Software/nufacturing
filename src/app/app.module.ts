@@ -28,6 +28,12 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatPseudoCheckboxModule } from '@angular/material/core';
 import { ProductDevelopmentModule } from './pages/product-development/product-development.module';
 import { DashboardModule } from './pages/dashboard/dashboard.module';
+import { ProductionModule } from './pages/production/production.module';
+import { QualityModule } from './pages/quality/quality.module';
+import { HumanResourcesModule } from './pages/human-resources/human-resources.module';
+import { LogoutComponent } from './pages/logout/logout.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { LogoutDialogComponent } from './pages/logout/logout-dialog/logout-dialog.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +43,8 @@ import { DashboardModule } from './pages/dashboard/dashboard.module';
     LoginComponent,
     CarouselComponent,
     RegisterComponent,
+    LogoutComponent,
+    LogoutDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,8 +66,12 @@ import { DashboardModule } from './pages/dashboard/dashboard.module';
     MatCardModule,
     MatSelectModule,
     MatPseudoCheckboxModule,
+    MatDialogModule,
     ProductDevelopmentModule,
-    DashboardModule
+    ProductionModule,
+    DashboardModule,
+    QualityModule,
+    HumanResourcesModule
   ],
   providers: [],
   bootstrap: [AppComponent],

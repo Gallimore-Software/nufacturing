@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './pages/users/login/login.component';
 import { AuthGuard } from './components/auth/auth.guard';
 import { RegisterComponent } from './pages/users/signup/register.component';
+import { LogoutComponent } from './pages/logout/logout.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
@@ -22,10 +23,26 @@ const routes: Routes = [
     canActivate: [AuthGuard], // Optionally protect this route as well
   },
   {
-    path: 'purchasing',
+    path: 'inventory',
     loadChildren: () =>
-      import('./pages/purchasing/purchasing.module').then(
-        (m) => m.PurchasingModule
+      import('./pages/inventory/inventory.module').then(
+        (m) => m.InventoryModule
+      ),
+    canActivate: [AuthGuard], // Optionally protect this route as well
+  },
+  {
+    path: 'receiving',
+    loadChildren: () =>
+      import('./pages/receiving/receiving.module').then(
+        (m) => m.ReceivingModule
+      ),
+    canActivate: [AuthGuard], // Optionally protect this route as well
+  },
+  {
+    path: 'vendors',
+    loadChildren: () =>
+      import('./pages/vendors/vendors.module').then(
+        (m) => m.VendorsModule
       ),
     canActivate: [AuthGuard], // Optionally protect this route as well
   },
@@ -59,6 +76,9 @@ const routes: Routes = [
       ),
     canActivate: [AuthGuard], // Optionally protect this route as well
   },
+  {
+  path: 'logout', component:LogoutComponent, pathMatch:'full', canActivate: [AuthGuard]
+  }
 ];
 
 @NgModule({

@@ -1,30 +1,41 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
+// Export the interfaces to make them accessible in other files.
+export interface KeyMetric {
+  name: string;
+  value: number;
+}
+
+export interface Activity {
+  description: string;
+  status: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
 export class SalesService {
   constructor() {}
 
-  getKeyMetrics(): Observable<any> {
-    return of({
-      totalOrders: 832,
-      ordersInProcess: 200,
-      ordersAwaitingShipment: 150,
-      ordersCompleted: 482,
-      totalQuotes: 450,
-      activeQuotes: 300,
-      expiredQuotes: 50,
-    });
+  getKeyMetrics(): Observable<KeyMetric[]> {
+    return of([
+      { name: 'Total Orders', value: 832 },
+      { name: 'Orders In Process', value: 200 },
+      { name: 'Orders Awaiting Shipment', value: 150 },
+      { name: 'Orders Completed', value: 482 },
+      { name: 'Total Quotes', value: 450 },
+      { name: 'Active Quotes', value: 300 },
+      { name: 'Expired Quotes', value: 50 },
+    ]);
   }
 
-  getRecentActivity(): Observable<any[]> {
+  getRecentActivity(): Observable<Activity[]> {
     return of([
-      'Order #1234 - Status: In Process',
-      'Quote #5678 - Status: Active',
-      'Order #4321 - Status: Completed',
-      'Quote #8765 - Status: Expired',
+      { description: 'Order #1234', status: 'In Process' },
+      { description: 'Quote #5678', status: 'Active' },
+      { description: 'Order #4321', status: 'Completed' },
+      { description: 'Quote #8765', status: 'Expired' },
     ]);
   }
 

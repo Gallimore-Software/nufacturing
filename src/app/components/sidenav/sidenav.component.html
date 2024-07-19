@@ -1,25 +1,49 @@
 <section [class.sidenav]="isExpanded">
   <div class="toggle">
     <mat-icon (click)="toggle()">
-      {{ isExpanded ? "keyboard_backspace" : "dehaze" }}
+      {{ isExpanded ? "view_sidebar" : "dehaze" }}
     </mat-icon>
   </div>
 
-  <mat-list class="nav" *ngFor="let route of routeLinks">
-    <a
-      mat-list-item
-      routerLinkActive="active-link"
-      class="hover"
-      (click)="navigateTo(route.link)"
-    >
-      <mat-icon
-        mat-list-icon
-        [matTooltip]="!isExpanded ? route.name : ''"
-        matTooltipPosition="right"
-      >
-        {{ isExpanded ? "" : route.icon }}
-      </mat-icon>
-      <p matLine *ngIf="isExpanded">{{ route.name }}</p>
+  <!-- Main menu -->
+  <mat-list *ngIf="!activeMenu" class="nav">
+    <a *ngFor="let route of routeLinks" mat-list-item 
+       [routerLinkActive]="'active-link'" class="hover"
+       (click)="route.children.length ? toggleSubMenu(route.name) : navigateTo(route.link)">
+       <div  style="display: flex; flex-direction: row; justify-content: flex-start; gap: 10px;">
+
+         <div>
+           <mat-icon mat-list-icon [matTooltip]="!isExpanded ? route.name : ''" matTooltipPosition="right">
+             {{ route.icon }}
+            </mat-icon>
+          </div>
+          <div>
+            <p matLine *ngIf="isExpanded">{{ route.name }}</p>
+          </div>
+          
+        </div>
+    </a>
+  </mat-list>
+
+  <!-- Sub-menu -->
+  <mat-list *ngIf="activeMenu" class="nav">
+    <a mat-list-item (click)="toggleSubMenu(null)">
+      <mat-icon mat-list-icon>arrow_back</mat-icon>
+    </a>
+    <a *ngFor="let child of getSubMenuItems()" mat-list-item 
+       [routerLinkActive]="'active-link'" class="hover"
+       (click)="navigateTo(child.link)" >
+       <div  style="display: flex; flex-direction: row; justify-content: flex-start; gap: 10px;">
+
+        <div>
+        <mat-icon mat-list-icon [matTooltip]="!isExpanded ? child.name : ''" matTooltipPosition="right">
+          {{ child.icon }}
+        </mat-icon>
+        </div>
+        <div>
+          <p matLine *ngIf="isExpanded">{{ child.name }}</p>
+        </div>
+        </div> 
     </a>
   </mat-list>
 </section>

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MasterManufacturingRecordsComponent } from './master-manufacturing-records.component';
+import { MasterManifacturingRecordsRoutingModule } from './master-manifacturing-records-routing.module';
 
 
 
@@ -9,7 +10,8 @@ import { MasterManufacturingRecordsComponent } from './master-manufacturing-reco
     MasterManufacturingRecordsComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MasterManifacturingRecordsRoutingModule
   ]
 })
 export class MasterManufacturingRecordsModule { }
