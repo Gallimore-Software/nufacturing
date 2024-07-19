@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReportingComponent } from './reporting.component';
-
+import { ReportingRoutingModule } from './reporting-routing.module';
 
 
 @NgModule({
@@ -9,7 +9,8 @@ import { ReportingComponent } from './reporting.component';
     ReportingComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ReportingRoutingModule
   ]
 })
 export class ReportingModule { }

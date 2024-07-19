@@ -1,51 +1,79 @@
+.customer-form {
+  mat-card {
+    margin: 20px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 
+    mat-card-title {
+      color: #333;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
 
-/* Form styles */
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  background-color: #fff; /* White background for contrast */
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  margin: 2rem;
+    mat-card-content {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    mat-form-field {
+      width: 100%;
+      .mat-form-field-wrapper {
+        padding-bottom: 0;
+      }
+    }
+
+    h3 {
+      font-size: 20px;
+      margin-top: 30px;
+      margin-bottom: 15px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    mat-checkbox {
+      margin-bottom: 20px;
+    }
+
+    button {
+      margin-top: 20px;
+      align-self: flex-end;
+      color: white;
+
+      &:hover {
+        &:hover {
+          background-color: #023e8a;
+        }
+      }
+    }
+  }
+
+  .brands {
+    .brand-item {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    button {
+      align-self: start;
+      padding: 10px 25px;
+      margin-top: 15px;
+    }
+  }
 }
 
-form div {
-  display: flex;
-  flex-direction: column;
+// Styling for active and inactive customers if you need to show them in some other components
+.active {
+  background-color: #c8e6c9; // a light green background
+  color: #256029; // darker green text for better readability
 }
 
-form label {
-  margin-bottom: 0.5rem;
-  margin-top: 0.5rem;
-  color: #333; /* Dark label color for readability */
+.inactive {
+  background-color: #ffccbc; // a light red background
+  color: #c63700; // darker red text for readability
 }
-
-form input {
-  padding: 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: #f9f9f9; /* Light input background */
-  color: #333; /* Dark input text color for readability */
-}
-
-form button {
-  padding: 0.75rem;
-  background-color: #007a33;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-form button:hover {
-  background-color: #005f27;
-}
-
-h1 {
-  margin-left: 1rem;
-  margin-top: 3rem;
-}
-

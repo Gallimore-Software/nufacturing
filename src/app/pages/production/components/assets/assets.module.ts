@@ -4,6 +4,7 @@ import { AssetDetailsComponent } from './components/asset-details/asset-details.
 import { AssetFilesComponent } from './components/asset-files/asset-files.component';
 import { AssetTrainingComponent } from './components/asset-training/asset-training.component';
 import { PreventativeMaintenanceComponent } from './components/preventative-maintenance/preventative-maintenance.component';
+import { AssetsRoutingModule } from './assets.routing.module';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { PreventativeMaintenanceComponent } from './components/preventative-main
     PreventativeMaintenanceComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    AssetsRoutingModule
   ]
 })
 export class AssetsModule { }

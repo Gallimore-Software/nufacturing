@@ -67,7 +67,12 @@ export class CustomerFormComponent implements OnInit {
       })
     );
   }
-
+  
+  removeBrand(){
+    if(this.brands.length > 0){   
+      this.brands.removeAt(this.brands.length - 1);
+    }
+  }
   onSubmit() {
     if (this.customerForm.valid) {
       console.log(this.customerForm.value);

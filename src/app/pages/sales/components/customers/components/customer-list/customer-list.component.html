@@ -1,6 +1,9 @@
-<h1>Customers</h1>
-<div class="customer-list">
-  <div class="customer-item" *ngFor="let customer of customers" [class.active]="customer.status === 'Active'" [class.inactive]="customer.status !== 'Active'">
-    {{ customer.name }} - {{ customer.status }}
-  </div>
-</div>
+<mat-card>
+  <mat-card-title>Customer List</mat-card-title>
+  <mat-chip-listbox #chipList>
+    <mat-chip *ngFor="let customer of customers">
+      {{ customer.name }} - {{ customer.status }}
+      <mat-icon [style.color]="customer.status === 'Active' ? 'green' : 'lightgrey'">fiber_manual_record</mat-icon>
+    </mat-chip>
+  </mat-chip-listbox>
+</mat-card>
