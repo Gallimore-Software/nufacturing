@@ -1,18 +1,29 @@
 .sidenav {
-  width: 250px;
-  background: #0f432b;
+  width: 100%;
   height: auto;
-  overflow-x: scroll;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow-x: auto;
+  overflow-y: auto;
 }
 
 .toggle {
-  width: 100%;
+  width: auto;
+  height: 100%;
   display: flex;
-  justify-content: space-around;
-  padding: 25px 0;
+  justify-content: flex-end;
   &:hover {
     cursor: pointer;
   }
+}
+.toggle_icon{
+  z-index: 999; 
+  right: 0;
+  height: 24px;
+  width: 24px;
+  background: #464141;
+  border-radius: 50%;
 }
 
 .nav {
@@ -40,5 +51,7 @@
   }
   mat-icon {
     color: #ffffff;
+    height: 24px;
+    width: 24px;
   }
 }
