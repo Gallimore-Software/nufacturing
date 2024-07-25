@@ -1,12 +1,13 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-sidenav',
   templateUrl: './sidenav.component.html',
   styleUrls: ['./sidenav.component.scss'],
 })
-export class SidenavComponent {
+export class SidenavComponent implements OnInit {
   @Input() isExpanded: boolean = true;
   @Output() toggleMenu = new EventEmitter<void>();
   activeMenu: string | null = null;
@@ -58,9 +59,30 @@ export class SidenavComponent {
     { link: 'logout', name: 'Logout', icon: 'logout', children: [] },
   ];
 
+  ngOnInit(): void {
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe(() => this.checkActiveRoute());
+
+    this.checkActiveRoute(); // Check on initial load as well
+  }
+
+  checkActiveRoute() {
+    const url = this.router.url;
+    this.routeLinks.forEach(route => {
+      if (route.children.length) {
+        route.children.forEach(child => {
+          if (url.includes(child.link)) {
+            this.activeMenu = route.name; // Set the parent menu as active
+          }
+        });
+      }
+    });
+  }
+
   toggle() {
     this.toggleMenu.emit();
-    this.activeMenu = null;  // Reset on toggle for consistency
+    this.isExpanded = !this.isExpanded; // Toggle expansion state
   }
 
   toggleSubMenu(menuName: string | null) {
@@ -69,7 +91,7 @@ export class SidenavComponent {
 
   navigateTo(link: string) {
     this.router.navigate([link]);
-    this.toggleSubMenu(null);  // Collapse submenu on navigate
+    this.toggleSubMenu(null); // Collapse submenu on navigate
   }
 
   getSubMenuItems(): any[] {
@@ -77,5 +99,3 @@ export class SidenavComponent {
     return route ? route.children : [];
   }
 }
-
-
