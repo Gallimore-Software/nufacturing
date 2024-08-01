@@ -1,11 +1,8 @@
-<section [class.sidenav]="isExpanded">
-  <div class="toggle">
-    <mat-icon (click)="toggle()">
-      {{ isExpanded ? "view_sidebar" : "dehaze" }}
-    </mat-icon>
-  </div>
+<div style="display: flex; width: 100%; max-width: 300px; justify-content: start;
+align-items: center; gap: 0;">
 
-  <!-- Main menu -->
+  <section [class.sidenav]="isExpanded">
+    <!-- Main menu -->
   <mat-list *ngIf="!activeMenu" class="nav">
     <a *ngFor="let route of routeLinks" mat-list-item 
        [routerLinkActive]="'active-link'" class="hover"
@@ -47,3 +44,9 @@
     </a>
   </mat-list>
 </section>
+<div class="toggle">
+  <mat-icon (click)="toggle()" class="toggle_icon">
+    {{ isExpanded ? "keyboard_arrow_left" : "keyboard_arrow_right" }}
+  </mat-icon>
+</div>
+  </div>
