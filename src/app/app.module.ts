@@ -34,6 +34,9 @@ import { HumanResourcesModule } from './pages/human-resources/human-resources.mo
 import { LogoutComponent } from './pages/logout/logout.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { LogoutDialogComponent } from './pages/logout/logout-dialog/logout-dialog.component';
+import { GraphQLModule } from './graphql.module';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HasuraInterceptor } from './components/auth/hasura.interceptor';
 
 @NgModule({
   declarations: [
@@ -71,9 +74,13 @@ import { LogoutDialogComponent } from './pages/logout/logout-dialog/logout-dialo
     ProductionModule,
     DashboardModule,
     QualityModule,
-    HumanResourcesModule
+    HumanResourcesModule,
+    GraphQLModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: HasuraInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
