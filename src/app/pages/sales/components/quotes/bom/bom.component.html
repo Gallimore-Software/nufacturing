@@ -1,4 +1,4 @@
-<section class="subnav" [class.collapsed]="dock">
+<!-- <section class="subnav" [class.collapsed]="dock">
   <mat-icon (click)="toggleDock()">{{ dock ? 'keyboard_arrow_left' : 'keyboard_arrow_right' }}</mat-icon>
   <div>
     <button mat-button routerLink="bom-form">BOM Form</button>
@@ -10,7 +10,7 @@
     <button mat-button routerLink="calculate-profit">Calculate Profit</button>
     <button mat-button routerLink="calculate-quote-pricing">Calculate quote Pricing</button>
   </div>
-</section>
+</section> -->
 
 <section class="bom" [class.expanded]="dock">
   <router-outlet></router-outlet>
