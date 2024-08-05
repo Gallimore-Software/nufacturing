@@ -1,0 +1,11 @@
+#!/bin/sh
+# This hook checks that branches are named according to the convention.
+
+current_branch=$(git rev-parse --abbrev-ref HEAD)
+branch_regex="^(feature|bugfix|hotfix|release)/NFG-[0-9]+-.+$"
+
+if ! echo "$current_branch" | grep -Eq "$branch_regex"; then
+  echo "Error: Branch name '$current_branch' does not follow the naming convention."
+  echo "Please rename your branch to follow the convention: (feature|bugfix|hotfix|release)/NFG-123-description."
+  exit 1
+fi

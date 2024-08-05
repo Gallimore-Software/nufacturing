@@ -1,0 +1,16 @@
+#!/bin/sh
+
+# Commit message file passed by Git
+commit_msg_file="$1"
+
+# Read the commit message
+commit_msg=$(cat "$commit_msg_file")
+
+# Define a regex pattern for the issue ID (adjust this pattern to match your issue IDs)
+issue_id_pattern="NFG-[0-9]+"
+
+# Check if the commit message matches the issue ID pattern
+if ! echo "$commit_msg" | grep -qE "$issue_id_pattern"; then
+  echo "Error: Commit message must contain a valid issue ID (e.g., NFG-123)."
+  exit 1
+fi

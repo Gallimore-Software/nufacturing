@@ -1,52 +1,69 @@
-<div style="display: flex; width: 100%; max-width: 300px; justify-content: start;
-align-items: center; gap: 0;">
-
+<div style="display: flex; width: 100%; max-width: 300px; justify-content: start; align-items: center; gap: 0;">
   <section [class.sidenav]="isExpanded">
     <!-- Main menu -->
-  <mat-list *ngIf="!activeMenu" class="nav">
-    <a *ngFor="let route of routeLinks" mat-list-item 
-       [routerLinkActive]="'active-link'" class="hover"
-       (click)="route.children.length ? toggleSubMenu(route.name) : navigateTo(route.link)">
-       <div  style="display: flex; flex-direction: row; justify-content: flex-start; gap: 10px;">
-
-         <div>
-           <mat-icon mat-list-icon [matTooltip]="!isExpanded ? route.name : ''" matTooltipPosition="right">
-             {{ route.icon }}
+    <mat-list *ngIf="!activeMenu" class="nav">
+      <a *ngFor="let route of routeLinks" mat-list-item 
+         [routerLinkActive]="'active-link'" class="hover"
+         (click)="route.children.length ? toggleSubMenu(route.name) : navigateTo(route.link)">
+        <div style="display: flex; flex-direction: row; justify-content: flex-start; align-items: center; gap: 10px;">
+          <div>
+            <mat-icon mat-list-icon [matTooltip]="!isExpanded ? route.name : ''" matTooltipPosition="right">
+              {{ route.icon }}
             </mat-icon>
           </div>
           <div>
             <p matLine *ngIf="isExpanded">{{ route.name }}</p>
           </div>
-          
         </div>
-    </a>
-  </mat-list>
+      </a>
+    </mat-list>
 
-  <!-- Sub-menu -->
-  <mat-list *ngIf="activeMenu" class="nav">
-    <a mat-list-item (click)="toggleSubMenu(null)">
-      <mat-icon mat-list-icon>arrow_back</mat-icon>
-    </a>
-    <a *ngFor="let child of getSubMenuItems()" mat-list-item 
-       [routerLinkActive]="'active-link'" class="hover"
-       (click)="navigateTo(child.link)" >
-       <div  style="display: flex; flex-direction: row; justify-content: flex-start; gap: 10px;">
+    <!-- Sub-menu -->
+    <mat-list *ngIf="activeMenu" class="nav">
+      <a mat-list-item (click)="toggleSubMenu(null)">
+        <mat-icon mat-list-icon>arrow_back</mat-icon>
+      </a>
+      <a *ngFor="let child of getSubMenuItems()" mat-list-item 
+         [routerLinkActive]="'active-link'" class="hover"
+         (click)="child.subchildren?.length ? toggleSubChildMenu(child.name) : navigateTo(child.link)">
+        <div style="display: flex; flex-direction: row; justify-content: flex-start; gap: 10px;">
+          <div>
+            <mat-icon mat-list-icon [matTooltip]="!isExpanded ? child.name : ''" matTooltipPosition="right">
+              {{ child.icon }}
+            </mat-icon>
+          </div>
+          <div>
+            <p matLine *ngIf="isExpanded">{{ child.name }}</p>
+          </div>
+        </div>
+      </a>
+    </mat-list>
 
-        <div>
-        <mat-icon mat-list-icon [matTooltip]="!isExpanded ? child.name : ''" matTooltipPosition="right">
-          {{ child.icon }}
-        </mat-icon>
+    <!-- Sub-child menu -->
+    <mat-list *ngIf="activeSubMenu" class="nav">
+      <a mat-list-item (click)="toggleSubChildMenu(null)">
+        <mat-icon mat-list-icon>close</mat-icon>
+      </a>
+      <a *ngFor="let subchild of getSubChildMenuItems(activeSubMenu)" mat-list-item 
+         [routerLinkActive]="'active-link'" class="hover"
+         (click)="navigateTo(subchild.link)">
+        <div style="display: flex; flex-direction: row; justify-content: flex-start; gap: 10px;">
+          <div>
+            <mat-icon mat-list-icon [matTooltip]="!isExpanded ? subchild.name : ''" matTooltipPosition="right">
+              {{ subchild.icon }}
+            </mat-icon>
+          </div>
+          <div>
+            <p matLine *ngIf="isExpanded">{{ subchild.name }}</p>
+          </div>
         </div>
-        <div>
-          <p matLine *ngIf="isExpanded">{{ child.name }}</p>
-        </div>
-        </div> 
-    </a>
-  </mat-list>
-</section>
-<div class="toggle">
-  <mat-icon (click)="toggle()" class="toggle_icon">
-    {{ isExpanded ? "keyboard_arrow_left" : "keyboard_arrow_right" }}
-  </mat-icon>
-</div>
+      </a>
+    </mat-list>
+  </section>
+  
+  <div class="toggle">
+    <mat-icon (click)="toggle()" class="toggle_icon">
+      {{ isExpanded ? "keyboard_arrow_left" : "keyboard_arrow_right" }}
+    </mat-icon>
   </div>
+</div>

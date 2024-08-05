@@ -11,6 +11,7 @@ export class SidenavComponent implements OnInit {
   @Input() isExpanded: boolean = true;
   @Output() toggleMenu = new EventEmitter<void>();
   activeMenu: string | null = null;
+  activeSubMenu: string | null = null;
 
   constructor(private router: Router) {}
 
@@ -23,7 +24,12 @@ export class SidenavComponent implements OnInit {
       children: [
         { link: 'sales/customers', name: 'Customers', icon: 'face' },
         { link: 'sales/orders', name: 'Orders', icon: 'shopping_cart' },
-        { link: 'sales/quotes', name: 'Quotes', icon: 'attach_money' }
+        { link: 'sales/quotes', name: 'Quotes', icon: 'attach_money', 
+          subchildren:[
+          { link:'sales/quotes/info', name:'Info', icon: 'info'},
+          { link:'sales/quotes/ingredients', name:'Ingredients', icon: 'grocery'},
+          { link:'sales/quotes/bom', name:'BOM', icon: 'receipt_long'}
+        ] }
       ]
     },
     { link: 'inventory', name: 'Inventory', icon: 'inventory', children: [] },
@@ -74,6 +80,13 @@ export class SidenavComponent implements OnInit {
         route.children.forEach(child => {
           if (url.includes(child.link)) {
             this.activeMenu = route.name; // Set the parent menu as active
+            if (child.subchildren) {
+              child.subchildren.forEach(subchild => {
+                if (url.includes(subchild.link)) {
+                  this.activeSubMenu = child.name; // Set the subchild menu as active
+                }
+              });
+            }
           }
         });
       }
@@ -89,13 +102,27 @@ export class SidenavComponent implements OnInit {
     this.activeMenu = this.activeMenu === menuName ? null : menuName;
   }
 
+  toggleSubChildMenu(subMenuName: string | null) {
+    this.activeSubMenu = this.activeSubMenu === subMenuName ? null : subMenuName;
+  }
+
   navigateTo(link: string) {
     this.router.navigate([link]);
     this.toggleSubMenu(null); // Collapse submenu on navigate
+    this.toggleSubChildMenu(null); // Collapse subchild menu on navigate
   }
 
   getSubMenuItems(): any[] {
     const route = this.routeLinks.find(route => route.name === this.activeMenu);
     return route ? route.children : [];
+  }
+
+  getSubChildMenuItems(parentName: string): any[] {
+    const parentRoute = this.routeLinks.find(route => route.name === this.activeMenu);
+    if (parentRoute && parentRoute?.children) {
+      const childRoute = parentRoute?.children.find(child => child.name === parentName);
+      return childRoute?.subchildren ? childRoute.subchildren : [];
+    }
+    return [];
   }
 }
