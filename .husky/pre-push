@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Do not allow push to protected repositories
+# Do not allow push to protected branches
 protected_branches='development|testing|staging|production'
 
 current_branch=$(git rev-parse --abbrev-ref HEAD)
