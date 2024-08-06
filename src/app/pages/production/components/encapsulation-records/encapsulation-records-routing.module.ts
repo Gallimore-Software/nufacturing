@@ -3,11 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { EncapsulationRecordsComponent } from './encapsulation-records.component';
 
 const routes: Routes = [
-  {path:'', component:EncapsulationRecordsComponent,pathMatch:'full'}
+  { path: '', component: EncapsulationRecordsComponent, pathMatch: 'full' },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class EncapsulationRecordsRoutingModule { }
+export class EncapsulationRecordsRoutingModule {}

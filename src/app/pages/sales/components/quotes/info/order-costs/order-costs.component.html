@@ -7,11 +7,11 @@
         <form [formGroup]="orderCostForm">
           <mat-form-field appearance="fill">
             <mat-label>NGF COST (per bottle)</mat-label>
-            <input matInput formControlName="ngfCostPerBottle">
+            <input matInput formControlName="ngfCostPerBottle" />
           </mat-form-field>
           <mat-form-field appearance="fill">
             <mat-label>Customer Sale Price (per bottle)</mat-label>
-            <input matInput formControlName="customerSalePricePerBottle">
+            <input matInput formControlName="customerSalePricePerBottle" />
           </mat-form-field>
         </form>
       </mat-card-content>
@@ -26,11 +26,13 @@
         <div fxLayout="column" fxLayoutGap="20px">
           <div fxLayout="row" fxLayoutAlign="space-between center">
             <span>NGF COST (per bottle):</span>
-            <span>{{ orderCostForm.get('ngfCostPerBottle')?.value }}</span>
+            <span>{{ orderCostForm.get("ngfCostPerBottle")?.value }}</span>
           </div>
           <div fxLayout="row" fxLayoutAlign="space-between center">
             <span>Customer Sale Price (per bottle):</span>
-            <span>{{ orderCostForm.get('customerSalePricePerBottle')?.value }}</span>
+            <span>{{
+              orderCostForm.get("customerSalePricePerBottle")?.value
+            }}</span>
           </div>
         </div>
       </mat-card-content>

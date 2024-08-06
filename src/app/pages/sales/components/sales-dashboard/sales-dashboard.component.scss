@@ -39,7 +39,7 @@ main {
 
 .chart-container {
   flex-grow: 1;
-  height: auto; 
+  height: auto;
   padding: 10px;
   border-radius: 8px;
 }
@@ -48,7 +48,6 @@ canvas {
   height: 100% !important;
   width: 100% !important;
 }
-
 
 /* Styles for Recent Activity */
 .recent-activity {
@@ -71,34 +70,35 @@ button {
   gap: 5px;
 }
 
-.alert-boxes{
+.alert-boxes {
   display: flex;
   justify-content: flex-start;
   flex-direction: row;
   flex-wrap: wrap;
- }
- .alert-box{
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px; 
-  margin: 10px; 
-  padding: 10px; 
-  border-radius: 8px; 
-  display: flex; 
+}
+.alert-box {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  display: flex;
   gap: 20px;
   justify-content: space-between;
- } 
+}
 /* Responsive Adjustments */
 @media (max-width: 1024px) {
   .sales-dashboard .mat-card-content {
-    grid-template-columns: 1fr; 
+    grid-template-columns: 1fr;
   }
 
-  .quick-links, .recent-activity {
+  .quick-links,
+  .recent-activity {
     flex-direction: column;
   }
 }
 
 @media (max-width: 768px) {
   .chart-section {
-    flex-direction: column; 
+    flex-direction: column;
   }
 }

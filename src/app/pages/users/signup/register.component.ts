@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
@@ -21,7 +21,7 @@ export class RegisterComponent implements OnInit {
       role: ['', Validators.required],
       department: ['', Validators.required],
       phoneNumber: ['', Validators.required],
-      status: ['']
+      status: [''],
     });
   }
 
@@ -31,7 +31,5 @@ export class RegisterComponent implements OnInit {
       // Handle registration logic here
     }
   }
-  onMicrosoftLogin(){
-    
-  }
+  onMicrosoftLogin() {}
 }

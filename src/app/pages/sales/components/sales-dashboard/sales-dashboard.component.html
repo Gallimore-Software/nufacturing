@@ -1,43 +1,76 @@
-<div class="sales-dashboard" style="display: flex; flex-direction: column; gap: 20px;">
+<div
+  class="sales-dashboard"
+  style="display: flex; flex-direction: column; gap: 20px"
+>
   <mat-card class="dashboard-overview">
     <mat-card-header>
       <mat-card-title>Sales Dashboard</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <p>Welcome to your business dashboard. Here, you can get a quick summary of your key business metrics, recent activities, and important alerts.</p>
+      <p>
+        Welcome to your business dashboard. Here, you can get a quick summary of
+        your key business metrics, recent activities, and important alerts.
+      </p>
     </mat-card-content>
   </mat-card>
   <!-- Pie Chart and Details -->
-  <div class="sales-dashboard" style="display: flex; flex-direction: row; gap: 20px;">
-  <mat-card style="display: flex; justify-content: space-between; gap: 20px; align-items: center; height: auto; width: 50%;">
-    <mat-card-content class="chart-section">
-      <div class="chart-container">
-        <canvas #salesPieChart></canvas>
-      </div>
-    </mat-card-content>
-  </mat-card>
+  <div
+    class="sales-dashboard"
+    style="display: flex; flex-direction: row; gap: 20px"
+  >
+    <mat-card
+      style="
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        align-items: center;
+        height: auto;
+        width: 50%;
+      "
+    >
+      <mat-card-content class="chart-section">
+        <div class="chart-container">
+          <canvas #salesPieChart></canvas>
+        </div>
+      </mat-card-content>
+    </mat-card>
 
-  <div style="display: flex; justify-content: flex-start; gap: 20px; align-items: center; height: 50%; width: 50%; flex-direction: column;">
-    <mat-card-content>
+    <div
+      style="
+        display: flex;
+        justify-content: flex-start;
+        gap: 20px;
+        align-items: center;
+        height: 50%;
+        width: 50%;
+        flex-direction: column;
+      "
+    >
+      <mat-card-content>
         <mat-list class="alert-boxes">
-          <mat-list-item *ngFor="let metric of keyMetrics" class="alert-box" style="align-items: center; height: auto; width: auto;">
+          <mat-list-item
+            *ngFor="let metric of keyMetrics"
+            class="alert-box"
+            style="align-items: center; height: auto; width: auto"
+          >
             <h3>{{ metric.name }}</h3>
             <p>{{ metric.value }}</p>
           </mat-list-item>
         </mat-list>
-    </mat-card-content>
+      </mat-card-content>
 
       <!-- Recent Activity in Boxes -->
-      <div class="recent-activity" class="alert-boxes" >
-        <mat-card *ngFor="let activity of recentActivity" class="alert-box" >
+      <div class="recent-activity" class="alert-boxes">
+        <mat-card *ngFor="let activity of recentActivity" class="alert-box">
           <mat-card-content>
-            <span>{{ activity.description }} - Status: {{ activity.status }}</span>
+            <span
+              >{{ activity.description }} - Status: {{ activity.status }}</span
+            >
           </mat-card-content>
         </mat-card>
       </div>
+    </div>
   </div>
-  </div>
-
 
   <!-- Quick Links -->
   <div class="quick-links">

@@ -6,14 +6,12 @@ import { QualityRoutingModule } from './quality-routing.module';
 import { QualityAuditsModule } from './components/quality-audits/quality-audits.module';
 
 @NgModule({
-  declarations: [
-    QualityComponent,
-    ],
+  declarations: [QualityComponent],
   imports: [
     CommonModule,
     FdaAuditsModule,
     QualityAuditsModule,
-    QualityRoutingModule
+    QualityRoutingModule,
   ],
 })
 export class QualityModule {}

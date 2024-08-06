@@ -19,7 +19,7 @@ import { MatButtonModule } from '@angular/material/button';
   declarations: [
     InventoryComponent,
     InventoryItemsTableComponent,
-    InventoryItemDetailComponent
+    InventoryItemDetailComponent,
   ],
   imports: [
     CommonModule,
@@ -33,4 +33,4 @@ import { MatButtonModule } from '@angular/material/button';
     MatCardModule
   ]
 })
-export class InventoryModule { }
+export class InventoryModule {}

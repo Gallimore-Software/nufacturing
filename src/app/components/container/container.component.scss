@@ -1,16 +1,16 @@
 .sidenav-container {
-    height: 100vh;
-    position: relative;
-  }
-  
-  mat-sidenav-content{
-    margin-left: 80px;
-    z-index: 10;
-  }
+  height: 100vh;
+  position: relative;
+}
 
-  mat-sidenav{
-    width: auto;
-    z-index: 100;
-    box-shadow: rgba(102, 160, 255, 0.15) 2.4px 2.4px 3.2px;
-    border: none;
-  }
+mat-sidenav-content {
+  margin-left: 80px;
+  z-index: 10;
+}
+
+mat-sidenav {
+  width: auto;
+  z-index: 100;
+  box-shadow: rgba(102, 160, 255, 0.15) 2.4px 2.4px 3.2px;
+  border: none;
+}

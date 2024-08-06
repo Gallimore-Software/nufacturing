@@ -3,7 +3,10 @@
   <mat-chip-listbox #chipList>
     <mat-chip *ngFor="let customer of customers">
       {{ customer.name }} - {{ customer.status }}
-      <mat-icon [style.color]="customer.status === 'Active' ? 'green' : 'lightgrey'">fiber_manual_record</mat-icon>
+      <mat-icon
+        [style.color]="customer.status === 'Active' ? 'green' : 'lightgrey'"
+        >fiber_manual_record</mat-icon
+      >
     </mat-chip>
   </mat-chip-listbox>
 </mat-card>

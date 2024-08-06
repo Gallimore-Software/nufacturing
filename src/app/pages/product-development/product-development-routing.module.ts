@@ -12,42 +12,48 @@ const routes: Routes = [
     component: ProductDevelopmentComponent,
     children: [
       {
-        path:'formulas',
-        loadChildren: () => import('./components/formulas/formulas.module').then((m) => m.FormulasModule),
-      }, {
+        path: 'formulas',
+        loadChildren: () =>
+          import('./components/formulas/formulas.module').then(
+            (m) => m.FormulasModule,
+          ),
+      },
+      {
         path: 'product-skus',
-        component: ProductSkusComponent
-      },{
+        component: ProductSkusComponent,
+      },
+      {
         path: 'product-types',
-        component: ProductTypesComponent
-      },{
+        component: ProductTypesComponent,
+      },
+      {
         path: 'research-and-development',
-        component: ResearchAndDevelopmentComponent
-      }
-    ]
-  }
-//   {
-//     path: '',
-//     component: QuotesComponent,
-//     children: [
-//       {
-//         path: 'info',
-//         loadChildren: () =>
-//           import('./info/info.module').then((m) => m.InfoModule),
-//       },
-//       {
-//         path: 'ingredients',
-//         loadChildren: () =>
-//           import('./ingredients/ingredients.module').then(
-//             (m) => m.IngredientsModule
-//           ),
-//       },
-//       {
-//         path: 'bom',
-//         loadChildren: () => import('./bom/bom.module').then((m) => m.BomModule),
-//       },
-//     ],
-//   },
+        component: ResearchAndDevelopmentComponent,
+      },
+    ],
+  },
+  //   {
+  //     path: '',
+  //     component: QuotesComponent,
+  //     children: [
+  //       {
+  //         path: 'info',
+  //         loadChildren: () =>
+  //           import('./info/info.module').then((m) => m.InfoModule),
+  //       },
+  //       {
+  //         path: 'ingredients',
+  //         loadChildren: () =>
+  //           import('./ingredients/ingredients.module').then(
+  //             (m) => m.IngredientsModule
+  //           ),
+  //       },
+  //       {
+  //         path: 'bom',
+  //         loadChildren: () => import('./bom/bom.module').then((m) => m.BomModule),
+  //       },
+  //     ],
+  //   },
 ];
 
 @NgModule({

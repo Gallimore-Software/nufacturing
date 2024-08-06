@@ -9,14 +9,12 @@ import { ResearchAndDevelopmentComponent } from './components/research-and-devel
 import { FormulasModule } from './components/formulas/formulas.module';
 
 @NgModule({
-  declarations: [ProductDevelopmentComponent,
+  declarations: [
+    ProductDevelopmentComponent,
     ProductSkusComponent,
     ProductTypesComponent,
-    ResearchAndDevelopmentComponent
+    ResearchAndDevelopmentComponent,
   ],
-  imports: [CommonModule,
-    ProductDevelopmentRoutingModule,
-    FormulasModule
-  ],
+  imports: [CommonModule, ProductDevelopmentRoutingModule, FormulasModule],
 })
 export class ProductDevelopmentModule {}

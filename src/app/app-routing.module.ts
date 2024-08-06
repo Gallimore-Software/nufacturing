@@ -12,8 +12,10 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   {
     path: 'dashboard',
-    loadChildren:()=>
-    import('./pages/dashboard/dashboard.module').then((m) => m.DashboardModule),
+    loadChildren: () =>
+      import('./pages/dashboard/dashboard.module').then(
+        (m) => m.DashboardModule,
+      ),
     canActivate: [AuthGuard],
   }, // Dashboard with AuthGuard
   {
@@ -26,7 +28,7 @@ const routes: Routes = [
     path: 'inventory',
     loadChildren: () =>
       import('./pages/inventory/inventory.module').then(
-        (m) => m.InventoryModule
+        (m) => m.InventoryModule,
       ),
     canActivate: [AuthGuard], // Optionally protect this route as well
   },
@@ -34,23 +36,21 @@ const routes: Routes = [
     path: 'receiving',
     loadChildren: () =>
       import('./pages/receiving/receiving.module').then(
-        (m) => m.ReceivingModule
+        (m) => m.ReceivingModule,
       ),
     canActivate: [AuthGuard], // Optionally protect this route as well
   },
   {
     path: 'vendors',
     loadChildren: () =>
-      import('./pages/vendors/vendors.module').then(
-        (m) => m.VendorsModule
-      ),
+      import('./pages/vendors/vendors.module').then((m) => m.VendorsModule),
     canActivate: [AuthGuard], // Optionally protect this route as well
   },
   {
     path: 'production',
     loadChildren: () =>
       import('./pages/production/production.module').then(
-        (m) => m.ProductionModule
+        (m) => m.ProductionModule,
       ),
     canActivate: [AuthGuard], // Optionally protect this route as well
   },
@@ -58,7 +58,7 @@ const routes: Routes = [
     path: 'product-development',
     loadChildren: () =>
       import('./pages/product-development/product-development.module').then(
-        (m) => m.ProductDevelopmentModule
+        (m) => m.ProductDevelopmentModule,
       ),
     canActivate: [AuthGuard], // Optionally protect this route as well
   },
@@ -72,13 +72,16 @@ const routes: Routes = [
     path: 'human-resources',
     loadChildren: () =>
       import('./pages/human-resources/human-resources.module').then(
-        (m) => m.HumanResourcesModule
+        (m) => m.HumanResourcesModule,
       ),
     canActivate: [AuthGuard], // Optionally protect this route as well
   },
   {
-  path: 'logout', component:LogoutComponent, pathMatch:'full', canActivate: [AuthGuard]
-  }
+    path: 'logout',
+    component: LogoutComponent,
+    pathMatch: 'full',
+    canActivate: [AuthGuard],
+  },
 ];
 
 @NgModule({

@@ -23,7 +23,10 @@ export class LoginComponent {
 
   errorMessage: string = ''; // To display error message on login failure
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+  ) {}
 
   onSubmit() {
     if (this.loginForm.valid) {

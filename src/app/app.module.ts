@@ -80,7 +80,7 @@ import { AuthInterceptor } from './components/auth/auth.interceptor';
     QualityModule,
     HumanResourcesModule,
     GraphQLModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
     AuthService,

@@ -1,24 +1,22 @@
 .orders-navigation {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding: 20px;
-    margin: 10px;
-  }
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  margin: 10px;
+}
 
-  .metric-chip-list {
-    display: flex;
+.metric-chip-list {
+  display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
   gap: 10px;
-  }
+}
 
-  .metric-chip {
-    margin: 5px;
-  }
+.metric-chip {
+  margin: 5px;
+}
 
-  .mat-card-actions {
-    justify-content: flex-end;
-  }
-
-
+.mat-card-actions {
+  justify-content: flex-end;
+}

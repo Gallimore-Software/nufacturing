@@ -3,11 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { ShiftingRecordsComponent } from './shifting-records.component';
 
 const routes: Routes = [
-  {path:'', component:ShiftingRecordsComponent, pathMatch:'full'}
+  { path: '', component: ShiftingRecordsComponent, pathMatch: 'full' },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class ShiftingRecordsRoutingModule { }
+export class ShiftingRecordsRoutingModule {}

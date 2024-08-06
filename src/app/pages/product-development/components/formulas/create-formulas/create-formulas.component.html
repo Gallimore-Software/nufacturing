@@ -1,4 +1,9 @@
-<div fxLayout="column" fxLayoutGap="20px" class="create-formula" [formGroup]="formulaForm">
+<div
+  fxLayout="column"
+  fxLayoutGap="20px"
+  class="create-formula"
+  [formGroup]="formulaForm"
+>
   <!-- Basic Information Section -->
   <mat-card>
     <mat-card-header>
@@ -7,11 +12,11 @@
     <mat-card-content formGroupName="basicInfo">
       <mat-form-field appearance="fill">
         <mat-label>Formula Name</mat-label>
-        <input matInput formControlName="formulaName">
+        <input matInput formControlName="formulaName" />
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Formula Code</mat-label>
-        <input matInput formControlName="formulaCode">
+        <input matInput formControlName="formulaCode" />
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Product Type</mat-label>
@@ -28,13 +33,22 @@
   <!-- Ingredients Section -->
   <mat-card formArrayName="ingredients">
     <mat-card-header>
-      <mat-card-content style="display: flex; flex-direction: row;">
+      <mat-card-content style="display: flex; flex-direction: row">
         <mat-card-title>Ingredients List</mat-card-title>
         <button mat-button (click)="addIngredient()">Add Ingredient</button>
-        <button mat-button style="background-color: #00b655;" (click)="removeIngredient()">Remove Ingredient</button>
+        <button
+          mat-button
+          style="background-color: #00b655"
+          (click)="removeIngredient()"
+        >
+          Remove Ingredient
+        </button>
       </mat-card-content>
     </mat-card-header>
-    <mat-card-content *ngFor="let ingredient of ingredients.controls; let i = index" [formGroupName]="i">
+    <mat-card-content
+      *ngFor="let ingredient of ingredients.controls; let i = index"
+      [formGroupName]="i"
+    >
       <mat-form-field appearance="fill">
         <mat-label>Ingredient Name</mat-label>
         <mat-select formControlName="ingredientName">
@@ -43,7 +57,7 @@
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Per Capsule (mg)</mat-label>
-        <input matInput type="number" formControlName="perCapsuleMg">
+        <input matInput type="number" formControlName="perCapsuleMg" />
       </mat-form-field>
       <!-- Additional form fields for each ingredient -->
     </mat-card-content>
@@ -52,31 +66,40 @@
   <!-- Nutritional Information Section -->
   <mat-card formGroupName="nutritionalInfo">
     <mat-card-header>
-      <mat-card-content style="display: flex; flex-direction: row;">
+      <mat-card-content style="display: flex; flex-direction: row">
         <mat-card-title>Nutritional Information</mat-card-title>
         <button mat-button (click)="addNutrient()">Add Nutrient</button>
-        <button mat-button style="background-color: #00b655;" (click)="removeNutrient()">Remove Nutrient</button>
+        <button
+          mat-button
+          style="background-color: #00b655"
+          (click)="removeNutrient()"
+        >
+          Remove Nutrient
+        </button>
       </mat-card-content>
     </mat-card-header>
     <mat-card-content>
       <mat-form-field appearance="fill">
         <mat-label>Serving Size</mat-label>
-        <input matInput type="number" formControlName="servingSize">
+        <input matInput type="number" formControlName="servingSize" />
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Calories</mat-label>
-        <input matInput type="number" formControlName="calories">
+        <input matInput type="number" formControlName="calories" />
       </mat-form-field>
       <!-- Dynamic fields for additional nutrients -->
       <div formArrayName="otherNutrients">
-        <div *ngFor="let nutrient of otherNutrients.controls; let j = index" [formGroupName]="j">
+        <div
+          *ngFor="let nutrient of otherNutrients.controls; let j = index"
+          [formGroupName]="j"
+        >
           <mat-form-field appearance="fill">
             <mat-label>Nutrient Name</mat-label>
-            <input matInput formControlName="nutrientName">
+            <input matInput formControlName="nutrientName" />
           </mat-form-field>
           <mat-form-field appearance="fill">
             <mat-label>Amount</mat-label>
-            <input matInput type="number" formControlName="amount">
+            <input matInput type="number" formControlName="amount" />
           </mat-form-field>
         </div>
       </div>
@@ -89,9 +112,21 @@
       <mat-card-title>Manufacturing Instructions</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <textarea matInput formControlName="preparationInstructions" placeholder="Preparation Instructions"></textarea>
-      <textarea matInput formControlName="mixingInstructions" placeholder="Mixing Instructions"></textarea>
-      <textarea matInput formControlName="packagingInstructions" placeholder="Packaging Instructions"></textarea>
+      <textarea
+        matInput
+        formControlName="preparationInstructions"
+        placeholder="Preparation Instructions"
+      ></textarea>
+      <textarea
+        matInput
+        formControlName="mixingInstructions"
+        placeholder="Mixing Instructions"
+      ></textarea>
+      <textarea
+        matInput
+        formControlName="packagingInstructions"
+        placeholder="Packaging Instructions"
+      ></textarea>
     </mat-card-content>
   </mat-card>
 
@@ -101,8 +136,16 @@
       <mat-card-title>Quality Control</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <textarea matInput formControlName="qualityControlTests" placeholder="Quality Control Tests"></textarea>
-      <textarea matInput formControlName="acceptanceCriteria" placeholder="Acceptance Criteria"></textarea>
+      <textarea
+        matInput
+        formControlName="qualityControlTests"
+        placeholder="Quality Control Tests"
+      ></textarea>
+      <textarea
+        matInput
+        formControlName="acceptanceCriteria"
+        placeholder="Acceptance Criteria"
+      ></textarea>
     </mat-card-content>
   </mat-card>
 
@@ -112,7 +155,11 @@
       <mat-card-title>Regulatory Compliance</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <textarea matInput formControlName="regulatoryRequirements" placeholder="Regulatory Requirements"></textarea>
+      <textarea
+        matInput
+        formControlName="regulatoryRequirements"
+        placeholder="Regulatory Requirements"
+      ></textarea>
       <mat-checkbox formControlName="GMP">GMP Certified</mat-checkbox>
       <mat-checkbox formControlName="FDA">FDA Approved</mat-checkbox>
       <mat-checkbox formControlName="ISO">ISO Certified</mat-checkbox>

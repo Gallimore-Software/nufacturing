@@ -71,10 +71,10 @@ describe('DashboardComponent', () => {
 
     expect(component.recentActivity.length).toBe(2);
     expect(component.recentActivity[0].details).toBe(
-      'Order #1234 - Status: In Process'
+      'Order #1234 - Status: In Process',
     );
     expect(component.recentActivity[1].details).toBe(
-      'Quote #5678 - Status: Active'
+      'Quote #5678 - Status: Active',
     );
   });
 
@@ -85,7 +85,7 @@ describe('DashboardComponent', () => {
     expect(component.alerts.length).toBe(2);
     expect(component.alerts[0].message).toBe('Payment overdue for Order #1234');
     expect(component.alerts[1].message).toBe(
-      'New Quote #5678 awaiting approval'
+      'New Quote #5678 awaiting approval',
     );
   });
 });
