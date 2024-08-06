@@ -8,7 +8,7 @@ describe('CapsuleBottlingCalendarComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [CapsuleBottlingCalendarComponent]
+      declarations: [CapsuleBottlingCalendarComponent],
     });
     fixture = TestBed.createComponent(CapsuleBottlingCalendarComponent);
     component = fixture.componentInstance;

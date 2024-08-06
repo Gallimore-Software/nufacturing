@@ -29,15 +29,18 @@ mat-form-field {
   overflow-x: auto;
 }
 
-mat-header-cell, mat-cell {
+mat-header-cell,
+mat-cell {
   padding: 8px;
 }
 
-mat-header-row, mat-row {
+mat-header-row,
+mat-row {
   display: flex;
 }
 
-mat-header-cell, mat-cell {
+mat-header-cell,
+mat-cell {
   flex: 1;
 }
 

@@ -43,6 +43,7 @@ The Nufacturing App employs a comprehensive multi-environment setup to facilitat
 ## Environments
 
 ### Local Environment
+
 - **Purpose:** Provides an isolated space for developers to work on new features and fixes.
 - **Setup:**
   - Local MongoDB
@@ -54,6 +55,7 @@ The Nufacturing App employs a comprehensive multi-environment setup to facilitat
   - **Fast Iteration:** Quick testing and debugging on local machines speed up development cycles.
 
 ### Development Environment
+
 - **Purpose:** Integrates all individual feature branches to test their interaction.
 - **Setup:**
   - Development MongoDB
@@ -65,6 +67,7 @@ The Nufacturing App employs a comprehensive multi-environment setup to facilitat
   - **Collaborative Development:** Shared environment helps detect integration issues early.
 
 ### Testing Environment
+
 - **Purpose:** Runs a full suite of automated tests to catch bugs before code reaches staging or production.
 - **Setup:**
   - Testing MongoDB
@@ -76,6 +79,7 @@ The Nufacturing App employs a comprehensive multi-environment setup to facilitat
   - **Stability Verification:** Tests application behavior with real-world data scenarios.
 
 ### Staging Environment
+
 - **Purpose:** Simulates the production environment for final validation before deployment.
 - **Setup:**
   - Staging MongoDB
@@ -87,6 +91,7 @@ The Nufacturing App employs a comprehensive multi-environment setup to facilitat
   - **Deployment Rehearsal:** Tests the deployment process to ensure a smooth transition to production.
 
 ### Production Environment
+
 - **Purpose:** The live environment where the application is available to end-users.
 - **Setup:**
   - Production MongoDB

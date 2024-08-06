@@ -3,11 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { QualityAuditsComponent } from './quality-audits.component';
 
 const routes: Routes = [
-  {path:'', component:QualityAuditsComponent,pathMatch:'full'}
+  { path: '', component: QualityAuditsComponent, pathMatch: 'full' },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class QualityAuditsRoutingModule { }
+export class QualityAuditsRoutingModule {}

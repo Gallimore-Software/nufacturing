@@ -21,9 +21,9 @@ import { MatButtonModule } from '@angular/material/button';
     CustomerListComponent,
   ],
   imports: [
-    CommonModule, 
-    ReactiveFormsModule, 
-    CustomersRoutingModule, 
+    CommonModule,
+    ReactiveFormsModule,
+    CustomersRoutingModule,
     MatChipsModule,
     MatCardModule,
     DragDropModule,
@@ -31,7 +31,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    MatButtonModule
+    MatButtonModule,
   ],
 })
 export class CustomersModule {}

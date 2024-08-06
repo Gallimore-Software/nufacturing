@@ -3,12 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { BottlingRecordsRoutingModule } from './bottling-records-routing.module';
 
-
 @NgModule({
   declarations: [],
-  imports: [
-    CommonModule,
-    BottlingRecordsRoutingModule
-  ]
+  imports: [CommonModule, BottlingRecordsRoutingModule],
 })
-export class BottlingRecordsModule { }
+export class BottlingRecordsModule {}

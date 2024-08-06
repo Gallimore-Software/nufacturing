@@ -4,44 +4,43 @@ import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 @Component({
   selector: 'app-create-formulas',
   templateUrl: './create-formulas.component.html',
-  styleUrls: ['./create-formulas.component.scss']
+  styleUrls: ['./create-formulas.component.scss'],
 })
 export class CreateFormulasComponent implements OnInit {
-
   formulasList: any[] = [];
 
   formulaForm: FormGroup = this.fb.group({
     basicInfo: this.fb.group({
       formulaName: ['', Validators.required],
       formulaCode: ['', Validators.required],
-      productType: ['', Validators.required]
+      productType: ['', Validators.required],
     }),
     ingredients: this.fb.array([]),
     nutritionalInfo: this.fb.group({
       servingSize: [0, Validators.min(1)],
       calories: [0, Validators.min(0)],
-      otherNutrients: this.fb.array([])
+      otherNutrients: this.fb.array([]),
     }),
     manufacturingInstructions: this.fb.group({
       preparationInstructions: [''],
       mixingInstructions: [''],
-      packagingInstructions: ['']
+      packagingInstructions: [''],
     }),
     qualityControl: this.fb.group({
       qualityControlTests: [''],
-      acceptanceCriteria: ['']
+      acceptanceCriteria: [''],
     }),
     regulatoryCompliance: this.fb.group({
       regulatoryRequirements: [''],
       certifications: this.fb.group({
         GMP: false,
         FDA: false,
-        ISO: false
-      })
+        ISO: false,
+      }),
     }),
     additionalInfo: this.fb.group({
-      notes: ['']
-    })
+      notes: [''],
+    }),
   });
 
   constructor(private fb: FormBuilder) {}
@@ -51,34 +50,34 @@ export class CreateFormulasComponent implements OnInit {
       basicInfo: this.fb.group({
         formulaName: ['', Validators.required],
         formulaCode: ['', Validators.required],
-        productType: ['', Validators.required]
+        productType: ['', Validators.required],
       }),
       ingredients: this.fb.array([]),
       nutritionalInfo: this.fb.group({
         servingSize: [0, Validators.min(1)],
         calories: [0, Validators.min(0)],
-        otherNutrients: this.fb.array([])
+        otherNutrients: this.fb.array([]),
       }),
       manufacturingInstructions: this.fb.group({
         preparationInstructions: [''],
         mixingInstructions: [''],
-        packagingInstructions: ['']
+        packagingInstructions: [''],
       }),
       qualityControl: this.fb.group({
         qualityControlTests: [''],
-        acceptanceCriteria: ['']
+        acceptanceCriteria: [''],
       }),
       regulatoryCompliance: this.fb.group({
         regulatoryRequirements: [''],
         certifications: this.fb.group({
           GMP: false,
           FDA: false,
-          ISO: false
-        })
+          ISO: false,
+        }),
       }),
       additionalInfo: this.fb.group({
-        notes: ['']
-      })
+        notes: [''],
+      }),
     });
   }
 
@@ -87,18 +86,22 @@ export class CreateFormulasComponent implements OnInit {
   }
 
   get otherNutrients(): FormArray {
-    return this.formulaForm.get('nutritionalInfo')?.get('otherNutrients') as FormArray;
+    return this.formulaForm
+      .get('nutritionalInfo')
+      ?.get('otherNutrients') as FormArray;
   }
 
   addIngredient() {
-    this.ingredients.push(this.fb.group({
-      ingredientName: ['', Validators.required],
-      perCapsuleMg: [0, [Validators.required, Validators.min(0)]],
-      pricePerKG: [{value: '', disabled: true}],
-      source: ['', Validators.required],
-      stockQuantity: [{value: '', disabled: true}],
-      totalCost: [{value: '', disabled: true}]
-    }));
+    this.ingredients.push(
+      this.fb.group({
+        ingredientName: ['', Validators.required],
+        perCapsuleMg: [0, [Validators.required, Validators.min(0)]],
+        pricePerKG: [{ value: '', disabled: true }],
+        source: ['', Validators.required],
+        stockQuantity: [{ value: '', disabled: true }],
+        totalCost: [{ value: '', disabled: true }],
+      }),
+    );
   }
   removeIngredient() {
     const ingredientsArray = this.ingredients;
@@ -108,14 +111,16 @@ export class CreateFormulasComponent implements OnInit {
   }
 
   addNutrient() {
-    this.otherNutrients.push(this.fb.group({
-      nutrientName: [''],
-      amount: [0, Validators.min(0)]
-    }));
+    this.otherNutrients.push(
+      this.fb.group({
+        nutrientName: [''],
+        amount: [0, Validators.min(0)],
+      }),
+    );
   }
 
-  removeNutrient(){
-    if(this.otherNutrients.length > 0){
+  removeNutrient() {
+    if (this.otherNutrients.length > 0) {
       this.otherNutrients.removeAt(this.otherNutrients.length - 1);
     }
   }
@@ -123,7 +128,6 @@ export class CreateFormulasComponent implements OnInit {
     const formulaData = this.formulaForm.value;
     this.formulasList.push(formulaData);
     console.log('Formulas List:', this.formulasList);
-    this.formulaForm.reset(); 
+    this.formulaForm.reset();
   }
 }
- 

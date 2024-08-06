@@ -76,10 +76,10 @@ import { HasuraInterceptor } from './components/auth/hasura.interceptor';
     QualityModule,
     HumanResourcesModule,
     GraphQLModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: HasuraInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: HasuraInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })

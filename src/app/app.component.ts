@@ -15,11 +15,15 @@ export class AppComponent implements OnInit, OnDestroy {
   isLoggedIn: boolean = false;
   private querySubscription!: Subscription;
 
-  constructor(private authService: AuthService, private apollo: Apollo, private router :Router) {}
+  constructor(
+    private authService: AuthService,
+    private apollo: Apollo,
+    private router: Router,
+  ) {}
 
   ngOnInit(): void {
     this.checkLoginStatus();
-    if(this.isLoggedIn == true){
+    if (this.isLoggedIn == true) {
       this.router.navigate(['/dashboard']);
     }
   }
@@ -40,5 +44,4 @@ export class AppComponent implements OnInit, OnDestroy {
       });
     }
   }
-
 }

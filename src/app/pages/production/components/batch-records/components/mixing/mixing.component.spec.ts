@@ -8,7 +8,7 @@ describe('MixingComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [MixingComponent]
+      declarations: [MixingComponent],
     });
     fixture = TestBed.createComponent(MixingComponent);
     component = fixture.componentInstance;

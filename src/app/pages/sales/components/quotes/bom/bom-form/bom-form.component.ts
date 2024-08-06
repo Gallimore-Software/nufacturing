@@ -12,7 +12,7 @@ export class BomFormComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private globalService: GlobalServiceService
+    private globalService: GlobalServiceService,
   ) {
     this.quoteForm = this.fb.group({
       productName: ['Hangover Dog 50ct'],
@@ -57,7 +57,7 @@ export class BomFormComponent implements OnInit {
   updateTotalCapsulesNeeded() {
     const setupCapsules = this.quoteForm.get('setupCapsules')?.value;
     const capsulesNeededForOrder = this.quoteForm.get(
-      'capsulesNeededForOrder'
+      'capsulesNeededForOrder',
     )?.value;
     const totalCapsulesNeeded = setupCapsules + capsulesNeededForOrder;
 

@@ -8,7 +8,7 @@ describe('MasterManufacturingRecordsComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [MasterManufacturingRecordsComponent]
+      declarations: [MasterManufacturingRecordsComponent],
     });
     fixture = TestBed.createComponent(MasterManufacturingRecordsComponent);
     component = fixture.componentInstance;

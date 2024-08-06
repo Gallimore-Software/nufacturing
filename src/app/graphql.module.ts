@@ -8,12 +8,15 @@ import { environment } from 'environment/environment';
 const uri = 'https://perfect-mackerel-74.hasura.app/api/rest'; // <-- add the URL of the GraphQL server here
 
 export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
-  const headers = new HttpHeaders().set('x-hasura-admin-secret', environment.HASURA_SERCER_KEY);
+  const headers = new HttpHeaders().set(
+    'x-hasura-admin-secret',
+    environment.HASURA_SERCER_KEY,
+  );
 
   return {
     link: httpLink.create({
       uri,
-      headers
+      headers,
     }),
     cache: new InMemoryCache(),
   };
@@ -25,8 +28,8 @@ export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
     {
       provide: APOLLO_OPTIONS,
       useFactory: createApollo,
-      deps: [HttpLink]
-    }
+      deps: [HttpLink],
+    },
   ],
 })
 export class GraphQLModule {}

@@ -16,12 +16,11 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 
-
 @NgModule({
   declarations: [
     FormulasComponent,
     CreateFormulasComponent,
-    ListFormulasComponent
+    ListFormulasComponent,
   ],
   imports: [
     CommonModule,
@@ -37,7 +36,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatSortModule,
     MatButtonModule,
     MatIconModule,
-    MatCheckboxModule
-  ]
+    MatCheckboxModule,
+  ],
 })
-export class FormulasModule { }
+export class FormulasModule {}

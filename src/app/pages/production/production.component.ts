@@ -3,8 +3,6 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-production',
   templateUrl: './production.component.html',
-  styleUrls: ['./production.component.scss']
+  styleUrls: ['./production.component.scss'],
 })
-export class ProductionComponent {
-
-}
+export class ProductionComponent {}

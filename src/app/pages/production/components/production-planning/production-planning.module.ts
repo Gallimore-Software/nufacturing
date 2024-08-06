@@ -10,7 +10,6 @@ import { PowderBottlingCalendarComponent } from './powder-bottling-calendar/powd
 import { StickPackCalendarComponent } from './stick-pack-calendar/stick-pack-calendar.component';
 import { CoPackCalendarComponent } from './co-pack-calendar/co-pack-calendar.component';
 
-
 @NgModule({
   declarations: [
     WeighingCalendarComponent,
@@ -19,11 +18,8 @@ import { CoPackCalendarComponent } from './co-pack-calendar/co-pack-calendar.com
     CapsuleBottlingCalendarComponent,
     PowderBottlingCalendarComponent,
     StickPackCalendarComponent,
-    CoPackCalendarComponent
+    CoPackCalendarComponent,
   ],
-  imports: [
-    CommonModule,
-    ProductionPlanningRoutingModule
-  ]
+  imports: [CommonModule, ProductionPlanningRoutingModule],
 })
-export class ProductionPlanningModule { }
+export class ProductionPlanningModule {}

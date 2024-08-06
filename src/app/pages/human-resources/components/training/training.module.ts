@@ -4,12 +4,7 @@ import { TrainingComponent } from './training.component';
 import { TrainingRoutingModule } from './training-routing.module';
 
 @NgModule({
-  declarations: [
-    TrainingComponent
-  ],
-  imports: [
-    CommonModule,
-    TrainingRoutingModule
-  ]
+  declarations: [TrainingComponent],
+  imports: [CommonModule, TrainingRoutingModule],
 })
-export class TrainingModule { }
+export class TrainingModule {}

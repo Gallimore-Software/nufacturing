@@ -5,17 +5,13 @@ import { HumanResourcesRoutingModule } from './human-resources-routing.module';
 import { TrainingModule } from './components/training/training.module';
 import { UsersModule } from './components/users/users.module';
 
-
-
 @NgModule({
-  declarations: [
-    HumanResourcesComponent
-  ],
+  declarations: [HumanResourcesComponent],
   imports: [
     CommonModule,
     HumanResourcesRoutingModule,
     TrainingModule,
-    UsersModule
-  ]
+    UsersModule,
+  ],
 })
-export class HumanResourcesModule { }
+export class HumanResourcesModule {}

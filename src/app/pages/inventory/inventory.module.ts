@@ -5,18 +5,12 @@ import { InventoryItemDetailComponent } from './components/inventory-item-detail
 import { InventoryItemsTableComponent } from './components/inventory-items-table/inventory-items-table.component';
 import { InventoryRoutingModule } from './inventory-routing.module';
 
-
-
-
 @NgModule({
   declarations: [
     InventoryComponent,
     InventoryItemsTableComponent,
-    InventoryItemDetailComponent
+    InventoryItemDetailComponent,
   ],
-  imports: [
-    CommonModule,
-    InventoryRoutingModule
-  ]
+  imports: [CommonModule, InventoryRoutingModule],
 })
-export class InventoryModule { }
+export class InventoryModule {}

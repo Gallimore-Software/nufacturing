@@ -20,7 +20,7 @@
         line-height: 64px;
       }
     }
-   
+
     mat-card-content {
       padding: 16px;
       display: flex;
@@ -30,13 +30,14 @@
       mat-form-field {
         width: 100%;
 
-        input, mat-select {
+        input,
+        mat-select {
           font-size: 1rem;
           padding: 8px;
         }
       }
     }
-    textarea{
+    textarea {
       background-color: rgb(66, 64, 64);
       height: 100px;
       color: white;
@@ -57,7 +58,8 @@
     }
   }
 
-  .ingredient-entry, .nutrient-entry {
+  .ingredient-entry,
+  .nutrient-entry {
     display: flex;
     gap: 10px;
     align-items: center;

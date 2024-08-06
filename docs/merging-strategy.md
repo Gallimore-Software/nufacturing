@@ -7,22 +7,26 @@ When managing multiple environments (e.g., Development, Testing, Staging, Produc
 ### Merging Entire Environment Branches
 
 #### Advantages:
+
 1. **Consistency**: Ensures that all changes that have been tested together in one environment are promoted together, reducing the risk of integration issues.
 2. **Simplicity**: Fewer merge operations and less manual intervention are required, simplifying the process.
 3. **Efficiency**: Can be more efficient for large teams or projects with many small changes, as it reduces the overhead of managing multiple merges.
 
 #### Considerations:
+
 1. **Stability**: All changes, including potentially unstable ones, are promoted together. This can be mitigated by thorough testing before merging.
 2. **Debugging**: If an issue arises in the next environment, it may be harder to isolate which change caused the problem.
 
 ### Merging Each Feature Individually
 
 #### Advantages:
+
 1. **Control**: Provides more granular control over which features are promoted, allowing for selective promotion of stable and high-priority features.
 2. **Stability**: Reduces the risk of promoting unstable or incomplete features, as each feature can be thoroughly tested before promotion.
 3. **Debugging**: Easier to isolate and resolve issues, as each feature is promoted individually.
 
 #### Considerations:
+
 1. **Complexity**: More complex and time-consuming to manage, as each feature requires individual attention and merge operations.
 2. **Integration Issues**: Higher risk of integration issues if not managed carefully, as features developed in isolation may have unforeseen interactions.
 
@@ -45,6 +49,7 @@ Given the considerations, a hybrid approach is often beneficial:
 ### Example Workflow
 
 1. **Feature Development**:
+
    ```sh
    git checkout -b NFG-123-your-feature
    # Develop feature
