@@ -1,6 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from './components/auth/auth.service';
-import { Apollo, gql } from 'apollo-angular';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 
@@ -13,32 +12,24 @@ export class AppComponent implements OnInit, OnDestroy {
   title = 'Nufacturing';
   route = 'quotes';
   isLoggedIn: boolean = false;
-  private querySubscription!: Subscription;
+  private loginStatusSubscription!: Subscription;
 
-  constructor(private authService: AuthService, private apollo: Apollo, private router :Router) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
-    this.checkLoginStatus();
-    if(this.isLoggedIn == true){
-      this.router.navigate(['/dashboard']);
-    }
+    this.loginStatusSubscription = this.authService.isLoggedIn.subscribe((loginStatus: boolean) => {
+      this.isLoggedIn = loginStatus;
+      if (this.isLoggedIn) {
+        this.router.navigate(['/dashboard']);
+      } else {
+        this.router.navigate(['/login']);
+      }
+    });
   }
 
   ngOnDestroy(): void {
-    if (this.querySubscription) {
-      this.querySubscription.unsubscribe();
+    if (this.loginStatusSubscription) {
+      this.loginStatusSubscription.unsubscribe();
     }
   }
-
-  private checkLoginStatus(): void {
-    const loggedInStatus = localStorage.getItem('isLoggedIn');
-    if (loggedInStatus === 'true') {
-      this.isLoggedIn = true;
-    } else {
-      this.authService.isLoggedIn.subscribe((loginStatus: boolean) => {
-        this.isLoggedIn = loginStatus;
-      });
-    }
-  }
-
 }

@@ -30,12 +30,15 @@ export class LoginComponent {
       const email = this.loginForm.get('email')!.value || '';
       const password = this.loginForm.get('password')!.value || '';
 
-      const loginSuccess = this.authService.login(email, password);
-      if (loginSuccess) {
-        this.router.navigate(['/dashboard']);
-      } else {
+      this.authService.login(email, password).subscribe({
+        next: () => {
+          this.router.navigate(['/dashboard']);
+      },error:(error)  =>{
         this.errorMessage = 'Invalid username or password';
+        console.error('Error logging in:', error);
       }
+      });
     }
   }
+  
 }

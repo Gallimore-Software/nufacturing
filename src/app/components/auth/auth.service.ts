@@ -1,30 +1,81 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { tap, catchError } from 'rxjs/operators';
+import { Router } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { environment } from 'environment/environment';
+
+interface AuthResponse {
+  token: string;
+  user: {
+    email: string;
+    role: string;
+    // Add other user fields as needed
+  };
+}
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-   isAuthenticated = new BehaviorSubject<boolean>(false);
+  private isAuthenticated = new BehaviorSubject<boolean>(this.checkToken());
+  private userRoleSubject = new BehaviorSubject<string | null>(this.getUserRoleFromStorage());
 
-  constructor() {}
+  constructor(private http: HttpClient, private router: Router, private jwtHelper: JwtHelperService) {}
 
-  login(email: string, password: string): boolean {
-    // Example authentication logic
-    if (email === 'admin@admin.com' && password === 'admin123') {
-      localStorage.setItem('isLoggedIn', 'true');
-      this.isAuthenticated.next(true);
-      return true;
-    }
-    return false;
+  login(email: string, password: string): Observable<AuthResponse> {
+    const loginUrl = `${environment.apiUrl}/users/login`;
+
+    return this.http.post<AuthResponse>(loginUrl, { email, password }).pipe(
+      tap((response: AuthResponse) => {
+        // Store authentication data in local storage
+        localStorage.setItem('authData', JSON.stringify(response));
+        this.isAuthenticated.next(true);
+        this.userRoleSubject.next(response.user.role); // Update user role
+        this.router.navigate(['/dashboard']);
+      }),
+      catchError((error: HttpErrorResponse) => {
+        console.error('Login failed', error);
+        return throwError(error); // Properly handle errors using throwError
+      })
+    );
   }
 
   logout() {
-    localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('authData');
     this.isAuthenticated.next(false);
+    this.userRoleSubject.next(null); // Clear the user role
+    this.router.navigate(['/login']);
   }
 
-  get isLoggedIn() {
+  checkToken(): boolean {
+    const authData = localStorage.getItem('authData');
+    if (!authData) {
+      return false;
+    }
+
+    const { token } = JSON.parse(authData);
+
+    // Use JWT helper to check if the token is expired
+    return !this.jwtHelper.isTokenExpired(token);
+  }
+
+  get isLoggedIn(): Observable<boolean> {
     return this.isAuthenticated.asObservable();
+  }
+
+  get userRole(): Observable<string | null> {
+    return this.userRoleSubject.asObservable();
+  }
+
+  private getUserRoleFromStorage(): string | null {
+    const authData = localStorage.getItem('authData');
+    if (!authData) {
+      return null;
+    }
+
+    const { user } = JSON.parse(authData);
+    return user.role;
   }
 }
