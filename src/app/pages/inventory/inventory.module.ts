@@ -11,15 +11,20 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSortModule } from '@angular/material/sort';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-
-
-
+import { InventoryService } from './inventory.service';
+import { NewInventoryDialogComponent } from './components/new-inventory-dialog/new-inventory-dialog.component';
+import { MatOptionModule } from '@angular/material/core';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSelectModule } from '@angular/material/select';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
     InventoryComponent,
     InventoryItemsTableComponent,
     InventoryItemDetailComponent,
+    NewInventoryDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -30,7 +35,15 @@ import { MatButtonModule } from '@angular/material/button';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    MatOptionModule,
+    MatDialogModule,
+    MatSelectModule,
+    ReactiveFormsModule,
+    MatIconModule
+  ],
+  providers:[
+    InventoryService
   ]
 })
 export class InventoryModule {}

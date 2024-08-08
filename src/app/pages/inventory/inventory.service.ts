@@ -29,11 +29,17 @@ export class InventoryService {
 
   // Update an existing inventory item by ID
   updateInventoryItem(id: string, item: any): Observable<any> {
+    console.log(`Updating inventory item with ID: ${id}`); // Log the ID
+  console.log(`API URL: ${this.apiUrl}/${id}`); // Log the full URL
     return this.http.put<any>(`${this.apiUrl}/${id}`, item);
   }
 
   // Delete an inventory item by ID
   deleteInventoryItem(id: string): Observable<any> {
     return this.http.delete<any>(`${this.apiUrl}/${id}`);
+  }
+
+  createInventory(data: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}`, data);
   }
 }

@@ -13,12 +13,22 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatOptionModule } from '@angular/material/core';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
+import { CustomerDetailsDialogComponent } from './components/customer-details-dialog/customer-details-dialog.component';
+import { NewCustomerDialogComponent } from './components/new-customer-dialog/new-customer-dialog.component';
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
   declarations: [
     CustomersComponent,
     CustomerFormComponent,
     CustomerListComponent,
+    CustomerDetailsDialogComponent,
+    NewCustomerDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -32,6 +42,12 @@ import { MatButtonModule } from '@angular/material/button';
     MatInputModule,
     MatSelectModule,
     MatButtonModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatOptionModule,
+    MatDialogModule,
+    MatDividerModule
   ],
 })
 export class CustomersModule {}

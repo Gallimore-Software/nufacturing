@@ -1,12 +1,15 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
-import { InventoryService } from 'src/app/services/inventory.service';
+import { InventoryService } from 'src/app/pages/inventory/inventory.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { AuthService } from 'src/app/components/auth/auth.service';
 import Chart from 'chart.js/auto';
+import { MatDialog } from '@angular/material/dialog';
+import { NewInventoryDialogComponent } from './components/new-inventory-dialog/new-inventory-dialog.component';
 
 interface InventoryItem {
+  _id: string;
   ingredientName: string;
   pricePerKg: number;
   stockQuantity: number;
@@ -27,7 +30,8 @@ export class InventoryComponent implements OnInit, AfterViewInit {
     'stockQuantity',
     'category',
     'type',
-    'subCategory'
+    'subCategory',
+    'actions'
   ];
   dataSource: MatTableDataSource<InventoryItem> = new MatTableDataSource();
   isAdminOrManager: boolean = false;
@@ -37,7 +41,9 @@ export class InventoryComponent implements OnInit, AfterViewInit {
 
   constructor(
     private inventoryService: InventoryService,
-    private authService: AuthService
+    private authService: AuthService,
+    private dialog: MatDialog
+
   ) {}
 
   ngOnInit(): void {
@@ -74,8 +80,112 @@ export class InventoryComponent implements OnInit, AfterViewInit {
   }
 
   createNewInventory() {
-    // Logic for creating new inventory
+    const dialogRef = this.dialog.open(NewInventoryDialogComponent, {
+      width: '450px',
+    });
+  
+    dialogRef.afterClosed().subscribe((result: any) => {
+      console.log(`resultin create inventory`, result);
+      
+      if (result) {
+        // Handle form submission, e.g., send data to backend
+        this.inventoryService.createInventory(result).subscribe((newInventory) => {
+          // Add the new inventory item to the data source
+          const updatedItems = newInventory.items.map((item: any) => ({
+            ...item,
+            category: newInventory.category,
+            type: newInventory.type,
+            subCategory: newInventory.subCategory,
+          }));
+  
+          this.dataSource.data = [...this.dataSource.data, ...updatedItems];
+        });
+      }
+    });
   }
+
+  editInventoryItem(item: InventoryItem) {
+    // Retrieve the full inventory list
+    this.inventoryService.getInventory().subscribe((data: any) => {
+      // Find the parent ID based on the item's _id
+      const parentItem = data.find((inv: any) =>
+        inv.items.some((i: any) => i._id === item._id)
+      );
+  
+      if (parentItem) {
+        const parentId = parentItem._id;  // This is the parent _id
+  
+        // Open the dialog with the current item data
+        const dialogRef = this.dialog.open(NewInventoryDialogComponent, {
+          width: '450px',
+          data: item
+        });
+  
+        dialogRef.afterClosed().subscribe((result: InventoryItem | undefined) => {
+          if (result) {
+            // Send the update request with the parentId and updated data
+            this.inventoryService.updateInventoryItem(parentId, result).subscribe(
+              () => {
+                // Refetch the updated inventory data
+                this.refreshInventory();
+              },
+              (error) => {
+                console.error('Error updating inventory item:', error);
+              }
+            );
+          }
+        });
+      } else {
+        console.error('Parent item not found for item ID:', item._id);
+      }
+    });
+  }
+  
+  refreshInventory() {
+    this.inventoryService.getInventory().subscribe((data: any) => {
+      const items = data.flatMap((category: any) =>
+        category.items.map((item: any) => ({
+          ...item,
+          category: category.category,
+          type: category.type,
+          subCategory: category.subCategory,
+        }))
+      );
+  
+      this.dataSource.data = items;
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+  
+      this.renderChart(items); // Refresh the chart if needed
+    });
+  }  
+  
+  deleteInventoryItem(item: InventoryItem) {
+    // Retrieve the full inventory list
+    this.inventoryService.getInventory().subscribe((data: any) => {
+      // Find the parent inventory that contains the item to delete
+      const parentItem = data.find((inv: any) =>
+        inv.items.some((i: any) => i._id === item._id)
+      );
+  
+      if (parentItem) {
+        // Remove the parent inventory
+        this.inventoryService.deleteInventoryItem(parentItem._id).subscribe(
+          () => {
+            // Refetch the updated inventory data
+            this.refreshInventory();
+          },
+          (error) => {
+            console.error('Error deleting inventory item:', error);
+          }
+        );
+      } else {
+        console.error('Parent item not found for item ID:', item._id);
+      }
+    });
+  }
+  
+  
 
   renderChart(items: InventoryItem[]) {
     const ctx = (document.getElementById('inventoryChart') as HTMLCanvasElement).getContext('2d');

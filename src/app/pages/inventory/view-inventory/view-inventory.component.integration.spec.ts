@@ -4,7 +4,7 @@ import {
   HttpTestingController,
 } from '@angular/common/http/testing';
 import { ViewInventoryComponent } from './view-inventory.component';
-import { InventoryService } from '../../services/inventory.service';
+import { InventoryService } from '../inventory.service';
 
 describe('ViewInventoryComponent Integration Test', () => {
   let component: ViewInventoryComponent;
@@ -36,3 +36,4 @@ describe('ViewInventoryComponent Integration Test', () => {
     expect(component.inventory).toEqual(testData);
   });
 });
+ 
