@@ -1,653 +1,647 @@
-┣ 📂.githooks
-┃ ┗ 📜commit-msg
+┣ 📂.angular
+┃ ┗ 📂cache
+┃   ┗ 📂16.2.14
+┃     ┣ 📂angular-webpack
+┃     ┗ 📂babel-webpack
 ┣ 📂.github
-┃ ┗ 📂workflows
-┃   ┗ 📜create-pr.yml
+┃ ┣ 📂workflows
+┃ ┃ ┣ 📜angular-test-coverage.yml
+┃ ┃ ┣ 📜azure-static-web-apps-deploy.yml
+┃ ┃ ┣ 📜ci.yaml
+┃ ┃ ┣ 📜enforce-branch-naming.yml
+┃ ┃ ┗ 📜test.yml
+┃ ┗ 📜dependabot.yml
+┣ 📂.husky
+┃ ┣ 📂_
+┃ ┃ ┣ 📜.gitignore
+┃ ┃ ┣ 📜applypatch-msg
+┃ ┃ ┣ 📜commit-msg
+┃ ┃ ┣ 📜h
+┃ ┃ ┣ 📜husky.sh
+┃ ┃ ┣ 📜post-applypatch
+┃ ┃ ┣ 📜post-checkout
+┃ ┃ ┣ 📜post-commit
+┃ ┃ ┣ 📜post-merge
+┃ ┃ ┣ 📜post-rewrite
+┃ ┃ ┣ 📜pre-applypatch
+┃ ┃ ┣ 📜pre-auto-gc
+┃ ┃ ┣ 📜pre-commit
+┃ ┃ ┣ 📜pre-push
+┃ ┃ ┣ 📜pre-rebase
+┃ ┃ ┗ 📜prepare-commit-msg
+┃ ┣ 📜commit-msg
+┃ ┣ 📜pre-commit
+┃ ┗ 📜pre-push
 ┣ 📂.vscode
-┃ ┗ 📜settings.json
-┣ 📂clients
-┃ ┗ 📂nufacturing
-┃   ┣ 📂.github
-┃   ┃ ┗ 📂workflows
-┃   ┃   ┗ 📜azure-static-web-apps-orange-plant-0f4cef90f.yml
-┃   ┣ 📂.vscode
-┃   ┃ ┣ 📜extensions.json
-┃   ┃ ┣ 📜launch.json
-┃   ┃ ┗ 📜tasks.json
-┃   ┣ 📂environment
-┃   ┃ ┣ 📜environment.prod.ts
-┃   ┃ ┗ 📜environment.ts
-┃   ┣ 📂src
-┃   ┃ ┣ 📂app
-┃   ┃ ┃ ┣ 📂components
-┃   ┃ ┃ ┃ ┣ 📂auth
-┃   ┃ ┃ ┃ ┃ ┣ 📜auth.guard.ts
-┃   ┃ ┃ ┃ ┃ ┣ 📜auth.service.ts
-┃   ┃ ┃ ┃ ┃ ┣ 📜hasura.interceptor.ts
-┃   ┃ ┃ ┃ ┃ ┗ 📜role.guard.ts
-┃   ┃ ┃ ┃ ┣ 📂carousel
-┃   ┃ ┃ ┃ ┃ ┣ 📜carousel.component.html
-┃   ┃ ┃ ┃ ┃ ┣ 📜carousel.component.scss
-┃   ┃ ┃ ┃ ┃ ┣ 📜carousel.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┗ 📜carousel.component.ts
-┃   ┃ ┃ ┃ ┣ 📂container
-┃   ┃ ┃ ┃ ┃ ┣ 📜container.component.html
-┃   ┃ ┃ ┃ ┃ ┣ 📜container.component.scss
-┃   ┃ ┃ ┃ ┃ ┣ 📜container.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┗ 📜container.component.ts
-┃   ┃ ┃ ┃ ┗ 📂sidenav
-┃   ┃ ┃ ┃   ┣ 📜sidenav.component.html
-┃   ┃ ┃ ┃   ┣ 📜sidenav.component.scss
-┃   ┃ ┃ ┃   ┣ 📜sidenav.component.spec.ts
-┃   ┃ ┃ ┃   ┗ 📜sidenav.component.ts
-┃   ┃ ┃ ┣ 📂pages
-┃   ┃ ┃ ┃ ┣ 📂dashboard
-┃   ┃ ┃ ┃ ┃ ┣ 📂dashboard-page
-┃   ┃ ┃ ┃ ┃ ┃ ┣ 📜dashboard-page.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┣ 📜dashboard-page.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┣ 📜dashboard-page.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┗ 📜dashboard-page.component.ts
-┃   ┃ ┃ ┃ ┃ ┣ 📜dashboard-mock.service.ts
-┃   ┃ ┃ ┃ ┃ ┣ 📜dashboard-routing.module.ts
-┃   ┃ ┃ ┃ ┃ ┣ 📜dashboard.component.html
-┃   ┃ ┃ ┃ ┃ ┣ 📜dashboard.component.scss
-┃   ┃ ┃ ┃ ┃ ┣ 📜dashboard.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┣ 📜dashboard.component.ts
-┃   ┃ ┃ ┃ ┃ ┣ 📜dashboard.module.ts
-┃   ┃ ┃ ┃ ┃ ┗ 📜dashboard.service.ts
-┃   ┃ ┃ ┃ ┣ 📂human-resources
-┃   ┃ ┃ ┃ ┃ ┣ 📂components
-┃   ┃ ┃ ┃ ┃ ┃ ┣ 📂training
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜training-routing.module.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜training.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜training.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜training.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜training.component.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜training.module.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┗ 📂users
-┃   ┃ ┃ ┃ ┃ ┃   ┣ 📜users-routing.module.ts
-┃   ┃ ┃ ┃ ┃ ┃   ┣ 📜users.component.html
-┃   ┃ ┃ ┃ ┃ ┃   ┣ 📜users.component.scss
-┃   ┃ ┃ ┃ ┃ ┃   ┣ 📜users.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃   ┣ 📜users.component.ts
-┃   ┃ ┃ ┃ ┃ ┃   ┗ 📜users.module.ts
-┃   ┃ ┃ ┃ ┃ ┣ 📜human-resources-routing.module.ts
-┃   ┃ ┃ ┃ ┃ ┣ 📜human-resources.component.html
-┃   ┃ ┃ ┃ ┃ ┣ 📜human-resources.component.scss
-┃   ┃ ┃ ┃ ┃ ┣ 📜human-resources.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┣ 📜human-resources.component.ts
-┃   ┃ ┃ ┃ ┃ ┗ 📜human-resources.module.ts
-┃   ┃ ┃ ┃ ┣ 📂inventory
-┃   ┃ ┃ ┃ ┃ ┣ 📂components
-┃   ┃ ┃ ┃ ┃ ┃ ┣ 📂inventory-item-detail
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜inventory-item-detail.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜inventory-item-detail.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜inventory-item-detail.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜inventory-item-detail.component.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┗ 📂inventory-items-table
-┃   ┃ ┃ ┃ ┃ ┃   ┣ 📜inventory-items-table.component.html
-┃   ┃ ┃ ┃ ┃ ┃   ┣ 📜inventory-items-table.component.scss
-┃   ┃ ┃ ┃ ┃ ┃   ┣ 📜inventory-items-table.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃   ┗ 📜inventory-items-table.component.ts
-┃   ┃ ┃ ┃ ┃ ┣ 📜inventory-routing.module.ts
-┃   ┃ ┃ ┃ ┃ ┣ 📜inventory.component.html
-┃   ┃ ┃ ┃ ┃ ┣ 📜inventory.component.scss
-┃   ┃ ┃ ┃ ┃ ┣ 📜inventory.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┣ 📜inventory.component.ts
-┃   ┃ ┃ ┃ ┃ ┗ 📜inventory.module.ts
-┃   ┃ ┃ ┃ ┣ 📂logout
-┃   ┃ ┃ ┃ ┃ ┣ 📂logout-dialog
-┃   ┃ ┃ ┃ ┃ ┃ ┣ 📜logout-dialog.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┣ 📜logout-dialog.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┣ 📜logout-dialog.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┗ 📜logout-dialog.component.ts
-┃   ┃ ┃ ┃ ┃ ┣ 📜logout.component.html
-┃   ┃ ┃ ┃ ┃ ┣ 📜logout.component.scss
-┃   ┃ ┃ ┃ ┃ ┣ 📜logout.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┗ 📜logout.component.ts
-┃   ┃ ┃ ┃ ┣ 📂product-development
-┃   ┃ ┃ ┃ ┃ ┣ 📂components
-┃   ┃ ┃ ┃ ┃ ┃ ┣ 📂formulas
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂create-formulas
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜create-formulas.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜create-formulas.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜create-formulas.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜create-formulas.component.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂formula-form
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂formula-list
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂list-formulas
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜list-formulas.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜list-formulas.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜list-formulas.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜list-formulas.component.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜formulas-routing.module.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜formulas.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜formulas.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜formulas.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜formulas.component.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜formulas.module.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┣ 📂product-skus
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜product-skus.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜product-skus.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜product-skus.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜product-skus.component.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜product-skus.module.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┣ 📂product-types
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜product-types.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜product-types.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜product-types.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜product-types.component.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜product-types.module.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┗ 📂research-and-development
-┃   ┃ ┃ ┃ ┃ ┃   ┣ 📜research-and-development.component.html
-┃   ┃ ┃ ┃ ┃ ┃   ┣ 📜research-and-development.component.scss
-┃   ┃ ┃ ┃ ┃ ┃   ┣ 📜research-and-development.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃   ┣ 📜research-and-development.component.ts
-┃   ┃ ┃ ┃ ┃ ┃   ┗ 📜research-and-development.module.ts
-┃   ┃ ┃ ┃ ┃ ┣ 📜product-development-routing.module.ts
-┃   ┃ ┃ ┃ ┃ ┣ 📜product-development.component.html
-┃   ┃ ┃ ┃ ┃ ┣ 📜product-development.component.scss
-┃   ┃ ┃ ┃ ┃ ┣ 📜product-development.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┣ 📜product-development.component.ts
-┃   ┃ ┃ ┃ ┃ ┗ 📜product-development.module.ts
-┃   ┃ ┃ ┃ ┣ 📂production
-┃   ┃ ┃ ┃ ┃ ┣ 📂components
-┃   ┃ ┃ ┃ ┃ ┃ ┣ 📂assets
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂components
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂asset-details
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜asset-details.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜asset-details.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜asset-details.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜asset-details.component.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂asset-files
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜asset-files.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜asset-files.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜asset-files.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜asset-files.component.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂asset-training
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜asset-training.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜asset-training.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜asset-training.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜asset-training.component.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂preventative-maintenance
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃   ┣ 📜preventative-maintenance.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃   ┣ 📜preventative-maintenance.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃   ┣ 📜preventative-maintenance.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃   ┗ 📜preventative-maintenance.component.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜assets.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜assets.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜assets.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜assets.component.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜assets.module.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜assets.routing.module.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┣ 📂batch-records
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂components
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂bottling
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜bottling.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜bottling.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜bottling.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜bottling.component.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜bottling.module.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂encapsulation
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜encapsulation.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜encapsulation.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜encapsulation.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜encapsulation.component.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜encapsulation.module.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂mixing
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜mixing.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜mixing.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜mixing.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜mixing.component.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜mixing.module.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂weighing
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃   ┣ 📜weighing.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃   ┣ 📜weighing.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃   ┣ 📜weighing.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃   ┣ 📜weighing.component.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃   ┗ 📜weighing.module.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜batch-records-routing.module.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜batch-records.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜batch-records.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜batch-records.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜batch-records.component.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜batch-records.module.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┣ 📂bottling-records
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜bottling-records-routing.module.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜bottling-records.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜bottling-records.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜bottling-records.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜bottling-records.component.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜bottling-records.module.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┣ 📂depositor-records
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜depositor-records-routing.module.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜depositor-records.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜depositor-records.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜depositor-records.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜depositor-records.component.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜depositor-records.module.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┣ 📂encapsulation-records
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜encapsulation-records-routing.module.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜encapsulation-records.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜encapsulation-records.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜encapsulation-records.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜encapsulation-records.component.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜encapsulation-records.module.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┣ 📂master-manufacturing-records
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜master-manifacturing-records-routing.module.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜master-manufacturing-records.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜master-manufacturing-records.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜master-manufacturing-records.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜master-manufacturing-records.component.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜master-manufacturing-records.module.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┣ 📂mixing-records
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜mixing-records-routing.module.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜mixing-records.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜mixing-records.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜mixing-records.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜mixing-records.component.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜mixing-records.module.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┣ 📂packaging-records
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜packaging-records-routing.module.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜packaging-records.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜packaging-records.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜packaging-records.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜packaging-records.component.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜packaging-records.module.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┣ 📂production-planning
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂capsule-bottling-calendar
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜capsule-bottling-calendar.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜capsule-bottling-calendar.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜capsule-bottling-calendar.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜capsule-bottling-calendar.component.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂co-pack-calendar
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜co-pack-calendar.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜co-pack-calendar.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜co-pack-calendar.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜co-pack-calendar.component.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂encapsulation-calendar
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜encapsulation-calendar.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜encapsulation-calendar.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜encapsulation-calendar.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜encapsulation-calendar.component.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂mixing-calendar
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜mixing-calendar.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜mixing-calendar.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜mixing-calendar.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜mixing-calendar.component.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂powder-bottling-calendar
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜powder-bottling-calendar.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜powder-bottling-calendar.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜powder-bottling-calendar.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜powder-bottling-calendar.component.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂stick-pack-calendar
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜stick-pack-calendar.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜stick-pack-calendar.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜stick-pack-calendar.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜stick-pack-calendar.component.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂weighing-calendar
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜weighing-calendar.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜weighing-calendar.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜weighing-calendar.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜weighing-calendar.component.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜production-planning-routing.module.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜production-planning.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜production-planning.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜production-planning.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜production-planning.component.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜production-planning.module.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┣ 📂reporting
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜reporting-routing.module.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜reporting.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜reporting.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜reporting.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜reporting.component.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜reporting.module.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┣ 📂shifting-records
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜shifting-records-routing.module.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜shifting-records.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜shifting-records.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜shifting-records.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜shifting-records.component.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜shifting-records.module.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┗ 📂weighing-records
-┃   ┃ ┃ ┃ ┃ ┃   ┣ 📜weighing-records-routing.module.ts
-┃   ┃ ┃ ┃ ┃ ┃   ┣ 📜weighing-records.component.html
-┃   ┃ ┃ ┃ ┃ ┃   ┣ 📜weighing-records.component.scss
-┃   ┃ ┃ ┃ ┃ ┃   ┣ 📜weighing-records.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃   ┣ 📜weighing-records.component.ts
-┃   ┃ ┃ ┃ ┃ ┃   ┗ 📜weighing-records.module.ts
-┃   ┃ ┃ ┃ ┃ ┣ 📜production-routing.module.ts
-┃   ┃ ┃ ┃ ┃ ┣ 📜production.component.html
-┃   ┃ ┃ ┃ ┃ ┣ 📜production.component.scss
-┃   ┃ ┃ ┃ ┃ ┣ 📜production.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┣ 📜production.component.ts
-┃   ┃ ┃ ┃ ┃ ┗ 📜production.module.ts
-┃   ┃ ┃ ┃ ┣ 📂quality
-┃   ┃ ┃ ┃ ┃ ┣ 📂components
-┃   ┃ ┃ ┃ ┃ ┃ ┣ 📂fda-audits
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜fda-audits-routing.module.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜fda-audits.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜fda-audits.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜fda-audits.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜fda-audits.component.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜fda-audits.module.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┗ 📂quality-audits
-┃   ┃ ┃ ┃ ┃ ┃   ┣ 📜quality-audits-routing.module.ts
-┃   ┃ ┃ ┃ ┃ ┃   ┣ 📜quality-audits.component.html
-┃   ┃ ┃ ┃ ┃ ┃   ┣ 📜quality-audits.component.scss
-┃   ┃ ┃ ┃ ┃ ┃   ┣ 📜quality-audits.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃   ┣ 📜quality-audits.component.ts
-┃   ┃ ┃ ┃ ┃ ┃   ┗ 📜quality-audits.module.ts
-┃   ┃ ┃ ┃ ┃ ┣ 📜quality-routing.module.ts
-┃   ┃ ┃ ┃ ┃ ┣ 📜quality.component.html
-┃   ┃ ┃ ┃ ┃ ┣ 📜quality.component.scss
-┃   ┃ ┃ ┃ ┃ ┣ 📜quality.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┣ 📜quality.component.ts
-┃   ┃ ┃ ┃ ┃ ┗ 📜quality.module.ts
-┃   ┃ ┃ ┃ ┣ 📂receiving
-┃   ┃ ┃ ┃ ┃ ┣ 📜receiving-routing.module.ts
-┃   ┃ ┃ ┃ ┃ ┣ 📜receiving.component.html
-┃   ┃ ┃ ┃ ┃ ┣ 📜receiving.component.scss
-┃   ┃ ┃ ┃ ┃ ┣ 📜receiving.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┣ 📜receiving.component.ts
-┃   ┃ ┃ ┃ ┃ ┗ 📜receiving.module.ts
-┃   ┃ ┃ ┃ ┣ 📂sales
-┃   ┃ ┃ ┃ ┃ ┣ 📂components
-┃   ┃ ┃ ┃ ┃ ┃ ┣ 📂customers
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂components
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂customer-form
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜customer-form.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜customer-form.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜customer-form.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜customer-form.component.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂customer-list
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃   ┣ 📜customer-list.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃   ┣ 📜customer-list.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃   ┣ 📜customer-list.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃   ┗ 📜customer-list.component.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜customer.service.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜customers-routing.module.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜customers.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜customers.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜customers.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜customers.component.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜customers.module.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┣ 📂orders
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜orders-routing.module.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜orders.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜orders.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜orders.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜orders.component.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜orders.module.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┣ 📂orders-navigation
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜orders-navigation.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜orders-navigation.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜orders-navigation.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜orders-navigation.component.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┣ 📂quotes
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂bom
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂bom-form
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜bom-form.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜bom-form.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜bom-form.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜bom-form.component.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂calculate-profit
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜calculate-profit.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜calculate-profit.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜calculate-profit.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜calculate-profit.component.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂calculate-quote-pricing
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜calculate-quote-pricing.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜calculate-quote-pricing.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜calculate-quote-pricing.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜calculate-quote-pricing.component.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂ingredient-breakdown-with-moq
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ingredient-breakdown-with-moq.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ingredient-breakdown-with-moq.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ingredient-breakdown-with-moq.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ingredient-breakdown-with-moq.component.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂ingredient-breakdown-without-moq
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ingredient-breakdown-without-moq.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ingredient-breakdown-without-moq.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ingredient-breakdown-without-moq.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ingredient-breakdown-without-moq.component.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂ingredient-calculation
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ingredient-calculation.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ingredient-calculation.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ingredient-calculation.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ingredient-calculation.component.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂package-breakdown
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜package-breakdown.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜package-breakdown.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜package-breakdown.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜package-breakdown.component.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂sales-analysis
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜sales-analysis.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜sales-analysis.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜sales-analysis.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜sales-analysis.component.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜bom-routing.module.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜bom.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜bom.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜bom.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜bom.component.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜bom.module.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂info
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂account-info
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜account-info.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜account-info.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜account-info.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜account-info.component.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂bottle-info
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜bottle-info.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜bottle-info.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜bottle-info.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜bottle-info.component.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂capsule-info
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜capsule-info.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜capsule-info.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜capsule-info.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜capsule-info.component.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂closure-info
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜closure-info.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜closure-info.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜closure-info.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜closure-info.component.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂customer-info
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜customer-info.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜customer-info.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜customer-info.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜customer-info.component.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂label-info
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜label-info.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜label-info.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜label-info.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜label-info.component.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂master-carton-info
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜master-carton-info.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜master-carton-info.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜master-carton-info.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜master-carton-info.component.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂order-costs
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜order-costs.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜order-costs.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜order-costs.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜order-costs.component.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂order-info
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜order-info.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜order-info.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜order-info.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜order-info.component.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂other-components
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜other-components.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜other-components.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜other-components.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜other-components.component.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂testing-info
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜testing-info.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜testing-info.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜testing-info.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜testing-info.component.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜info-routing.module.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜info.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜info.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜info.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜info.component.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜info.module.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂ingredients
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂ingredients-info
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ingredients-info.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ingredients-info.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ingredients-info.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ingredients-info.component.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂supplement-facts-details
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜supplement-facts-details.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜supplement-facts-details.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜supplement-facts-details.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜supplement-facts-details.component.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂supplement-facts-only
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜supplement-facts-only.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜supplement-facts-only.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜supplement-facts-only.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜supplement-facts-only.component.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ingredients-routing.module.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ingredients.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ingredients.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ingredients.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ingredients.component.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ingredients.module.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜quotes-routing.module.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜quotes.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜quotes.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜quotes.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜quotes.component.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜quotes.module.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┣ 📂quotes-navigation
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜quotes-navigation.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜quotes-navigation.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜quotes-navigation.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜quotes-navigation.component.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┗ 📂sales-dashboard
-┃   ┃ ┃ ┃ ┃ ┃   ┣ 📜sales-dashboard.component.html
-┃   ┃ ┃ ┃ ┃ ┃   ┣ 📜sales-dashboard.component.scss
-┃   ┃ ┃ ┃ ┃ ┃   ┣ 📜sales-dashboard.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃   ┗ 📜sales-dashboard.component.ts
-┃   ┃ ┃ ┃ ┃ ┣ 📜sales-routing.module.ts
-┃   ┃ ┃ ┃ ┃ ┣ 📜sales.component.html
-┃   ┃ ┃ ┃ ┃ ┣ 📜sales.component.scss
-┃   ┃ ┃ ┃ ┃ ┣ 📜sales.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┣ 📜sales.component.ts
-┃   ┃ ┃ ┃ ┃ ┣ 📜sales.module.ts
-┃   ┃ ┃ ┃ ┃ ┗ 📜sales.service.ts
-┃   ┃ ┃ ┃ ┣ 📂users
-┃   ┃ ┃ ┃ ┃ ┣ 📂login
-┃   ┃ ┃ ┃ ┃ ┃ ┣ 📜login.component.html
-┃   ┃ ┃ ┃ ┃ ┃ ┣ 📜login.component.scss
-┃   ┃ ┃ ┃ ┃ ┃ ┣ 📜login.component.spec.ts
-┃   ┃ ┃ ┃ ┃ ┃ ┗ 📜login.component.ts
-┃   ┃ ┃ ┃ ┃ ┗ 📂signup
-┃   ┃ ┃ ┃ ┃   ┣ 📜register.component.html
-┃   ┃ ┃ ┃ ┃   ┣ 📜register.component.scss
-┃   ┃ ┃ ┃ ┃   ┣ 📜register.component.spec.ts
-┃   ┃ ┃ ┃ ┃   ┗ 📜register.component.ts
-┃   ┃ ┃ ┃ ┗ 📂vendors
-┃   ┃ ┃ ┃   ┣ 📜vendors-routing.module.ts
-┃   ┃ ┃ ┃   ┣ 📜vendors.component.html
-┃   ┃ ┃ ┃   ┣ 📜vendors.component.scss
-┃   ┃ ┃ ┃   ┣ 📜vendors.component.spec.ts
-┃   ┃ ┃ ┃   ┣ 📜vendors.component.ts
-┃   ┃ ┃ ┃   ┗ 📜vendors.module.ts
-┃   ┃ ┃ ┣ 📂services
-┃   ┃ ┃ ┃ ┗ 📜global-service.service.ts
-┃   ┃ ┃ ┣ 📜app-routing.module.ts
-┃   ┃ ┃ ┣ 📜app.component.html
-┃   ┃ ┃ ┣ 📜app.component.scss
-┃   ┃ ┃ ┣ 📜app.component.spec.ts
-┃   ┃ ┃ ┣ 📜app.component.ts
-┃   ┃ ┃ ┣ 📜app.module.ts
-┃   ┃ ┃ ┗ 📜graphql.module.ts
-┃   ┃ ┣ 📂assets
-┃   ┃ ┃ ┣ 📜.gitkeep
-┃   ┃ ┃ ┣ 📜Artboard 1_0_25x.webp
-┃   ┃ ┃ ┣ 📜batch-by-wisconsin-hemp-scientific-MoosTiMVbug-unsplash (1) (1).webp
-┃   ┃ ┃ ┣ 📜batch-by-wisconsin-hemp-scientific-MoosTiMVbug-unsplash (1).webp
-┃   ┃ ┃ ┣ 📜daily-nouri-D37STEwmyqY-unsplash (1).webp
-┃   ┃ ┃ ┣ 📜Image by Diana Polekhina.webp
-┃   ┃ ┃ ┣ 📜Image by Elsa Olofsson.webp
-┃   ┃ ┃ ┣ 📜Liquid Sachet Layout 5.webp
-┃   ┃ ┃ ┣ 📜Nufacturing - White Logo Stacked.webp
-┃   ┃ ┃ ┗ 📜Stick Pack Layout (vertical).webp
-┃   ┃ ┣ 📜.npmrc
-┃   ┃ ┣ 📜favicon.ico
-┃   ┃ ┣ 📜index.html
-┃   ┃ ┣ 📜main.ts
-┃   ┃ ┗ 📜styles.scss
-┃   ┣ 📜.editorconfig
-┃   ┣ 📜.gitignore
-┃   ┣ 📜angular.json
-┃   ┣ 📜package.json
-┃   ┣ 📜README.md
-┃   ┣ 📜staticwebapp.config
-┃   ┣ 📜tsconfig.app.json
-┃   ┣ 📜tsconfig.json
-┃   ┗ 📜tsconfig.spec.json
+┃ ┣ 📜extensions.json
+┃ ┣ 📜launch.json
+┃ ┗ 📜tasks.json
+┣ 📂coverage
+┃ ┣ 📂lcov-report
+┃ ┃ ┣ 📜base.css
+┃ ┃ ┣ 📜block-navigation.js
+┃ ┃ ┣ 📜favicon.png
+┃ ┃ ┣ 📜index.html
+┃ ┃ ┣ 📜prettify.css
+┃ ┃ ┣ 📜prettify.js
+┃ ┃ ┣ 📜sort-arrow-sprite.png
+┃ ┃ ┗ 📜sorter.js
+┃ ┣ 📜clover.xml
+┃ ┣ 📜coverage-final.json
+┃ ┗ 📜lcov.info
 ┣ 📂docs
-┣ 📂logs
-┃ ┗ 📜app.log
+┃ ┣ 📜filetree.txt
+┃ ┣ 📜merging-strategy.md
+┃ ┣ 📜schema.md
+┃ ┣ 📜testing.md
+┃ ┗ WORKFLOW.png
+┣ 📂environment
+┃ ┣ 📜environment.prod.ts
+┃ ┗ 📜environment.ts
 ┣ 📂src
-┃ ┣ 📂config
-┃ ┃ ┣ 📜db.js
-┃ ┃ ┗ 📜logger.js
-┃ ┣ 📂controllers
-┃ ┃ ┣ 📂product-development-controller
-┃ ┃ ┃ ┣ 📜formulaController.js
-┃ ┃ ┃ ┣ 📜productSkuController.js
-┃ ┃ ┃ ┗ 📜productTypeController.js
-┃ ┃ ┣ 📂sales-controller
-┃ ┃ ┃ ┣ 📜customerController.js
-┃ ┃ ┃ ┣ 📜orderController.js
-┃ ┃ ┃ ┗ 📜quoteController.js
-┃ ┃ ┣ 📜authController.js
-┃ ┃ ┣ 📜inventoryController.js
-┃ ┃ ┗ 📜userController.js
-┃ ┣ 📂middleware
-┃ ┃ ┣ 📜authMiddleware.js
-┃ ┃ ┗ 📜roleMiddlewaree.js
-┃ ┣ 📂models
-┃ ┃ ┣ 📂product-development-model
-┃ ┃ ┃ ┣ 📜formulasModel.js
-┃ ┃ ┃ ┣ 📜productSkuModel.js
-┃ ┃ ┃ ┗ 📜productTypeModel.js
-┃ ┃ ┣ 📂sales-model
-┃ ┃ ┃ ┣ 📜customerModel.js
-┃ ┃ ┃ ┣ 📜orderModel.js
-┃ ┃ ┃ ┗ 📜quoteModel.js
-┃ ┃ ┣ 📜inventoryModel.js
-┃ ┃ ┗ 📜userModel.js
-┃ ┣ 📂routes
-┃ ┃ ┣ 📂product-development-routes
-┃ ┃ ┃ ┣ 📜formulaRoutes.js
-┃ ┃ ┃ ┣ 📜productSkusRoutes.js
-┃ ┃ ┃ ┗ 📜productTypeRoutes.js
-┃ ┃ ┣ 📂sales-routes
-┃ ┃ ┃ ┣ 📜customerRoutes.js
-┃ ┃ ┃ ┣ 📜orderRoutes.js
-┃ ┃ ┃ ┗ 📜quoteRoutes.js
-┃ ┃ ┣ 📜inventoryRoutes.js
-┃ ┃ ┗ 📜userRoutes.js
-┃ ┗ 📂utils
-┃   ┣ 📜scheduledTasks.js
-┃   ┗ 📜sendEmail.js
-┣ 📜.env.development
-┣ 📜.env.local
-┣ 📜.env.production
-┣ 📜.env.staging
+┃ ┣ 📂app
+┃ ┃ ┣ 📂components
+┃ ┃ ┃ ┣ 📂auth
+┃ ┃ ┃ ┃ ┣ 📜auth.guard.ts
+┃ ┃ ┃ ┃ ┣ 📜auth.service.ts
+┃ ┃ ┃ ┃ ┣ 📜hasura.interceptor.ts
+┃ ┃ ┃ ┃ ┗ 📜role.guard.ts
+┃ ┃ ┃ ┣ 📂carousel
+┃ ┃ ┃ ┃ ┣ 📜carousel.component.html
+┃ ┃ ┃ ┃ ┣ 📜carousel.component.scss
+┃ ┃ ┃ ┃ ┣ 📜carousel.component.spec.ts
+┃ ┃ ┃ ┃ ┗ 📜carousel.component.ts
+┃ ┃ ┃ ┣ 📂container
+┃ ┃ ┃ ┃ ┣ 📜container.component.html
+┃ ┃ ┃ ┃ ┣ 📜container.component.scss
+┃ ┃ ┃ ┃ ┣ 📜container.component.spec.ts
+┃ ┃ ┃ ┃ ┗ 📜container.component.ts
+┃ ┃ ┃ ┗ 📂sidenav
+┃ ┃ ┃   ┣ 📜sidenav.component.html
+┃ ┃ ┃   ┣ 📜sidenav.component.scss
+┃ ┃ ┃   ┣ 📜sidenav.component.spec.ts
+┃ ┃ ┃   ┗ 📜sidenav.component.ts
+┃ ┃ ┣ 📂pages
+┃ ┃ ┃ ┣ 📂dashboard
+┃ ┃ ┃ ┃ ┣ 📂dashboard-page
+┃ ┃ ┃ ┃ ┃ ┣ 📜dashboard-page.component.html
+┃ ┃ ┃ ┃ ┃ ┣ 📜dashboard-page.component.scss
+┃ ┃ ┃ ┃ ┃ ┣ 📜dashboard-page.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┗ 📜dashboard-page.component.ts
+┃ ┃ ┃ ┃ ┣ 📜dashboard-mock.service.ts
+┃ ┃ ┃ ┃ ┣ 📜dashboard-routing.module.ts
+┃ ┃ ┃ ┃ ┣ 📜dashboard.component.html
+┃ ┃ ┃ ┃ ┣ 📜dashboard.component.scss
+┃ ┃ ┃ ┃ ┣ 📜dashboard.component.spec.ts
+┃ ┃ ┃ ┃ ┣ 📜dashboard.component.ts
+┃ ┃ ┃ ┃ ┣ 📜dashboard.module.ts
+┃ ┃ ┃ ┃ ┗ 📜dashboard.service.ts
+┃ ┃ ┃ ┣ 📂human-resources
+┃ ┃ ┃ ┃ ┣ 📂components
+┃ ┃ ┃ ┃ ┃ ┣ 📂training
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜training-routing.module.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜training.component.html
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜training.component.scss
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜training.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜training.component.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜training.module.ts
+┃ ┃ ┃ ┃ ┃ ┗ 📂users
+┃ ┃ ┃ ┃ ┃   ┣ 📜users-routing.module.ts
+┃ ┃ ┃ ┃ ┃   ┣ 📜users.component.html
+┃ ┃ ┃ ┃ ┃   ┣ 📜users.component.scss
+┃ ┃ ┃ ┃ ┃   ┣ 📜users.component.spec.ts
+┃ ┃ ┃ ┃ ┃   ┣ 📜users.component.ts
+┃ ┃ ┃ ┃ ┃   ┗ 📜users.module.ts
+┃ ┃ ┃ ┃ ┣ 📜human-resources-routing.module.ts
+┃ ┃ ┃ ┃ ┣ 📜human-resources.component.html
+┃ ┃ ┃ ┃ ┣ 📜human-resources.component.scss
+┃ ┃ ┃ ┃ ┣ 📜human-resources.component.spec.ts
+┃ ┃ ┃ ┃ ┣ 📜human-resources.component.ts
+┃ ┃ ┃ ┃ ┗ 📜human-resources.module.ts
+┃ ┃ ┃ ┣ 📂inventory
+┃ ┃ ┃ ┃ ┣ 📂components
+┃ ┃ ┃ ┃ ┃ ┣ 📂inventory-item-detail
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜inventory-item-detail.component.html
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜inventory-item-detail.component.scss
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜inventory-item-detail.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜inventory-item-detail.component.ts
+┃ ┃ ┃ ┃ ┃ ┗ 📂inventory-items-table
+┃ ┃ ┃ ┃ ┃   ┣ 📜inventory-items-table.component.html
+┃ ┃ ┃ ┃ ┃   ┣ 📜inventory-items-table.component.scss
+┃ ┃ ┃ ┃ ┃   ┣ 📜inventory-items-table.component.spec.ts
+┃ ┃ ┃ ┃ ┃   ┗ 📜inventory-items-table.component.ts
+┃ ┃ ┃ ┃ ┣ 📂view-inventory
+┃ ┃ ┃ ┃ ┃ ┣ 📜view-inventory.component.contract.spec.ts
+┃ ┃ ┃ ┃ ┃ ┣ 📜view-inventory.component.integration.spec.ts
+┃ ┃ ┃ ┃ ┃ ┣ 📜view-inventory.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┗ 📜view-inventory.e2e-spec.ts
+┃ ┃ ┃ ┃ ┣ 📜inventory-routing.module.ts
+┃ ┃ ┃ ┃ ┣ 📜inventory.component.html
+┃ ┃ ┃ ┃ ┣ 📜inventory.component.scss
+┃ ┃ ┃ ┃ ┣ 📜inventory.component.spec.ts
+┃ ┃ ┃ ┃ ┣ 📜inventory.component.ts
+┃ ┃ ┃ ┃ ┗ 📜inventory.module.ts
+┃ ┃ ┃ ┣ 📂logout
+┃ ┃ ┃ ┃ ┣ 📂logout-dialog
+┃ ┃ ┃ ┃ ┃ ┣ 📜logout-dialog.component.html
+┃ ┃ ┃ ┃ ┃ ┣ 📜logout-dialog.component.scss
+┃ ┃ ┃ ┃ ┃ ┣ 📜logout-dialog.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┗ 📜logout-dialog.component.ts
+┃ ┃ ┃ ┃ ┣ 📜logout.component.html
+┃ ┃ ┃ ┃ ┣ 📜logout.component.scss
+┃ ┃ ┃ ┃ ┣ 📜logout.component.spec.ts
+┃ ┃ ┃ ┃ ┗ 📜logout.component.ts
+┃ ┃ ┃ ┣ 📂product-development
+┃ ┃ ┃ ┃ ┣ 📂components
+┃ ┃ ┃ ┃ ┃ ┣ 📂formulas
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂create-formulas
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜create-formulas.component.html
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜create-formulas.component.scss
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜create-formulas.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜create-formulas.component.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂formula-form
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂formula-list
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂list-formulas
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜list-formulas.component.html
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜list-formulas.component.scss
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜list-formulas.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜list-formulas.component.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜formulas-routing.module.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜formulas.component.html
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜formulas.component.scss
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜formulas.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜formulas.component.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜formulas.module.ts
+┃ ┃ ┃ ┃ ┃ ┣ 📂product-skus
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜product-skus.component.html
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜product-skus.component.scss
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜product-skus.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜product-skus.component.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜product-skus.module.ts
+┃ ┃ ┃ ┃ ┃ ┣ 📂product-types
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜product-types.component.html
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜product-types.component.scss
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜product-types.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜product-types.component.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜product-types.module.ts
+┃ ┃ ┃ ┃ ┃ ┗ 📂research-and-development
+┃ ┃ ┃ ┃ ┃   ┣ 📜research-and-development.component.html
+┃ ┃ ┃ ┃ ┃   ┣ 📜research-and-development.component.scss
+┃ ┃ ┃ ┃ ┃   ┣ 📜research-and-development.component.spec.ts
+┃ ┃ ┃ ┃ ┃   ┣ 📜research-and-development.component.ts
+┃ ┃ ┃ ┃ ┃   ┗ 📜research-and-development.module.ts
+┃ ┃ ┃ ┃ ┣ 📜product-development-routing.module.ts
+┃ ┃ ┃ ┃ ┣ 📜product-development.component.html
+┃ ┃ ┃ ┃ ┣ 📜product-development.component.scss
+┃ ┃ ┃ ┃ ┣ 📜product-development.component.spec.ts
+┃ ┃ ┃ ┃ ┣ 📜product-development.component.ts
+┃ ┃ ┃ ┃ ┗ 📜product-development.module.ts
+┃ ┃ ┃ ┣ 📂production
+┃ ┃ ┃ ┃ ┣ 📂components
+┃ ┃ ┃ ┃ ┃ ┣ 📂assets
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂components
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂asset-details
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜asset-details.component.html
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜asset-details.component.scss
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜asset-details.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜asset-details.component.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂asset-files
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜asset-files.component.html
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜asset-files.component.scss
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜asset-files.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜asset-files.component.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂asset-training
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜asset-training.component.html
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜asset-training.component.scss
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜asset-training.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜asset-training.component.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂preventative-maintenance
+┃ ┃ ┃ ┃ ┃ ┃ ┃   ┣ 📜preventative-maintenance.component.html
+┃ ┃ ┃ ┃ ┃ ┃ ┃   ┣ 📜preventative-maintenance.component.scss
+┃ ┃ ┃ ┃ ┃ ┃ ┃   ┣ 📜preventative-maintenance.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃   ┗ 📜preventative-maintenance.component.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜assets.component.html
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜assets.component.scss
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜assets.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜assets.component.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜assets.module.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜assets.routing.module.ts
+┃ ┃ ┃ ┃ ┃ ┣ 📂batch-records
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂components
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂bottling
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜bottling.component.html
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜bottling.component.scss
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜bottling.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜bottling.component.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜bottling.module.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂encapsulation
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜encapsulation.component.html
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜encapsulation.component.scss
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜encapsulation.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜encapsulation.component.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜encapsulation.module.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂mixing
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜mixing.component.html
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜mixing.component.scss
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜mixing.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜mixing.component.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜mixing.module.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂weighing
+┃ ┃ ┃ ┃ ┃ ┃ ┃   ┣ 📜weighing.component.html
+┃ ┃ ┃ ┃ ┃ ┃ ┃   ┣ 📜weighing.component.scss
+┃ ┃ ┃ ┃ ┃ ┃ ┃   ┣ 📜weighing.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃   ┣ 📜weighing.component.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃   ┗ 📜weighing.module.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜batch-records-routing.module.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜batch-records.component.html
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜batch-records.component.scss
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜batch-records.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜batch-records.component.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜batch-records.module.ts
+┃ ┃ ┃ ┃ ┃ ┣ 📂bottling-records
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜bottling-records-routing.module.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜bottling-records.component.html
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜bottling-records.component.scss
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜bottling-records.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜bottling-records.component.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜bottling-records.module.ts
+┃ ┃ ┃ ┃ ┃ ┣ 📂depositor-records
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜depositor-records-routing.module.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜depositor-records.component.html
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜depositor-records.component.scss
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜depositor-records.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜depositor-records.component.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜depositor-records.module.ts
+┃ ┃ ┃ ┃ ┃ ┣ 📂encapsulation-records
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜encapsulation-records-routing.module.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜encapsulation-records.component.html
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜encapsulation-records.component.scss
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜encapsulation-records.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜encapsulation-records.component.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜encapsulation-records.module.ts
+┃ ┃ ┃ ┃ ┃ ┣ 📂master-manufacturing-records
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜master-manifacturing-records-routing.module.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜master-manufacturing-records.component.html
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜master-manufacturing-records.component.scss
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜master-manufacturing-records.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜master-manufacturing-records.component.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜master-manufacturing-records.module.ts
+┃ ┃ ┃ ┃ ┃ ┣ 📂mixing-records
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜mixing-records-routing.module.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜mixing-records.component.html
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜mixing-records.component.scss
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜mixing-records.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜mixing-records.component.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜mixing-records.module.ts
+┃ ┃ ┃ ┃ ┃ ┣ 📂packaging-records
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜packaging-records-routing.module.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜packaging-records.component.html
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜packaging-records.component.scss
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜packaging-records.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜packaging-records.component.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜packaging-records.module.ts
+┃ ┃ ┃ ┃ ┃ ┣ 📂production-planning
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂capsule-bottling-calendar
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜capsule-bottling-calendar.component.html
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜capsule-bottling-calendar.component.scss
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜capsule-bottling-calendar.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜capsule-bottling-calendar.component.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂co-pack-calendar
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜co-pack-calendar.component.html
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜co-pack-calendar.component.scss
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜co-pack-calendar.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜co-pack-calendar.component.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂encapsulation-calendar
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜encapsulation-calendar.component.html
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜encapsulation-calendar.component.scss
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜encapsulation-calendar.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜encapsulation-calendar.component.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂mixing-calendar
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜mixing-calendar.component.html
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜mixing-calendar.component.scss
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜mixing-calendar.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜mixing-calendar.component.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂powder-bottling-calendar
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜powder-bottling-calendar.component.html
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜powder-bottling-calendar.component.scss
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜powder-bottling-calendar.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜powder-bottling-calendar.component.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂stick-pack-calendar
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜stick-pack-calendar.component.html
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜stick-pack-calendar.component.scss
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜stick-pack-calendar.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜stick-pack-calendar.component.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂weighing-calendar
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜weighing-calendar.component.html
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜weighing-calendar.component.scss
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜weighing-calendar.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜weighing-calendar.component.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜production-planning-routing.module.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜production-planning.component.html
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜production-planning.component.scss
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜production-planning.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜production-planning.component.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜production-planning.module.ts
+┃ ┃ ┃ ┃ ┃ ┣ 📂reporting
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜reporting-routing.module.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜reporting.component.html
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜reporting.component.scss
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜reporting.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜reporting.component.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜reporting.module.ts
+┃ ┃ ┃ ┃ ┃ ┣ 📂shifting-records
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜shifting-records-routing.module.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜shifting-records.component.html
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜shifting-records.component.scss
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜shifting-records.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜shifting-records.component.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜shifting-records.module.ts
+┃ ┃ ┃ ┃ ┃ ┗ 📂weighing-records
+┃ ┃ ┃ ┃ ┃   ┣ 📜weighing-records-routing.module.ts
+┃ ┃ ┃ ┃ ┃   ┣ 📜weighing-records.component.html
+┃ ┃ ┃ ┃ ┃   ┣ 📜weighing-records.component.scss
+┃ ┃ ┃ ┃ ┃   ┣ 📜weighing-records.component.spec.ts
+┃ ┃ ┃ ┃ ┃   ┣ 📜weighing-records.component.ts
+┃ ┃ ┃ ┃ ┃   ┗ 📜weighing-records.module.ts
+┃ ┃ ┃ ┃ ┣ 📜production-routing.module.ts
+┃ ┃ ┃ ┃ ┣ 📜production.component.html
+┃ ┃ ┃ ┃ ┣ 📜production.component.scss
+┃ ┃ ┃ ┃ ┣ 📜production.component.spec.ts
+┃ ┃ ┃ ┃ ┣ 📜production.component.ts
+┃ ┃ ┃ ┃ ┗ 📜production.module.ts
+┃ ┃ ┃ ┣ 📂quality
+┃ ┃ ┃ ┃ ┣ 📂components
+┃ ┃ ┃ ┃ ┃ ┣ 📂fda-audits
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜fda-audits-routing.module.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜fda-audits.component.html
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜fda-audits.component.scss
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜fda-audits.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜fda-audits.component.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜fda-audits.module.ts
+┃ ┃ ┃ ┃ ┃ ┗ 📂quality-audits
+┃ ┃ ┃ ┃ ┃   ┣ 📜quality-audits-routing.module.ts
+┃ ┃ ┃ ┃ ┃   ┣ 📜quality-audits.component.html
+┃ ┃ ┃ ┃ ┃   ┣ 📜quality-audits.component.scss
+┃ ┃ ┃ ┃ ┃   ┣ 📜quality-audits.component.spec.ts
+┃ ┃ ┃ ┃ ┃   ┣ 📜quality-audits.component.ts
+┃ ┃ ┃ ┃ ┃   ┗ 📜quality-audits.module.ts
+┃ ┃ ┃ ┃ ┣ 📜quality-routing.module.ts
+┃ ┃ ┃ ┃ ┣ 📜quality.component.html
+┃ ┃ ┃ ┃ ┣ 📜quality.component.scss
+┃ ┃ ┃ ┃ ┣ 📜quality.component.spec.ts
+┃ ┃ ┃ ┃ ┣ 📜quality.component.ts
+┃ ┃ ┃ ┃ ┗ 📜quality.module.ts
+┃ ┃ ┃ ┣ 📂receiving
+┃ ┃ ┃ ┃ ┣ 📜receiving-routing.module.ts
+┃ ┃ ┃ ┃ ┣ 📜receiving.component.html
+┃ ┃ ┃ ┃ ┣ 📜receiving.component.scss
+┃ ┃ ┃ ┃ ┣ 📜receiving.component.spec.ts
+┃ ┃ ┃ ┃ ┣ 📜receiving.component.ts
+┃ ┃ ┃ ┃ ┗ 📜receiving.module.ts
+┃ ┃ ┃ ┣ 📂sales
+┃ ┃ ┃ ┃ ┣ 📂components
+┃ ┃ ┃ ┃ ┃ ┣ 📂customers
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂components
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂customer-form
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜customer-form.component.html
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜customer-form.component.scss
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜customer-form.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜customer-form.component.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂customer-list
+┃ ┃ ┃ ┃ ┃ ┃ ┃   ┣ 📜customer-list.component.html
+┃ ┃ ┃ ┃ ┃ ┃ ┃   ┣ 📜customer-list.component.scss
+┃ ┃ ┃ ┃ ┃ ┃ ┃   ┣ 📜customer-list.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃   ┗ 📜customer-list.component.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜customer.service.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜customers-routing.module.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜customers.component.html
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜customers.component.scss
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜customers.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜customers.component.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜customers.module.ts
+┃ ┃ ┃ ┃ ┃ ┣ 📂orders
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜orders-routing.module.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜orders.component.html
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜orders.component.scss
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜orders.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜orders.component.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜orders.module.ts
+┃ ┃ ┃ ┃ ┃ ┣ 📂orders-navigation
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜orders-navigation.component.html
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜orders-navigation.component.scss
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜orders-navigation.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜orders-navigation.component.ts
+┃ ┃ ┃ ┃ ┃ ┣ 📂quotes
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂bom
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂bom-form
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜bom-form.component.html
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜bom-form.component.scss
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜bom-form.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜bom-form.component.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂calculate-profit
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜calculate-profit.component.html
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜calculate-profit.component.scss
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜calculate-profit.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜calculate-profit.component.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂calculate-quote-pricing
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜calculate-quote-pricing.component.html
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜calculate-quote-pricing.component.scss
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜calculate-quote-pricing.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜calculate-quote-pricing.component.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂ingredient-breakdown-with-moq
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ingredient-breakdown-with-moq.component.html
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ingredient-breakdown-with-moq.component.scss
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ingredient-breakdown-with-moq.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ingredient-breakdown-with-moq.component.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂ingredient-breakdown-without-moq
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ingredient-breakdown-without-moq.component.html
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ingredient-breakdown-without-moq.component.scss
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ingredient-breakdown-without-moq.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ingredient-breakdown-without-moq.component.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂ingredient-calculation
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ingredient-calculation.component.html
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ingredient-calculation.component.scss
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ingredient-calculation.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ingredient-calculation.component.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂package-breakdown
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜package-breakdown.component.html
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜package-breakdown.component.scss
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜package-breakdown.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜package-breakdown.component.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂sales-analysis
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜sales-analysis.component.html
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜sales-analysis.component.scss
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜sales-analysis.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜sales-analysis.component.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜bom-routing.module.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜bom.component.html
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜bom.component.scss
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜bom.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜bom.component.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜bom.module.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂info
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂account-info
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜account-info.component.html
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜account-info.component.scss
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜account-info.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜account-info.component.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂bottle-info
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜bottle-info.component.html
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜bottle-info.component.scss
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜bottle-info.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜bottle-info.component.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂capsule-info
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜capsule-info.component.html
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜capsule-info.component.scss
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜capsule-info.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜capsule-info.component.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂closure-info
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜closure-info.component.html
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜closure-info.component.scss
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜closure-info.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜closure-info.component.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂customer-info
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜customer-info.component.html
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜customer-info.component.scss
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜customer-info.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜customer-info.component.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂label-info
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜label-info.component.html
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜label-info.component.scss
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜label-info.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜label-info.component.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂master-carton-info
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜master-carton-info.component.html
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜master-carton-info.component.scss
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜master-carton-info.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜master-carton-info.component.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂order-costs
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜order-costs.component.html
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜order-costs.component.scss
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜order-costs.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜order-costs.component.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂order-info
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜order-info.component.html
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜order-info.component.scss
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜order-info.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜order-info.component.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂other-components
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜other-components.component.html
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜other-components.component.scss
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜other-components.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜other-components.component.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂testing-info
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜testing-info.component.html
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜testing-info.component.scss
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜testing-info.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜testing-info.component.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜info-routing.module.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜info.component.html
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜info.component.scss
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜info.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜info.component.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜info.module.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂ingredients
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂ingredients-info
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ingredients-info.component.html
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ingredients-info.component.scss
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ingredients-info.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ingredients-info.component.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂supplement-facts-details
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜supplement-facts-details.component.html
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜supplement-facts-details.component.scss
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜supplement-facts-details.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜supplement-facts-details.component.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂supplement-facts-only
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜supplement-facts-only.component.html
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜supplement-facts-only.component.scss
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜supplement-facts-only.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜supplement-facts-only.component.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ingredients-routing.module.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ingredients.component.html
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ingredients.component.scss
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ingredients.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ingredients.component.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ingredients.module.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜quotes-routing.module.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜quotes.component.html
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜quotes.component.scss
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜quotes.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜quotes.component.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜quotes.module.ts
+┃ ┃ ┃ ┃ ┃ ┣ 📂quotes-navigation
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜quotes-navigation.component.html
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜quotes-navigation.component.scss
+┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜quotes-navigation.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜quotes-navigation.component.ts
+┃ ┃ ┃ ┃ ┃ ┗ 📂sales-dashboard
+┃ ┃ ┃ ┃ ┃   ┣ 📜sales-dashboard.component.html
+┃ ┃ ┃ ┃ ┃   ┣ 📜sales-dashboard.component.scss
+┃ ┃ ┃ ┃ ┃   ┣ 📜sales-dashboard.component.spec.ts
+┃ ┃ ┃ ┃ ┃   ┗ 📜sales-dashboard.component.ts
+┃ ┃ ┃ ┃ ┣ 📜sales-routing.module.ts
+┃ ┃ ┃ ┃ ┣ 📜sales.component.html
+┃ ┃ ┃ ┃ ┣ 📜sales.component.scss
+┃ ┃ ┃ ┃ ┣ 📜sales.component.spec.ts
+┃ ┃ ┃ ┃ ┣ 📜sales.component.ts
+┃ ┃ ┃ ┃ ┣ 📜sales.module.ts
+┃ ┃ ┃ ┃ ┗ 📜sales.service.ts
+┃ ┃ ┃ ┣ 📂users
+┃ ┃ ┃ ┃ ┣ 📂login
+┃ ┃ ┃ ┃ ┃ ┣ 📜login.component.html
+┃ ┃ ┃ ┃ ┃ ┣ 📜login.component.scss
+┃ ┃ ┃ ┃ ┃ ┣ 📜login.component.spec.ts
+┃ ┃ ┃ ┃ ┃ ┗ 📜login.component.ts
+┃ ┃ ┃ ┃ ┗ 📂signup
+┃ ┃ ┃ ┃   ┣ 📜register.component.html
+┃ ┃ ┃ ┃   ┣ 📜register.component.scss
+┃ ┃ ┃ ┃   ┣ 📜register.component.spec.ts
+┃ ┃ ┃ ┃   ┗ 📜register.component.ts
+┃ ┃ ┃ ┗ 📂vendors
+┃ ┃ ┃   ┣ 📜vendors-routing.module.ts
+┃ ┃ ┃   ┣ 📜vendors.component.html
+┃ ┃ ┃   ┣ 📜vendors.component.scss
+┃ ┃ ┃   ┣ 📜vendors.component.spec.ts
+┃ ┃ ┃   ┣ 📜vendors.component.ts
+┃ ┃ ┃   ┗ 📜vendors.module.ts
+┃ ┃ ┣ 📂services
+┃ ┃ ┃ ┗ 📜global-service.service.ts
+┃ ┃ ┣ 📜app-routing.module.ts
+┃ ┃ ┣ 📜app.component.html
+┃ ┃ ┣ 📜app.component.scss
+┃ ┃ ┣ 📜app.component.spec.ts
+┃ ┃ ┣ 📜app.component.ts
+┃ ┃ ┣ 📜app.module.ts
+┃ ┃ ┗ 📜graphql.module.ts
+┃ ┣ 📂assets
+┃ ┃ ┣ 📜.gitkeep
+┃ ┃ ┣ 📜Artboard 1_0_25x.webp
+┃ ┃ ┣ 📜batch-by-wisconsin-hemp-scientific-MoosTiMVbug-unsplash (1) (1).webp
+┃ ┃ ┣ 📜batch-by-wisconsin-hemp-scientific-MoosTiMVbug-unsplash (1).webp
+┃ ┃ ┣ 📜daily-nouri-D37STEwmyqY-unsplash (1).webp
+┃ ┃ ┣ 📜Image by Diana Polekhina.webp
+┃ ┃ ┣ 📜Image by Elsa Olofsson.webp
+┃ ┃ ┣ 📜Liquid Sachet Layout 5.webp
+┃ ┃ ┣ 📜Nufacturing - White Logo Stacked.webp
+┃ ┃ ┗ 📜Stick Pack Layout (vertical).webp
+┃ ┣ 📂e2e
+┃ ┃ ┗ 📜inventory.cypress.ts
+┃ ┣ 📂integration-tests
+┃ ┣ 📜.npmrc
+┃ ┣ 📜favicon.ico
+┃ ┣ 📜index.html
+┃ ┣ 📜main.ts
+┃ ┣ 📜setup-jest.ts
+┃ ┗ 📜styles.scss
+┣ 📜.editorconfig
 ┣ 📜.gitignore
-┣ 📜.gitmodules
-┣ 📜app.js
-┣ 📜index.js
+┣ 📜angular.json
+┣ 📜jest.config.js
+┣ 📜karma.conf.js
 ┣ 📜package.json
 ┣ 📜README.md
-┣ 📜swagger_output.json
-┗ 📜swagger.js
+┣ 📜SECURITY.md
+┣ 📜staticwebapp.config
+┣ 📜tsconfig.app.json
+┣ 📜tsconfig.json
+┗ 📜tsconfig.spec.json

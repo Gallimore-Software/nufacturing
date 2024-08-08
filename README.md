@@ -238,4 +238,4 @@ Use tags for marking significant releases or milestones. For example, `v1.0.0`.
 
 By maintaining these five environments, Gallimore Software ensures a robust, reliable, and efficient development and deployment process for the Nufacturing app. This approach leads to higher quality software and improved user satisfaction, aligning with our goals of delivering innovative and customer-centric solutions.
 
-[def]: ./docs/workflow.png
+[def]: ./docs/WORKFLOW.png
