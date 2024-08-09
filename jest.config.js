@@ -8,8 +8,30 @@ module.exports = {
     },
   },
   preset: "jest-preset-angular",
-  setupFilesAfterEnv: ["<rootDir>/src/setup-jest.ts"],
   collectCoverage: true,
   coverageDirectory: "coverage",
   testPathIgnorePatterns: ["/node_modules/", "/dist/", "/e2e/"],
+  setupFilesAfterEnv: ['<rootDir>/setup-jest.ts'],
+  testEnvironment: 'jsdom',
+  globals: {
+    'ts-jest': {
+      tsconfig: 'tsconfig.spec.json',
+      stringifyContentPathRegex: '\\.html$',
+      astTransformers: {
+        before: [
+          'jest-preset-angular/build/InlineFilesTransformer',
+          'jest-preset-angular/build/StripStylesTransformer',
+        ],
+      },
+    },
+  },
+  moduleFileExtensions: ['ts', 'html', 'js', 'json'],
+  transform: {
+    '^.+\\.(ts|html)$': 'ts-jest',
+  },
+  transformIgnorePatterns: ['node_modules/(?!@ngrx)'],
+  moduleNameMapper: {
+    '^src/(.*)$': '<rootDir>/src/$1',
+  },
+
 };
