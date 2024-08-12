@@ -1,38 +1,163 @@
 <h2 mat-dialog-title>Create New Inventory Item</h2>
 <mat-dialog-content>
-  <form [formGroup]="inventoryForm">
-    <!-- Ingredient Name -->
+  <form [formGroup]="inventoryForm" (ngSubmit)="onSubmit()">
+    <!-- Vendor -->
     <mat-form-field appearance="outline" class="full-width">
-      <mat-label>Ingredient Name</mat-label>
-      <input matInput formControlName="ingredientName" placeholder="Ex. Ingredient A" />
+      <mat-label>Vendor</mat-label>
+      <input matInput formControlName="vendor" placeholder="Search Vendor" [matAutocomplete]="autoVendor" />
+      <mat-autocomplete #autoVendor="matAutocomplete">
+        <mat-option *ngFor="let vendor of filteredVendors" [value]="vendor">{{ vendor }}</mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <!-- Display Name -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Display Name</mat-label>
+      <input matInput formControlName="displayName" />
+    </mat-form-field>
+
+    <!-- Ingredient SKU -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Ingredient SKU</mat-label>
+      <input matInput formControlName="ingredientSku" />
+    </mat-form-field>
+
+    <!-- Scientific Name -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Scientific Name</mat-label>
+      <input matInput formControlName="scientificName" />
+    </mat-form-field>
+
+    <!-- Picture -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Picture</mat-label>
+      <input type="file" (change)="onFileSelected($event)" />
+    </mat-form-field>
+
+    <!-- Description -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description"></textarea>
+    </mat-form-field>
+
+    <!-- Associated Formulas -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Associated Formulas</mat-label>
+      <input matInput formControlName="associatedFormulas" placeholder="Search Formula" [matAutocomplete]="autoFormulas" />
+      <mat-autocomplete #autoFormulas="matAutocomplete">
+        <mat-option *ngFor="let formula of filteredFormulas" [value]="formula">{{ formula }}</mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <!-- Associated Product SKUs -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Associated Product SKUs</mat-label>
+      <input matInput formControlName="associatedProductSkus" placeholder="Search Product SKU" [matAutocomplete]="autoProductSkus" />
+      <mat-autocomplete #autoProductSkus="matAutocomplete">
+        <mat-option *ngFor="let productSku of filteredProductSkus" [value]="productSku">{{ productSku }}</mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <!-- Certificate of Authenticity -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Certificate of Authenticity</mat-label>
+      <input type="file" (change)="onCertificateUpload($event)" />
+    </mat-form-field>
+
+    <!-- Inventory Category -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Inventory Category</mat-label>
+      <mat-select formControlName="inventoryCategory">
+        <mat-option value="Nufacturing">Nufacturing</mat-option>
+        <mat-option value="Customer Supplied">Customer Supplied</mat-option>
+        <mat-option value="Research Lab">Research Lab</mat-option>
+        <mat-option value="Ancillary">Ancillary</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Type -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Type</mat-label>
+      <mat-select formControlName="type">
+        <mat-option value="Raw Materials">Raw Materials</mat-option>
+        <mat-option value="Components">Components</mat-option>
+        <mat-option value="Work in Progress">Work in Progress</mat-option>
+        <mat-option value="Finished Goods">Finished Goods</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Lot Code -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Lot Code</mat-label>
+      <input matInput formControlName="lotCode" />
     </mat-form-field>
 
     <!-- Unit of Measurement -->
     <mat-form-field appearance="outline" class="full-width">
       <mat-label>Unit of Measurement</mat-label>
-      <input matInput formControlName="unitOfMeasurement" placeholder="Ex. kg, lb, g" />
+      <mat-select formControlName="unitOfMeasurement">
+        <mat-option value="kg">kg</mat-option>
+        <mat-option value="g">g</mat-option>
+        <mat-option value="mg">mg</mat-option>
+        <mat-option value="lb">lb</mat-option>
+        <mat-option value="oz">oz</mat-option>
+      </mat-select>
     </mat-form-field>
 
-    <!-- Price Per Unit -->
+    <!-- Pricing Table Toggle -->
+    <mat-slide-toggle (change)="togglePricingTable($event)">Show Pricing Table</mat-slide-toggle>
+
+    <!-- Pricing Table -->
+    <div *ngIf="showPricingTable">
+      <table>
+        <thead>
+          <tr>
+            <th>Min Order Quantity</th>
+            <th>Price Per Unit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let i of [1, 2, 3]">
+            <td><input matInput [formControlName]="'minOrderQuantity' + i" placeholder="Min Order Quantity {{i}}" /></td>
+            <td><input matInput [formControlName]="'pricePerQuantity' + i" placeholder="Price Per Quantity {{i}}" /></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Quantity Fields -->
     <mat-form-field appearance="outline" class="full-width">
-      <mat-label>Price Per Unit</mat-label>
-      <input matInput type="number" formControlName="pricePerUnit" placeholder="Enter price per unit" />
+      <mat-label>In Stock</mat-label>
+      <input matInput formControlName="inStock" type="number" />
     </mat-form-field>
 
-    <!-- Stock Quantity -->
     <mat-form-field appearance="outline" class="full-width">
-      <mat-label>Stock Quantity</mat-label>
-      <input matInput type="number" formControlName="stockQuantity" placeholder="Enter stock quantity" />
+      <mat-label>Quantity Available</mat-label>
+      <input matInput formControlName="quantityAvailable" type="number" />
     </mat-form-field>
 
-    <!-- Minimum Order Quantity -->
     <mat-form-field appearance="outline" class="full-width">
-      <mat-label>Minimum Order Quantity</mat-label>
-      <input matInput type="number" formControlName="minOrderQuantity" placeholder="Enter minimum order quantity" />
+      <mat-label>On Hold</mat-label>
+      <input matInput formControlName="onHold" type="number" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>On Hold Chance (%)</mat-label>
+      <input matInput formControlName="onHoldChance" type="number" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Allocated</mat-label>
+      <input matInput formControlName="allocated" type="number" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Quarantined</mat-label>
+      <input matInput formControlName="quarantined" type="number" />
     </mat-form-field>
   </form>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button (click)="onCancel()">Cancel</button>
-  <button mat-button color="primary" (click)="onSubmit()" [disabled]="!inventoryForm.valid">Save</button>
+  <button mat-button color="primary" [disabled]="!inventoryForm.valid">Save</button>
 </mat-dialog-actions>
