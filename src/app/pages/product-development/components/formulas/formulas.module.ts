@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormulasComponent } from './formulas.component';
 import { CreateFormulasComponent } from './create-formulas/create-formulas.component';
-import { ListFormulasComponent } from './list-formulas/list-formulas.component';
+import { ListFormulaComponent } from './list-formulas/list-formulas.component';
 import { MatIconModule } from '@angular/material/icon';
 import { FormulasRoutingModule } from './formulas-routing.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -15,17 +15,19 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
     FormulasComponent,
     CreateFormulasComponent,
-    ListFormulasComponent,
+    ListFormulaComponent,
   ],
   imports: [
     CommonModule,
     FormulasRoutingModule,
     MatIconModule,
+    FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
     MatCardModule,
@@ -37,6 +39,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatButtonModule,
     MatIconModule,
     MatCheckboxModule,
+    MatPaginatorModule,
+    MatSelectModule
   ],
 })
 export class FormulasModule {}

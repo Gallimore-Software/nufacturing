@@ -4,13 +4,12 @@ import { Observable } from 'rxjs';
 import { environment } from 'environment/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class InventoryService {
-
   private apiUrl = `${environment.apiUrl}/inventory`;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   // Get all inventory items
   getInventory(): Observable<any[]> {
@@ -30,7 +29,7 @@ export class InventoryService {
   // Update an existing inventory item by ID
   updateInventoryItem(id: string, item: any): Observable<any> {
     console.log(`Updating inventory item with ID: ${id}`); // Log the ID
-  console.log(`API URL: ${this.apiUrl}/${id}`); // Log the full URL
+    console.log(`API URL: ${this.apiUrl}/${id}`); // Log the full URL
     return this.http.put<any>(`${this.apiUrl}/${id}`, item);
   }
 

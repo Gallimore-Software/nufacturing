@@ -34,7 +34,7 @@ export class CustomersComponent implements OnInit, AfterViewInit {
     'email',
     'phone',
     'website',
-    'actions'
+    'actions',
   ];
   dataSource: MatTableDataSource<Customer> = new MatTableDataSource();
   isAdminOrManager: boolean = false;
@@ -46,7 +46,7 @@ export class CustomersComponent implements OnInit, AfterViewInit {
   constructor(
     private customerService: CustomerService,
     private authService: AuthService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
   ) {}
 
   ngOnInit(): void {
@@ -76,7 +76,6 @@ export class CustomersComponent implements OnInit, AfterViewInit {
     // const dialogRef = this.dialog.open(NewCustomerDialogComponent, {
     //   width: '450px',
     // });
-
     // dialogRef.afterClosed().subscribe((result: Customer | undefined) => {
     //   if (result) {
     //     this.customerService.createCustomer(result).subscribe((newCustomer) => {
@@ -91,7 +90,6 @@ export class CustomersComponent implements OnInit, AfterViewInit {
     //   width: '450px',
     //   data: customer
     // });
-
     // dialogRef.afterClosed().subscribe((result: Customer | undefined) => {
     //   if (result) {
     //     this.customerService.updateCustomer(customer._id, result).subscribe(
@@ -105,7 +103,7 @@ export class CustomersComponent implements OnInit, AfterViewInit {
   deleteCustomer(customer: Customer) {
     this.customerService.deleteCustomer(customer._id).subscribe(
       () => this.refreshCustomerData(),
-      (error) => console.error('Error deleting customer:', error)
+      (error) => console.error('Error deleting customer:', error),
     );
   }
 
@@ -119,7 +117,7 @@ export class CustomersComponent implements OnInit, AfterViewInit {
   openCustomerDetails(customer: Customer) {
     this.dialog.open(CustomerDetailsDialogComponent, {
       width: '450px',
-      data: customer
+      data: customer,
     });
   }
 }

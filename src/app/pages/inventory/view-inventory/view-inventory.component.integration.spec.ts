@@ -36,4 +36,3 @@ describe('ViewInventoryComponent Integration Test', () => {
     expect(component.inventory).toEqual(testData);
   });
 });
- 

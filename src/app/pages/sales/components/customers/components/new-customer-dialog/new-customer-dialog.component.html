@@ -7,21 +7,27 @@
       <mat-form-field appearance="outline">
         <mat-label>Company Name</mat-label>
         <input matInput formControlName="companyName" />
-        <mat-error *ngIf="customerForm.get('companyName')?.hasError('required')">
+        <mat-error
+          *ngIf="customerForm.get('companyName')?.hasError('required')"
+        >
           Company Name is required
         </mat-error>
       </mat-form-field>
-      
+
       <mat-form-field appearance="outline">
         <mat-label>Display Name</mat-label>
         <input matInput formControlName="displayName" />
-        <mat-error *ngIf="customerForm.get('displayName')?.hasError('required')">
+        <mat-error
+          *ngIf="customerForm.get('displayName')?.hasError('required')"
+        >
           Display Name is required
         </mat-error>
       </mat-form-field>
 
       <div class="button-group">
-        <button mat-raised-button color="primary" (click)="nextStep()">Next</button>
+        <button mat-raised-button color="primary" (click)="nextStep()">
+          Next
+        </button>
       </div>
     </div>
 
@@ -31,7 +37,11 @@
       <mat-form-field appearance="outline">
         <mat-label>First Name</mat-label>
         <input matInput formControlName="primaryContact.firstName" />
-        <mat-error *ngIf="customerForm.get('primaryContact.firstName')?.hasError('required')">
+        <mat-error
+          *ngIf="
+            customerForm.get('primaryContact.firstName')?.hasError('required')
+          "
+        >
           First Name is required
         </mat-error>
       </mat-form-field>
@@ -39,7 +49,11 @@
       <mat-form-field appearance="outline">
         <mat-label>Last Name</mat-label>
         <input matInput formControlName="primaryContact.lastName" />
-        <mat-error *ngIf="customerForm.get('primaryContact.lastName')?.hasError('required')">
+        <mat-error
+          *ngIf="
+            customerForm.get('primaryContact.lastName')?.hasError('required')
+          "
+        >
           Last Name is required
         </mat-error>
       </mat-form-field>
@@ -47,10 +61,14 @@
       <mat-form-field appearance="outline">
         <mat-label>Email</mat-label>
         <input matInput formControlName="primaryContact.email" />
-        <mat-error *ngIf="customerForm.get('primaryContact.email')?.hasError('required')">
+        <mat-error
+          *ngIf="customerForm.get('primaryContact.email')?.hasError('required')"
+        >
           Email is required
         </mat-error>
-        <mat-error *ngIf="customerForm.get('primaryContact.email')?.hasError('email')">
+        <mat-error
+          *ngIf="customerForm.get('primaryContact.email')?.hasError('email')"
+        >
           Invalid email address
         </mat-error>
       </mat-form-field>
@@ -58,14 +76,18 @@
       <mat-form-field appearance="outline">
         <mat-label>Phone</mat-label>
         <input matInput formControlName="primaryContact.phone" />
-        <mat-error *ngIf="customerForm.get('primaryContact.phone')?.hasError('required')">
+        <mat-error
+          *ngIf="customerForm.get('primaryContact.phone')?.hasError('required')"
+        >
           Phone is required
         </mat-error>
       </mat-form-field>
 
       <div class="button-group">
         <button mat-button (click)="prevStep()">Back</button>
-        <button mat-raised-button color="primary" (click)="nextStep()">Next</button>
+        <button mat-raised-button color="primary" (click)="nextStep()">
+          Next
+        </button>
       </div>
     </div>
 
@@ -85,7 +107,9 @@
       <mat-form-field appearance="outline">
         <mat-label>Email</mat-label>
         <input matInput formControlName="complianceContact.email" />
-        <mat-error *ngIf="customerForm.get('complianceContact.email')?.hasError('email')">
+        <mat-error
+          *ngIf="customerForm.get('complianceContact.email')?.hasError('email')"
+        >
           Invalid email address
         </mat-error>
       </mat-form-field>
@@ -97,7 +121,9 @@
 
       <div class="button-group">
         <button mat-button (click)="prevStep()">Back</button>
-        <button mat-raised-button color="primary" (click)="nextStep()">Next</button>
+        <button mat-raised-button color="primary" (click)="nextStep()">
+          Next
+        </button>
       </div>
     </div>
 
@@ -117,7 +143,9 @@
       <mat-form-field appearance="outline">
         <mat-label>Email</mat-label>
         <input matInput formControlName="accountingContact.email" />
-        <mat-error *ngIf="customerForm.get('accountingContact.email')?.hasError('email')">
+        <mat-error
+          *ngIf="customerForm.get('accountingContact.email')?.hasError('email')"
+        >
           Invalid email address
         </mat-error>
       </mat-form-field>
@@ -129,7 +157,9 @@
 
       <div class="button-group">
         <button mat-button (click)="prevStep()">Back</button>
-        <button mat-raised-button color="primary" (click)="nextStep()">Next</button>
+        <button mat-raised-button color="primary" (click)="nextStep()">
+          Next
+        </button>
       </div>
     </div>
 
@@ -195,7 +225,9 @@
 
       <div class="button-group">
         <button mat-button (click)="prevStep()">Back</button>
-        <button mat-raised-button color="primary" (click)="nextStep()">Review</button>
+        <button mat-raised-button color="primary" (click)="nextStep()">
+          Review
+        </button>
       </div>
     </div>
 
@@ -203,20 +235,70 @@
     <div *ngIf="currentStep === 6">
       <h2>Review Your Information</h2>
       <div class="review-section">
-        <p><strong>Company Name:</strong> {{ customerForm.get('companyName')?.value }}</p>
-        <p><strong>Display Name:</strong> {{ customerForm.get('displayName')?.value }}</p>
-        <p><strong>Primary Contact:</strong> {{ customerForm.get('primaryContact.firstName')?.value }} {{ customerForm.get('primaryContact.lastName')?.value }}</p>
-        <p><strong>Email:</strong> {{ customerForm.get('primaryContact.email')?.value }}</p>
-        <p><strong>Phone:</strong> {{ customerForm.get('primaryContact.phone')?.value }}</p>
-        <p><strong>Compliance Contact:</strong> {{ customerForm.get('complianceContact.firstName')?.value }} {{ customerForm.get('complianceContact.lastName')?.value }}</p>
-        <p><strong>Email:</strong> {{ customerForm.get('complianceContact.email')?.value }}</p>
-        <p><strong>Phone:</strong> {{ customerForm.get('complianceContact.phone')?.value }}</p>
-        <p><strong>Accounting Contact:</strong> {{ customerForm.get('accountingContact.firstName')?.value }} {{ customerForm.get('accountingContact.lastName')?.value }}</p>
-        <p><strong>Email:</strong> {{ customerForm.get('accountingContact.email')?.value }}</p>
-        <p><strong>Phone:</strong> {{ customerForm.get('accountingContact.phone')?.value }}</p>
-        <p><strong>Website:</strong> {{ customerForm.get('website')?.value }}</p>
-        <p><strong>Business Address:</strong> {{ customerForm.get('businessAddress.line1')?.value }}, {{ customerForm.get('businessAddress.city')?.value }}, {{ customerForm.get('businessAddress.state')?.value }}, {{ customerForm.get('businessAddress.zip')?.value }}</p>
-        <p><strong>Fulfillment Address:</strong> {{ customerForm.get('fulfillmentAddress.line1')?.value }}, {{ customerForm.get('fulfillmentAddress.city')?.value }}, {{ customerForm.get('fulfillmentAddress.state')?.value }}, {{ customerForm.get('fulfillmentAddress.zip')?.value }}</p>
+        <p>
+          <strong>Company Name:</strong>
+          {{ customerForm.get("companyName")?.value }}
+        </p>
+        <p>
+          <strong>Display Name:</strong>
+          {{ customerForm.get("displayName")?.value }}
+        </p>
+        <p>
+          <strong>Primary Contact:</strong>
+          {{ customerForm.get("primaryContact.firstName")?.value }}
+          {{ customerForm.get("primaryContact.lastName")?.value }}
+        </p>
+        <p>
+          <strong>Email:</strong>
+          {{ customerForm.get("primaryContact.email")?.value }}
+        </p>
+        <p>
+          <strong>Phone:</strong>
+          {{ customerForm.get("primaryContact.phone")?.value }}
+        </p>
+        <p>
+          <strong>Compliance Contact:</strong>
+          {{ customerForm.get("complianceContact.firstName")?.value }}
+          {{ customerForm.get("complianceContact.lastName")?.value }}
+        </p>
+        <p>
+          <strong>Email:</strong>
+          {{ customerForm.get("complianceContact.email")?.value }}
+        </p>
+        <p>
+          <strong>Phone:</strong>
+          {{ customerForm.get("complianceContact.phone")?.value }}
+        </p>
+        <p>
+          <strong>Accounting Contact:</strong>
+          {{ customerForm.get("accountingContact.firstName")?.value }}
+          {{ customerForm.get("accountingContact.lastName")?.value }}
+        </p>
+        <p>
+          <strong>Email:</strong>
+          {{ customerForm.get("accountingContact.email")?.value }}
+        </p>
+        <p>
+          <strong>Phone:</strong>
+          {{ customerForm.get("accountingContact.phone")?.value }}
+        </p>
+        <p>
+          <strong>Website:</strong> {{ customerForm.get("website")?.value }}
+        </p>
+        <p>
+          <strong>Business Address:</strong>
+          {{ customerForm.get("businessAddress.line1")?.value }},
+          {{ customerForm.get("businessAddress.city")?.value }},
+          {{ customerForm.get("businessAddress.state")?.value }},
+          {{ customerForm.get("businessAddress.zip")?.value }}
+        </p>
+        <p>
+          <strong>Fulfillment Address:</strong>
+          {{ customerForm.get("fulfillmentAddress.line1")?.value }},
+          {{ customerForm.get("fulfillmentAddress.city")?.value }},
+          {{ customerForm.get("fulfillmentAddress.state")?.value }},
+          {{ customerForm.get("fulfillmentAddress.zip")?.value }}
+        </p>
       </div>
       <div class="button-group">
         <button mat-button (click)="prevStep()">Back</button>

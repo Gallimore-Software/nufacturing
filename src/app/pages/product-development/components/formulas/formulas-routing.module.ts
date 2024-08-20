@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FormulasComponent } from './formulas.component';
 import { CreateFormulasComponent } from './create-formulas/create-formulas.component';
-import { ListFormulasComponent } from './list-formulas/list-formulas.component';
+import { ListFormulaComponent } from './list-formulas/list-formulas.component';
 
 const routes: Routes = [
   {
@@ -11,7 +11,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'create-formulas',
+        redirectTo: 'list-formulas',
         pathMatch: 'full',
       },
       {
@@ -20,7 +20,7 @@ const routes: Routes = [
       },
       {
         path: 'list-formulas',
-        component: ListFormulasComponent,
+        component: ListFormulaComponent,
       },
     ],
   },

@@ -92,10 +92,11 @@ import { AuthInterceptor } from './components/auth/auth.interceptor';
       useClass: AuthInterceptor,
       multi: true,
     },
-    { 
+    {
       provide: HTTP_INTERCEPTORS,
-      useClass: HasuraInterceptor, multi: true 
-    }
+      useClass: HasuraInterceptor,
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent],
 })

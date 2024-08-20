@@ -2,7 +2,10 @@
 <div mat-dialog-content>
   <p><strong>Company Name:</strong> {{ data.companyName }}</p>
   <p><strong>Display Name:</strong> {{ data.displayName }}</p>
-  <p><strong>Primary Contact:</strong> {{ data.primaryContact.firstName }} {{ data.primaryContact.lastName }}</p>
+  <p>
+    <strong>Primary Contact:</strong> {{ data.primaryContact.firstName }}
+    {{ data.primaryContact.lastName }}
+  </p>
   <p><strong>Email:</strong> {{ data.primaryContact.email }}</p>
   <p><strong>Phone:</strong> {{ data.primaryContact.phone }}</p>
   <p><strong>Website:</strong> {{ data.website }}</p>

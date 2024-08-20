@@ -47,7 +47,7 @@ import { MatDividerModule } from '@angular/material/divider';
     MatSortModule,
     MatOptionModule,
     MatDialogModule,
-    MatDividerModule
+    MatDividerModule,
   ],
 })
 export class CustomersModule {}

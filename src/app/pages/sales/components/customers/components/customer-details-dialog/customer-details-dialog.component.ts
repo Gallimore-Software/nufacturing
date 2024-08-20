@@ -17,12 +17,12 @@ interface CustomerDetails {
 @Component({
   selector: 'app-customer-details-dialog',
   templateUrl: './customer-details-dialog.component.html',
-  styleUrls: ['./customer-details-dialog.component.scss']
+  styleUrls: ['./customer-details-dialog.component.scss'],
 })
 export class CustomerDetailsDialogComponent {
   constructor(
     public dialogRef: MatDialogRef<CustomerDetailsDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: CustomerDetails
+    @Inject(MAT_DIALOG_DATA) public data: CustomerDetails,
   ) {}
 
   closeDialog(): void {

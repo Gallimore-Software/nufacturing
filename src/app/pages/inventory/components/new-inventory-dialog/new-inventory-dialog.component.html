@@ -4,9 +4,16 @@
     <!-- Vendor -->
     <mat-form-field appearance="outline" class="full-width">
       <mat-label>Vendor</mat-label>
-      <input matInput formControlName="vendor" placeholder="Search Vendor" [matAutocomplete]="autoVendor" />
+      <input
+        matInput
+        formControlName="vendor"
+        placeholder="Search Vendor"
+        [matAutocomplete]="autoVendor"
+      />
       <mat-autocomplete #autoVendor="matAutocomplete">
-        <mat-option *ngFor="let vendor of filteredVendors" [value]="vendor">{{ vendor }}</mat-option>
+        <mat-option *ngFor="let vendor of filteredVendors" [value]="vendor">{{
+          vendor
+        }}</mat-option>
       </mat-autocomplete>
     </mat-form-field>
 
@@ -43,18 +50,36 @@
     <!-- Associated Formulas -->
     <mat-form-field appearance="outline" class="full-width">
       <mat-label>Associated Formulas</mat-label>
-      <input matInput formControlName="associatedFormulas" placeholder="Search Formula" [matAutocomplete]="autoFormulas" />
+      <input
+        matInput
+        formControlName="associatedFormulas"
+        placeholder="Search Formula"
+        [matAutocomplete]="autoFormulas"
+      />
       <mat-autocomplete #autoFormulas="matAutocomplete">
-        <mat-option *ngFor="let formula of filteredFormulas" [value]="formula">{{ formula }}</mat-option>
+        <mat-option
+          *ngFor="let formula of filteredFormulas"
+          [value]="formula"
+          >{{ formula }}</mat-option
+        >
       </mat-autocomplete>
     </mat-form-field>
 
     <!-- Associated Product SKUs -->
     <mat-form-field appearance="outline" class="full-width">
       <mat-label>Associated Product SKUs</mat-label>
-      <input matInput formControlName="associatedProductSkus" placeholder="Search Product SKU" [matAutocomplete]="autoProductSkus" />
+      <input
+        matInput
+        formControlName="associatedProductSkus"
+        placeholder="Search Product SKU"
+        [matAutocomplete]="autoProductSkus"
+      />
       <mat-autocomplete #autoProductSkus="matAutocomplete">
-        <mat-option *ngFor="let productSku of filteredProductSkus" [value]="productSku">{{ productSku }}</mat-option>
+        <mat-option
+          *ngFor="let productSku of filteredProductSkus"
+          [value]="productSku"
+          >{{ productSku }}</mat-option
+        >
       </mat-autocomplete>
     </mat-form-field>
 
@@ -105,7 +130,9 @@
     </mat-form-field>
 
     <!-- Pricing Table Toggle -->
-    <mat-slide-toggle (change)="togglePricingTable($event)">Show Pricing Table</mat-slide-toggle>
+    <mat-slide-toggle (change)="togglePricingTable($event)"
+      >Show Pricing Table</mat-slide-toggle
+    >
 
     <!-- Pricing Table -->
     <div *ngIf="showPricingTable">
@@ -118,8 +145,20 @@
         </thead>
         <tbody>
           <tr *ngFor="let i of [1, 2, 3]">
-            <td><input matInput [formControlName]="'minOrderQuantity' + i" placeholder="Min Order Quantity {{i}}" /></td>
-            <td><input matInput [formControlName]="'pricePerQuantity' + i" placeholder="Price Per Quantity {{i}}" /></td>
+            <td>
+              <input
+                matInput
+                [formControlName]="'minOrderQuantity' + i"
+                placeholder="Min Order Quantity {{ i }}"
+              />
+            </td>
+            <td>
+              <input
+                matInput
+                [formControlName]="'pricePerQuantity' + i"
+                placeholder="Price Per Quantity {{ i }}"
+              />
+            </td>
           </tr>
         </tbody>
       </table>
@@ -159,5 +198,7 @@
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button (click)="onCancel()">Cancel</button>
-  <button mat-button color="primary" [disabled]="!inventoryForm.valid">Save</button>
+  <button mat-button color="primary" [disabled]="!inventoryForm.valid">
+    Save
+  </button>
 </mat-dialog-actions>
