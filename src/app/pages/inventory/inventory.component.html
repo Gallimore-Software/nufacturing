@@ -1,7 +1,6 @@
 <div class="dashboard">
   <mat-card class="summary-card">
     <h3>Inventory Summary</h3>
-    <!-- Replace this with an actual chart component -->
     <canvas id="inventoryChart"></canvas>
     <div *ngIf="isAdminOrManager">
       <button mat-raised-button color="primary" (click)="createNewInventory()">

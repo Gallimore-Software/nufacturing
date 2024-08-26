@@ -6,25 +6,26 @@ import { MatSort } from '@angular/material/sort';
 import { AuthService } from 'src/app/components/auth/auth.service';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateFormulasComponent } from '../create-formulas/create-formulas.component'; // Adjust path
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 
-interface Ingredient {
+export interface Ingredient {
   name: string;
-  scientificName: string;
+  // scientificName: string;
   perUnit: number;
 }
 
-interface FormulaItem {
+export interface FormulaItem {
   _id: string;
-  sku: string;
-  displayName: string;
-  scientificName: string;
-  unitOfMeasurement: string;
+  code: string; 
+  name: string; 
   productType: string;
+  unitOfMeasurement: string;
   activeIngredients: Ingredient[];
   inactiveIngredients: Ingredient[];
   createdAt: Date;
   updatedAt: Date;
 }
+
 
 @Component({
   selector: 'app-formula',
@@ -35,7 +36,7 @@ export class ListFormulaComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = [
     'sku',
     'displayName',
-    'scientificName',
+    // 'scientificName',
     'unitOfMeasurement',
     'productType',
     'activeIngredients',
@@ -56,11 +57,7 @@ export class ListFormulaComponent implements OnInit, AfterViewInit {
   ) {}
 
   ngOnInit(): void {
-    // Fetch formulas from the service and assign to dataSource
-    this.formulaService.getFormulas().subscribe((data: FormulaItem[]) => {
-      console.log('Fetched Formulas:', data); // Debugging line
-      this.dataSource.data = data;
-    });
+    this.refreshFormulas();
 
     // Check if the user is admin or manager
     this.authService.userRole.subscribe((role: string | null) => {
@@ -81,14 +78,15 @@ export class ListFormulaComponent implements OnInit, AfterViewInit {
 
   createNewFormula() {
     const dialogRef = this.dialog.open(CreateFormulasComponent, {
-      width: '450px',
+      width: '500px',
     });
 
     dialogRef.afterClosed().subscribe((result: FormulaItem | undefined) => {
       if (result) {
         this.formulaService.createFormula(result).subscribe((newFormula: any) => {
-          this.dataSource.data = [...this.dataSource.data, newFormula];
-          console.log('New formula created:', newFormula); // Debugging line
+          this.dataSource.data = [...this.dataSource.data, {_id: newFormula._id, ...newFormula}];
+          console.log(this.dataSource.data);
+          
         });
       }
     });
@@ -110,17 +108,33 @@ export class ListFormulaComponent implements OnInit, AfterViewInit {
     });
   }
 
-  refreshFormulas() {
+ refreshFormulas() {
     this.formulaService.getFormulas().subscribe((data: FormulaItem[]) => {
-      console.log('Refreshed Formulas:', data); // Debugging line
-      this.dataSource.data = data;
+      const transformedData = data.map((item) => ({
+        ...item,
+        sku: item.code,
+        displayName: item.name,
+        // scientificName: item.activeIngredients.length > 0 ? item.activeIngredients[0].scientificName : '', // Display first active ingredient's scientific name
+      }));
+      
+      this.dataSource.data = transformedData;
     });
   }
 
-  deleteFormulaItem(item: FormulaItem) {
-    this.formulaService.deleteFormula(item._id).subscribe(() => {
-      console.log('Formula deleted:', item); // Debugging line
-      this.refreshFormulas();
+ deleteFormulaItem(item: FormulaItem) {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      width: '400px',
+      data: {
+        message: `Are you sure you want to delete the formula ${item.name}?`
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.formulaService.deleteFormula(item._id).subscribe(() => {
+          this.refreshFormulas();
+        });
+      }
     });
   }
 }

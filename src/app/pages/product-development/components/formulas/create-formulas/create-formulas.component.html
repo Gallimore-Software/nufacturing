@@ -1,184 +1,121 @@
-<div
-  fxLayout="column"
-  fxLayoutGap="20px"
-  class="create-formula"
-  [formGroup]="formulaForm"
->
-  <!-- Basic Information Section -->
-  <mat-card>
-    <mat-card-header>
+<div class="formula-form-container mat-elevation-z8">
+  <form [formGroup]="formulaForm" (ngSubmit)="onSubmit()">
+    <mat-card>
       <mat-card-title>Basic Information</mat-card-title>
-    </mat-card-header>
-    <mat-card-content formGroupName="basicInfo">
-      <mat-form-field appearance="fill">
-        <mat-label>Formula Name</mat-label>
-        <input matInput formControlName="formulaName" />
-      </mat-form-field>
-      <mat-form-field appearance="fill">
-        <mat-label>Formula Code</mat-label>
-        <input matInput formControlName="formulaCode" />
-      </mat-form-field>
-      <mat-form-field appearance="fill">
-        <mat-label>Product Type</mat-label>
-        <mat-select formControlName="productType">
-          <mat-option value="Capsule">Capsule</mat-option>
-          <mat-option value="Powder">Powder</mat-option>
-          <mat-option value="Tincture">Tincture</mat-option>
-          <mat-option value="Gummies">Gummies</mat-option>
-        </mat-select>
-      </mat-form-field>
-    </mat-card-content>
-  </mat-card>
-
-  <!-- Ingredients Section -->
-  <mat-card formArrayName="ingredients">
-    <mat-card-header>
-      <mat-card-content style="display: flex; flex-direction: row">
-        <mat-card-title>Ingredients List</mat-card-title>
-        <button mat-button (click)="addIngredient()">Add Ingredient</button>
-        <button
-          mat-button
-          style="background-color: #00b655"
-          (click)="removeIngredient()"
-        >
-          Remove Ingredient
-        </button>
-      </mat-card-content>
-    </mat-card-header>
-    <mat-card-content
-      *ngFor="let ingredient of ingredients.controls; let i = index"
-      [formGroupName]="i"
-    >
-      <mat-form-field appearance="fill">
-        <mat-label>Ingredient Name</mat-label>
-        <mat-select formControlName="ingredientName">
-          <!-- Options dynamically populated from available ingredients -->
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field appearance="fill">
-        <mat-label>Per Capsule (mg)</mat-label>
-        <input matInput type="number" formControlName="perCapsuleMg" />
-      </mat-form-field>
-      <!-- Additional form fields for each ingredient -->
-    </mat-card-content>
-  </mat-card>
-
-  <!-- Nutritional Information Section -->
-  <mat-card formGroupName="nutritionalInfo">
-    <mat-card-header>
-      <mat-card-content style="display: flex; flex-direction: row">
-        <mat-card-title>Nutritional Information</mat-card-title>
-        <button mat-button (click)="addNutrient()">Add Nutrient</button>
-        <button
-          mat-button
-          style="background-color: #00b655"
-          (click)="removeNutrient()"
-        >
-          Remove Nutrient
-        </button>
-      </mat-card-content>
-    </mat-card-header>
-    <mat-card-content>
-      <mat-form-field appearance="fill">
-        <mat-label>Serving Size</mat-label>
-        <input matInput type="number" formControlName="servingSize" />
-      </mat-form-field>
-      <mat-form-field appearance="fill">
-        <mat-label>Calories</mat-label>
-        <input matInput type="number" formControlName="calories" />
-      </mat-form-field>
-      <!-- Dynamic fields for additional nutrients -->
-      <div formArrayName="otherNutrients">
-        <div
-          *ngFor="let nutrient of otherNutrients.controls; let j = index"
-          [formGroupName]="j"
-        >
-          <mat-form-field appearance="fill">
-            <mat-label>Nutrient Name</mat-label>
-            <input matInput formControlName="nutrientName" />
+      <mat-card-content>
+        <div class="form-group">
+          <mat-form-field appearance="outline">
+            <mat-label>Formula Name</mat-label>
+            <input matInput id="name" formControlName="name" />
+            <mat-error *ngIf="formulaForm.get('name')?.hasError('required')">
+              Formula Name is required
+            </mat-error>
           </mat-form-field>
-          <mat-form-field appearance="fill">
-            <mat-label>Amount</mat-label>
-            <input matInput type="number" formControlName="amount" />
+
+          <mat-form-field appearance="outline">
+            <mat-label>Product Type</mat-label>
+            <mat-select id="productType" formControlName="productType">
+              <mat-option value="" disabled>Select Product Type</mat-option>
+              <mat-option *ngFor="let type of productTypes" [value]="type">
+                {{ type }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="formulaForm.get('productType')?.hasError('required')">
+              Product Type is required
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Unit of Measurement</mat-label>
+            <mat-select id="unitOfMeasurement" formControlName="unitOfMeasurement">
+              <mat-option *ngFor="let unit of (unitOptions[formulaForm.get('productType')?.value] || [])" [value]="unit">
+                {{ unit }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="formulaForm.get('unitOfMeasurement')?.hasError('required')">
+              Unit of Measurement is required
+            </mat-error>
           </mat-form-field>
         </div>
-      </div>
-    </mat-card-content>
-  </mat-card>
+      </mat-card-content>
+    </mat-card>
 
-  <!-- Manufacturing Instructions Section -->
-  <mat-card formGroupName="manufacturingInstructions">
-    <mat-card-header>
-      <mat-card-title>Manufacturing Instructions</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <textarea
-        matInput
-        formControlName="preparationInstructions"
-        placeholder="Preparation Instructions"
-      ></textarea>
-      <textarea
-        matInput
-        formControlName="mixingInstructions"
-        placeholder="Mixing Instructions"
-      ></textarea>
-      <textarea
-        matInput
-        formControlName="packagingInstructions"
-        placeholder="Packaging Instructions"
-      ></textarea>
-    </mat-card-content>
-  </mat-card>
+    <mat-card>
+      <mat-card-title>Active Ingredients</mat-card-title>
+      <mat-card-content formArrayName="activeIngredients">
+        <div *ngFor="let ingredient of activeIngredients.controls; let i=index" [formGroupName]="i" class="ingredient-group">
+          <mat-form-field appearance="outline">
+            <mat-label>Name</mat-label>
+            <input matInput placeholder="Name" formControlName="name" />
+            <mat-error *ngIf="ingredient.get('name')?.hasError('required')">
+              Name is required
+            </mat-error>
+          </mat-form-field>
 
-  <!-- Quality Control Section -->
-  <mat-card formGroupName="qualityControl">
-    <mat-card-header>
-      <mat-card-title>Quality Control</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <textarea
-        matInput
-        formControlName="qualityControlTests"
-        placeholder="Quality Control Tests"
-      ></textarea>
-      <textarea
-        matInput
-        formControlName="acceptanceCriteria"
-        placeholder="Acceptance Criteria"
-      ></textarea>
-    </mat-card-content>
-  </mat-card>
+          <mat-form-field appearance="outline">
+            <mat-label>Scientific Name</mat-label>
+            <input matInput placeholder="Scientific Name" formControlName="scientificName" />
+            <mat-error *ngIf="ingredient.get('scientificName')?.hasError('required')">
+              Scientific Name is required
+            </mat-error>
+          </mat-form-field>
 
-  <!-- Regulatory Compliance Section -->
-  <mat-card formGroupName="regulatoryCompliance">
-    <mat-card-header>
-      <mat-card-title>Regulatory Compliance</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <textarea
-        matInput
-        formControlName="regulatoryRequirements"
-        placeholder="Regulatory Requirements"
-      ></textarea>
-      <mat-checkbox formControlName="GMP">GMP Certified</mat-checkbox>
-      <mat-checkbox formControlName="FDA">FDA Approved</mat-checkbox>
-      <mat-checkbox formControlName="ISO">ISO Certified</mat-checkbox>
-      <!-- <section class="example-section" [formGroup]="regulatoryCompliance?.certifications">
-        <h4>You chose:</h4>
-        {{regulatoryCompliance?.certifications?.value | json}}
-      </section> -->
-    </mat-card-content>
-  </mat-card>
+          <mat-form-field appearance="outline">
+            <mat-label>Per Unit</mat-label>
+            <input matInput type="number" placeholder="Per Unit" formControlName="perUnit" />
+            <mat-error *ngIf="ingredient.get('perUnit')?.hasError('required') || ingredient.get('perUnit')?.hasError('min')">
+              Per Unit must be a positive number
+            </mat-error>
+          </mat-form-field>
 
-  <!-- Additional Information Section -->
-  <mat-card formGroupName="additionalInfo">
-    <mat-card-header>
-      <mat-card-title>Additional Information</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <textarea matInput formControlName="notes" placeholder="Notes"></textarea>
-    </mat-card-content>
-  </mat-card>
+          <button mat-icon-button color="warn" (click)="removeActiveIngredient(i)">
+            <mat-icon>remove_circle</mat-icon>
+          </button>
+        </div>
+        <button mat-button color="primary" (click)="addActiveIngredient()">Add Active Ingredient</button>
+      </mat-card-content>
+    </mat-card>
 
-  <button mat-raised-button color="primary" type="submit">Submit</button>
+    <mat-card>
+      <mat-card-title>Inactive Ingredients</mat-card-title>
+      <mat-card-content formArrayName="inactiveIngredients">
+        <div *ngFor="let ingredient of inactiveIngredients.controls; let i=index" [formGroupName]="i" class="ingredient-group">
+          <mat-form-field appearance="outline">
+            <mat-label>Name</mat-label>
+            <input matInput placeholder="Name" formControlName="name" />
+            <mat-error *ngIf="ingredient.get('name')?.hasError('required')">
+              Name is required
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Scientific Name</mat-label>
+            <input matInput placeholder="Scientific Name" formControlName="scientificName" />
+            <mat-error *ngIf="ingredient.get('scientificName')?.hasError('required')">
+              Scientific Name is required
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Per Unit</mat-label>
+            <input matInput type="number" placeholder="Per Unit" formControlName="perUnit" />
+            <mat-error *ngIf="ingredient.get('perUnit')?.hasError('required') || ingredient.get('perUnit')?.hasError('min')">
+              Per Unit must be a positive number
+            </mat-error>
+          </mat-form-field>
+
+          <button mat-icon-button color="warn" (click)="removeInactiveIngredient(i)">
+            <mat-icon>remove_circle</mat-icon>
+          </button>
+        </div>
+        <button mat-button color="primary" (click)="addInactiveIngredient()">Add Inactive Ingredient</button>
+      </mat-card-content>
+    </mat-card>
+
+    <div class="form-actions">
+      <button mat-raised-button color="primary" type="submit" [disabled]="formulaForm.invalid">
+        Submit Formula
+      </button>
+    </div>
+  </form>
 </div>
