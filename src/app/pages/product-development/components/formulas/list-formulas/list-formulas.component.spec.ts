@@ -21,7 +21,7 @@ describe('ListFormulaComponent - View All Formulas', () => {
       createFormula: jest.fn().mockReturnValue(of({})),
       updateFormula: jest.fn().mockReturnValue(of({})),
       deleteFormula: jest.fn().mockReturnValue(of({})),
-      http: {}, 
+      http: {},
       apiUrl: {},
     } as unknown as jest.Mocked<ListFormulasService>;
 
@@ -33,7 +33,7 @@ describe('ListFormulaComponent - View All Formulas', () => {
       isLoggedIn: of(true),
       isAuthenticated: true,
       userRoleSubject: new BehaviorSubject('admin'),
-      http: {}, 
+      http: {},
       router: {},
     } as unknown as jest.Mocked<AuthService>;
 
@@ -66,13 +66,35 @@ describe('ListFormulaComponent - View All Formulas', () => {
   it('should display all formulas in the list', () => {
     // Mock data
     const formulaData = [
-      { _id: '1', code: '001', name: 'Formula One', unitOfMeasurement: 'kg', productType: 'Type A', activeIngredients: [], inactiveIngredients: [], createdAt: new Date(), updatedAt: new Date() },
-      { _id: '2', code: '002', name: 'Formula Two', unitOfMeasurement: 'l', productType: 'Type B', activeIngredients: [], inactiveIngredients: [], createdAt: new Date(), updatedAt: new Date() }
+      {
+        _id: '1',
+        code: '001',
+        name: 'Formula One',
+        unitOfMeasurement: 'kg',
+        productType: 'Type A',
+        activeIngredients: [],
+        inactiveIngredients: [],
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        _id: '2',
+        code: '002',
+        name: 'Formula Two',
+        unitOfMeasurement: 'l',
+        productType: 'Type B',
+        activeIngredients: [],
+        inactiveIngredients: [],
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
     ];
 
     // Spy on the service method
-    jest.spyOn(mockFormulaService, 'getFormulas').mockReturnValue(of(formulaData));
-    
+    jest
+      .spyOn(mockFormulaService, 'getFormulas')
+      .mockReturnValue(of(formulaData));
+
     // Call the method to refresh formulas
     component.refreshFormulas();
     fixture.detectChanges(); // Trigger change detection
@@ -84,18 +106,32 @@ describe('ListFormulaComponent - View All Formulas', () => {
   });
 
   it('should delete a formula when confirmed', () => {
-    const formulaToDelete = { _id: '1', code: '001', name: 'Formula One', unitOfMeasurement: 'kg', productType: 'Type A', activeIngredients: [], inactiveIngredients: [], createdAt: new Date(), updatedAt: new Date() };
+    const formulaToDelete = {
+      _id: '1',
+      code: '001',
+      name: 'Formula One',
+      unitOfMeasurement: 'kg',
+      productType: 'Type A',
+      activeIngredients: [],
+      inactiveIngredients: [],
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    };
 
     // Spy on the dialog open method
     const dialogSpy = jest.spyOn(mockDialog, 'open').mockReturnValue({
-      afterClosed: () => of(true) // Simulate user confirming the action
+      afterClosed: () => of(true), // Simulate user confirming the action
     } as any);
 
     // Spy on the delete formula method
-    const deleteSpy = jest.spyOn(mockFormulaService, 'deleteFormula').mockReturnValue(of({}));
+    const deleteSpy = jest
+      .spyOn(mockFormulaService, 'deleteFormula')
+      .mockReturnValue(of({}));
 
     // Spy on the refreshFormulas method
-    const refreshSpy = jest.spyOn(component, 'refreshFormulas').mockImplementation(() => {});
+    const refreshSpy = jest
+      .spyOn(component, 'refreshFormulas')
+      .mockImplementation(() => {});
 
     // Call deleteFormulaItem
     component.deleteFormulaItem(formulaToDelete);
@@ -103,26 +139,42 @@ describe('ListFormulaComponent - View All Formulas', () => {
     // Assertions
     expect(dialogSpy).toHaveBeenCalledWith(ConfirmDialogComponent, {
       width: '400px',
-      data: { message: `Are you sure you want to delete the formula ${formulaToDelete.name}?` }
+      data: {
+        message: `Are you sure you want to delete the formula ${formulaToDelete.name}?`,
+      },
     });
     expect(deleteSpy).toHaveBeenCalledWith(formulaToDelete._id);
     expect(refreshSpy).toHaveBeenCalled();
   });
 
   it('should edit a formula and update it when confirmed', () => {
-    const formulaToEdit = { _id: '1', code: '001', name: 'Formula One', unitOfMeasurement: 'kg', productType: 'Type A', activeIngredients: [], inactiveIngredients: [], createdAt: new Date(), updatedAt: new Date() };
+    const formulaToEdit = {
+      _id: '1',
+      code: '001',
+      name: 'Formula One',
+      unitOfMeasurement: 'kg',
+      productType: 'Type A',
+      activeIngredients: [],
+      inactiveIngredients: [],
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    };
     const updatedFormula = { ...formulaToEdit, name: 'Updated Formula One' };
 
     // Spy on the dialog open method
     const dialogSpy = jest.spyOn(mockDialog, 'open').mockReturnValue({
-      afterClosed: () => of(updatedFormula) // Simulate user confirming the updated formula
+      afterClosed: () => of(updatedFormula), // Simulate user confirming the updated formula
     } as any);
 
     // Spy on the update formula method
-    const updateSpy = jest.spyOn(mockFormulaService, 'updateFormula').mockReturnValue(of({}));
+    const updateSpy = jest
+      .spyOn(mockFormulaService, 'updateFormula')
+      .mockReturnValue(of({}));
 
     // Spy on the refreshFormulas method
-    const refreshSpy = jest.spyOn(component, 'refreshFormulas').mockImplementation(() => {});
+    const refreshSpy = jest
+      .spyOn(component, 'refreshFormulas')
+      .mockImplementation(() => {});
 
     // Call editFormulaItem
     component.editFormulaItem(formulaToEdit);
@@ -130,7 +182,7 @@ describe('ListFormulaComponent - View All Formulas', () => {
     // Assertions
     expect(dialogSpy).toHaveBeenCalledWith(CreateFormulasComponent, {
       width: '450px',
-      data: formulaToEdit
+      data: formulaToEdit,
     });
     expect(updateSpy).toHaveBeenCalledWith(formulaToEdit._id, updatedFormula);
     expect(refreshSpy).toHaveBeenCalled();

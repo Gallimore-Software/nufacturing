@@ -42,7 +42,7 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
     MatIconModule,
     MatCheckboxModule,
     MatPaginatorModule,
-    MatSelectModule
+    MatSelectModule,
   ],
 })
 export class FormulasModule {}

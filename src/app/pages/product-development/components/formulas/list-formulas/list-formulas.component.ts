@@ -16,8 +16,8 @@ export interface Ingredient {
 
 export interface FormulaItem {
   _id: string;
-  code: string; 
-  name: string; 
+  code: string;
+  name: string;
   productType: string;
   unitOfMeasurement: string;
   activeIngredients: Ingredient[];
@@ -25,7 +25,6 @@ export interface FormulaItem {
   createdAt: Date;
   updatedAt: Date;
 }
-
 
 @Component({
   selector: 'app-formula',
@@ -53,7 +52,7 @@ export class ListFormulaComponent implements OnInit, AfterViewInit {
   constructor(
     private formulaService: ListFormulasService,
     private authService: AuthService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
   ) {}
 
   ngOnInit(): void {
@@ -83,18 +82,22 @@ export class ListFormulaComponent implements OnInit, AfterViewInit {
 
     dialogRef.afterClosed().subscribe((result: FormulaItem | undefined) => {
       if (result) {
-        this.formulaService.createFormula(result).subscribe((newFormula: any) => {
-          this.dataSource.data = [...this.dataSource.data, {_id: newFormula._id, ...newFormula}];
-          console.log(this.dataSource.data);
-          
-        });
+        this.formulaService
+          .createFormula(result)
+          .subscribe((newFormula: any) => {
+            this.dataSource.data = [
+              ...this.dataSource.data,
+              { _id: newFormula._id, ...newFormula },
+            ];
+            console.log(this.dataSource.data);
+          });
       }
     });
   }
 
   editFormulaItem(item: FormulaItem) {
     const dialogRef = this.dialog.open(CreateFormulasComponent, {
-      width: '450px',
+      width: '800px',
       data: item,
     });
 
@@ -108,7 +111,7 @@ export class ListFormulaComponent implements OnInit, AfterViewInit {
     });
   }
 
- refreshFormulas() {
+  refreshFormulas() {
     this.formulaService.getFormulas().subscribe((data: FormulaItem[]) => {
       const transformedData = data.map((item) => ({
         ...item,
@@ -116,20 +119,20 @@ export class ListFormulaComponent implements OnInit, AfterViewInit {
         displayName: item.name,
         // scientificName: item.activeIngredients.length > 0 ? item.activeIngredients[0].scientificName : '', // Display first active ingredient's scientific name
       }));
-      
+
       this.dataSource.data = transformedData;
     });
   }
 
- deleteFormulaItem(item: FormulaItem) {
+  deleteFormulaItem(item: FormulaItem) {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       width: '400px',
       data: {
-        message: `Are you sure you want to delete the formula ${item.name}?`
-      }
+        message: `Are you sure you want to delete the formula ${item.name}?`,
+      },
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         this.formulaService.deleteFormula(item._id).subscribe(() => {
           this.refreshFormulas();

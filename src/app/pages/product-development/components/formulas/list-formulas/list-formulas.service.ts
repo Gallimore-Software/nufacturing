@@ -4,13 +4,12 @@ import { environment } from 'src/environment/environment';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ListFormulasService {
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
-
-  private apiUrl = `${environment.apiUrl}/product-development/formulas`
+  private apiUrl = `${environment.apiUrl}/product-development/formulas`;
 
   getFormulas(): Observable<any> {
     return this.http.get(this.apiUrl);

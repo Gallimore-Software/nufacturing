@@ -20,19 +20,33 @@
                 {{ type }}
               </mat-option>
             </mat-select>
-            <mat-error *ngIf="formulaForm.get('productType')?.hasError('required')">
+            <mat-error
+              *ngIf="formulaForm.get('productType')?.hasError('required')"
+            >
               Product Type is required
             </mat-error>
           </mat-form-field>
 
           <mat-form-field appearance="outline">
             <mat-label>Unit of Measurement</mat-label>
-            <mat-select id="unitOfMeasurement" formControlName="unitOfMeasurement">
-              <mat-option *ngFor="let unit of (unitOptions[formulaForm.get('productType')?.value] || [])" [value]="unit">
+            <mat-select
+              id="unitOfMeasurement"
+              formControlName="unitOfMeasurement"
+            >
+              <mat-option
+                *ngFor="
+                  let unit of unitOptions[
+                    formulaForm.get('productType')?.value
+                  ] || []
+                "
+                [value]="unit"
+              >
                 {{ unit }}
               </mat-option>
             </mat-select>
-            <mat-error *ngIf="formulaForm.get('unitOfMeasurement')?.hasError('required')">
+            <mat-error
+              *ngIf="formulaForm.get('unitOfMeasurement')?.hasError('required')"
+            >
               Unit of Measurement is required
             </mat-error>
           </mat-form-field>
@@ -43,7 +57,11 @@
     <mat-card>
       <mat-card-title>Active Ingredients</mat-card-title>
       <mat-card-content formArrayName="activeIngredients">
-        <div *ngFor="let ingredient of activeIngredients.controls; let i=index" [formGroupName]="i" class="ingredient-group">
+        <div
+          *ngFor="let ingredient of activeIngredients.controls; let i = index"
+          [formGroupName]="i"
+          class="ingredient-group"
+        >
           <mat-form-field appearance="outline">
             <mat-label>Name</mat-label>
             <input matInput placeholder="Name" formControlName="name" />
@@ -54,32 +72,58 @@
 
           <mat-form-field appearance="outline">
             <mat-label>Scientific Name</mat-label>
-            <input matInput placeholder="Scientific Name" formControlName="scientificName" />
-            <mat-error *ngIf="ingredient.get('scientificName')?.hasError('required')">
+            <input
+              matInput
+              placeholder="Scientific Name"
+              formControlName="scientificName"
+            />
+            <mat-error
+              *ngIf="ingredient.get('scientificName')?.hasError('required')"
+            >
               Scientific Name is required
             </mat-error>
           </mat-form-field>
 
           <mat-form-field appearance="outline">
             <mat-label>Per Unit</mat-label>
-            <input matInput type="number" placeholder="Per Unit" formControlName="perUnit" />
-            <mat-error *ngIf="ingredient.get('perUnit')?.hasError('required') || ingredient.get('perUnit')?.hasError('min')">
+            <input
+              matInput
+              type="number"
+              placeholder="Per Unit"
+              formControlName="perUnit"
+            />
+            <mat-error
+              *ngIf="
+                ingredient.get('perUnit')?.hasError('required') ||
+                ingredient.get('perUnit')?.hasError('min')
+              "
+            >
               Per Unit must be a positive number
             </mat-error>
           </mat-form-field>
 
-          <button mat-icon-button color="warn" (click)="removeActiveIngredient(i)">
+          <button
+            mat-icon-button
+            color="warn"
+            (click)="removeActiveIngredient(i)"
+          >
             <mat-icon>remove_circle</mat-icon>
           </button>
         </div>
-        <button mat-button color="primary" (click)="addActiveIngredient()">Add Active Ingredient</button>
+        <button mat-button color="primary" (click)="addActiveIngredient()">
+          Add Active Ingredient
+        </button>
       </mat-card-content>
     </mat-card>
 
     <mat-card>
       <mat-card-title>Inactive Ingredients</mat-card-title>
       <mat-card-content formArrayName="inactiveIngredients">
-        <div *ngFor="let ingredient of inactiveIngredients.controls; let i=index" [formGroupName]="i" class="ingredient-group">
+        <div
+          *ngFor="let ingredient of inactiveIngredients.controls; let i = index"
+          [formGroupName]="i"
+          class="ingredient-group"
+        >
           <mat-form-field appearance="outline">
             <mat-label>Name</mat-label>
             <input matInput placeholder="Name" formControlName="name" />
@@ -90,30 +134,57 @@
 
           <mat-form-field appearance="outline">
             <mat-label>Scientific Name</mat-label>
-            <input matInput placeholder="Scientific Name" formControlName="scientificName" />
-            <mat-error *ngIf="ingredient.get('scientificName')?.hasError('required')">
+            <input
+              matInput
+              placeholder="Scientific Name"
+              formControlName="scientificName"
+            />
+            <mat-error
+              *ngIf="ingredient.get('scientificName')?.hasError('required')"
+            >
               Scientific Name is required
             </mat-error>
           </mat-form-field>
 
           <mat-form-field appearance="outline">
             <mat-label>Per Unit</mat-label>
-            <input matInput type="number" placeholder="Per Unit" formControlName="perUnit" />
-            <mat-error *ngIf="ingredient.get('perUnit')?.hasError('required') || ingredient.get('perUnit')?.hasError('min')">
+            <input
+              matInput
+              type="number"
+              placeholder="Per Unit"
+              formControlName="perUnit"
+            />
+            <mat-error
+              *ngIf="
+                ingredient.get('perUnit')?.hasError('required') ||
+                ingredient.get('perUnit')?.hasError('min')
+              "
+            >
               Per Unit must be a positive number
             </mat-error>
           </mat-form-field>
 
-          <button mat-icon-button color="warn" (click)="removeInactiveIngredient(i)">
+          <button
+            mat-icon-button
+            color="warn"
+            (click)="removeInactiveIngredient(i)"
+          >
             <mat-icon>remove_circle</mat-icon>
           </button>
         </div>
-        <button mat-button color="primary" (click)="addInactiveIngredient()">Add Inactive Ingredient</button>
+        <button mat-button color="primary" (click)="addInactiveIngredient()">
+          Add Inactive Ingredient
+        </button>
       </mat-card-content>
     </mat-card>
 
     <div class="form-actions">
-      <button mat-raised-button color="primary" type="submit" [disabled]="formulaForm.invalid">
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="formulaForm.invalid"
+      >
         Submit Formula
       </button>
     </div>
