@@ -1,39 +1,50 @@
 <div class="calculate-quote-pricing">
-    <mat-card>
-      <mat-card-title>Calculate Quote Pricing</mat-card-title>
-      <mat-card-content>
-        <form [formGroup]="quoteForm">
-          <mat-form-field appearance="fill">
-            <mat-label>Customer Sale Price (per bottle)</mat-label>
-            <input matInput type="number" formControlName="customerSalePrice">
-          </mat-form-field>
-  
-          <!-- <mat-form-field appearance="fill">
+  <mat-card>
+    <mat-card-title>Calculate Quote Pricing</mat-card-title>
+    <mat-card-content>
+      <form [formGroup]="quoteForm">
+        <mat-form-field appearance="fill">
+          <mat-label>Customer Sale Price (per bottle)</mat-label>
+          <input matInput type="number" formControlName="customerSalePrice" />
+        </mat-form-field>
+
+        <!-- <mat-form-field appearance="fill">
             <mat-label>Launch QTY</mat-label>
             <input matInput type="number" formControlName="launchQty">
           </mat-form-field> -->
-        </form>
-  
-        <div class="quote-pricing" *ngIf="quotePrices.length > 0">
-          <mat-card-title style="box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; font-size: 16px; width: 100%; background: #38761d; color: black;">
-            Quote Pricing
+      </form>
+
+      <div class="quote-pricing" *ngIf="quotePrices.length > 0">
+        <mat-card-title
+          style="
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+            font-size: 16px;
+            width: 100%;
+            background: #38761d;
+            color: black;
+          "
+        >
+          Quote Pricing
         </mat-card-title>
-          <table mat-table [dataSource]="quotePrices" class="mat-elevation-z8">
-            <ng-container matColumnDef="moq">
-              <th mat-header-cell *matHeaderCellDef style=" background: none"> MOQ </th>
-              <td mat-cell *matCellDef="let element"> {{element.moq}} </td>
-            </ng-container>
-  
-            <ng-container matColumnDef="price">
-              <th mat-header-cell *matHeaderCellDef> Pricing </th>
-              <td mat-cell *matCellDef="let element"> {{element.price | currency}} </td>
-            </ng-container>
-  
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-          </table>
-        </div>
-      </mat-card-content>
-    </mat-card>
-  </div>
-  
+        <table mat-table [dataSource]="quotePrices" class="mat-elevation-z8">
+          <ng-container matColumnDef="moq">
+            <th mat-header-cell *matHeaderCellDef style="background: none">
+              MOQ
+            </th>
+            <td mat-cell *matCellDef="let element">{{ element.moq }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="price">
+            <th mat-header-cell *matHeaderCellDef>Pricing</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.price | currency }}
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

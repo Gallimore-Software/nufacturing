@@ -8,7 +8,7 @@ describe('QuotesNavigationComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [QuotesNavigationComponent]
+      declarations: [QuotesNavigationComponent],
     });
     fixture = TestBed.createComponent(QuotesNavigationComponent);
     component = fixture.componentInstance;

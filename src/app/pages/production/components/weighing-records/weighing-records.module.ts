@@ -3,12 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { WeighingRecordsRoutingModule } from './weighing-records-routing.module';
 
-
 @NgModule({
   declarations: [],
-  imports: [
-    CommonModule,
-    WeighingRecordsRoutingModule
-  ]
+  imports: [CommonModule, WeighingRecordsRoutingModule],
 })
-export class WeighingRecordsModule { }
+export class WeighingRecordsModule {}

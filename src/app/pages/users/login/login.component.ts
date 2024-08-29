@@ -23,19 +23,25 @@ export class LoginComponent {
 
   errorMessage: string = ''; // To display error message on login failure
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+  ) {}
 
   onSubmit() {
     if (this.loginForm.valid) {
       const email = this.loginForm.get('email')!.value || '';
       const password = this.loginForm.get('password')!.value || '';
 
-      const loginSuccess = this.authService.login(email, password);
-      if (loginSuccess) {
-        this.router.navigate(['/dashboard']);
-      } else {
-        this.errorMessage = 'Invalid username or password';
-      }
+      this.authService.login(email, password).subscribe({
+        next: () => {
+          this.router.navigate(['/dashboard']);
+        },
+        error: (error) => {
+          this.errorMessage = 'Invalid username or password';
+          console.error('Error logging in:', error);
+        },
+      });
     }
   }
 }

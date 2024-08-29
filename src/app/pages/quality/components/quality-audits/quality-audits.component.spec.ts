@@ -8,7 +8,7 @@ describe('QualityAuditsComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [QualityAuditsComponent]
+      declarations: [QualityAuditsComponent],
     });
     fixture = TestBed.createComponent(QualityAuditsComponent);
     component = fixture.componentInstance;

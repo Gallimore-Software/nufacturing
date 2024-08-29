@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 @Component({
   selector: 'app-sales-analysis',
   templateUrl: './sales-analysis.component.html',
-  styleUrls: ['./sales-analysis.component.scss']
+  styleUrls: ['./sales-analysis.component.scss'],
 })
 export class SalesAnalysisComponent implements OnInit {
   salesAnalysisForm: FormGroup;
@@ -16,23 +16,23 @@ export class SalesAnalysisComponent implements OnInit {
 
   suggestedPricesWithMOQ: any[] = [];
   suggestedPricesWithoutMOQ: any[] = [];
-  totalCostPerBottleWithMOQ: number = 6.10; // Example value
-  totalCostPerBottleWithoutMOQ: number = 2.90; // Example value
+  totalCostPerBottleWithMOQ: number = 6.1; // Example value
+  totalCostPerBottleWithoutMOQ: number = 2.9; // Example value
 
   constructor(private fb: FormBuilder) {
     this.salesAnalysisForm = this.fb.group({
       targetRevenue: [100000, Validators.required],
-      salesVolume: [{value: 0, disabled: true}, Validators.required],
-      price: [0, Validators.required]
+      salesVolume: [{ value: 0, disabled: true }, Validators.required],
+      price: [0, Validators.required],
     });
 
     this.scenarioManagerForm = this.fb.group({
-      scenarios: this.fb.array([])
+      scenarios: this.fb.array([]),
     });
 
     this.dataTableForm = this.fb.group({
       priceRange: this.fb.array([this.createPriceRange()]),
-      salesVolumeRange: this.fb.array([this.createSalesVolumeRange()])
+      salesVolumeRange: this.fb.array([this.createSalesVolumeRange()]),
     });
 
     this.filteredDataTable = this.dataTable;
@@ -45,13 +45,13 @@ export class SalesAnalysisComponent implements OnInit {
 
   createPriceRange(): FormGroup {
     return this.fb.group({
-      price: [0, Validators.required]
+      price: [0, Validators.required],
     });
   }
 
   createSalesVolumeRange(): FormGroup {
     return this.fb.group({
-      salesVolume: [0, Validators.required]
+      salesVolume: [0, Validators.required],
     });
   }
 
@@ -68,11 +68,13 @@ export class SalesAnalysisComponent implements OnInit {
   }
 
   addScenario(): void {
-    this.scenarios.push(this.fb.group({
-      price: [0, Validators.required],
-      salesVolume: [0, Validators.required],
-      revenue: [{ value: 0, disabled: true }]
-    }));
+    this.scenarios.push(
+      this.fb.group({
+        price: [0, Validators.required],
+        salesVolume: [0, Validators.required],
+        revenue: [{ value: 0, disabled: true }],
+      }),
+    );
   }
 
   initializeScenarios(): void {
@@ -110,7 +112,7 @@ export class SalesAnalysisComponent implements OnInit {
         this.dataTable.push({
           price: price.price,
           salesVolume: volume.salesVolume,
-          revenue: price.price * volume.salesVolume
+          revenue: price.price * volume.salesVolume,
         });
       });
     });
@@ -120,10 +122,11 @@ export class SalesAnalysisComponent implements OnInit {
 
   applyFilter(event: Event): void {
     const filterValue = (event.target as HTMLInputElement).value.toLowerCase();
-    this.filteredDataTable = this.dataTable.filter(item =>
-      item.price.toString().includes(filterValue) ||
-      item.salesVolume.toString().includes(filterValue) ||
-      item.revenue.toString().includes(filterValue)
+    this.filteredDataTable = this.dataTable.filter(
+      (item) =>
+        item.price.toString().includes(filterValue) ||
+        item.salesVolume.toString().includes(filterValue) ||
+        item.revenue.toString().includes(filterValue),
     );
   }
 
@@ -136,12 +139,19 @@ export class SalesAnalysisComponent implements OnInit {
     this.suggestedPricesWithMOQ = [];
     this.suggestedPricesWithoutMOQ = [];
 
-    margins.forEach(margin => {
+    margins.forEach((margin) => {
       const priceWithMOQ = this.totalCostPerBottleWithMOQ * (1 + margin / 100);
-      const priceWithoutMOQ = this.totalCostPerBottleWithoutMOQ * (1 + margin / 100);
+      const priceWithoutMOQ =
+        this.totalCostPerBottleWithoutMOQ * (1 + margin / 100);
 
-      this.suggestedPricesWithMOQ.push({ margin: `${margin}%`, price: `$${priceWithMOQ.toFixed(2)}` });
-      this.suggestedPricesWithoutMOQ.push({ margin: `${margin}%`, price: `$${priceWithoutMOQ.toFixed(2)}` });
+      this.suggestedPricesWithMOQ.push({
+        margin: `${margin}%`,
+        price: `$${priceWithMOQ.toFixed(2)}`,
+      });
+      this.suggestedPricesWithoutMOQ.push({
+        margin: `${margin}%`,
+        price: `$${priceWithoutMOQ.toFixed(2)}`,
+      });
     });
   }
 }

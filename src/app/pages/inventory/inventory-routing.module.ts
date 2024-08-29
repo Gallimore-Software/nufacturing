@@ -4,12 +4,12 @@ import { InventoryComponent } from './inventory.component';
 
 const routes: Routes = [
   { path: '', component: InventoryComponent, pathMatch: 'full' },
-  {path:'inventory',component:InventoryComponent},
-//   {
-//     path: 'quotes',
-//     loadChildren: () =>
-//       import('./components/quotes/quotes.module').then((m) => m.QuotesModule),
-//   },
+  { path: 'inventory', component: InventoryComponent },
+  //   {
+  //     path: 'quotes',
+  //     loadChildren: () =>
+  //       import('./components/quotes/quotes.module').then((m) => m.QuotesModule),
+  //   },
 ];
 
 @NgModule({

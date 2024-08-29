@@ -4,7 +4,6 @@ import { OrdersComponent } from './orders.component';
 
 const routes: Routes = [
   { path: '', component: OrdersComponent, pathMatch: 'full' },
-
 ];
 
 @NgModule({

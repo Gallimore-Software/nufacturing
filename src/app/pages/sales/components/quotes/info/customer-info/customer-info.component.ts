@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-customer-info',
   templateUrl: './customer-info.component.html',
-  styleUrls: ['./customer-info.component.scss']
+  styleUrls: ['./customer-info.component.scss'],
 })
 export class CustomerInfoComponent implements OnInit {
   customerInfoForm: FormGroup;
@@ -16,12 +16,12 @@ export class CustomerInfoComponent implements OnInit {
       customerSku: [''],
       companyName: ['Buderer Drug Co.'],
       productName: ['Hangover Dog 50ct'],
-      brandName: ['']
+      brandName: [''],
     });
 
     this.dataSource = this.createDataSource(this.customerInfoForm.value);
 
-    this.customerInfoForm.valueChanges.subscribe(value => {
+    this.customerInfoForm.valueChanges.subscribe((value) => {
       this.dataSource = this.createDataSource(value);
     });
   }
@@ -32,8 +32,8 @@ export class CustomerInfoComponent implements OnInit {
     return [
       { property: 'Customer SKU #', value: formValues.customerSku },
       { property: 'Company Name', value: formValues.companyName },
-      { property: 'Customer\'s Product Name', value: formValues.productName },
-      { property: 'Brand Name', value: formValues.brandName }
+      { property: "Customer's Product Name", value: formValues.productName },
+      { property: 'Brand Name', value: formValues.brandName },
     ];
   }
 }

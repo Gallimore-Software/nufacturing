@@ -8,7 +8,7 @@ describe('ShiftingRecordsComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ShiftingRecordsComponent]
+      declarations: [ShiftingRecordsComponent],
     });
     fixture = TestBed.createComponent(ShiftingRecordsComponent);
     component = fixture.componentInstance;

@@ -8,7 +8,7 @@ describe('CarouselComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [CarouselComponent]
+      declarations: [CarouselComponent],
     });
     fixture = TestBed.createComponent(CarouselComponent);
     component = fixture.componentInstance;

@@ -17,9 +17,7 @@ import { ProductionRoutingModule } from './production-routing.module';
 import { ReportingModule } from './components/reporting/reporting.module';
 
 @NgModule({
-  declarations: [
-    ProductionComponent,
-  ],
+  declarations: [ProductionComponent],
   imports: [
     CommonModule,
     ProductionRoutingModule,
@@ -34,7 +32,7 @@ import { ReportingModule } from './components/reporting/reporting.module';
     MasterManufacturingRecordsModule,
     AssetsModule,
     ProductionPlanningModule,
-    ReportingModule
+    ReportingModule,
   ],
 })
 export class ProductionModule {}

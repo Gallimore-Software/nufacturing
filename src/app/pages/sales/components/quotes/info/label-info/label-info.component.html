@@ -1,56 +1,55 @@
 <div fxLayout="row" fxLayoutGap="20px" class="container">
-    <!-- Form Section (50%) -->
-    <div fxFlex="50%">
-      <mat-card>
-        <mat-card-title>Label Info</mat-card-title>
-        <mat-card-content>
-          <form [formGroup]="labelInfoForm">
-            <mat-form-field appearance="fill">
-              <mat-label>Label Supplied By</mat-label>
-              <input matInput formControlName="labelSuppliedBy">
-            </mat-form-field>
-            <mat-form-field appearance="fill">
-              <mat-label>Label Dimension</mat-label>
-              <input matInput formControlName="labelDimension">
-            </mat-form-field>
-            <mat-form-field appearance="fill">
-              <mat-label>Label Material Type</mat-label>
-              <input matInput formControlName="labelMaterialType">
-            </mat-form-field>
-            <mat-form-field appearance="fill">
-              <mat-label>Backing Material Finish</mat-label>
-              <input matInput formControlName="backingMaterialFinish">
-            </mat-form-field>
-            <mat-form-field appearance="fill">
-              <mat-label>Label Material Finish</mat-label>
-              <input matInput formControlName="labelMaterialFinish">
-            </mat-form-field>
-          </form>
-        </mat-card-content>
-      </mat-card>
-    </div>
-  
-    <!-- Preview Section (50%) -->
-    <div fxFlex="50%">
-      <mat-card>
-        <mat-card-title>Label Details</mat-card-title>
-        <mat-card-content>
-          <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-            <ng-container matColumnDef="property">
-              <th mat-header-cell *matHeaderCellDef> Property </th>
-              <td mat-cell *matCellDef="let element"> {{element.property}} </td>
-            </ng-container>
-  
-            <ng-container matColumnDef="value">
-              <th mat-header-cell *matHeaderCellDef> Value </th>
-              <td mat-cell *matCellDef="let element"> {{element.value}} </td>
-            </ng-container>
-  
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-          </table>
-        </mat-card-content>
-      </mat-card>
-    </div>
+  <!-- Form Section (50%) -->
+  <div fxFlex="50%">
+    <mat-card>
+      <mat-card-title>Label Info</mat-card-title>
+      <mat-card-content>
+        <form [formGroup]="labelInfoForm">
+          <mat-form-field appearance="fill">
+            <mat-label>Label Supplied By</mat-label>
+            <input matInput formControlName="labelSuppliedBy" />
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Label Dimension</mat-label>
+            <input matInput formControlName="labelDimension" />
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Label Material Type</mat-label>
+            <input matInput formControlName="labelMaterialType" />
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Backing Material Finish</mat-label>
+            <input matInput formControlName="backingMaterialFinish" />
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Label Material Finish</mat-label>
+            <input matInput formControlName="labelMaterialFinish" />
+          </mat-form-field>
+        </form>
+      </mat-card-content>
+    </mat-card>
   </div>
-  
+
+  <!-- Preview Section (50%) -->
+  <div fxFlex="50%">
+    <mat-card>
+      <mat-card-title>Label Details</mat-card-title>
+      <mat-card-content>
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+          <ng-container matColumnDef="property">
+            <th mat-header-cell *matHeaderCellDef>Property</th>
+            <td mat-cell *matCellDef="let element">{{ element.property }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="value">
+            <th mat-header-cell *matHeaderCellDef>Value</th>
+            <td mat-cell *matCellDef="let element">{{ element.value }}</td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

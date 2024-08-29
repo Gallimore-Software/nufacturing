@@ -3,11 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { TrainingComponent } from './training.component';
 
 const routes: Routes = [
-  {path:'', component:TrainingComponent,pathMatch:'full'}
+  { path: '', component: TrainingComponent, pathMatch: 'full' },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class TrainingRoutingModule { }
+export class TrainingRoutingModule {}

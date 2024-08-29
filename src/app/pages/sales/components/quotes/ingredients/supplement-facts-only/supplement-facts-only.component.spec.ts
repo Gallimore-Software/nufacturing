@@ -8,7 +8,7 @@ describe('supplementFactsOnlyComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [supplementFactsOnlyComponent]
+      declarations: [supplementFactsOnlyComponent],
     });
     fixture = TestBed.createComponent(supplementFactsOnlyComponent);
     component = fixture.componentInstance;

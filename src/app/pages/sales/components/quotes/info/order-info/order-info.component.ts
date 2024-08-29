@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-order-info',
   templateUrl: './order-info.component.html',
-  styleUrls: ['./order-info.component.scss']
+  styleUrls: ['./order-info.component.scss'],
 })
 export class OrderInfoComponent implements OnInit {
   orderInfoForm: FormGroup;
@@ -17,12 +17,12 @@ export class OrderInfoComponent implements OnInit {
       leadTime: ['6-7 weeks'],
       launchQty: [2000],
       capsulesPerServing: [2],
-      capsulesPerBottle: [50]
+      capsulesPerBottle: [50],
     });
 
     this.dataSource = this.createDataSource(this.orderInfoForm.value);
 
-    this.orderInfoForm.valueChanges.subscribe(value => {
+    this.orderInfoForm.valueChanges.subscribe((value) => {
       this.dataSource = this.createDataSource(value);
     });
   }
@@ -34,8 +34,11 @@ export class OrderInfoComponent implements OnInit {
       { property: 'Product Type', value: formValues.productType },
       { property: 'Lead Time', value: formValues.leadTime },
       { property: 'Launch QTY', value: formValues.launchQty },
-      { property: 'Capsules per serving', value: formValues.capsulesPerServing },
-      { property: 'Capsules per bottle', value: formValues.capsulesPerBottle }
+      {
+        property: 'Capsules per serving',
+        value: formValues.capsulesPerServing,
+      },
+      { property: 'Capsules per bottle', value: formValues.capsulesPerBottle },
     ];
   }
 }

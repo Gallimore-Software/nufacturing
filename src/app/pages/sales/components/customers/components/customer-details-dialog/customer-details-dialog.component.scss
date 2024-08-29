@@ -1,0 +1,31 @@
+.mat-dialog-content {
+  padding: 20px;
+  font-size: 16px;
+  line-height: 1.5;
+
+  p {
+    margin: 10px 0;
+
+    strong {
+      font-weight: bold;
+    }
+  }
+}
+
+.mat-dialog-actions {
+  padding: 20px;
+  display: flex;
+  justify-content: flex-end;
+
+  button {
+    margin-left: 10px;
+  }
+}
+
+h1 {
+  font-size: 24px;
+  margin: 0;
+  padding: 20px;
+  color: #ffffff;
+  text-align: center;
+}

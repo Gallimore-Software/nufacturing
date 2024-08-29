@@ -1,0 +1,63 @@
+.mat-dialog-content {
+  padding: 20px;
+
+  form {
+    display: flex;
+    flex-direction: column;
+
+    mat-form-field {
+      margin-bottom: 16px;
+    }
+
+    .button-group {
+      margin-top: 16px;
+      display: flex;
+      justify-content: space-between;
+
+      button {
+        flex: 1;
+        margin: 0 8px;
+      }
+    }
+
+    .review-section {
+      padding: 16px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      margin-bottom: 16px;
+
+      p {
+        margin: 4px 0;
+      }
+    }
+  }
+}
+
+.mat-dialog-actions {
+  padding: 16px;
+  display: flex;
+  justify-content: flex-end;
+
+  button {
+    margin-left: 8px;
+  }
+}
+
+h1 {
+  font-size: 24px;
+  margin: 0;
+  padding: 16px;
+  color: #ffffff;
+  text-align: center;
+}
+
+h2,
+h3 {
+  font-size: 20px;
+  margin: 16px 0 8px;
+}
+
+h3 {
+  font-size: 18px;
+  margin: 16px 0 8px;
+}

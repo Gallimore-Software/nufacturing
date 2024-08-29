@@ -19,13 +19,13 @@ import { MatChipsModule } from '@angular/material/chips';
     QuotesNavigationComponent,
   ],
   imports: [
-    CommonModule, 
+    CommonModule,
     SalesRoutingModule,
     MatIconModule,
     MatCardModule,
     MatListModule,
     MatButtonModule,
-    MatChipsModule
+    MatChipsModule,
   ],
 })
 export class SalesModule {}

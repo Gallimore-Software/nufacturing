@@ -8,7 +8,7 @@ describe('IngredientBreakdownWithMoqComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [IngredientBreakdownWithMoqComponent]
+      declarations: [IngredientBreakdownWithMoqComponent],
     });
     fixture = TestBed.createComponent(IngredientBreakdownWithMoqComponent);
     component = fixture.componentInstance;

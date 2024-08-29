@@ -3,11 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { DepositorRecordsComponent } from './depositor-records.component';
 
 const routes: Routes = [
-  {path:'', component:DepositorRecordsComponent, pathMatch:'full'}
+  { path: '', component: DepositorRecordsComponent, pathMatch: 'full' },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class DepositorRecordsRoutingModule { }
+export class DepositorRecordsRoutingModule {}

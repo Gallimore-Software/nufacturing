@@ -3,11 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { FdaAuditsComponent } from './fda-audits.component';
 
 const routes: Routes = [
-  {path:'', component:FdaAuditsComponent, pathMatch:'full'}
+  { path: '', component: FdaAuditsComponent, pathMatch: 'full' },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class FdaAuditsRoutingModule { }
+export class FdaAuditsRoutingModule {}
