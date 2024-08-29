@@ -31,7 +31,7 @@ export class InventoryComponent implements OnInit, AfterViewInit {
     'category',
     'type',
     'subCategory',
-    'actions'
+    'actions',
   ];
   dataSource: MatTableDataSource<InventoryItem> = new MatTableDataSource();
   isAdminOrManager: boolean = false;
@@ -42,8 +42,7 @@ export class InventoryComponent implements OnInit, AfterViewInit {
   constructor(
     private inventoryService: InventoryService,
     private authService: AuthService,
-    private dialog: MatDialog
-
+    private dialog: MatDialog,
   ) {}
 
   ngOnInit(): void {
@@ -54,13 +53,13 @@ export class InventoryComponent implements OnInit, AfterViewInit {
           category: category.category,
           type: category.type,
           subCategory: category.subCategory,
-        }))
+        })),
       );
 
       this.dataSource.data = items;
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-      
+
       this.renderChart(items);
     });
 
@@ -83,23 +82,25 @@ export class InventoryComponent implements OnInit, AfterViewInit {
     const dialogRef = this.dialog.open(NewInventoryDialogComponent, {
       width: '450px',
     });
-  
+
     dialogRef.afterClosed().subscribe((result: any) => {
       console.log(`resultin create inventory`, result);
-      
+
       if (result) {
         // Handle form submission, e.g., send data to backend
-        this.inventoryService.createInventory(result).subscribe((newInventory) => {
-          // Add the new inventory item to the data source
-          const updatedItems = newInventory.items.map((item: any) => ({
-            ...item,
-            category: newInventory.category,
-            type: newInventory.type,
-            subCategory: newInventory.subCategory,
-          }));
-  
-          this.dataSource.data = [...this.dataSource.data, ...updatedItems];
-        });
+        this.inventoryService
+          .createInventory(result)
+          .subscribe((newInventory) => {
+            // Add the new inventory item to the data source
+            const updatedItems = newInventory.items.map((item: any) => ({
+              ...item,
+              category: newInventory.category,
+              type: newInventory.type,
+              subCategory: newInventory.subCategory,
+            }));
+
+            this.dataSource.data = [...this.dataSource.data, ...updatedItems];
+          });
       }
     });
   }
@@ -109,38 +110,42 @@ export class InventoryComponent implements OnInit, AfterViewInit {
     this.inventoryService.getInventory().subscribe((data: any) => {
       // Find the parent ID based on the item's _id
       const parentItem = data.find((inv: any) =>
-        inv.items.some((i: any) => i._id === item._id)
+        inv.items.some((i: any) => i._id === item._id),
       );
-  
+
       if (parentItem) {
-        const parentId = parentItem._id;  // This is the parent _id
-  
+        const parentId = parentItem._id; // This is the parent _id
+
         // Open the dialog with the current item data
         const dialogRef = this.dialog.open(NewInventoryDialogComponent, {
           width: '450px',
-          data: item
+          data: item,
         });
-  
-        dialogRef.afterClosed().subscribe((result: InventoryItem | undefined) => {
-          if (result) {
-            // Send the update request with the parentId and updated data
-            this.inventoryService.updateInventoryItem(parentId, result).subscribe(
-              () => {
-                // Refetch the updated inventory data
-                this.refreshInventory();
-              },
-              (error) => {
-                console.error('Error updating inventory item:', error);
-              }
-            );
-          }
-        });
+
+        dialogRef
+          .afterClosed()
+          .subscribe((result: InventoryItem | undefined) => {
+            if (result) {
+              // Send the update request with the parentId and updated data
+              this.inventoryService
+                .updateInventoryItem(parentId, result)
+                .subscribe(
+                  () => {
+                    // Refetch the updated inventory data
+                    this.refreshInventory();
+                  },
+                  (error) => {
+                    console.error('Error updating inventory item:', error);
+                  },
+                );
+            }
+          });
       } else {
         console.error('Parent item not found for item ID:', item._id);
       }
     });
   }
-  
+
   refreshInventory() {
     this.inventoryService.getInventory().subscribe((data: any) => {
       const items = data.flatMap((category: any) =>
@@ -149,25 +154,25 @@ export class InventoryComponent implements OnInit, AfterViewInit {
           category: category.category,
           type: category.type,
           subCategory: category.subCategory,
-        }))
+        })),
       );
-  
+
       this.dataSource.data = items;
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-  
+
       this.renderChart(items); // Refresh the chart if needed
     });
-  }  
-  
+  }
+
   deleteInventoryItem(item: InventoryItem) {
     // Retrieve the full inventory list
     this.inventoryService.getInventory().subscribe((data: any) => {
       // Find the parent inventory that contains the item to delete
       const parentItem = data.find((inv: any) =>
-        inv.items.some((i: any) => i._id === item._id)
+        inv.items.some((i: any) => i._id === item._id),
       );
-  
+
       if (parentItem) {
         // Remove the parent inventory
         this.inventoryService.deleteInventoryItem(parentItem._id).subscribe(
@@ -177,22 +182,22 @@ export class InventoryComponent implements OnInit, AfterViewInit {
           },
           (error) => {
             console.error('Error deleting inventory item:', error);
-          }
+          },
         );
       } else {
         console.error('Parent item not found for item ID:', item._id);
       }
     });
   }
-  
-  
 
   renderChart(items: InventoryItem[]) {
-    const ctx = (document.getElementById('inventoryChart') as HTMLCanvasElement).getContext('2d');
+    const ctx = (
+      document.getElementById('inventoryChart') as HTMLCanvasElement
+    ).getContext('2d');
     if (!ctx) return;
 
-    const labels = items.map(item => item.ingredientName);
-    const data = items.map(item => item.stockQuantity);
+    const labels = items.map((item) => item.ingredientName);
+    const data = items.map((item) => item.stockQuantity);
 
     new Chart(ctx, {
       type: 'bar',

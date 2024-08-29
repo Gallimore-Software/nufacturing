@@ -1,93 +1,87 @@
-.create-formula {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+.formula-form-container {
   padding: 20px;
+  display: flex;
+  height: 90vh;
+  flex-direction: column;
 
-  mat-card {
-    border-radius: 6px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 
-    mat-card-header {
-      padding: 16px;
-      color: white;
-      border-top-left-radius: 6px;
-      border-top-right-radius: 6px;
-
-      mat-card-title {
-        font-size: 1.2rem;
-        text-align: center;
-        line-height: 64px;
-      }
-    }
-
-    mat-card-content {
-      padding: 16px;
+    .form-group {
       display: flex;
-      flex-direction: column;
-      gap: 12px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
 
-      mat-form-field {
-        width: 100%;
+    mat-form-field {
+      flex: 1;
+      min-width: 200px;
 
-        input,
-        mat-select {
-          font-size: 1rem;
-          padding: 8px;
-        }
+      .mat-form-field-infix {
+        padding: 8px 12px;
       }
-    }
-    textarea {
-      background-color: rgb(66, 64, 64);
-      height: 100px;
-      color: white;
-    }
-    button {
-      margin-top: 10px;
-      align-self: flex-start;
-      padding: 10px 15px;
-      font-size: 0.875rem;
-      border-radius: 4px;
-      color: white;
-      background-color: #00796b;
-      transition: background-color 0.3s;
 
-      &:hover {
-        background-color: #023e8a;
+      mat-label {
+        font-weight: 500;
       }
     }
   }
 
-  .ingredient-entry,
-  .nutrient-entry {
+  .ingredient-group {
     display: flex;
-    gap: 10px;
+    gap: 16px;
     align-items: center;
 
     mat-form-field {
-      flex-grow: 1;
+      flex: 1;
     }
 
     button {
-      min-width: 36px;
-      height: 36px;
-      padding: 0;
-      border-radius: 50%;
-      mat-icon {
-        font-size: 1.2rem;
-      }
+      align-self: flex-end;
+      margin-top: 16px;
     }
   }
 
-  .actions {
+  mat-card {
+    margin-bottom: 16px;
+    max-height: 400px; /* Set the maximum height */
+    overflow-y: auto; /* Enable vertical scrolling */
+  }
+
+  mat-card-title {
+    font-size: 1.25rem;
+    font-weight: 500;
+    padding-bottom: 0;
+    color: white;
+  }
+
+  mat-card-content {
+    padding-top: 0;
+  }
+
+  .form-actions {
+    padding: 16px 0;
     display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
+    justify-content: flex-end;
+    gap: 8px;
 
     button {
-      flex-grow: 1;
-      &:not(:last-child) {
-        margin-right: 20px;
+      min-width: 120px;
+    }
+
+    button:first-of-type {
+      background: transparent;
+      color: #333;
+    }
+
+    button:last-of-type {
+      background-color: #3f51b5;
+      color: #fff;
+
+      &:hover {
+        background-color: #303f9f;
       }
     }
   }

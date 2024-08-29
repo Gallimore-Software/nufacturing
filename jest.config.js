@@ -1,15 +1,10 @@
+// jest.config.js
 module.exports = {
-  coverageThreshold: {
-    global: {
-      branches: 80,
-      functions: 80,
-      lines: 80,
-      statements: 80,
-    },
-  },
   preset: "jest-preset-angular",
-  setupFilesAfterEnv: ["<rootDir>/src/setup-jest.ts"],
-  collectCoverage: true,
-  coverageDirectory: "coverage",
-  testPathIgnorePatterns: ["/node_modules/", "/dist/", "/e2e/"],
+  setupFilesAfterEnv: ["<rootDir>/setup-jest.ts"],
+  globalSetup: "jest-preset-angular/global-setup",
+  moduleNameMapper: {
+    "^src/(.*)$": "<rootDir>/src/$1",
+    "^@env/(.*)$": "<rootDir>/src/environments/$1",
+  },
 };

@@ -1,55 +1,69 @@
-// Styles for the dialog
 mat-dialog-content {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  // Styles for the form
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+
   form {
     display: flex;
     flex-direction: column;
     gap: 16px;
-  
+
     .full-width {
       width: 100%;
     }
-  
+
     mat-form-field {
       width: 100%;
-  
+
       .mat-form-field-infix {
-        padding: 8px 12px; // Adjust padding for better alignment
+        padding: 8px 12px;
       }
     }
-  
+
     mat-label {
-      font-weight: 500; // Slightly bold for labels
+      font-weight: 500;
     }
   }
-  
-  // Styles for dialog actions
-  mat-dialog-actions {
-    padding: 16px;
-    display: flex;
-    justify-content: flex-end;
-    gap: 8px;
-  
-    button {
-      min-width: 120px; // Ensures buttons are a minimum width
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+
+    th,
+    td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
     }
-  
-    button:first-of-type {
-      background: transparent;
-      color: #333; // Dark color for cancel button
-    }
-  
-    button:last-of-type {
-      background-color: #3f51b5; // Primary color for save button
-      color: #fff;
-      &:hover {
-        background-color: #303f9f; // Darker shade on hover
-      }
+
+    th {
+      background-color: #f2f2f2;
     }
   }
-  
+}
+
+mat-dialog-actions {
+  padding: 16px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+
+  button {
+    min-width: 120px;
+  }
+
+  button:first-of-type {
+    background: transparent;
+    color: #333;
+  }
+
+  button:last-of-type {
+    background-color: #3f51b5;
+    color: #fff;
+
+    &:hover {
+      background-color: #303f9f;
+    }
+  }
+}

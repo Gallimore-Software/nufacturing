@@ -36,12 +36,12 @@ export class LoginComponent {
       this.authService.login(email, password).subscribe({
         next: () => {
           this.router.navigate(['/dashboard']);
-      },error:(error)  =>{
-        this.errorMessage = 'Invalid username or password';
-        console.error('Error logging in:', error);
-      }
+        },
+        error: (error) => {
+          this.errorMessage = 'Invalid username or password';
+          console.error('Error logging in:', error);
+        },
       });
     }
   }
-  
 }

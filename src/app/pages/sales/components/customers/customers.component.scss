@@ -51,7 +51,8 @@
     width: 100%;
     border-collapse: collapse;
 
-    th, td {
+    th,
+    td {
       padding: 8px 12px;
       text-align: left;
     }
@@ -75,7 +76,8 @@
     flex-direction: column;
   }
 
-  .summary-card, .customer-table {
+  .summary-card,
+  .customer-table {
     padding: 15px;
   }
 
@@ -91,7 +93,8 @@
     padding: 10px;
   }
 
-  .summary-card, .customer-table {
+  .summary-card,
+  .customer-table {
     padding: 10px;
   }
 }

@@ -5,7 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-new-customer-dialog',
   templateUrl: './new-customer-dialog.component.html',
-  styleUrls: ['./new-customer-dialog.component.scss']
+  styleUrls: ['./new-customer-dialog.component.scss'],
 })
 export class NewCustomerDialogComponent implements OnInit {
   customerForm: FormGroup;
@@ -14,7 +14,7 @@ export class NewCustomerDialogComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<NewCustomerDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: any,
   ) {
     this.customerForm = this.fb.group({
       companyName: [data?.companyName || '', Validators.required],
@@ -22,7 +22,10 @@ export class NewCustomerDialogComponent implements OnInit {
       primaryContact: this.fb.group({
         firstName: [data?.primaryContact?.firstName || '', Validators.required],
         lastName: [data?.primaryContact?.lastName || '', Validators.required],
-        email: [data?.primaryContact?.email || '', [Validators.required, Validators.email]],
+        email: [
+          data?.primaryContact?.email || '',
+          [Validators.required, Validators.email],
+        ],
         phone: [data?.primaryContact?.phone || '', Validators.required],
       }),
       complianceContact: this.fb.group({

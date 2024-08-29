@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-new-inventory-dialog',
@@ -9,39 +9,64 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class NewInventoryDialogComponent {
   inventoryForm: FormGroup;
+  showPricingTable = false;
+
+  // For demonstration purposes, this could be fetched from an API
+  filteredVendors = ['Vendor1', 'Vendor2'];
+  filteredFormulas = ['Formula1', 'Formula2'];
+  filteredProductSkus = ['Product1', 'Product2'];
+  filteredPos = ['PO1', 'PO2'];
 
   constructor(
     private dialogRef: MatDialogRef<NewInventoryDialogComponent>,
     private fb: FormBuilder,
-    @Inject(MAT_DIALOG_DATA) public data: any // Inject data from the dialog opening
+    @Inject(MAT_DIALOG_DATA) public data: any,
   ) {
     this.inventoryForm = this.fb.group({
-      type: [data?.type || '', Validators.required],
-      category: [data?.category || '', Validators.required],
-      subCategory: [data?.subCategory || ''],
-      ingredientName: [data?.items?.[0]?.ingredientName || '', Validators.required],
-      pricePerKg: [data?.items?.[0]?.pricePerKg || '', [Validators.required, Validators.min(0)]],
-      stockQuantity: [data?.items?.[0]?.stockQuantity || '', [Validators.required, Validators.min(0)]],
+      vendor: ['', Validators.required],
+      displayName: ['', Validators.required],
+      ingredientSku: ['', Validators.required],
+      scientificName: ['', Validators.required],
+      description: [''],
+      picture: [null],
+      associatedFormulas: [''],
+      associatedProductSkus: [''],
+      ingredientBatchNumber: [''],
+      assignedPo: [''],
+      certificateOfAuthenticity: [null],
+      inventoryCategory: ['', Validators.required],
+      type: ['', Validators.required],
+      lotCode: [''],
+      unitOfMeasurement: ['', Validators.required],
+      minOrderQuantity: [''],
+      pricePerQuantity: [''],
+      inStock: ['', Validators.required],
+      quantityAvailable: [''],
+      onHold: [''],
+      onHoldChance: [''],
+      allocated: [''],
+      quarantined: [''],
+      associatedLabTest: [''],
     });
+  }
+
+  togglePricingTable(event: any) {
+    this.showPricingTable = event.checked;
+  }
+
+  onFileSelected(event: any) {
+    const file = event.target.files[0];
+    this.inventoryForm.patchValue({ picture: file });
+  }
+
+  onCertificateUpload(event: any) {
+    const file = event.target.files[0];
+    this.inventoryForm.patchValue({ certificateOfAuthenticity: file });
   }
 
   onSubmit() {
     if (this.inventoryForm.valid) {
-      const formValue = this.inventoryForm.value;
-      const inventoryData = {
-        type: formValue.type,
-        category: formValue.category,
-        subCategory: formValue.subCategory,
-        items: [
-          {
-            ingredientName: formValue.ingredientName,
-            pricePerKg: formValue.pricePerKg,
-            stockQuantity: formValue.stockQuantity,
-          },
-        ],
-      };
-
-      this.dialogRef.close(inventoryData);
+      this.dialogRef.close(this.inventoryForm.value);
     }
   }
 

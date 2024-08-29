@@ -18,6 +18,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [
@@ -40,10 +42,10 @@ import { MatIconModule } from '@angular/material/icon';
     MatDialogModule,
     MatSelectModule,
     ReactiveFormsModule,
-    MatIconModule
+    MatAutocompleteModule,
+    MatSlideToggleModule,
+    MatIconModule,
   ],
-  providers:[
-    InventoryService
-  ]
+  providers: [InventoryService],
 })
 export class InventoryModule {}
