@@ -8,7 +8,7 @@ describe('CoPackCalendarComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [CoPackCalendarComponent]
+      declarations: [CoPackCalendarComponent],
     });
     fixture = TestBed.createComponent(CoPackCalendarComponent);
     component = fixture.componentInstance;

@@ -8,7 +8,7 @@ describe('AssetFilesComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [AssetFilesComponent]
+      declarations: [AssetFilesComponent],
     });
     fixture = TestBed.createComponent(AssetFilesComponent);
     component = fixture.componentInstance;

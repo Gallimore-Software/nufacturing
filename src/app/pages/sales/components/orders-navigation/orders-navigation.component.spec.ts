@@ -8,7 +8,7 @@ describe('OrdersNavigationComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [OrdersNavigationComponent]
+      declarations: [OrdersNavigationComponent],
     });
     fixture = TestBed.createComponent(OrdersNavigationComponent);
     component = fixture.componentInstance;

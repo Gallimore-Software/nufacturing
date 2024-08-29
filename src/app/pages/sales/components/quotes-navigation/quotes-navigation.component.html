@@ -3,11 +3,19 @@
   <div class="metrics">
     <!-- Using mat-chip-set for displaying metrics as chips -->
     <mat-chip-set class="metric-chip-list">
-      <mat-chip color="primary" selected>Total Quotes: {{ summaryMetrics.totalQuotes }}</mat-chip>
-      <mat-chip color="accent" selected>Active: {{ summaryMetrics.active }}</mat-chip>
-      <mat-chip color="warn" selected>Expired: {{ summaryMetrics.expired }}</mat-chip>
+      <mat-chip color="primary" selected
+        >Total Quotes: {{ summaryMetrics.totalQuotes }}</mat-chip
+      >
+      <mat-chip color="accent" selected
+        >Active: {{ summaryMetrics.active }}</mat-chip
+      >
+      <mat-chip color="warn" selected
+        >Expired: {{ summaryMetrics.expired }}</mat-chip
+      >
     </mat-chip-set>
   </div>
   <!-- Using mat-button for Material Design compliant button -->
-  <button mat-raised-button color="primary" [routerLink]="'/sales/quotes'">Go to Quotes Page</button>
+  <button mat-raised-button color="primary" [routerLink]="'/sales/quotes'">
+    Go to Quotes Page
+  </button>
 </div>

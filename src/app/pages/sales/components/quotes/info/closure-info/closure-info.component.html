@@ -1,74 +1,80 @@
 <div fxLayout="row" fxLayoutGap="20px" class="container">
-    <!-- Form Section (50%) -->
-    <div fxFlex="50%">
-      <mat-card>
-        <mat-card-title>Closure Info</mat-card-title>
-        <mat-card-content>
-          <form [formGroup]="closureInfoForm">
-            <mat-form-field appearance="fill">
-              <mat-label>NFG Closure Part #</mat-label>
-              <mat-select formControlName="closurePart" (selectionChange)="onClosurePartChange($event)">
-                <mat-option *ngFor="let part of closureParts" [value]="part.value">{{ part.label }}</mat-option>
-              </mat-select>
-            </mat-form-field>
-            <mat-form-field appearance="fill">
-              <mat-label>Closure Material</mat-label>
-              <input matInput formControlName="closureMaterial" >
-            </mat-form-field>
-            <mat-form-field appearance="fill">
-              <mat-label>Closure Size</mat-label>
-              <input matInput formControlName="closureSize" >
-            </mat-form-field>
-            <mat-form-field appearance="fill">
-              <mat-label>Closure Color</mat-label>
-              <input matInput formControlName="closureColor" >
-            </mat-form-field>
-            <mat-form-field appearance="fill">
-              <mat-label>Closure Profile</mat-label>
-              <input matInput formControlName="closureProfile" >
-            </mat-form-field>
-            <mat-form-field appearance="fill">
-              <mat-label>Closure Induction Seal</mat-label>
-              <input matInput formControlName="closureInductionSeal" >
-            </mat-form-field>
-            <mat-form-field appearance="fill">
-              <mat-label>Closure Seal Material</mat-label>
-              <input matInput formControlName="closureSealMaterial" >
-            </mat-form-field>
-            <mat-form-field appearance="fill">
-              <mat-label>Closure Type</mat-label>
-              <input matInput formControlName="closureType" >
-            </mat-form-field>
-            <mat-form-field appearance="fill">
-              <mat-label>Closure Price</mat-label>
-              <input matInput formControlName="closurePrice" >
-            </mat-form-field>
-          </form>
-        </mat-card-content>
-      </mat-card>
-    </div>
-  
-    <!-- Preview Section (50%) -->
-    <div fxFlex="50%">
-      <mat-card>
-        <mat-card-title>Closure Details</mat-card-title>
-        <mat-card-content>
-          <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-            <ng-container matColumnDef="property">
-              <th mat-header-cell *matHeaderCellDef> Property </th>
-              <td mat-cell *matCellDef="let element"> {{element.property}} </td>
-            </ng-container>
-  
-            <ng-container matColumnDef="value">
-              <th mat-header-cell *matHeaderCellDef> Value </th>
-              <td mat-cell *matCellDef="let element"> {{element.value}} </td>
-            </ng-container>
-  
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-          </table>
-        </mat-card-content>
-      </mat-card>
-    </div>
+  <!-- Form Section (50%) -->
+  <div fxFlex="50%">
+    <mat-card>
+      <mat-card-title>Closure Info</mat-card-title>
+      <mat-card-content>
+        <form [formGroup]="closureInfoForm">
+          <mat-form-field appearance="fill">
+            <mat-label>NFG Closure Part #</mat-label>
+            <mat-select
+              formControlName="closurePart"
+              (selectionChange)="onClosurePartChange($event)"
+            >
+              <mat-option
+                *ngFor="let part of closureParts"
+                [value]="part.value"
+                >{{ part.label }}</mat-option
+              >
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Closure Material</mat-label>
+            <input matInput formControlName="closureMaterial" />
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Closure Size</mat-label>
+            <input matInput formControlName="closureSize" />
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Closure Color</mat-label>
+            <input matInput formControlName="closureColor" />
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Closure Profile</mat-label>
+            <input matInput formControlName="closureProfile" />
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Closure Induction Seal</mat-label>
+            <input matInput formControlName="closureInductionSeal" />
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Closure Seal Material</mat-label>
+            <input matInput formControlName="closureSealMaterial" />
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Closure Type</mat-label>
+            <input matInput formControlName="closureType" />
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Closure Price</mat-label>
+            <input matInput formControlName="closurePrice" />
+          </mat-form-field>
+        </form>
+      </mat-card-content>
+    </mat-card>
   </div>
-  
+
+  <!-- Preview Section (50%) -->
+  <div fxFlex="50%">
+    <mat-card>
+      <mat-card-title>Closure Details</mat-card-title>
+      <mat-card-content>
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+          <ng-container matColumnDef="property">
+            <th mat-header-cell *matHeaderCellDef>Property</th>
+            <td mat-cell *matCellDef="let element">{{ element.property }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="value">
+            <th mat-header-cell *matHeaderCellDef>Value</th>
+            <td mat-cell *matCellDef="let element">{{ element.value }}</td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

@@ -4,12 +4,12 @@ import { ReceivingComponent } from './receiving.component';
 
 const routes: Routes = [
   { path: '', component: ReceivingComponent, pathMatch: 'full' },
-  {path:'receiving',component:ReceivingComponent},
-//   {
-//     path: 'quotes',
-//     loadChildren: () =>
-//       import('./components/quotes/quotes.module').then((m) => m.QuotesModule),
-//   },
+  { path: 'receiving', component: ReceivingComponent },
+  //   {
+  //     path: 'quotes',
+  //     loadChildren: () =>
+  //       import('./components/quotes/quotes.module').then((m) => m.QuotesModule),
+  //   },
 ];
 
 @NgModule({

@@ -8,7 +8,7 @@ describe('FdaAuditsComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [FdaAuditsComponent]
+      declarations: [FdaAuditsComponent],
     });
     fixture = TestBed.createComponent(FdaAuditsComponent);
     component = fixture.componentInstance;

@@ -1,129 +1,135 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-create-formulas',
   templateUrl: './create-formulas.component.html',
-  styleUrls: ['./create-formulas.component.scss']
+  styleUrls: ['./create-formulas.component.scss'],
 })
-export class CreateFormulasComponent implements OnInit {
+export class CreateFormulasComponent {
+  formulaForm: FormGroup;
+  productTypes = [
+    'Capsules',
+    'Powder',
+    'Gummies',
+    'Tinctures',
+    'Powder Stickpacks',
+    'Liquid Stickpacks',
+    'Pouches',
+  ];
+  unitOptions: any = {
+    Capsules: ['mg', 'g', 'kg'],
+    Powder: ['mg', 'g', 'kg'],
+    Gummies: ['mcg', 'mg', 'g', 'kg', 'ml', 'liter', 'gallons', 'ounces'],
+    Tinctures: ['ml', 'liter'],
+    'Powder Stickpacks': ['mg', 'g', 'kg'],
+    'Liquid Stickpacks': ['ml', 'liter'],
+    Pouches: ['mg', 'g', 'kg', 'ml', 'liter'],
+  };
 
-  formulasList: any[] = [];
-
-  formulaForm: FormGroup = this.fb.group({
-    basicInfo: this.fb.group({
-      formulaName: ['', Validators.required],
-      formulaCode: ['', Validators.required],
-      productType: ['', Validators.required]
-    }),
-    ingredients: this.fb.array([]),
-    nutritionalInfo: this.fb.group({
-      servingSize: [0, Validators.min(1)],
-      calories: [0, Validators.min(0)],
-      otherNutrients: this.fb.array([])
-    }),
-    manufacturingInstructions: this.fb.group({
-      preparationInstructions: [''],
-      mixingInstructions: [''],
-      packagingInstructions: ['']
-    }),
-    qualityControl: this.fb.group({
-      qualityControlTests: [''],
-      acceptanceCriteria: ['']
-    }),
-    regulatoryCompliance: this.fb.group({
-      regulatoryRequirements: [''],
-      certifications: this.fb.group({
-        GMP: false,
-        FDA: false,
-        ISO: false
-      })
-    }),
-    additionalInfo: this.fb.group({
-      notes: ['']
-    })
-  });
-
-  constructor(private fb: FormBuilder) {}
-
-  ngOnInit() {
+  constructor(
+    private fb: FormBuilder,
+    private dialogRef: MatDialogRef<CreateFormulasComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+  ) {
     this.formulaForm = this.fb.group({
-      basicInfo: this.fb.group({
-        formulaName: ['', Validators.required],
-        formulaCode: ['', Validators.required],
-        productType: ['', Validators.required]
-      }),
-      ingredients: this.fb.array([]),
-      nutritionalInfo: this.fb.group({
-        servingSize: [0, Validators.min(1)],
-        calories: [0, Validators.min(0)],
-        otherNutrients: this.fb.array([])
-      }),
-      manufacturingInstructions: this.fb.group({
-        preparationInstructions: [''],
-        mixingInstructions: [''],
-        packagingInstructions: ['']
-      }),
-      qualityControl: this.fb.group({
-        qualityControlTests: [''],
-        acceptanceCriteria: ['']
-      }),
-      regulatoryCompliance: this.fb.group({
-        regulatoryRequirements: [''],
-        certifications: this.fb.group({
-          GMP: false,
-          FDA: false,
-          ISO: false
-        })
-      }),
-      additionalInfo: this.fb.group({
-        notes: ['']
-      })
+      code: [data?.code || ''],
+      name: [data?.name || '', Validators.required],
+      productType: [data?.productType || '', Validators.required],
+      unitOfMeasurement: [data?.unitOfMeasurement || '', Validators.required],
+      activeIngredients: this.fb.array([]), // Initialize as empty FormArray
+      inactiveIngredients: this.fb.array([]), // Initialize as empty FormArray
+      createdAt: [data?.createdAt || new Date()],
+      updatedAt: [data?.updatedAt || new Date()],
+    });
+
+    // Populate the active and inactive ingredients FormArrays
+    this.populateIngredients(
+      'activeIngredients',
+      data?.activeIngredients || [],
+    );
+    this.populateIngredients(
+      'inactiveIngredients',
+      data?.inactiveIngredients || [],
+    );
+
+    // Update unit options whenever the product type changes
+    this.formulaForm
+      .get('productType')
+      ?.valueChanges.subscribe((productType) => {
+        this.updateUnitOptions(productType);
+      });
+  }
+
+  get activeIngredients(): FormArray {
+    return this.formulaForm.get('activeIngredients') as FormArray;
+  }
+
+  get inactiveIngredients(): FormArray {
+    return this.formulaForm.get('inactiveIngredients') as FormArray;
+  }
+
+  // Populate FormArray with existing data
+  private populateIngredients(arrayName: string, ingredients: any[]) {
+    const ingredientsArray = this.formulaForm.get(arrayName) as FormArray;
+    ingredients.forEach((ingredient) => {
+      ingredientsArray.push(
+        this.fb.group({
+          name: [ingredient.name, Validators.required],
+          scientificName: [ingredient.scientificName, Validators.required],
+          perUnit: [
+            ingredient.perUnit,
+            [Validators.required, Validators.min(0)],
+          ],
+        }),
+      );
     });
   }
 
-  get ingredients(): FormArray {
-    return this.formulaForm.get('ingredients') as FormArray;
+  addActiveIngredient() {
+    this.activeIngredients.push(
+      this.fb.group({
+        name: ['', Validators.required],
+        scientificName: ['', Validators.required],
+        perUnit: [0, [Validators.required, Validators.min(0)]],
+      }),
+    );
   }
 
-  get otherNutrients(): FormArray {
-    return this.formulaForm.get('nutritionalInfo')?.get('otherNutrients') as FormArray;
+  removeActiveIngredient(index: number) {
+    this.activeIngredients.removeAt(index);
   }
 
-  addIngredient() {
-    this.ingredients.push(this.fb.group({
-      ingredientName: ['', Validators.required],
-      perCapsuleMg: [0, [Validators.required, Validators.min(0)]],
-      pricePerKG: [{value: '', disabled: true}],
-      source: ['', Validators.required],
-      stockQuantity: [{value: '', disabled: true}],
-      totalCost: [{value: '', disabled: true}]
-    }));
-  }
-  removeIngredient() {
-    const ingredientsArray = this.ingredients;
-    if (ingredientsArray.length > 0) {
-      ingredientsArray.removeAt(ingredientsArray.length - 1);
-    }
+  addInactiveIngredient() {
+    this.inactiveIngredients.push(
+      this.fb.group({
+        name: ['', Validators.required],
+        scientificName: ['', Validators.required],
+        perUnit: [0, [Validators.required, Validators.min(0)]],
+      }),
+    );
   }
 
-  addNutrient() {
-    this.otherNutrients.push(this.fb.group({
-      nutrientName: [''],
-      amount: [0, Validators.min(0)]
-    }));
+  removeInactiveIngredient(index: number) {
+    this.inactiveIngredients.removeAt(index);
   }
 
-  removeNutrient(){
-    if(this.otherNutrients.length > 0){
-      this.otherNutrients.removeAt(this.otherNutrients.length - 1);
-    }
-  }
   onSubmit() {
-    const formulaData = this.formulaForm.value;
-    this.formulasList.push(formulaData);
-    console.log('Formulas List:', this.formulasList);
-    this.formulaForm.reset(); 
+    if (this.formulaForm.valid) {
+      this.dialogRef.close(this.formulaForm.value);
+    }
+  }
+
+  private updateUnitOptions(productType: string) {
+    const unitControl = this.formulaForm.get('unitOfMeasurement');
+    const units = this.unitOptions[productType] || [];
+    if (units.length > 0) {
+      unitControl?.setValidators([Validators.required]);
+      unitControl?.updateValueAndValidity();
+    } else {
+      unitControl?.clearValidators();
+      unitControl?.updateValueAndValidity();
+    }
   }
 }
- 

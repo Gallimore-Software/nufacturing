@@ -8,7 +8,7 @@ describe('MasterCartonInfoComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [MasterCartonInfoComponent]
+      declarations: [MasterCartonInfoComponent],
     });
     fixture = TestBed.createComponent(MasterCartonInfoComponent);
     component = fixture.componentInstance;

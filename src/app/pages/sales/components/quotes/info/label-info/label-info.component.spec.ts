@@ -8,7 +8,7 @@ describe('LabelInfoComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [LabelInfoComponent]
+      declarations: [LabelInfoComponent],
     });
     fixture = TestBed.createComponent(LabelInfoComponent);
     component = fixture.componentInstance;

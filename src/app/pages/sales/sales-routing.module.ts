@@ -13,7 +13,7 @@ const routes: Routes = [
     path: 'customers',
     loadChildren: () =>
       import('./components/customers/customers.module').then(
-        (m) => m.CustomersModule
+        (m) => m.CustomersModule,
       ),
   },
   {

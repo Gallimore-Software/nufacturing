@@ -1,12 +1,11 @@
-<section class="subnav" [class.collapsed]="dock">
+<!-- <section class="subnav" [class.collapsed]="dock">
     <mat-icon (click)="toggleDock()">{{ dock ? 'keyboard_arrow_left' : 'keyboard_arrow_right' }}</mat-icon>
       <div>
         <button mat-button routerLink="create-formulas">Create Formulas</button>
         <button mat-button routerLink="list-formulas">List Formulas</button>
       </div>
-  </section>
-  
-  <section class="nufacturing_formulas" [class.expanded]="dock">
-    <router-outlet></router-outlet>
-  </section>
-  
+  </section> -->
+
+<section class="nufacturing_formulas" [class.expanded]="dock">
+  <router-outlet></router-outlet>
+</section>

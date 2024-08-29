@@ -9,19 +9,15 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 
-
 @NgModule({
-  declarations: [    
-    DashboardComponent,
-    DashboardPageComponent,
-  ],
+  declarations: [DashboardComponent, DashboardPageComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,
     MatCardModule,
     MatListModule,
     MatIconModule,
-    MatTableModule
-  ]
+    MatTableModule,
+  ],
 })
-export class DashboardModule { }
+export class DashboardModule {}

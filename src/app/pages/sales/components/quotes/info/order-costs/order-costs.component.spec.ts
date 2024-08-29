@@ -8,7 +8,7 @@ describe('OrderCostsComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [OrderCostsComponent]
+      declarations: [OrderCostsComponent],
     });
     fixture = TestBed.createComponent(OrderCostsComponent);
     component = fixture.componentInstance;

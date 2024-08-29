@@ -8,7 +8,7 @@ describe('StickPackCalendarComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [StickPackCalendarComponent]
+      declarations: [StickPackCalendarComponent],
     });
     fixture = TestBed.createComponent(StickPackCalendarComponent);
     component = fixture.componentInstance;

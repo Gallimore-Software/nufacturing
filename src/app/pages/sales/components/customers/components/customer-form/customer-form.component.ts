@@ -64,12 +64,12 @@ export class CustomerFormComponent implements OnInit {
         brandCode: ['', [Validators.required, Validators.maxLength(3)]],
         brandPhoto: ['', Validators.required],
         brandWebsite: ['', Validators.required],
-      })
+      }),
     );
   }
-  
-  removeBrand(){
-    if(this.brands.length > 0){   
+
+  removeBrand() {
+    if (this.brands.length > 0) {
       this.brands.removeAt(this.brands.length - 1);
     }
   }
