@@ -6,7 +6,7 @@ import {
   HttpInterceptor,
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environment/environment';
+import { environment } from 'src/environment/environment.prod';
 
 @Injectable()
 export class HasuraInterceptor implements HttpInterceptor {
