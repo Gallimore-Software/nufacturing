@@ -55,10 +55,9 @@ main {
 }
 
 .chart-container {
-  flex: 1;
-  padding: 10px;
-  background: #fff;
-  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
 }
 
 canvas {
@@ -102,6 +101,10 @@ canvas {
 
   .metric-card {
     width: 100%; /* Each card takes full width on smaller screens */
+  }
+
+  .chart-container {
+    flex-direction: column;
   }
 
   .recent-activity,
