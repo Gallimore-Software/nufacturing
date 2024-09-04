@@ -1,0 +1,16 @@
+<h1 mat-dialog-title>Customer Details</h1>
+<div mat-dialog-content>
+  <p><strong>Company Name:</strong> {{ data.companyName }}</p>
+  <p><strong>Display Name:</strong> {{ data.displayName }}</p>
+  <p>
+    <strong>Primary Contact:</strong> {{ data.primaryContact.firstName }}
+    {{ data.primaryContact.lastName }}
+  </p>
+  <p><strong>Email:</strong> {{ data.primaryContact.email }}</p>
+  <p><strong>Phone:</strong> {{ data.primaryContact.phone }}</p>
+  <p><strong>Website:</strong> {{ data.website }}</p>
+  <p><strong>Estimate:</strong> {{ data.estimate }}</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="closeDialog()">Close</button>
+</div>

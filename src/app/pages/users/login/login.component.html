@@ -1,40 +1,46 @@
 <div fxLayout="row" fxLayoutGap="0px" class="login-page">
-    <!-- Carousel Container -->
-    <div fxFlex="30" class="carousel-container">
-        <app-carousel></app-carousel>
-    </div>
+  <!-- Carousel Container -->
+  <div fxFlex="30" class="carousel-container">
+    <app-carousel></app-carousel>
+  </div>
 
-    <!-- Form Container -->
-    <div fxFlex="70" class="form-container">
-        <mat-card>
-            <mat-card-title>Login</mat-card-title>
-            <mat-card-content>
-                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-                    <mat-form-field appearance="fill">
-                        <mat-label>Email</mat-label>
-                        <input matInput formControlName="email" required>
-                        <mat-error *ngIf="loginForm.get('email')?.hasError('required')">
-                            Email is required
-                        </mat-error>
-                    </mat-form-field>
-                    
-                    <mat-form-field appearance="fill">
-                        <mat-label>Password</mat-label>
-                        <input matInput formControlName="password" type="password" required minlength="6">
-                        <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
-                            Password is required
-                        </mat-error>
-                        <mat-error *ngIf="loginForm.get('password')?.hasError('minlength')">
-                            Password must be at least 6 characters
-                        </mat-error>
-                    </mat-form-field>
-                    
-                    <button mat-raised-button color="primary" type="submit" >Login</button>
-                </form>
-            </mat-card-content>
-            <mat-card-content class="register-link">
-                <p>Don't have an account? <a routerLink="/register">Register</a></p>
-            </mat-card-content>
-        </mat-card>
-    </div>
+  <!-- Form Container -->
+  <div fxFlex="70" class="form-container">
+    <mat-card>
+      <mat-card-title>Login</mat-card-title>
+      <mat-card-content>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <mat-form-field appearance="fill">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" required />
+            <mat-error *ngIf="loginForm.get('email')?.hasError('required')">
+              Email is required
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Password</mat-label>
+            <input
+              matInput
+              formControlName="password"
+              type="password"
+              required
+              minlength="6"
+            />
+            <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
+              Password is required
+            </mat-error>
+            <mat-error *ngIf="loginForm.get('password')?.hasError('minlength')">
+              Password must be at least 6 characters
+            </mat-error>
+          </mat-form-field>
+
+          <button mat-raised-button color="primary" type="submit">Login</button>
+        </form>
+      </mat-card-content>
+      <mat-card-content class="register-link">
+        <p>Don't have an account? <a routerLink="/register">Register</a></p>
+      </mat-card-content>
+    </mat-card>
+  </div>
 </div>

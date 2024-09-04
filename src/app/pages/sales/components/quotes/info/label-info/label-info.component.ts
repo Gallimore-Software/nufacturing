@@ -4,11 +4,11 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-label-info',
   templateUrl: './label-info.component.html',
-  styleUrls: ['./label-info.component.scss']
+  styleUrls: ['./label-info.component.scss'],
 })
 export class LabelInfoComponent implements OnInit {
   labelInfoForm: FormGroup;
-  
+
   dataSource: any[] = [];
   displayedColumns: string[] = ['property', 'value'];
 
@@ -18,11 +18,11 @@ export class LabelInfoComponent implements OnInit {
       labelDimension: ['2.50" X 7.00"'],
       labelMaterialType: ['White BOPP'],
       backingMaterialFinish: ['PET'],
-      labelMaterialFinish: ['Gloss']
+      labelMaterialFinish: ['Gloss'],
     });
 
     this.updateDataSource();
-    this.labelInfoForm.valueChanges.subscribe(value => {
+    this.labelInfoForm.valueChanges.subscribe((value) => {
       this.updateDataSource();
     });
   }
@@ -35,8 +35,14 @@ export class LabelInfoComponent implements OnInit {
       { property: 'Label Supplied By', value: formValues.labelSuppliedBy },
       { property: 'Label Dimension', value: formValues.labelDimension },
       { property: 'Label Material Type', value: formValues.labelMaterialType },
-      { property: 'Backing Material Finish', value: formValues.backingMaterialFinish },
-      { property: 'Label Material Finish', value: formValues.labelMaterialFinish }
+      {
+        property: 'Backing Material Finish',
+        value: formValues.backingMaterialFinish,
+      },
+      {
+        property: 'Label Material Finish',
+        value: formValues.labelMaterialFinish,
+      },
     ];
   }
 }

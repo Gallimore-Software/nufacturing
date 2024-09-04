@@ -1,26 +1,100 @@
-.customers-page {
-    display: flex; /* Enables flexbox layout */
-    flex-wrap: wrap; /* Allows items to wrap as needed */
-    gap: 20px; /* Space between the child components */
-    padding: 20px; /* Padding around the entire container */
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+}
+
+.summary-card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  h3 {
+    font-size: 24px;
+    color: #ffffff;
+    margin-bottom: 10px;
   }
-  
-  /* Styles for the list and form components */
-  app-customer-list,
-  app-customer-form {
-    flex: 1 1 100%; /* By default, take full width on small screens */
-  
-    /* Ensures each component takes half the width on larger screens */
-    @media (min-width: 768px) {
-      flex: 1 1 50%;
+
+  .total-customers {
+    h1 {
+      font-size: 48px;
+      color: #ffffff;
+      margin: 0;
     }
   }
-  
-  /* Optionally add padding inside each component for better spacing */
-  app-customer-list,
-  app-customer-form {
-    padding: 20px; /* Adds internal padding */
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Adds shadow for depth */
-    border-radius: 8px; /* Rounds the corners */
+
+  button {
+    margin-top: 20px;
   }
-  
+}
+
+.customer-table {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  .mat-form-field {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+
+    th,
+    td {
+      padding: 8px 12px;
+      text-align: left;
+    }
+
+    th {
+      font-weight: bold;
+    }
+
+    tr:hover {
+      background-color: #3e3e3e;
+    }
+  }
+
+  .mat-paginator {
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .dashboard {
+    flex-direction: column;
+  }
+
+  .summary-card,
+  .customer-table {
+    padding: 15px;
+  }
+
+  .mat-paginator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard {
+    padding: 10px;
+  }
+
+  .summary-card,
+  .customer-table {
+    padding: 10px;
+  }
+}

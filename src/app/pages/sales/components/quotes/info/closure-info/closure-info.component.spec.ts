@@ -8,7 +8,7 @@ describe('ClosureInfoComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ClosureInfoComponent]
+      declarations: [ClosureInfoComponent],
     });
     fixture = TestBed.createComponent(ClosureInfoComponent);
     component = fixture.componentInstance;

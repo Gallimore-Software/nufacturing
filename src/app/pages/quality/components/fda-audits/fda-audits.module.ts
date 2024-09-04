@@ -4,12 +4,7 @@ import { FdaAuditsComponent } from './fda-audits.component';
 import { FdaAuditsRoutingModule } from './fda-audits-routing.module';
 
 @NgModule({
-  declarations: [
-    FdaAuditsComponent
-  ],
-  imports: [
-    CommonModule,
-    FdaAuditsRoutingModule
-  ]
+  declarations: [FdaAuditsComponent],
+  imports: [CommonModule, FdaAuditsRoutingModule],
 })
-export class FdaAuditsModule { }
+export class FdaAuditsModule {}

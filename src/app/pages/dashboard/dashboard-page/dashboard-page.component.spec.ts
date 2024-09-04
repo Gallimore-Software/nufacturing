@@ -8,7 +8,7 @@ describe('DashboardPageComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [DashboardPageComponent]
+      declarations: [DashboardPageComponent],
     });
     fixture = TestBed.createComponent(DashboardPageComponent);
     component = fixture.componentInstance;

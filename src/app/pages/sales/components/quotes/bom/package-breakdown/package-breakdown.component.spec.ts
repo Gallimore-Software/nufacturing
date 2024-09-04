@@ -8,7 +8,7 @@ describe('PackageBreakdownComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [PackageBreakdownComponent]
+      declarations: [PackageBreakdownComponent],
     });
     fixture = TestBed.createComponent(PackageBreakdownComponent);
     component = fixture.componentInstance;

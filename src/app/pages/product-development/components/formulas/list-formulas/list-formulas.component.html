@@ -1,1 +1,113 @@
-<p>list-formulas works!</p>
+<div class="dashboard">
+  <mat-card class="summary-card">
+    <h3>Formulas Summary</h3>
+    <div *ngIf="isAdminOrManager">
+      <button mat-raised-button color="primary" (click)="createNewFormula()">
+        Create New Formula
+      </button>
+    </div>
+  </mat-card>
+</div>
+
+<div class="formulas-container">
+  <mat-form-field appearance="outline">
+    <mat-label>Search</mat-label>
+    <input
+      matInput
+      (keyup)="applyFilter($event)"
+      placeholder="Search by SKU or Display Name"
+    />
+  </mat-form-field>
+
+  <table mat-table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="sku">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>SKU</th>
+      <td mat-cell *matCellDef="let element">{{ element.sku }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="displayName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Display Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.displayName }}</td>
+    </ng-container>
+
+    <!-- <ng-container matColumnDef="scientificName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Scientific Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.scientificName }}</td>
+    </ng-container> -->
+
+    <ng-container matColumnDef="unitOfMeasurement">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        Unit of Measurement
+      </th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.unitOfMeasurement }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="productType">
+      <th mat-header-cell *matHeaderCellDef>Product Type</th>
+      <td mat-cell *matCellDef="let element">{{ element.productType }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="activeIngredients">
+      <th mat-header-cell *matHeaderCellDef>Active Ingredients</th>
+      <td mat-cell *matCellDef="let element">
+        <ul>
+          <li *ngFor="let ingredient of element.activeIngredients">
+            {{ ingredient.name }} ({{ ingredient.perUnit }})
+          </li>
+        </ul>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="inactiveIngredients">
+      <th mat-header-cell *matHeaderCellDef>Inactive Ingredients</th>
+      <td mat-cell *matCellDef="let element">
+        <ul>
+          <li *ngFor="let ingredient of element.inactiveIngredients">
+            {{ ingredient.name }} ({{ ingredient.perUnit }})
+          </li>
+        </ul>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="createdAt">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Created At</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.createdAt | date: "short" }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let element">
+        <button
+          mat-icon-button
+          *ngIf="isAdminOrManager; else editDisabled"
+          (click)="editFormulaItem(element)"
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+        <ng-template #editDisabled>
+          <mat-icon>remove</mat-icon>
+        </ng-template>
+        <button
+          mat-icon-button
+          color="warn"
+          *ngIf="isAdminOrManager"
+          (click)="deleteFormulaItem(element)"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
+  <mat-paginator
+    [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons
+  ></mat-paginator>
+</div>

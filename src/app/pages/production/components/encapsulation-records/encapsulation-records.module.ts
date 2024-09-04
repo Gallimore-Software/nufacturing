@@ -3,12 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { EncapsulationRecordsRoutingModule } from './encapsulation-records-routing.module';
 
-
 @NgModule({
   declarations: [],
-  imports: [
-    CommonModule,
-    EncapsulationRecordsRoutingModule
-  ]
+  imports: [CommonModule, EncapsulationRecordsRoutingModule],
 })
-export class EncapsulationRecordsModule { }
+export class EncapsulationRecordsModule {}

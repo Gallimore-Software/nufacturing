@@ -8,7 +8,7 @@ describe('IngredientBreakdownWithoutMoqComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [IngredientBreakdownWithoutMoqComponent]
+      declarations: [IngredientBreakdownWithoutMoqComponent],
     });
     fixture = TestBed.createComponent(IngredientBreakdownWithoutMoqComponent);
     component = fixture.componentInstance;

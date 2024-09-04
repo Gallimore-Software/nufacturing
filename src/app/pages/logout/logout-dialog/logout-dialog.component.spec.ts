@@ -8,7 +8,7 @@ describe('LogoutDialogComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [LogoutDialogComponent]
+      declarations: [LogoutDialogComponent],
     });
     fixture = TestBed.createComponent(LogoutDialogComponent);
     component = fixture.componentInstance;

@@ -1,0 +1,28 @@
+name: Angular CI with Test Coverage
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: npm install
+
+      # - name: Run tests with coverage
+      #   run: npm test
+
+      # - name: Upload coverage report
+      #   uses: actions/upload-artifact@v2
+      #   with:
+      #     name: coverage-report
+      #     path: coverage/

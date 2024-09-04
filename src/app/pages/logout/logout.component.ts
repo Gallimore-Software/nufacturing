@@ -6,10 +6,13 @@ import { LogoutDialogComponent } from './logout-dialog/logout-dialog.component';
 @Component({
   selector: 'app-logout',
   templateUrl: './logout.component.html',
-  styleUrls: ['./logout.component.scss']
+  styleUrls: ['./logout.component.scss'],
 })
 export class LogoutComponent implements OnInit {
-  constructor(public dialog: MatDialog, private router: Router) {}
+  constructor(
+    public dialog: MatDialog,
+    private router: Router,
+  ) {}
 
   ngOnInit(): void {
     this.openLogoutDialog();
@@ -17,10 +20,10 @@ export class LogoutComponent implements OnInit {
 
   openLogoutDialog(): void {
     const dialogRef = this.dialog.open(LogoutDialogComponent, {
-      width: '250px'
+      width: '250px',
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         localStorage.clear();
         window.location.reload();

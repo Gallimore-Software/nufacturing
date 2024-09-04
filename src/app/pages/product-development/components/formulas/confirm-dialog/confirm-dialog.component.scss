@@ -1,0 +1,30 @@
+/* Styles for the confirmation dialog */
+
+mat-dialog-title {
+  font-weight: bold;
+  color: #f44336; // Red color for the title
+  padding-bottom: 16px;
+  font-size: 20px;
+}
+
+mat-dialog-content {
+  font-size: 16px;
+  padding: 16px 24px; // Proper padding around the content
+}
+
+mat-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 24px 16px; // Padding for actions area
+
+  button {
+    margin: 0 8px;
+    min-width: 80px; // Minimum width for buttons to look consistent
+  }
+}
+
+button {
+  &.mat-button {
+    min-width: 80px; // Ensures that 'Cancel' and 'Delete' buttons are of similar width
+  }
+}

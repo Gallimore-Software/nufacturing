@@ -1,0 +1,29 @@
+#!/bin/sh
+
+# Do not allow push to protected branches
+protected_branches='development|testing|staging|production'
+
+current_branch=$(git rev-parse --abbrev-ref HEAD)
+
+if echo "$current_branch" | grep -Eq "$protected_branches"; then
+  echo "Error: Direct push to $current_branch is not allowed."
+  echo "Please use pull requests for changes to this branch."
+  exit 1
+fi
+
+# Do not allow push if missing Jira issue ID in commit message.
+while read local_ref local_sha remote_ref remote_sha; do
+  if [ "$local_sha" = "0000000000000000000000000000000000000000" ]; then
+    # Branch is being deleted, ignore
+    continue
+  fi
+
+  COMMITS=$(git rev-list $remote_sha..$local_sha)
+  for COMMIT in $COMMITS; do
+    MESSAGE=$(git log --format=%B -n 1 $COMMIT)
+    if [[ ! $MESSAGE =~ NFG-[0-9]+ ]]; then
+      echo "Error: Commit message '$MESSAGE' does not contain a Jira issue ID (NFG-<issue-number>)."
+      exit 1
+    fi
+  done
+done

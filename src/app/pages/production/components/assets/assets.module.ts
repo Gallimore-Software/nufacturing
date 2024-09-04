@@ -13,9 +13,6 @@ import { AssetsRoutingModule } from './assets.routing.module';
     AssetTrainingComponent,
     PreventativeMaintenanceComponent,
   ],
-  imports: [
-    CommonModule,
-    AssetsRoutingModule
-  ]
+  imports: [CommonModule, AssetsRoutingModule],
 })
-export class AssetsModule { }
+export class AssetsModule {}

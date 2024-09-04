@@ -8,7 +8,7 @@ describe('DepositorRecordsComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [DepositorRecordsComponent]
+      declarations: [DepositorRecordsComponent],
     });
     fixture = TestBed.createComponent(DepositorRecordsComponent);
     component = fixture.componentInstance;

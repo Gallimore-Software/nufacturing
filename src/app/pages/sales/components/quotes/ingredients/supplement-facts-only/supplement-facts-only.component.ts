@@ -134,7 +134,7 @@ export class supplementFactsOnlyComponent implements OnInit {
   onSubmit() {
     const formValue = this.factForm.value;
     const existingFactIndex = this.facts.findIndex(
-      (f) => f.ingredient === formValue.ingredient
+      (f) => f.ingredient === formValue.ingredient,
     );
     if (existingFactIndex >= 0) {
       this.facts[existingFactIndex] = formValue;

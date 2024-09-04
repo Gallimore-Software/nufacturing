@@ -1,5 +1,5 @@
 .sidenav {
-  width: 100%;
+  width: 240px;
   height: auto;
   padding-top: 20px;
   display: flex;
@@ -13,12 +13,14 @@
   height: 100%;
   display: flex;
   justify-content: flex-end;
+
   &:hover {
     cursor: pointer;
   }
 }
-.toggle_icon{
-  z-index: 999; 
+
+.toggle_icon {
+  z-index: 999;
   right: 0;
   height: 24px;
   width: 24px;
@@ -27,15 +29,11 @@
 }
 
 .nav {
+  justify-content: center;
+
   .active-link {
     background-color: #000000;
     border-left: solid 3px #ffffff;
-  }
-
-  .hover {
-    transition-duration: 400ms;
-    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
-    transition-property: transform, border, background-color;
   }
 
   mat-list-item,
@@ -43,12 +41,13 @@
     border: none;
     box-sizing: border-box;
     text-decoration: none;
+
     &:hover {
       cursor: pointer;
       background-color: #000000;
-      border-left: solid 3px #ffffff;
     }
   }
+
   mat-icon {
     color: #ffffff;
     height: 24px;

@@ -29,13 +29,13 @@ const routes: Routes = [
       { path: 'closure-info', component: ClosureInfoComponent },
       { path: 'master-carton-info', component: MasterCartonInfoComponent },
       { path: 'other-components', component: OtherComponentsComponent },
-      { path: 'label-info', component: LabelInfoComponent }
-    ]
-  }
+      { path: 'label-info', component: LabelInfoComponent },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class InfoRoutingModule { }
+export class InfoRoutingModule {}

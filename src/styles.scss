@@ -1,11 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 
-body, html {
+body,
+html {
   height: 100%;
   margin: 0;
   overflow: hidden;
 }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background: linear-gradient(90deg, #000000, #1a1a1a);
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background: linear-gradient(90deg, #000000, #1a1a1a);
 }
 
 mat-sidenav[style] {
@@ -15,13 +19,13 @@ mat-sidenav[style] {
   display: flex !important;
 }
 mat-drawer[style*="visibility: hidden"] {
-    display: flex !important;
+  display: flex !important;
 }
 
-mat-sidenav{
-    visibility: visible !important;
+mat-sidenav {
+  visibility: visible !important;
 }
-  
+
 /* For Chrome, Safari, and other WebKit-based browsers */
 ::-webkit-scrollbar {
   width: 4px;
@@ -29,7 +33,7 @@ mat-sidenav{
 }
 
 ::-webkit-scrollbar-track {
-  background: transparent; 
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -38,9 +42,9 @@ mat-sidenav{
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555; 
+  background: #555;
 }
 
-mat-button{
+mat-button {
   cursor: pointer;
 }

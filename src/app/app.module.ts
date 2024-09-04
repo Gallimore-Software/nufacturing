@@ -37,6 +37,10 @@ import { LogoutDialogComponent } from './pages/logout/logout-dialog/logout-dialo
 import { GraphQLModule } from './graphql.module';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { HasuraInterceptor } from './components/auth/hasura.interceptor';
+import { AuthService } from './components/auth/auth.service';
+import { AuthGuard } from './components/auth/auth.guard';
+import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
+import { AuthInterceptor } from './components/auth/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -76,10 +80,23 @@ import { HasuraInterceptor } from './components/auth/hasura.interceptor';
     QualityModule,
     HumanResourcesModule,
     GraphQLModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: HasuraInterceptor, multi: true }
+    AuthService,
+    AuthGuard,
+    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+    JwtHelperService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HasuraInterceptor,
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent],
 })
