@@ -60,6 +60,12 @@ main {
   gap: 20px;
 }
 
+.activity-contianer {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
 canvas {
   width: 100% !important;
   height: auto !important;
@@ -104,6 +110,10 @@ canvas {
   }
 
   .chart-container {
+    flex-direction: column;
+  }
+
+  .activity-contianer {
     flex-direction: column;
   }
 
