@@ -1,12 +1,12 @@
-<div fxLayout="row" fxLayoutGap="20px" class="container">
+<div fxLayoutGap="20px" class="container">
   <!-- Form Section (50%) -->
-  <div fxFlex="50%">
+  <div class="mat-card-container">
     <mat-card>
       <mat-card-title>Account Info Form</mat-card-title>
       <mat-card-content>
         <form [formGroup]="accountInfoForm">
           <!-- Account Manager Dropdown -->
-          <mat-form-field appearance="fill" style="width: 100%">
+          <mat-form-field appearance="fill">
             <mat-label>Account Manager</mat-label>
             <mat-select formControlName="accountManager">
               <mat-option
@@ -20,38 +20,38 @@
 
           <!-- Input for new Account Manager if "Other" is selected -->
           <div *ngIf="accountInfoForm.get('accountManager')?.value === 'other'">
-            <mat-form-field appearance="fill" style="width: 100%">
+            <mat-form-field appearance="fill">
               <mat-label>New Account Manager</mat-label>
               <input matInput formControlName="newAccountManager" />
             </mat-form-field>
           </div>
 
-          <mat-form-field appearance="fill" style="width: 100%">
+          <mat-form-field appearance="fill">
             <mat-label>NFG Customer Code</mat-label>
             <input matInput formControlName="customerCode" />
           </mat-form-field>
 
-          <mat-form-field appearance="fill" style="width: 100%">
+          <mat-form-field appearance="fill">
             <mat-label>NFG SKU #</mat-label>
             <input matInput formControlName="sku" />
           </mat-form-field>
 
-          <mat-form-field appearance="fill" style="width: 100%">
+          <mat-form-field appearance="fill">
             <mat-label>NFG Formula Code</mat-label>
             <input matInput formControlName="formulaCode" />
           </mat-form-field>
 
-          <mat-form-field appearance="fill" style="width: 100%">
+          <mat-form-field appearance="fill">
             <mat-label>Batch #</mat-label>
             <input matInput formControlName="batchNumber" />
           </mat-form-field>
 
-          <mat-form-field appearance="fill" style="width: 100%">
+          <mat-form-field appearance="fill">
             <mat-label>Customer Batch #</mat-label>
             <input matInput formControlName="customerBatchNumber" />
           </mat-form-field>
 
-          <mat-form-field appearance="fill" style="width: 100%">
+          <mat-form-field appearance="fill">
             <mat-label>NFG Batch Code</mat-label>
             <input matInput formControlName="nfgBatchCode" readonly />
           </mat-form-field>
@@ -76,7 +76,7 @@
   </div>
 
   <!-- Preview Section (50%) -->
-  <div fxFlex="50%">
+  <div class="mat-card-container">
     <mat-card>
       <mat-card-title>Preview</mat-card-title>
       <mat-card-content>
