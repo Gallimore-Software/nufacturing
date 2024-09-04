@@ -63,13 +63,13 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
-  
+
     .carousel-container {
       width: 100%;
       background-size: cover;
       background-position: center;
     }
-  
+
     .form-container {
       width: 100%;
       display: flex;
@@ -79,6 +79,5 @@
       position: fixed;
       margin-top: 10vh;
     }
-  
   }
 }
