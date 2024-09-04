@@ -1,4 +1,4 @@
-.sidenav-container {
+.container {
   height: 100vh;
   position: relative;
 }
@@ -13,4 +13,16 @@ mat-sidenav {
   z-index: 100;
   box-shadow: rgba(102, 160, 255, 0.15) 2.4px 2.4px 3.2px;
   border: none;
+}
+
+@media only screen and (max-width: 768px) {
+  .isVisible {
+    display: flex;
+    position: sticky;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    background-color: aqua;
+  }
 }

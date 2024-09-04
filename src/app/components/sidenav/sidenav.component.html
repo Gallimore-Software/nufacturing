@@ -1,13 +1,4 @@
-<div
-  style="
-    display: flex;
-    width: 100%;
-    max-width: 300px;
-    justify-content: start;
-    align-items: center;
-    gap: 0;
-  "
->
+<div class="sidenav-container">
   <section [class.sidenav]="isExpanded">
     <!-- Main menu -->
     <mat-list *ngIf="!activeMenu" class="nav">
@@ -23,13 +14,7 @@
         "
       >
         <div
-          style="
-            display: flex;
-            flex-direction: row;
-            justify-content: flex-start;
-            align-items: center;
-            gap: 10px;
-          "
+          class = "nav-item"
         >
           <div>
             <mat-icon
