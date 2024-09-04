@@ -28,6 +28,7 @@ main {
   display: flex;
   justify-content: space-between;
   flex-wrap: nowrap;
+  align-items: center;
 }
 
 .metrics-container {
@@ -92,9 +93,15 @@ canvas {
   }
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
+  .metrics-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
   .metric-card {
-    flex-basis: 100%; /* Each card takes full width on smaller screens */
+    width: 100%; /* Each card takes full width on smaller screens */
   }
 
   .recent-activity,
