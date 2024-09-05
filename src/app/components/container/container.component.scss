@@ -31,4 +31,16 @@ mat-sidenav {
     justify-content: center;
     background-color: aqua;
   }
+
+  app-sidenav {
+
+  }
+
+  mat-sidenav {
+    display: none;
+  }
+
+  mat-sidenav-content {
+    margin-left: 0;
+  }
 }

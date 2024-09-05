@@ -6,6 +6,7 @@
     [opened]="isExpanded"
     class="sidenav"
     [style.margin-left.px]="!isExpanded ? 80 : 0"
+    [style.display]="isExpanded ? 'block' : 'none'"
   >
     <app-sidenav
       (toggleMenu)="toggleMenu()"

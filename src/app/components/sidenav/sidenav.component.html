@@ -1,4 +1,8 @@
 <div class="sidenav-container">
+  <a (click)="toggleSubMenu(null)" class="mobile-menu">
+    <mat-icon mat-list-icon>menu</mat-icon>
+  </a>
+  <p matLine *ngIf="!isExpanded">Menu</p>
   <section [class.sidenav]="isExpanded">
     <!-- Main menu -->
     <mat-list *ngIf="!activeMenu" class="nav">
@@ -13,9 +17,7 @@
             : navigateTo(route.link)
         "
       >
-        <div
-          class = "nav-item"
-        >
+        <div class="nav-item">
           <div>
             <mat-icon
               mat-list-icon
