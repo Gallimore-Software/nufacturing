@@ -20,7 +20,10 @@ const routes: Routes = [
       },
       {
         path: 'product-skus',
-        component: ProductSkusComponent,
+        loadChildren: () =>
+          import('./components/product-skus/product-skus.module').then(
+            (m) => m.ProductSkusModule,
+          ),      
       },
       {
         path: 'product-types',
