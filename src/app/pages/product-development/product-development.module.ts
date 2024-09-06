@@ -13,6 +13,11 @@ import { ProductSkusModule } from './components/product-skus/product-skus.module
     ProductTypesComponent,
     ResearchAndDevelopmentComponent,
   ],
-  imports: [CommonModule, ProductDevelopmentRoutingModule, FormulasModule, ProductSkusModule],
+  imports: [
+    CommonModule,
+    ProductDevelopmentRoutingModule,
+    FormulasModule,
+    ProductSkusModule,
+  ],
 })
 export class ProductDevelopmentModule {}

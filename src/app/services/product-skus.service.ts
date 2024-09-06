@@ -7,7 +7,7 @@ import { environment } from 'src/environment/environment.prod';
   providedIn: 'root',
 })
 export class ProductSkusService {
-    private apiUrl = `${environment.apiUrl}/product-development/product-skus`;
+  private apiUrl = `${environment.apiUrl}/product-development/product-skus`;
 
   constructor(private http: HttpClient) {}
 

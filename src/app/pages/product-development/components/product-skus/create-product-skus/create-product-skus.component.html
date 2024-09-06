@@ -7,7 +7,7 @@
         SKU is required
       </mat-error>
     </mat-form-field>
-  
+
     <mat-form-field appearance="fill">
       <mat-label>Product Type</mat-label>
       <mat-select formControlName="productType">
@@ -15,11 +15,13 @@
           {{ type }}
         </mat-option>
       </mat-select>
-      <mat-error *ngIf="productSkuForm.get('productType')?.hasError('required')">
+      <mat-error
+        *ngIf="productSkuForm.get('productType')?.hasError('required')"
+      >
         Product type is required
       </mat-error>
     </mat-form-field>
-  
+
     <mat-form-field appearance="fill">
       <mat-label>Formula</mat-label>
       <input
@@ -30,8 +32,14 @@
         (input)="onFormulaSearch($event)"
         placeholder="Search formula"
       />
-      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onFormulaSelected($event)">
-        <mat-option *ngFor="let formula of filteredFormulas" [value]="formula.name">
+      <mat-autocomplete
+        #auto="matAutocomplete"
+        (optionSelected)="onFormulaSelected($event)"
+      >
+        <mat-option
+          *ngFor="let formula of filteredFormulas"
+          [value]="formula.name"
+        >
           {{ formula?.name }}
         </mat-option>
       </mat-autocomplete>
@@ -39,17 +47,25 @@
         Formula is required
       </mat-error>
     </mat-form-field>
-  
+
     <mat-form-field appearance="fill">
       <mat-label>Packaging Info</mat-label>
-      <input matInput formControlName="packagingInfo" placeholder="Enter packaging info" />
+      <input
+        matInput
+        formControlName="packagingInfo"
+        placeholder="Enter packaging info"
+      />
     </mat-form-field>
-  
+
     <mat-form-field appearance="fill">
       <mat-label>Customer Info</mat-label>
-      <input matInput formControlName="customerInfo" placeholder="Enter customer info" />
+      <input
+        matInput
+        formControlName="customerInfo"
+        placeholder="Enter customer info"
+      />
     </mat-form-field>
-  
+
     <mat-form-field appearance="fill">
       <mat-label>Status</mat-label>
       <mat-select formControlName="status">
@@ -58,11 +74,14 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
-  
-    <button mat-raised-button color="primary" type="submit" [disabled]="!productSkuForm.valid">
+
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="!productSkuForm.valid"
+    >
       Save
     </button>
   </form>
-  
-  </div>
-  
+</div>

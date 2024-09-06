@@ -4,8 +4,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { AuthService } from 'src/app/components/auth/auth.service';
 import { MatDialog } from '@angular/material/dialog';
-import { ProductSkusService } from 'src/app/services/product-skus.service'; 
-import { CreateProductSkusComponent } from '../create-product-skus/create-product-skus.component'; 
+import { ProductSkusService } from 'src/app/services/product-skus.service';
+import { CreateProductSkusComponent } from '../create-product-skus/create-product-skus.component';
 import { ConfirmDialogComponent } from '../../formulas/confirm-dialog/confirm-dialog.component';
 
 export interface ProductSku {
@@ -24,7 +24,15 @@ export interface ProductSku {
   styleUrls: ['./list-product-skus.component.scss'],
 })
 export class ListProductSkusComponent implements OnInit, AfterViewInit {
-  displayedColumns: string[] = ['sku', 'productType', 'formula', 'packagingInfo', 'customerInfo', 'status', 'actions'];
+  displayedColumns: string[] = [
+    'sku',
+    'productType',
+    'formula',
+    'packagingInfo',
+    'customerInfo',
+    'status',
+    'actions',
+  ];
   dataSource: MatTableDataSource<ProductSku> = new MatTableDataSource();
   isAdminOrManager: boolean = false;
 
@@ -34,7 +42,7 @@ export class ListProductSkusComponent implements OnInit, AfterViewInit {
   constructor(
     private productSkusService: ProductSkusService,
     private authService: AuthService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
   ) {}
 
   ngOnInit(): void {
@@ -62,9 +70,14 @@ export class ListProductSkusComponent implements OnInit, AfterViewInit {
 
     dialogRef.afterClosed().subscribe((result: ProductSku | undefined) => {
       if (result) {
-        this.productSkusService.createProductSku(result).subscribe((newProductSku: any) => {
-          this.dataSource.data = [...this.dataSource.data, { _id: newProductSku._id, ...newProductSku }];
-        });
+        this.productSkusService
+          .createProductSku(result)
+          .subscribe((newProductSku: any) => {
+            this.dataSource.data = [
+              ...this.dataSource.data,
+              { _id: newProductSku._id, ...newProductSku },
+            ];
+          });
       }
     });
   }
@@ -73,12 +86,14 @@ export class ListProductSkusComponent implements OnInit, AfterViewInit {
       width: '800px',
       data: item,
     });
-  
+
     dialogRef.afterClosed().subscribe((result: ProductSku | undefined) => {
       if (result) {
-        this.productSkusService.updateProductSku(item._id, result).subscribe(() => {
-          this.refreshProductSkus();
-        });
+        this.productSkusService
+          .updateProductSku(item._id, result)
+          .subscribe(() => {
+            this.refreshProductSkus();
+          });
       }
     });
   }

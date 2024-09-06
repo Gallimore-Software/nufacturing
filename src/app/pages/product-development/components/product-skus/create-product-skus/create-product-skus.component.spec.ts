@@ -8,7 +8,7 @@ describe('CreateProductSkusComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [CreateProductSkusComponent]
+      declarations: [CreateProductSkusComponent],
     });
     fixture = TestBed.createComponent(CreateProductSkusComponent);
     component = fixture.componentInstance;

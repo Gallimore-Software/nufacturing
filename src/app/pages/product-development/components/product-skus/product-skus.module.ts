@@ -19,8 +19,13 @@ import { ListProductSkusComponent } from './list-product-skus/list-product-skus.
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 @NgModule({
-  declarations: [ProductSkusComponent, CreateProductSkusComponent, ListProductSkusComponent],
-  imports: [CommonModule, 
+  declarations: [
+    ProductSkusComponent,
+    CreateProductSkusComponent,
+    ListProductSkusComponent,
+  ],
+  imports: [
+    CommonModule,
     ProductSKUsRoutingModule,
     MatIconModule,
     FormsModule,
@@ -37,7 +42,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     MatCheckboxModule,
     MatPaginatorModule,
     MatSelectModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
   ],
 })
 export class ProductSkusModule {}

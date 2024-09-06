@@ -1,5 +1,10 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ProductSkusService } from 'src/app/services/product-skus.service';
 import { ListFormulasService } from '../../formulas/list-formulas/list-formulas.service';
@@ -20,12 +25,16 @@ export class CreateProductSkusComponent implements OnInit {
     private productSkusService: ProductSkusService,
     private formulasService: ListFormulasService,
     private dialogRef: MatDialogRef<CreateProductSkusComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any // Inject the incoming data
+    @Inject(MAT_DIALOG_DATA) public data: any,
   ) {
+    console.log('data:', data);
     this.productSkuForm = this.fb.group({
       sku: [data?.sku || '', Validators.required],
       productType: [data?.productType || '', Validators.required],
-      formula: [data?.formula || '', Validators.required],
+      formula: [
+        data?.formula?._id || data?.formula?.name || '',
+        Validators.required,
+      ],
       packagingInfo: [data?.packagingInfo || ''],
       customerInfo: [data?.customerInfo || ''],
       status: [data?.status || ''],
@@ -43,7 +52,7 @@ export class CreateProductSkusComponent implements OnInit {
   fetchFormulas(searchTerm: string = ''): void {
     this.formulasService.getFormulas().subscribe((formulas: any[]) => {
       this.filteredFormulas = formulas.filter((formula) =>
-        formula.name.toLowerCase().includes(searchTerm.toLowerCase())
+        formula.name.toLowerCase().includes(searchTerm.toLowerCase()),
       );
     });
   }
@@ -55,7 +64,7 @@ export class CreateProductSkusComponent implements OnInit {
 
   onFormulaSelected(event: any): void {
     const selectedFormula = this.filteredFormulas.find(
-      (formula) => formula.name === event.option.value
+      (formula) => formula.name === event.option.value,
     );
     this.productSkuForm.patchValue({ formula: selectedFormula._id });
   }
