@@ -5,4 +5,10 @@ import { Component } from '@angular/core';
   templateUrl: './product-skus.component.html',
   styleUrls: ['./product-skus.component.scss'],
 })
-export class ProductSkusComponent {}
+export class ProductSkusComponent {
+  dock: boolean = false;
+
+  toggleDock() {
+    this.dock = !this.dock;
+  }
+}

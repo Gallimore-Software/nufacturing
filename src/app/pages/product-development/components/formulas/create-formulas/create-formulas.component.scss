@@ -1,4 +1,4 @@
-.formula-form-container {
+.product-skus-form-container {
   padding: 20px;
   display: flex;
   height: 90vh;
@@ -17,6 +17,7 @@
 
     mat-form-field {
       flex: 1;
+      width: 100%;
       min-width: 200px;
 
       .mat-form-field-infix {
@@ -29,25 +30,10 @@
     }
   }
 
-  .ingredient-group {
-    display: flex;
-    gap: 16px;
-    align-items: center;
-
-    mat-form-field {
-      flex: 1;
-    }
-
-    button {
-      align-self: flex-end;
-      margin-top: 16px;
-    }
-  }
-
   mat-card {
     margin-bottom: 16px;
-    max-height: 400px; /* Set the maximum height */
-    overflow-y: auto; /* Enable vertical scrolling */
+    max-height: 400px;
+    overflow-y: auto;
   }
 
   mat-card-title {
@@ -69,19 +55,17 @@
 
     button {
       min-width: 120px;
-    }
+      &:first-of-type {
+        background: transparent;
+        color: #333;
+      }
+      &:last-of-type {
+        background-color: #3f51b5;
+        color: #fff;
 
-    button:first-of-type {
-      background: transparent;
-      color: #333;
-    }
-
-    button:last-of-type {
-      background-color: #3f51b5;
-      color: #fff;
-
-      &:hover {
-        background-color: #303f9f;
+        &:hover {
+          background-color: #303f9f;
+        }
       }
     }
   }

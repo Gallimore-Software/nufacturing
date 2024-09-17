@@ -1,0 +1,23 @@
+.product-sku-form-container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  .form-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  mat-form-field {
+    flex: 1;
+    min-width: 200px;
+  }
+
+  .form-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+  }
+}

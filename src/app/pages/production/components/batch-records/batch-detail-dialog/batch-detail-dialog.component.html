@@ -1,0 +1,21 @@
+<h1 mat-dialog-title>Batch Details: {{ data.batchNumber }}</h1>
+<div mat-dialog-content>
+  <p><strong>Product SKU:</strong> {{ data.productSKU }}</p>
+  <p><strong>Formula:</strong> {{ data.formula }}</p>
+  <p><strong>Production Date:</strong> {{ data.productionDate | date }}</p>
+  <p><strong>Expiration Date:</strong> {{ data.expirationDate | date }}</p>
+  <p><strong>Production Line:</strong> {{ data.productionLine }}</p>
+  <p><strong>Shift:</strong> {{ data.shift }}</p>
+  <p><strong>Quantity Produced:</strong> {{ data.quantityProduced }}</p>
+  <p><strong>Status:</strong> {{ data.status }}</p>
+  <p><strong>Operator:</strong> {{ data.operator }}</p>
+  <h3>Quality Checks:</h3>
+  <ul>
+    <li *ngFor="let check of data.qualityChecks">
+      {{ check.checkName }} - {{ check.result }} by {{ check.checkedBy }} on {{ check.checkedAt | date }}
+    </li>
+  </ul>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Close</button>
+</div>

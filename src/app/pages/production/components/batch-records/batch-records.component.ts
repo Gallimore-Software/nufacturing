@@ -5,4 +5,10 @@ import { Component } from '@angular/core';
   templateUrl: './batch-records.component.html',
   styleUrls: ['./batch-records.component.scss'],
 })
-export class BatchRecordsComponent {}
+export class BatchRecordsComponent {
+  dock: boolean = false;
+
+  toggleDock() {
+    this.dock = !this.dock;
+  }
+}

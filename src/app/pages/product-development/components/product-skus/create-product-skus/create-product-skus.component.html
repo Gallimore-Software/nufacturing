@@ -1,0 +1,87 @@
+<div class="product-sku-form-container mat-elevation-z8">
+  <form [formGroup]="productSkuForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill">
+      <mat-label>SKU</mat-label>
+      <input matInput formControlName="sku" placeholder="Enter SKU" />
+      <mat-error *ngIf="productSkuForm.get('sku')?.hasError('required')">
+        SKU is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Product Type</mat-label>
+      <mat-select formControlName="productType">
+        <mat-option *ngFor="let type of productTypes" [value]="type">
+          {{ type }}
+        </mat-option>
+      </mat-select>
+      <mat-error
+        *ngIf="productSkuForm.get('productType')?.hasError('required')"
+      >
+        Product type is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Formula</mat-label>
+      <input
+        type="text"
+        matInput
+        [matAutocomplete]="auto"
+        formControlName="formula"
+        (input)="onFormulaSearch($event)"
+        placeholder="Search formula"
+      />
+      <mat-autocomplete
+        #auto="matAutocomplete"
+        (optionSelected)="onFormulaSelected($event)"
+      >
+        <mat-option
+          *ngFor="let formula of filteredFormulas"
+          [value]="formula.name"
+        >
+          {{ formula?.name }}
+        </mat-option>
+      </mat-autocomplete>
+      <mat-error *ngIf="productSkuForm.get('formula')?.hasError('required')">
+        Formula is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Packaging Info</mat-label>
+      <input
+        matInput
+        formControlName="packagingInfo"
+        placeholder="Enter packaging info"
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Customer Info</mat-label>
+      <input
+        matInput
+        formControlName="customerInfo"
+        placeholder="Enter customer info"
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Status</mat-label>
+      <mat-select formControlName="status">
+        <mat-option *ngFor="let status of statusOptions" [value]="status">
+          {{ status }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="!productSkuForm.valid"
+    >
+      Save
+    </button>
+  </form>
+</div>
