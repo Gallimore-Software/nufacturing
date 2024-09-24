@@ -6,7 +6,7 @@ import { MatSort } from '@angular/material/sort';
 import { AuthService } from 'src/app/components/auth/auth.service';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateFormulasComponent } from '../create-formulas/create-formulas.component'; // Adjust path
-import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
+import { ConfirmDialogComponent } from '../../../../../components/confirm-dialog/confirm-dialog.component';
 
 export interface Ingredient {
   name: string;

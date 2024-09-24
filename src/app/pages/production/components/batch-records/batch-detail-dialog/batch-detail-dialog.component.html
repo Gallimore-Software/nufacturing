@@ -1,21 +1,25 @@
-<h1 mat-dialog-title>Batch Details: {{ data.batchNumber }}</h1>
-<div mat-dialog-content>
-  <p><strong>Product SKU:</strong> {{ data.productSKU }}</p>
-  <p><strong>Formula:</strong> {{ data.formula }}</p>
-  <p><strong>Production Date:</strong> {{ data.productionDate | date }}</p>
-  <p><strong>Expiration Date:</strong> {{ data.expirationDate | date }}</p>
-  <p><strong>Production Line:</strong> {{ data.productionLine }}</p>
-  <p><strong>Shift:</strong> {{ data.shift }}</p>
-  <p><strong>Quantity Produced:</strong> {{ data.quantityProduced }}</p>
-  <p><strong>Status:</strong> {{ data.status }}</p>
-  <p><strong>Operator:</strong> {{ data.operator }}</p>
-  <h3>Quality Checks:</h3>
-  <ul>
-    <li *ngFor="let check of data.qualityChecks">
-      {{ check.checkName }} - {{ check.result }} by {{ check.checkedBy }} on {{ check.checkedAt | date }}
-    </li>
-  </ul>
-</div>
-<div mat-dialog-actions>
-  <button mat-button mat-dialog-close>Close</button>
+<h1 mat-dialog-title>Batch Details: {{ batchForm.get('batchNumber')?.value }}</h1>
+<div mat-dialog-content [formGroup]="batchForm">
+  <!-- Assign Operator Field -->
+  <div *ngIf="isAdminOrManager">
+    <mat-form-field>
+      <mat-label>Operator</mat-label>
+      <mat-select formControlName="operator" [disabled]="!batchForm.get('operator')?.enabled">
+        <mat-option *ngFor="let operator of operators" [value]="operator._id">
+          {{ operator.username }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Edit button to enable operator selection -->
+    <button mat-icon-button (click)="allowOperatorChange()" *ngIf="!batchForm.get('operator')?.enabled">
+      <mat-icon>edit</mat-icon>
+    </button>
+  </div>
+
+  <!-- Save and Cancel Buttons -->
+  <div mat-dialog-actions>
+    <button mat-button (click)="closeDialog()">Cancel</button>
+    <button mat-button color="primary" (click)="saveBatchDetails()">Save</button>
+  </div>
 </div>

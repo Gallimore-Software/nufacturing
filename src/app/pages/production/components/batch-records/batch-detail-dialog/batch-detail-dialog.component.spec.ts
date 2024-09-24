@@ -8,7 +8,7 @@ describe('BatchDetailDialogComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [BatchDetailDialogComponent]
+      declarations: [BatchDetailDialogComponent],
     });
     fixture = TestBed.createComponent(BatchDetailDialogComponent);
     component = fixture.componentInstance;
