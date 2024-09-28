@@ -28,6 +28,7 @@ main {
   display: flex;
   justify-content: space-between;
   flex-wrap: nowrap;
+  align-items: center;
 }
 
 .metrics-container {
@@ -54,10 +55,15 @@ main {
 }
 
 .chart-container {
-  flex: 1;
-  padding: 10px;
-  background: #fff;
-  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.activity-contianer {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
 }
 
 canvas {
@@ -92,9 +98,23 @@ canvas {
   }
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
+  .metrics-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
   .metric-card {
-    flex-basis: 100%; /* Each card takes full width on smaller screens */
+    width: 100%; /* Each card takes full width on smaller screens */
+  }
+
+  .chart-container {
+    flex-direction: column;
+  }
+
+  .activity-contianer {
+    flex-direction: column;
   }
 
   .recent-activity,

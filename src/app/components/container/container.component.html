@@ -1,4 +1,4 @@
-<mat-sidenav-container class="sidenav-container" autosize>
+<mat-sidenav-container class="container" autosize>
   <mat-sidenav
     #sidenav
     fixedInViewport="true"
@@ -6,6 +6,7 @@
     [opened]="isExpanded"
     class="sidenav"
     [style.margin-left.px]="!isExpanded ? 80 : 0"
+    [style.display]="isExpanded ? 'block' : 'none'"
   >
     <app-sidenav
       (toggleMenu)="toggleMenu()"
