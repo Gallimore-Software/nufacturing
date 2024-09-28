@@ -26,7 +26,6 @@ import { CarouselComponent } from './components/carousel/carousel.component';
 import { RegisterComponent } from './pages/users/signup/register.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatPseudoCheckboxModule } from '@angular/material/core';
-import { ProductDevelopmentModule } from './pages/product-development/product-development.module';
 import { DashboardModule } from './pages/dashboard/dashboard.module';
 import { ProductionModule } from './pages/production/production.module';
 import { QualityModule } from './pages/quality/quality.module';
@@ -41,6 +40,11 @@ import { AuthService } from './components/auth/auth.service';
 import { AuthGuard } from './components/auth/auth.guard';
 import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
 import { AuthInterceptor } from './components/auth/auth.interceptor';
+import { ProductDevelopmentModule } from './pages/product-development/product-development.module';
+
+// Import the new SyncStatus components and services
+import { SyncStatusComponent } from './components/sync-status/sync-status.component';
+import { SyncStatusService } from './components/sync-status/sync-status.service';
 
 @NgModule({
   declarations: [
@@ -52,6 +56,8 @@ import { AuthInterceptor } from './components/auth/auth.interceptor';
     RegisterComponent,
     LogoutComponent,
     LogoutDialogComponent,
+    // Add SyncStatusComponent
+    SyncStatusComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,7 +70,7 @@ import { AuthInterceptor } from './components/auth/auth.interceptor';
     MatTooltipModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatTableModule,
+    MatTableModule, // Already imported for displaying the sync status
     ReactiveFormsModule,
     MatInputModule,
     IngredientsModule,
@@ -85,6 +91,7 @@ import { AuthInterceptor } from './components/auth/auth.interceptor';
   providers: [
     AuthService,
     AuthGuard,
+    SyncStatusService, // Add SyncStatusService here
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
     JwtHelperService,
     {
