@@ -4,7 +4,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { tap, catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { environment } from 'src/environment/environment.prod';
+import { environment } from 'src/environment/environment';
 
 interface AuthResponse {
   token: string;
