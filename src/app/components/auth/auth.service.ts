@@ -9,6 +9,7 @@ import { environment } from 'src/environment/environment';
 interface AuthResponse {
   token: string;
   user: {
+    id: string;  // Add ID field
     email: string;
     role: string;
     // Add other user fields as needed
@@ -43,7 +44,7 @@ export class AuthService {
       }),
       catchError((error: HttpErrorResponse) => {
         console.error('Login failed', error);
-        return throwError(error); // Properly handle errors using throwError
+        return throwError(error);
       }),
     );
   }
@@ -63,7 +64,6 @@ export class AuthService {
 
     const { token } = JSON.parse(authData);
 
-    // Use JWT helper to check if the token is expired
     return !this.jwtHelper.isTokenExpired(token);
   }
 
@@ -83,5 +83,15 @@ export class AuthService {
 
     const { user } = JSON.parse(authData);
     return user.role;
+  }
+
+  getCurrentUserId(): string | null {
+    const authData = localStorage.getItem('authData');
+    if (!authData) {
+      return null;
+    }
+
+    const { user } = JSON.parse(authData);
+    return user.id;  // Return the user's ID
   }
 }
