@@ -1,15 +1,29 @@
-<h2 mat-dialog-title>{{ data.inventoryItem ? 'Edit Inventory Item' : 'Create New Inventory Item' }}</h2>
+<h2 mat-dialog-title>
+  {{ data.inventoryItem ? "Edit Inventory Item" : "Create New Inventory Item" }}
+</h2>
 <mat-dialog-content>
   <form [formGroup]="inventoryForm" (ngSubmit)="onSubmit()">
-
     <!-- Vendor Selection with Autocomplete -->
+    <div
+      *ngIf="
+        inventoryForm.get('vendor')?.invalid &&
+        inventoryForm.get('vendor')?.touched
+      "
+      class="error-message"
+    >
+      <span *ngIf="inventoryForm.get('vendor')?.errors?.['required']"
+        >Vendor Name is required.</span
+      >
+    </div>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Vendor Name</th>
     <mat-form-field appearance="outline" class="full-width">
       <mat-label>Vendor</mat-label>
       <input
         matInput
         formControlName="vendor"
         placeholder="Search Vendor"
-        [matAutocomplete]="autoVendor" />
+        [matAutocomplete]="autoVendor"
+      />
       <mat-autocomplete #autoVendor="matAutocomplete">
         <mat-option *ngFor="let vendor of filteredVendors" [value]="vendor._id">
           {{ vendor.displayName }}
@@ -18,24 +32,67 @@
     </mat-form-field>
 
     <!-- Display Name Field -->
+    <div
+      *ngIf="
+        inventoryForm.get('displayName')?.invalid &&
+        inventoryForm.get('displayName')?.touched
+      "
+      class="error-message"
+    >
+      <span *ngIf="inventoryForm.get('displayName')?.errors?.['required']"
+        >Display Name is required.</span
+      >
+    </div>
     <mat-form-field appearance="outline" class="full-width">
       <mat-label>Display Name</mat-label>
       <input matInput formControlName="displayName" />
     </mat-form-field>
 
     <!-- SKU Field -->
+    <div
+      *ngIf="
+        inventoryForm.get('sku')?.invalid && inventoryForm.get('sku')?.touched
+      "
+      class="error-message"
+    >
+      <span *ngIf="inventoryForm.get('sku')?.errors?.['required']"
+        >SKU is required.</span
+      >
+    </div>
     <mat-form-field appearance="outline" class="full-width">
       <mat-label>SKU</mat-label>
       <input matInput formControlName="sku" />
     </mat-form-field>
 
     <!-- Description Field -->
+    <div
+      *ngIf="
+        inventoryForm.get('description')?.invalid &&
+        inventoryForm.get('description')?.touched
+      "
+      class="error-message"
+    >
+      <span *ngIf="inventoryForm.get('description')?.errors?.['required']"
+        >Description is required.</span
+      >
+    </div>
     <mat-form-field appearance="outline" class="full-width">
       <mat-label>Description</mat-label>
       <textarea matInput formControlName="description"></textarea>
     </mat-form-field>
 
     <!-- Inventory Category Selection -->
+    <div
+      *ngIf="
+        inventoryForm.get('inventoryCategory')?.invalid &&
+        inventoryForm.get('inventoryCategory')?.touched
+      "
+      class="error-message"
+    >
+      <span *ngIf="inventoryForm.get('inventoryCategory')?.errors?.['required']"
+        >Inventory Category is required.</span
+      >
+    </div>
     <mat-form-field appearance="outline" class="full-width">
       <mat-label>Inventory Category</mat-label>
       <mat-select formControlName="inventoryCategory">
@@ -47,6 +104,16 @@
     </mat-form-field>
 
     <!-- Type Selection -->
+    <div
+      *ngIf="
+        inventoryForm.get('type')?.invalid && inventoryForm.get('type')?.touched
+      "
+      class="error-message"
+    >
+      <span *ngIf="inventoryForm.get('type')?.errors?.['required']"
+        >Type is required.</span
+      >
+    </div>
     <mat-form-field appearance="outline" class="full-width">
       <mat-label>Type</mat-label>
       <mat-select formControlName="type">
@@ -58,12 +125,34 @@
     </mat-form-field>
 
     <!-- Lot Code Field -->
+    <div
+      *ngIf="
+        inventoryForm.get('lotCode')?.invalid &&
+        inventoryForm.get('lotCode')?.touched
+      "
+      class="error-message"
+    >
+      <span *ngIf="inventoryForm.get('lotCode')?.errors?.['required']"
+        >Lot Code is required.</span
+      >
+    </div>
     <mat-form-field appearance="outline" class="full-width">
       <mat-label>Lot Code</mat-label>
       <input matInput formControlName="lotCode" />
     </mat-form-field>
 
     <!-- Unit of Measurement Selection -->
+    <div
+      *ngIf="
+        inventoryForm.get('unitOfMeasurement')?.invalid &&
+        inventoryForm.get('unitOfMeasurement')?.touched
+      "
+      class="error-message"
+    >
+      <span *ngIf="inventoryForm.get('unitOfMeasurement')?.errors?.['required']"
+        >Unit of Measurement is required.</span
+      >
+    </div>
     <mat-form-field appearance="outline" class="full-width">
       <mat-label>Unit of Measurement</mat-label>
       <mat-select formControlName="unitOfMeasurement">
@@ -76,6 +165,17 @@
     </mat-form-field>
 
     <!-- Price Per Unit Field -->
+    <div
+      *ngIf="
+        inventoryForm.get('pricePerUnit')?.invalid &&
+        inventoryForm.get('pricePerUnit')?.touched
+      "
+      class="error-message"
+    >
+      <span *ngIf="inventoryForm.get('pricePerUnit')?.errors?.['required']"
+        >Price Per Unit is required.</span
+      >
+    </div>
     <mat-form-field appearance="outline" class="full-width">
       <mat-label>Price Per Unit</mat-label>
       <input matInput formControlName="pricePerUnit" type="number" />
@@ -95,27 +195,65 @@
     </div>
 
     <!-- Additional Quantities -->
+    <div
+      *ngIf="
+        inventoryForm.get('availableQuantity')?.invalid &&
+        inventoryForm.get('availableQuantity')?.touched
+      "
+      class="error-message"
+    >
+      <span *ngIf="inventoryForm.get('availableQuantity')?.errors?.['required']"
+        >Available Quantity is required.</span
+      >
+    </div>
     <mat-form-field appearance="outline" class="full-width">
       <mat-label>Available Quantity</mat-label>
       <input matInput formControlName="availableQuantity" type="number" />
     </mat-form-field>
 
+    <div
+      *ngIf="
+        inventoryForm.get('onHoldQuantity')?.invalid &&
+        inventoryForm.get('onHoldQuantity')?.touched
+      "
+      class="error-message"
+    >
+      <span *ngIf="inventoryForm.get('onHoldQuantity')?.errors?.['required']"
+        >On Hold Quantity is required.</span
+      >
+    </div>
     <mat-form-field appearance="outline" class="full-width">
       <mat-label>On Hold Quantity</mat-label>
       <input matInput formControlName="onHoldQuantity" type="number" />
     </mat-form-field>
 
+    <div
+      *ngIf="
+        inventoryForm.get('quarantinedQuantity')?.invalid &&
+        inventoryForm.get('quarantinedQuantity')?.touched
+      "
+      class="error-message"
+    >
+      <span
+        *ngIf="inventoryForm.get('quarantinedQuantity')?.errors?.['required']"
+        >Quarantined Quantity is required.</span
+      >
+    </div>
     <mat-form-field appearance="outline" class="full-width">
       <mat-label>Quarantined Quantity</mat-label>
       <input matInput formControlName="quarantinedQuantity" type="number" />
     </mat-form-field>
-
   </form>
 </mat-dialog-content>
 
 <mat-dialog-actions align="end">
   <button mat-button (click)="onCancel()">Cancel</button>
-  <button mat-button color="primary" [disabled]="!inventoryForm.valid" type="submit">
+  <button
+    mat-button
+    color="primary"
+    [disabled]="!inventoryForm.valid"
+    type="submit"
+  >
     Save
   </button>
 </mat-dialog-actions>
