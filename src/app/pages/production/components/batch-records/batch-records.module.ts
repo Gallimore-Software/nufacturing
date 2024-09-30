@@ -24,10 +24,15 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
-  declarations: [BatchRecordsComponent, ListBatchRecordsComponent, CreateBatchRecordsComponent, BatchDetailDialogComponent],
+  declarations: [
+    BatchRecordsComponent,
+    ListBatchRecordsComponent,
+    CreateBatchRecordsComponent,
+    BatchDetailDialogComponent,
+  ],
   imports: [
-    CommonModule, 
-    BatchRecordsRoutingModule, 
+    CommonModule,
+    BatchRecordsRoutingModule,
     MatCardModule,
     MatFormFieldModule,
     MatSortModule,
@@ -44,7 +49,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatAutocompleteModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatDialogModule
+    MatDialogModule,
   ],
 })
 export class BatchRecordsModule {}

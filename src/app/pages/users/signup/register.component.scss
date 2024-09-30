@@ -59,3 +59,23 @@
     line-height: 64px;
   }
 }
+
+@media only screen and (max-width: 768px) {
+  .login-page {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+    .logo-container {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 20px 0 0 0;
+    }
+
+    .form-container {
+      width: 100%;
+    }
+  }
+}

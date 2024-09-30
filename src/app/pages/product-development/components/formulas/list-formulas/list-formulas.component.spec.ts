@@ -5,7 +5,7 @@ import { ListFormulasService } from './list-formulas.service';
 import { AuthService } from 'src/app/components/auth/auth.service';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ListFormulaComponent } from './list-formulas.component';
-import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
+import { ConfirmDialogComponent } from '../../../../../components/confirm-dialog/confirm-dialog.component';
 import { CreateFormulasComponent } from '../create-formulas/create-formulas.component';
 
 describe('ListFormulaComponent - View All Formulas', () => {

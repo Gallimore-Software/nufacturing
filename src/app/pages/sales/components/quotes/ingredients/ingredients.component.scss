@@ -106,3 +106,36 @@ th {
 td {
   padding: 8px;
 }
+
+@media screen and (max-width: 768px) {
+  .nufacturing_info {
+    width: 100%;
+  }
+  
+  .container {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .mat-card-container {
+    width: 100%;
+  }
+
+  mat-card {
+    width: 100%;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  th {
+    text-align: left;
+    font-weight: bold;
+  }
+
+  td,
+  th {
+    padding: 8px;
+  }
+}

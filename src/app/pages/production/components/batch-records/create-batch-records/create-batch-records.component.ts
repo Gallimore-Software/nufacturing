@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { BatchRecordsService } from 'src/app/services/batch-records.service';
 import { ProductSkusService } from 'src/app/services/product-skus.service';
 import { FormulasService } from 'src/app/services/fromulas.service';
@@ -16,6 +16,7 @@ export class CreateBatchRecordsComponent implements OnInit {
   productSKUs: Array<{ _id: string; sku: string }> = [];
   formulas: Array<{ _id: string; name: string }> = [];
   operators: Array<{ _id: string; username: string }> = [];
+  isEditMode: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -23,11 +24,16 @@ export class CreateBatchRecordsComponent implements OnInit {
     private userService: UsersService,
     private productskuService: ProductSkusService,
     private formulasService: FormulasService,
-    private dialogRef: MatDialogRef<CreateBatchRecordsComponent>
+    private dialogRef: MatDialogRef<CreateBatchRecordsComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
   ) {}
 
   ngOnInit(): void {
     this.initializeForm();
+    if (this.data?.batch) {
+      this.isEditMode = true;
+      this.patchFormWithBatchData(this.data.batch); // Pre-fill form for editing
+    }
     this.loadProductSKUs();
     this.loadFormulas();
     this.loadOperators();
@@ -45,6 +51,21 @@ export class CreateBatchRecordsComponent implements OnInit {
       quantityProduced: [0, [Validators.required, Validators.min(1)]],
       status: ['in-progress'],
       operator: ['', Validators.required],
+    });
+  }
+
+  patchFormWithBatchData(batch: any): void {
+    this.batchForm.patchValue({
+      batchNumber: batch.batchNumber,
+      productSKU: batch.productSKU,
+      formula: batch.formula,
+      productionDate: batch.productionDate,
+      expirationDate: batch.expirationDate,
+      productionLine: batch.productionLine,
+      shift: batch.shift,
+      quantityProduced: batch.quantityProduced,
+      status: batch.status,
+      operator: batch.operator,
     });
   }
 
@@ -78,17 +99,25 @@ export class CreateBatchRecordsComponent implements OnInit {
     });
   }
 
-  onSubmit() {
+  onSubmit(): void {
     if (this.batchForm.valid) {
-      console.log('Form Submitted:', this.batchForm.value); // Debug: Check the form data before submission
-      this.batchRecordsService.createBatchRecord(this.batchForm.value).subscribe({
-        next: () => {
-          this.dialogRef.close(true);
-        },
-        error: (error) => {
-          console.error('Error creating batch record:', error);
-        },
-      });
+      const batchData = this.batchForm.value;
+
+      if (this.isEditMode) {
+        this.batchRecordsService
+          .updateBatchRecord(this.data.batch._id, batchData)
+          .subscribe({
+            next: () => this.dialogRef.close(true),
+            error: (error) =>
+              console.error('Error updating batch record:', error),
+          });
+      } else {
+        this.batchRecordsService.createBatchRecord(batchData).subscribe({
+          next: () => this.dialogRef.close(true),
+          error: (error) =>
+            console.error('Error creating batch record:', error),
+        });
+      }
     }
   }
 }

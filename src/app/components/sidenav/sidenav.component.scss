@@ -1,3 +1,12 @@
+.sidenav-container {
+  display: flex;
+  width: 100%;
+  max-width: 300px;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0;
+}
+
 .sidenav {
   width: 240px;
   height: auto;
@@ -6,6 +15,10 @@
   flex-direction: column;
   overflow-x: auto;
   overflow-y: auto;
+}
+
+.mobile-menu {
+  display: none;
 }
 
 .toggle {
@@ -52,5 +65,35 @@
     color: #ffffff;
     height: 24px;
     width: 24px;
+  }
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .sidenav-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .sidenav {
+    display: none;
+  }
+
+  .mobile-menu {
+    display: flex;
+    position: fixed;
+    top: 12px;
+    left: 12px;
+  }
+
+  .toggle {
+    display: none;
   }
 }

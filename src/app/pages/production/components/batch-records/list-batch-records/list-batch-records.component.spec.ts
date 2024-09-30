@@ -8,7 +8,7 @@ describe('ListBatchRecordsComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ListBatchRecordsComponent]
+      declarations: [ListBatchRecordsComponent],
     });
     fixture = TestBed.createComponent(ListBatchRecordsComponent);
     component = fixture.componentInstance;
