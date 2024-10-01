@@ -14,10 +14,6 @@ fi
 
 # Allow commit messages that are merge commits to bypass Jira issue ID check
 while read local_ref local_sha remote_ref remote_sha; do
-  if [ "$local_sha" = "0000000000000000000000000000000000000000" ]; then
-    # Branch is being deleted, ignore
-    continue
-  fi
 
   COMMITS=$(git rev-list $remote_sha..$local_sha)
   for COMMIT in $COMMITS; do
