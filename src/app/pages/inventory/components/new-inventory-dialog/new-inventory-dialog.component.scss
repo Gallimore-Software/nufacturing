@@ -43,6 +43,11 @@ mat-dialog-content {
   }
 }
 
+.error-message {
+  font-size: 0.8em;
+  margin-bottom: 5px;
+}
+
 mat-dialog-actions {
   padding: 16px;
   display: flex;
