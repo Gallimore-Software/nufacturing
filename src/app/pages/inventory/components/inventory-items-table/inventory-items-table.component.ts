@@ -1,4 +1,10 @@
-import { Component, OnInit, ViewChild, AfterViewInit, Input } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  AfterViewInit,
+  Input,
+} from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -14,11 +20,18 @@ import { NewInventoryDialogComponent } from '../new-inventory-dialog/new-invento
   styleUrls: ['./inventory-items-table.component.scss'],
 })
 export class InventoryItemsTableComponent implements OnInit, AfterViewInit {
-  @Input() dataSource: MatTableDataSource<InventoryItem> = new MatTableDataSource();
+  @Input() dataSource: MatTableDataSource<InventoryItem> =
+    new MatTableDataSource();
   @Input() displayedColumns: string[] = [];
   isAdminOrManager: boolean = false;
 
-  categories: string[] = ['All Inventory', 'Raw Materials', 'Components', 'Work in Progress', 'Finished Goods'];
+  categories: string[] = [
+    'All Inventory',
+    'Raw Materials',
+    'Components',
+    'Work in Progress',
+    'Finished Goods',
+  ];
   selectedCategory: string = 'All Inventory';
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -27,7 +40,7 @@ export class InventoryItemsTableComponent implements OnInit, AfterViewInit {
   constructor(
     private inventoryService: InventoryService,
     private authService: AuthService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
   ) {}
 
   ngOnInit(): void {
@@ -60,9 +73,8 @@ export class InventoryItemsTableComponent implements OnInit, AfterViewInit {
   }
 
   filterByCategory() {
-    this.dataSource.filter = this.selectedCategory === 'All Inventory' 
-      ? '' 
-      : this.selectedCategory;
+    this.dataSource.filter =
+      this.selectedCategory === 'All Inventory' ? '' : this.selectedCategory;
   }
 
   createNewInventory() {
@@ -72,9 +84,11 @@ export class InventoryItemsTableComponent implements OnInit, AfterViewInit {
 
     dialogRef.afterClosed().subscribe((result: InventoryItem | undefined) => {
       if (result) {
-        this.inventoryService.createInventory(result).subscribe((newInventory) => {
-          this.updateDataSourceWithNewItems(newInventory);
-        });
+        this.inventoryService
+          .createInventory(result)
+          .subscribe((newInventory) => {
+            this.updateDataSourceWithNewItems(newInventory);
+          });
       }
     });
   }
@@ -98,11 +112,13 @@ export class InventoryItemsTableComponent implements OnInit, AfterViewInit {
           data: item,
         });
 
-        dialogRef.afterClosed().subscribe((result: InventoryItem | undefined) => {
-          if (result) {
-            this.updateInventoryItem(parentItem._id, result);
-          }
-        });
+        dialogRef
+          .afterClosed()
+          .subscribe((result: InventoryItem | undefined) => {
+            if (result) {
+              this.updateInventoryItem(parentItem._id, result);
+            }
+          });
       } else {
         console.error('Parent item not found for item ID:', item._id);
       }
@@ -110,13 +126,15 @@ export class InventoryItemsTableComponent implements OnInit, AfterViewInit {
   }
 
   private findParentItem(data: any, item: InventoryItem) {
-    return data.find((inv: any) => inv.items.some((i: any) => i._id === item._id));
+    return data.find((inv: any) =>
+      inv.items.some((i: any) => i._id === item._id),
+    );
   }
 
   private updateInventoryItem(parentId: string, item: InventoryItem) {
     this.inventoryService.updateInventoryItem(parentId, item).subscribe(
       () => this.refreshInventory(),
-      (error) => console.error('Error updating inventory item:', error)
+      (error) => console.error('Error updating inventory item:', error),
     );
   }
 
@@ -127,7 +145,7 @@ export class InventoryItemsTableComponent implements OnInit, AfterViewInit {
       if (parentItem) {
         this.inventoryService.deleteInventoryItem(parentItem._id).subscribe(
           () => this.refreshInventory(),
-          (error) => console.error('Error deleting inventory item:', error)
+          (error) => console.error('Error deleting inventory item:', error),
         );
       } else {
         console.error('Parent item not found for item ID:', item._id);
@@ -148,7 +166,7 @@ export class InventoryItemsTableComponent implements OnInit, AfterViewInit {
       category.items.map((item: any) => ({
         ...item,
         category: category.category,
-      }))
+      })),
     );
   }
 }

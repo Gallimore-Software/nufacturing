@@ -9,7 +9,7 @@ import { environment } from 'src/environment/environment';
 interface AuthResponse {
   token: string;
   user: {
-    id: string;  // Add ID field
+    id: string; // Add ID field
     email: string;
     role: string;
     // Add other user fields as needed
@@ -92,6 +92,6 @@ export class AuthService {
     }
 
     const { user } = JSON.parse(authData);
-    return user.id;  // Return the user's ID
+    return user.id; // Return the user's ID
   }
 }

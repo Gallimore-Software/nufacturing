@@ -51,27 +51,31 @@ export class NewInventoryDialogComponent implements OnInit {
     }
 
     // Subscribe to the vendor input value changes
-    this.inventoryForm.get('vendor')?.valueChanges
-      .pipe(
+    this.inventoryForm
+      .get('vendor')
+      ?.valueChanges.pipe(
         debounceTime(300),
-        switchMap(searchTerm => {
+        switchMap((searchTerm) => {
           if (searchTerm) {
-            return this.vendorService.getVendors()
-              .pipe(
-                switchMap(response => {
-                  if (response.success) {
-                    // Filter vendors based on the search term
-                    return of(response.data.filter(vendor =>
-                      vendor.displayName.toLowerCase().includes(searchTerm.toLowerCase())
-                    ));
-                  }
-                  return of([]);
-                })
-              );
+            return this.vendorService.getVendors().pipe(
+              switchMap((response) => {
+                if (response.success) {
+                  // Filter vendors based on the search term
+                  return of(
+                    response.data.filter((vendor) =>
+                      vendor.displayName
+                        .toLowerCase()
+                        .includes(searchTerm.toLowerCase()),
+                    ),
+                  );
+                }
+                return of([]);
+              }),
+            );
           } else {
             return of([]);
           }
-        })
+        }),
       )
       .subscribe((filteredVendors: Vendor[]) => {
         this.filteredVendors = filteredVendors;
@@ -94,7 +98,7 @@ export class NewInventoryDialogComponent implements OnInit {
         },
         (error) => {
           console.error('Error creating inventory item:', error);
-        }
+        },
       );
     }
   }

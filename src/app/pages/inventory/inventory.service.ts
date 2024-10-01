@@ -28,13 +28,21 @@ export class InventoryService {
   }
 
   // Create a new inventory item
-  addInventoryItem(item: InventoryItem): Observable<ApiResponse<InventoryItem>> {
+  addInventoryItem(
+    item: InventoryItem,
+  ): Observable<ApiResponse<InventoryItem>> {
     return this.http.post<ApiResponse<InventoryItem>>(this.apiUrl, item);
   }
 
   // Update an existing inventory item by ID
-  updateInventoryItem(id: string, item: InventoryItem): Observable<ApiResponse<InventoryItem>> {
-    return this.http.put<ApiResponse<InventoryItem>>(`${this.apiUrl}/${id}`, item);
+  updateInventoryItem(
+    id: string,
+    item: InventoryItem,
+  ): Observable<ApiResponse<InventoryItem>> {
+    return this.http.put<ApiResponse<InventoryItem>>(
+      `${this.apiUrl}/${id}`,
+      item,
+    );
   }
 
   // Delete an inventory item by ID
