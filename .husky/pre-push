@@ -24,7 +24,7 @@ while read local_ref local_sha remote_ref remote_sha; do
     fi
     
     # Enforce Jira issue ID in other commit messages
-    if [[ ! $MESSAGE =~ NFG-[0-9]+ ]]; then
+    if [[ ! $MESSAGE =~ (Merge|NFG-[0-9]+) ]]; then
       echo "Error: Commit message '$MESSAGE' does not contain a Jira issue ID (NFG-<issue-number>)."
       exit 1
     fi
