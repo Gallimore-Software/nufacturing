@@ -1,12 +1,12 @@
 # This hook checks that branches are named according to the updated convention.
 current_branch=$(git rev-parse --abbrev-ref HEAD)
-branch_regex="^(development|staging|testing|production|(^(chapter|story|bug|epic)/NFG-[0-9]+-.+$)$)"
+branch_regex="^(development|staging|testing|production|(^(chapter|story|bug|feature)/NFG-[0-9]+-.+$)$)"
 
 if ! echo "$current_branch" | grep -qE "$branch_regex"; then
     echo "Error: Branch name '$current_branch' does not follow the naming convention."
     echo "Please rename your branch to follow the convention: "
     echo " - For environment branches: (development|staging|testing|production)"
-    echo " - For feature branches: (chapter|story|bug|epic)/NFG-<issue-number>-description."
+    echo " - For feature branches: (chapter|story|bug|feature)/NFG-<issue-number>-description."
     exit 1
 fi
 
