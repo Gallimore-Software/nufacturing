@@ -24,8 +24,8 @@ export class VendorsService {
   constructor(private http: HttpClient) {}
 
   // Get all vendors
-  getVendors(): Observable<ApiResponse<Vendor[]>> {
-    return this.http.get<ApiResponse<Vendor[]>>(this.apiUrl);
+  getVendors(): Observable<Vendor[]> {
+    return this.http.get<Vendor[]>(this.apiUrl);
   }
 
   // Get a specific vendor by ID

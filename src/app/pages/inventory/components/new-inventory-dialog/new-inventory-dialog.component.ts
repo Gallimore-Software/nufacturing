@@ -48,10 +48,14 @@ export class NewInventoryDialogComponent implements OnInit {
   ngOnInit() {
     // If the data has an inventory item, populate the form for editing
     if (this.data.inventoryItem) {
+      console.log('inventory data: ' + this.data.inventoryItem);
       this.inventoryForm.patchValue(this.data.inventoryItem);
+    } else {
+      console.log('No Data');
     }
 
     // Subscribe to the vendor input value changes
+    console.log('Value Change');
     this.inventoryForm
       .get('vendor')
       ?.valueChanges.pipe(
@@ -60,15 +64,18 @@ export class NewInventoryDialogComponent implements OnInit {
           if (searchTerm) {
             return this.vendorService.getVendors().pipe(
               switchMap((response) => {
-                if (response.success) {
+                if (response) {
+                  console.log(response);
                   // Filter vendors based on the search term
                   return of(
-                    response.data.filter((vendor) =>
+                    response.filter((vendor) =>
                       vendor.displayName
                         .toLowerCase()
                         .includes(searchTerm.toLowerCase()),
                     ),
                   );
+                } else {
+                  console.log('No Vendor Data: ' + JSON.stringify(response));
                 }
                 return of([]);
               }),

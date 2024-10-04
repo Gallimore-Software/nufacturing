@@ -84,22 +84,13 @@ export class InventoryItemsTableComponent implements OnInit, AfterViewInit {
 
     dialogRef.afterClosed().subscribe((result: InventoryItem | undefined) => {
       if (result) {
-        this.inventoryService
-          .createInventory(result)
-          .subscribe((newInventory) => {
-            this.updateDataSourceWithNewItems(newInventory);
-          });
+        this.updateDataSourceWithNewItem(result);
       }
     });
   }
 
-  private updateDataSourceWithNewItems(newInventory: any) {
-    const updatedItems = newInventory.items.map((item: any) => ({
-      ...item,
-      category: newInventory.category,
-      // Omit subCategory
-    }));
-    this.dataSource.data = [...this.dataSource.data, ...updatedItems];
+  private updateDataSourceWithNewItem(newInventoryItem: InventoryItem) {
+    this.dataSource.data = [...this.dataSource.data, newInventoryItem];
   }
 
   editInventoryItem(item: InventoryItem) {

@@ -77,9 +77,7 @@ export class InventoryComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result: any) => {
       if (result) {
-        this.inventoryService.createInventory(result).subscribe(() => {
-          this.refreshInventory(); // Refresh inventory after creation
-        });
+        this.refreshInventory();
       }
     });
   }
