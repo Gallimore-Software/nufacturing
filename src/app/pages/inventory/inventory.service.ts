@@ -45,6 +45,12 @@ export class InventoryService {
     );
   }
 
+  // Check if SKU already exists
+  checkSkuExists(sku: string): Observable<boolean> {
+    // This ain't final, must be replace with the correct url endpoint
+    return this.http.get<boolean>(`${this.apiUrl}/check-sku/${sku}`);
+  }
+
   // Delete an inventory item by ID
   deleteInventoryItem(id: string): Observable<ApiResponse<InventoryItem>> {
     return this.http.delete<ApiResponse<InventoryItem>>(`${this.apiUrl}/${id}`);

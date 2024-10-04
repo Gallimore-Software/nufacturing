@@ -88,6 +88,29 @@ export class NewInventoryDialogComponent implements OnInit {
       .subscribe((filteredVendors: Vendor[]) => {
         this.filteredVendors = filteredVendors;
       });
+
+    // Add SKU duplicate check
+    this.inventoryForm
+      .get('sku')
+      ?.valueChanges.pipe(
+        debounceTime(300),
+        switchMap((skuValue) => {
+          if (skuValue) {
+            return this.inventoryService.checkSkuExists(skuValue); 
+          } else {
+            return of(null);
+          }
+        })
+      )
+      .subscribe((skuExists) => {
+        if (skuExists) {
+          // Show error message or mark SKU as invalid
+          this.inventoryForm.get('sku')?.setErrors({ skuExists: true });
+          console.error('SKU already exists');
+        } else {
+          this.inventoryForm.get('sku')?.setErrors(null);
+        }
+      });      
   }
 
   onSubmit(event: Event): void {
