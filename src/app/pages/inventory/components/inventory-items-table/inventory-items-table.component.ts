@@ -116,10 +116,9 @@ export class InventoryItemsTableComponent implements OnInit, AfterViewInit {
     });
   }
 
-  private findParentItem(data: any, item: InventoryItem) {
-    return data.find((inv: any) =>
-      inv.items.some((i: any) => i._id === item._id),
-    );
+  private findParentItem(inventoryItems: any[], item: InventoryItem) {
+    // Use find to locate the parent item in the inventoryItems array
+    return inventoryItems.find((inv: any) => inv._id === item._id);
   }
 
   private updateInventoryItem(parentId: string, item: InventoryItem) {
@@ -131,9 +130,14 @@ export class InventoryItemsTableComponent implements OnInit, AfterViewInit {
 
   deleteInventoryItem(item: InventoryItem) {
     this.inventoryService.getInventory().subscribe((data: any) => {
-      const parentItem = this.findParentItem(data, item);
+      // Accessing the correct data property that contains the array
+      const inventoryItems = data.data;
+
+      // Finding the parent item based on the item's _id
+      const parentItem = this.findParentItem(inventoryItems, item);
 
       if (parentItem) {
+        // Call the delete method on the parent item's _id
         this.inventoryService.deleteInventoryItem(parentItem._id).subscribe(
           () => this.refreshInventory(),
           (error) => console.error('Error deleting inventory item:', error),
