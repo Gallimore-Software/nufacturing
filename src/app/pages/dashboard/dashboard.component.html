@@ -1,12 +1,76 @@
-<!-- <section class="subnav">
-  <div>
-    <button mat-button routerLink="/orders">Orders</button>
-    <button mat-button routerLink="/quotes">Quotes</button>
-    <button mat-button routerLink="/customers">Customers</button>
-    <button mat-button routerLink="/settings">Settings</button>
-  </div>
+<!-- <section class="nufacturing_dashboard">
+  <router-outlet></router-outlet>
 </section> -->
 
-<section class="nufacturing_dashboard">
-  <router-outlet></router-outlet>
-</section>
+
+<div class="dashboard">
+  <!-- Graphs Section Placeholder -->
+  <div class="graphs">
+    <h2>Graphs</h2>
+    <!-- Placeholder for future graphs -->
+  </div>
+  <!-- Header Section -->
+  <div class="header">
+    <h1>View Inventory</h1>
+    <div class="actions">
+      <button>Add New Inventory</button>
+      <button>Add Stock</button>
+      <button>Bulk Import</button>
+    </div>
+  </div>
+
+  <!-- Inventory Tables -->
+  <div class="tables">
+    <!-- Raw Materials Table -->
+    <div class="table-section">
+      <h2>Raw Materials</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Picture</th>
+            <th>Material ID</th>
+            <th>Material Name</th>
+            <th>Supplier</th>
+            <th>Qty Avail</th>
+            <th>Unit</th>
+            <th>Location</th>
+            <th>Cost Per Unit</th>
+            <th>Lead Time</th>
+            <th>Reorder Level</th>
+            <th>Min Order Qty</th>
+            <th>Last Restock</th>
+            <th>Exp Date</th>
+            <th>Batch ID</th>
+            <th>Lot ID</th>
+            <th>Safety Stock Level</th>
+            <th>Consumption Rate</th>
+            <th>Backordered Quantity</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of rawMaterials">
+            <td><img [src]="item.picture" alt="{{ item.name }}" width="50" height="50"></td>
+            <td>{{ item.materialId }}</td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.supplier }}</td>
+            <td>{{ item.qtyAvail }}</td>
+            <td>{{ item.unit }}</td>
+            <td>{{ item.location }}</td>
+            <td>{{ item.costPerUnit }}</td>
+            <td>{{ item.leadTime }} days</td>
+            <td>{{ item.reorderLevel }}</td>
+            <td>{{ item.minOrderQty }}</td>
+            <td>{{ item.lastRestock }}</td>
+            <td>{{ item.expDate }}</td>
+            <td>{{ item.batchId }}</td>
+            <td>{{ item.lotId }}</td>
+            <td>{{ item.safetyStockLevel }}</td>
+            <td>{{ item.consumptionRate }}</td>
+            <td>{{ item.backorderedQty }}</td>
+            <td><button>Edit</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

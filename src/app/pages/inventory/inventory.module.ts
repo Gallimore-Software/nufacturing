@@ -20,6 +20,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { InventoryDashboardComponent } from './inventory-dashboard/inventory-dashboard.component';
+import { StockCategoriesComponent } from './stock-categories/stock-categories.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     InventoryItemsTableComponent,
     InventoryItemDetailComponent,
     NewInventoryDialogComponent,
+    InventoryDashboardComponent,
+    StockCategoriesComponent,
   ],
   imports: [
     CommonModule,
