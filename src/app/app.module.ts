@@ -80,7 +80,6 @@ import { SyncStatusService } from './components/sync-status/sync-status.service'
     MatSelectModule,
     MatPseudoCheckboxModule,
     MatDialogModule,
-    ProductDevelopmentModule,
     ProductionModule,
     DashboardModule,
     QualityModule,
