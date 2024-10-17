@@ -68,7 +68,7 @@ The Nufacturing App employs a comprehensive multi-environment setup to facilitat
 
 ### Testing Environment
 
-- **Purpose:** Runs a full suite of automated tests to catch bugs before code reaches staging or production.
+- **Purpose:** Runs a full suite of manual User Acceptance Tests to catch bugs before code reaches staging or production.
 - **Setup:**
   - Testing MongoDB
   - Testing API
