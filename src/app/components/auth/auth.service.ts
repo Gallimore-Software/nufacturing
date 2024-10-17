@@ -4,12 +4,12 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { tap, catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { environment } from 'src/environment/environment';
+import { environment } from 'src/environments/environment';
 
 interface AuthResponse {
   token: string;
   user: {
-    id: string;  // Add ID field
+    id: string; // Add ID field
     email: string;
     role: string;
     // Add other user fields as needed
@@ -92,6 +92,6 @@ export class AuthService {
     }
 
     const { user } = JSON.parse(authData);
-    return user.id;  // Return the user's ID
+    return user.id; // Return the user's ID
   }
 }

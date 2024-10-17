@@ -40,3 +40,12 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+package-lock.json
+docs*
+
+# Auto-generated files
+*.css.map
+*.css
+
+# Environments
+src/environments

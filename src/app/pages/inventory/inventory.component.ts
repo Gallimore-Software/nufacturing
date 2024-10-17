@@ -30,7 +30,7 @@ export class InventoryComponent implements OnInit {
   constructor(
     private inventoryService: InventoryService,
     private authService: AuthService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
   ) {}
 
   ngOnInit(): void {
@@ -41,39 +41,43 @@ export class InventoryComponent implements OnInit {
   }
 
   refreshInventory() {
-    this.inventoryService.getInventory().subscribe((response: { success: boolean; data: any[] }) => {
-      if (response.success && Array.isArray(response.data)) {
-        this.dataSource.data = response.data.map((item: any) => ({
-          _id: item._id,
-          sku: item.sku,
-          vendorName: item.vendor ? item.vendor.displayName : 'N/A',
-          ingredientName: item.displayName,
-          pricePerKg: item.pricePerUnit,
-          stockQuantity: item.quantities.inStock,
-          lotCode: item.lotCode,
-          category: item.inventoryCategory,
-          type: item.type,
-        }));
-        console.log(this.dataSource.data); // Log the populated data
-      } else {
-        console.error('Expected an array in response.data, but got:', response.data);
-      }
-    }, error => {
-      console.error('Failed to fetch inventory:', error); // Error handling
-    });
+    this.inventoryService.getInventory().subscribe(
+      (response: { success: boolean; data: any[] }) => {
+        if (response.success && Array.isArray(response.data)) {
+          this.dataSource.data = response.data.map((item: any) => ({
+            _id: item._id,
+            sku: item.sku,
+            vendorName: item.vendor ? item.vendor.displayName : 'N/A',
+            ingredientName: item.displayName,
+            pricePerKg: item.pricePerUnit,
+            stockQuantity: item.quantities.inStock,
+            lotCode: item.lotCode,
+            category: item.inventoryCategory,
+            type: item.type,
+          }));
+          console.log(this.dataSource.data); // Log the populated data
+        } else {
+          console.error(
+            'Expected an array in response.data, but got:',
+            response.data,
+          );
+        }
+      },
+      (error) => {
+        console.error('Failed to fetch inventory:', error); // Error handling
+      },
+    );
   }
 
   createNewInventory() {
     const dialogRef = this.dialog.open(NewInventoryDialogComponent, {
       width: '450px',
-      data: { userId: this.authService.getCurrentUserId() }
+      data: { userId: this.authService.getCurrentUserId() },
     });
 
     dialogRef.afterClosed().subscribe((result: any) => {
       if (result) {
-        this.inventoryService.createInventory(result).subscribe(() => {
-          this.refreshInventory(); // Refresh inventory after creation
-        });
+        this.refreshInventory();
       }
     });
   }

@@ -14,11 +14,6 @@ fi
 
 # Allow commit messages that are merge commits to bypass Jira issue ID check
 while read local_ref local_sha remote_ref remote_sha; do
-  if [ "$local_sha" = "0000000000000000000000000000000000000000" ]; then
-    # Branch is being deleted, ignore
-    continue
-  fi
-
   COMMITS=$(git rev-list $remote_sha..$local_sha)
   for COMMIT in $COMMITS; do
     MESSAGE=$(git log --format=%B -n 1 $COMMIT)
@@ -29,7 +24,7 @@ while read local_ref local_sha remote_ref remote_sha; do
     fi
     
     # Enforce Jira issue ID in other commit messages
-    if [[ ! $MESSAGE =~ NFG-[0-9]+ ]]; then
+    if [[ ! $MESSAGE =~ (Merge|NFG-[0-9]+) ]]; then
       echo "Error: Commit message '$MESSAGE' does not contain a Jira issue ID (NFG-<issue-number>)."
       exit 1
     fi

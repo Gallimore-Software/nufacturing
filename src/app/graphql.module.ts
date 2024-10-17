@@ -3,7 +3,7 @@ import { HttpLink } from 'apollo-angular/http';
 import { HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ApolloClientOptions, InMemoryCache } from '@apollo/client/core';
-import { environment } from 'src/environment/environment';
+import { environment } from 'src/environments/environment';
 
 const uri = 'https://perfect-mackerel-74.hasura.app/api/rest'; // <-- add the URL of the GraphQL server here
 

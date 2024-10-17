@@ -13,6 +13,7 @@ import { InventoryService } from '../../inventory.service';
 })
 export class NewInventoryDialogComponent implements OnInit {
   inventoryForm: FormGroup;
+  isSubmitting: boolean = false;
   filteredVendors: Vendor[] = [];
 
   constructor(
@@ -24,9 +25,9 @@ export class NewInventoryDialogComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
   ) {
     this.inventoryForm = this.fb.group({
-      sku: ['', Validators.required],
-      displayName: ['', Validators.required],
       vendor: ['', Validators.required],
+      displayName: ['', Validators.required],
+      sku: ['', Validators.required],
       description: ['', Validators.required],
       inventoryCategory: ['', Validators.required],
       type: ['', Validators.required],
@@ -47,39 +48,76 @@ export class NewInventoryDialogComponent implements OnInit {
   ngOnInit() {
     // If the data has an inventory item, populate the form for editing
     if (this.data.inventoryItem) {
+      console.log('inventory data: ' + this.data.inventoryItem);
       this.inventoryForm.patchValue(this.data.inventoryItem);
+    } else {
+      console.log('No Data');
     }
 
     // Subscribe to the vendor input value changes
-    this.inventoryForm.get('vendor')?.valueChanges
-      .pipe(
+    console.log('Value Change');
+    this.inventoryForm
+      .get('vendor')
+      ?.valueChanges.pipe(
         debounceTime(300),
-        switchMap(searchTerm => {
+        switchMap((searchTerm) => {
           if (searchTerm) {
-            return this.vendorService.getVendors()
-              .pipe(
-                switchMap(response => {
-                  if (response.success) {
-                    // Filter vendors based on the search term
-                    return of(response.data.filter(vendor =>
-                      vendor.displayName.toLowerCase().includes(searchTerm.toLowerCase())
-                    ));
-                  }
-                  return of([]);
-                })
-              );
+            return this.vendorService.getVendors().pipe(
+              switchMap((response) => {
+                if (response) {
+                  console.log(response);
+                  // Filter vendors based on the search term
+                  return of(
+                    response.filter((vendor) =>
+                      vendor.displayName
+                        .toLowerCase()
+                        .includes(searchTerm.toLowerCase()),
+                    ),
+                  );
+                } else {
+                  console.log('No Vendor Data: ' + JSON.stringify(response));
+                }
+                return of([]);
+              }),
+            );
           } else {
             return of([]);
           }
-        })
+        }),
       )
       .subscribe((filteredVendors: Vendor[]) => {
         this.filteredVendors = filteredVendors;
       });
+
+    // Add SKU duplicate check
+    this.inventoryForm
+      .get('sku')
+      ?.valueChanges.pipe(
+        debounceTime(300),
+        switchMap((skuValue) => {
+          if (skuValue) {
+            return this.inventoryService.checkSkuExists(skuValue); 
+          } else {
+            return of(null);
+          }
+        })
+      )
+      .subscribe((skuExists) => {
+        if (skuExists) {
+          // Show error message or mark SKU as invalid
+          this.inventoryForm.get('sku')?.setErrors({ skuExists: true });
+          console.error('SKU already exists');
+        } else {
+          this.inventoryForm.get('sku')?.setErrors(null);
+        }
+      });      
   }
 
-  onSubmit() {
+  onSubmit(event: Event): void {
+    event.preventDefault();
+
     if (this.inventoryForm.valid) {
+      this.isSubmitting = true;
       const newInventoryItem = this.inventoryForm.value;
       console.log('New Inventory Item:', newInventoryItem);
 
@@ -87,15 +125,21 @@ export class NewInventoryDialogComponent implements OnInit {
         (response) => {
           if (response.success) {
             console.log('Inventory item created:', response.data);
+            this.isSubmitting = false;
             this.dialogRef.close(response.data);
           } else {
             console.error('Failed to create inventory item.');
+            this.isSubmitting = false;
           }
         },
         (error) => {
           console.error('Error creating inventory item:', error);
-        }
+        },
       );
+    } else {
+      console.log('Error while saving');
+      this.inventoryForm.markAllAsTouched(); // Highlight all invalid fields
+      return;
     }
   }
 

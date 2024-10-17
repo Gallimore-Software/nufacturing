@@ -2,7 +2,7 @@
   {{ data.inventoryItem ? "Edit Inventory Item" : "Create New Inventory Item" }}
 </h2>
 <mat-dialog-content>
-  <form [formGroup]="inventoryForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="inventoryForm">
     <!-- Vendor Selection with Autocomplete -->
     <div
       *ngIf="
@@ -251,8 +251,9 @@
   <button
     mat-button
     color="primary"
-    [disabled]="!inventoryForm.valid"
     type="submit"
+    [disabled]="isSubmitting"
+    (click)="onSubmit($event)"
   >
     Submit
   </button>

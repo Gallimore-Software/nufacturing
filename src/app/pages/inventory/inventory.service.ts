@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environment/environment';
+import { environment } from 'src/environments/environment';
 import { InventoryItem } from './inventory-item.model'; // Adjust the path as needed
 
 interface ApiResponse<T> {
@@ -28,13 +28,27 @@ export class InventoryService {
   }
 
   // Create a new inventory item
-  addInventoryItem(item: InventoryItem): Observable<ApiResponse<InventoryItem>> {
+  addInventoryItem(
+    item: InventoryItem,
+  ): Observable<ApiResponse<InventoryItem>> {
     return this.http.post<ApiResponse<InventoryItem>>(this.apiUrl, item);
   }
 
   // Update an existing inventory item by ID
-  updateInventoryItem(id: string, item: InventoryItem): Observable<ApiResponse<InventoryItem>> {
-    return this.http.put<ApiResponse<InventoryItem>>(`${this.apiUrl}/${id}`, item);
+  updateInventoryItem(
+    id: string,
+    item: InventoryItem,
+  ): Observable<ApiResponse<InventoryItem>> {
+    return this.http.put<ApiResponse<InventoryItem>>(
+      `${this.apiUrl}/${id}`,
+      item,
+    );
+  }
+
+  // Check if SKU already exists
+  checkSkuExists(sku: string): Observable<boolean> {
+    // This ain't final, must be replace with the correct url endpoint
+    return this.http.get<boolean>(`${this.apiUrl}/check-sku/${sku}`);
   }
 
   // Delete an inventory item by ID

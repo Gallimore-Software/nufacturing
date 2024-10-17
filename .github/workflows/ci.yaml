@@ -4,42 +4,117 @@ on:
   push:
     branches:
       - development
+      - testing
       - staging
       - production
+      - 'story/*'
   pull_request:
     branches:
       - development
+      - testing
       - staging
       - production
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [20]
+
+    steps:
+      # Checkout the code
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      # Cache dependencies
+      - name: Cache node modules
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-${{ matrix.node-version }}-
+
+      # Install dependencies
+      - name: Install dependencies
+        run: npm ci
+
+      # Lint the code
+      - name: Run linting
+        run: npm run lint
+
+      # Run Prettier check
+      - name: Run Prettier
+        run: npm run format
+
+      # Run Jest tests with coverage
+      - name: Run unit tests with coverage
+        run: npm test -- --coverage
+
+      - name: Ensure coverage is at least 80%
+        run: |
+          npx nyc check-coverage --lines 80 --functions 80 --branches 80 --statements 80
+
+      # Run integration tests
+      - name: Run integration tests
+        run: npm run test:integration
+
+      # Run end-to-end Cypress tests
+      - name: Run Cypress tests
+        run: npm run e2e
+
+      # Upload test coverage report as an artifact
+      - name: Upload coverage report
+        uses: actions/upload-artifact@v2
+        with:
+          name: coverage-report
+          path: coverage/
+
+  pact:
+    runs-on: ubuntu-latest
+    needs: build
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: "20"
-
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
-      # - name: Run tests
-      #   run: npm test
+      - name: Run Pact tests
+        run: npm run pact
 
   deploy:
     runs-on: ubuntu-latest
-    needs: build
+    needs: [build, pact]
     if: github.ref == 'refs/heads/production'
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Deploy to Production
-        run: |
-          # Add your deployment script here
+      - name: Install dependencies
+        run: npm ci
+
+      # Build the project before deploying
+      - name: Build project
+        run: npm run build
+
+      # Deploy to Azure Static Web Apps
+      - name: Build And Deploy to Azure
+        id: builddeploy
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for GitHub integrations (i.e., PR comments)
+          action: 'upload'
+          app_location: '/' # App source code path
+          api_location: '' # Api source code path - optional
+          output_location: 'dist/nufacturing' # Built app content directory - adjust to match your app’s dist folder

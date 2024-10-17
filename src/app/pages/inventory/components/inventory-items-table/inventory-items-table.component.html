@@ -1,87 +1,227 @@
-<div class="inventory-table">
-    <mat-form-field appearance="outline">
-      <mat-label>Search Data</mat-label>
-      <input matInput (keyup)="applyFilter($event)" placeholder="Search for data" />
-    </mat-form-field>
+<!-- Header Section -->
+<div class="header">
+  <h1>View Inventory</h1>
+  <div class="actions">
+    <button>Add New Inventory</button>
+    <button>Add Stock</button>
+    <button>Bulk Import</button>
+  </div>
+</div>
 
-    <mat-form-field appearance="outline">
-      <mat-label>Category</mat-label>
-      <mat-select [(value)]="selectedCategory" (selectionChange)="filterByCategory()">
-        <mat-option *ngFor="let category of categories" [value]="category">
-          {{ category }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-
-    <table mat-table [dataSource]="dataSource" matSort>
-      <!-- SKU Column -->
-      <ng-container matColumnDef="sku">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>SKU</th>
-        <td mat-cell *matCellDef="let element">{{ element.sku }}</td>
-      </ng-container>
-
-      <!-- Vendor Name Column -->
-      <ng-container matColumnDef="vendorName">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Vendor Name</th>
-        <td mat-cell *matCellDef="let element">{{ element.vendorName }}</td>
-      </ng-container>
-
-      <!-- Ingredient Name Column -->
-      <ng-container matColumnDef="ingredientName">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>
-          Ingredient Name
-        </th>
-        <td mat-cell *matCellDef="let element">{{ element.ingredientName }}</td>
-      </ng-container>
-
-      <!-- Price Per Kg Column -->
-      <ng-container matColumnDef="pricePerKg">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Price Per Kg</th>
-        <td mat-cell *matCellDef="let element">{{ element.pricePerKg | currency }}</td>
-      </ng-container>
-
-      <!-- Stock Quantity Column -->
-      <ng-container matColumnDef="stockQuantity">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>
-          Stock Quantity
-        </th>
-        <td mat-cell *matCellDef="let element">{{ element.stockQuantity }}</td>
-      </ng-container>
-
-      <!-- Lot Code Column -->
-      <ng-container matColumnDef="lotCode">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Lot Code</th>
-        <td mat-cell *matCellDef="let element">{{ element.lotCode }}</td>
-      </ng-container>
-
-      <!-- Category Column -->
-      <ng-container matColumnDef="category">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Category</th>
-        <td mat-cell *matCellDef="let element">{{ element.category }}</td>
-      </ng-container>
-
-      <!-- Type Column -->
-      <ng-container matColumnDef="type">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Type</th>
-        <td mat-cell *matCellDef="let element">{{ element.type }}</td>
-      </ng-container>
-
-      <!-- Actions Column -->
-      <ng-container matColumnDef="actions">
-        <th mat-header-cell *matHeaderCellDef>Actions</th>
-        <td mat-cell *matCellDef="let element">
-          <button mat-icon-button *ngIf="isAdminOrManager" (click)="editInventoryItem(element)">
-            <mat-icon>edit</mat-icon>
-          </button>
-          <button mat-icon-button color="warn" *ngIf="isAdminOrManager" (click)="deleteInventoryItem(element)">
-            <mat-icon>delete</mat-icon>
-          </button>
-        </td>
-      </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+<!-- Inventory Tables -->
+<div class="tables">
+  <!-- Raw Materials Table -->
+  <div class="table-section">
+    <h2>Raw Materials</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Picture</th>
+          <th>Material ID</th>
+          <th>Material Name</th>
+          <th>Supplier</th>
+          <th>Qty Avail</th>
+          <th>Unit</th>
+          <th>Location</th>
+          <th>Cost Per Unit</th>
+          <th>Lead Time</th>
+          <th>Reorder Level</th>
+          <th>Min Order Qty</th>
+          <th>Last Restock</th>
+          <th>Exp Date</th>
+          <th>Batch ID</th>
+          <th>Lot ID</th>
+          <th>Safety Stock Level</th>
+          <th>Consumption Rate</th>
+          <th>Backordered Qty</th>
+          <th>Approval Status</th>
+          <th>Received Date</th>
+          <th>Price Last Updated</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of rawMaterials">
+          <td><img [src]="item.picture" alt="{{ item.name }}" width="50" height="50"></td>
+          <td>{{ item.materialId }}</td>
+          <td>{{ item.name }}</td>
+          <td>{{ item.supplier }}</td>
+          <td>{{ item.qtyAvail }}</td>
+          <td>{{ item.unit }}</td>
+          <td>{{ item.location }}</td>
+          <td>{{ item.costPerUnit | currency }}</td>
+          <td>{{ item.leadTime }} days</td>
+          <td>{{ item.reorderLevel }}</td>
+          <td>{{ item.minOrderQty }}</td>
+          <td>{{ item.lastRestock | date }}</td>
+          <td>{{ item.expDate | date }}</td>
+          <td>{{ item.batchId }}</td>
+          <td>{{ item.lotId }}</td>
+          <td>{{ item.safetyStockLevel }}</td>
+          <td>{{ item.consumptionRate }}</td>
+          <td>{{ item.backorderedQty }}</td>
+          <td>{{ item.approvalStatus }}</td>
+          <td>{{ item.receivedDate | date }}</td>
+          <td>{{ item.priceLastUpdated | date }}</td>
+          <td><button>Edit</button></td>
+        </tr>
+      </tbody>
     </table>
-
-    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </div>
+  <!-- Components Table -->
+  <div class="table-section">
+    <h2>Components</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Picture</th>
+          <th>Component ID</th>
+          <th>Component Name</th>
+          <th>Supplier</th>
+          <th>Qty Avail</th>
+          <th>Unit</th>
+          <th>Cost Per Unit</th>
+          <th>Location</th>
+          <th>Reorder Level</th>
+          <th>Lead Time</th>
+          <th>Min Order Qty</th>
+          <th>Last Restock Date</th>
+          <th>Component Type</th>
+          <th>Weight</th>
+          <th>Dimensions</th>
+          <th>Batch IDs</th>
+          <th>Lot IDs</th>
+          <th>Backordered Qty</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of components">
+          <td><img [src]="item.picture" alt="{{ item.name }}" width="50" height="50"></td>
+          <td>{{ item.componentId }}</td>
+          <td>{{ item.name }}</td>
+          <td>{{ item.supplier }}</td>
+          <td>{{ item.qtyAvail }}</td>
+          <td>{{ item.unit }}</td>
+          <td>{{ item.costPerUnit | currency }}</td>
+          <td>{{ item.location }}</td>
+          <td>{{ item.reorderLevel }}</td>
+          <td>{{ item.leadTime }} days</td>
+          <td>{{ item.minOrderQty }}</td>
+          <td>{{ item.lastRestock | date }}</td>
+          <td>{{ item.componentType }}</td>
+          <td>{{ item.weight }}</td>
+          <td>{{ item.dimensions }}</td>
+          <td>{{ item.batchIds }}</td>
+          <td>{{ item.lotIds }}</td>
+          <td>{{ item.backorderedQty }}</td>
+          <td>{{ item.status }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <!-- WIP Table -->
+  <div class="table-section">
+    <h2>Works in Progress (WIP)</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Picture</th>
+          <th>WIP ID</th>
+          <th>Product Name</th>
+          <th>SKU</th>
+          <th>Batch IDs</th>
+          <th>Lot IDs</th>
+          <th>Stage of Prod</th>
+          <th>Qty In Progress</th>
+          <th>Unit</th>
+          <th>Cost to Date</th>
+          <th>Est Completion</th>
+          <th>Work Order ID</th>
+          <th>Location</th>
+          <th>Lead Time Remaining</th>
+          <th>Reserved for Order IDs</th>
+          <th>Supplier</th>
+          <th>Mats Allocated</th>
+          <th>Assignee</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of wips">
+          <td><img [src]="item.picture" alt="{{ item.productName }}" width="50" height="50"></td>
+          <td>{{ item.wipId }}</td>
+          <td>{{ item.productName }}</td>
+          <td>{{ item.sku }}</td>
+          <td>{{ item.batchIds }}</td>
+          <td>{{ item.lotIds }}</td>
+          <td>{{ item.stageOfProd }}</td>
+          <td>{{ item.qtyInProgress }}</td>
+          <td>{{ item.unit }}</td>
+          <td>{{ item.costToDate | currency }}</td>
+          <td>{{ item.estCompletion | date }}</td>
+          <td>{{ item.workOrderId }}</td>
+          <td>{{ item.location }}</td>
+          <td>{{ item.leadTimeRemaining }} days</td>
+          <td>{{ item.reservedForOrderIds }}</td>
+          <td>{{ item.supplier }}</td>
+          <td>{{ item.matsAllocated }}</td>
+          <td>{{ item.assignee }}</td>
+          <td>{{ item.status }}</td>
+          <td><button>Edit</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <!-- Finished Goods Table -->
+  <div class="table-section">
+    <h2>Finished Goods</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Picture</th>
+          <th>Product Name</th>
+          <th>SKU</th>
+          <th>Batch IDs</th>
+          <th>Lot IDs</th>
+          <th>Qty Avail</th>
+          <th>Unit</th>
+          <th>Cost Per Unit</th>
+          <th>Selling Price</th>
+          <th>Location</th>
+          <th>Expiration Date</th>
+          <th>Reorder Level</th>
+          <th>Reserved Qty</th>
+          <th>Reserved for Order IDs</th>
+          <th>Supplier</th>
+          <th>Order Allocation Details</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of finishedGoods">
+          <td><img [src]="item.picture" alt="{{ item.productName }}" width="50" height="50"></td>
+          <td>{{ item.productName }}</td>
+          <td>{{ item.sku }}</td>
+          <td>{{ item.batchIds }}</td>
+          <td>{{ item.lotIds }}</td>
+          <td>{{ item.qtyAvail }}</td>
+          <td>{{ item.unit }}</td>
+          <td>{{ item.costPerUnit | currency }}</td>
+          <td>{{ item.sellingPrice | currency }}</td>
+          <td>{{ item.location }}</td>
+          <td>{{ item.expirationDate | date }}</td>
+          <td>{{ item.reorderLevel }}</td>
+          <td>{{ item.reservedQty }}</td>
+          <td>{{ item.reservedForOrderIds }}</td>
+          <td>{{ item.supplier }}</td>
+          <td>{{ item.orderAllocationDetails }}</td>
+          <td>{{ item.status }}</td>
+          <td><button>Edit</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
