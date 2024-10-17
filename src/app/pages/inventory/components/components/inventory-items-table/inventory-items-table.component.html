@@ -1,0 +1,63 @@
+<!-- Header Section -->
+<div class="header">
+  <h1>View Inventory</h1>
+  <div class="buttons-container">
+    <div class="left-buttons">
+      <button class="primary-btn">Add Item</button>
+    </div>
+    <div class="right-buttons">
+      <button class="secondary-btn">Export</button>
+      <button class="secondary-btn">Filter</button>
+      <button class="secondary-btn">Bulk Import</button>
+    </div>
+  </div>
+</div>
+
+<!-- Raw Materials Table -->
+<div class="table-section">
+  <h2>Raw Materials</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Picture</th>
+        <th>Material ID</th>
+        <th>Material Name</th>
+        <th>Supplier</th>
+        <th>Qty Avail</th>
+        <th>Unit</th>
+        <th>Location</th>
+        <th>Cost Per Unit</th>
+        <th>Lead Time</th>
+        <th>Reorder Level</th>
+        <th>Min Order Qty</th>
+        <th>Last Restock</th>
+        <th>Exp Date</th>
+        <th>Batch ID</th>
+        <th>Lot ID</th>
+        <th>Safety Stock Level</th>
+        <th>Consumption Rate</th>
+        <th>Backordered Qty</th>
+        <th>Approval Status</th>
+        <th>Received Date</th>
+        <th>Price Last Updated</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of rawMaterials">
+        <td><img [src]="item.picture" alt="{{ item.name }}" width="50" height="50"></td>
+        <td>{{ item.materialId }}</td>
+        <td>{{ item.name }}</td>
+        <td>{{ item.supplier }}</td>
+        <td>{{ item.qtyAvail }}</td>
+        <td>{{ item.unit }}</td>
+        <td>{{ item.location }}</td>
+        <td>{{ item.costPerUnit | currency }}</td>
+        <td>{{ item.leadTime }} days</td>
+        <td>{{ item.reorderLevel }}</td>
+        <td>{{ item.minOrderQty }}</td>
+        <td>{{ item.lastRestock | date }}</td>
+        <td>{{ item.expDate | date }}</td>
+        <td>{{ item.batchId }}</td>
+        <td>{{ item.lotId }}</td>
+        <td>{{ item.safetyStockLevel }}</td>

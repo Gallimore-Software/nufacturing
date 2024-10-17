@@ -8,11 +8,11 @@ import {
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { InventoryItem } from '../../inventory-item.model';
+import { InventoryItem } from '../../../inventory-item.model';
 import { InventoryService } from 'src/app/pages/inventory/inventory.service';
 import { AuthService } from 'src/app/components/auth/auth.service';
 import { MatDialog } from '@angular/material/dialog';
-import { NewInventoryDialogComponent } from '../new-inventory-dialog/new-inventory-dialog.component';
+import { NewInventoryDialogComponent } from '../../new-inventory-dialog/new-inventory-dialog.component';
 
 @Component({
   selector: 'inventory-inventory-items-table',
