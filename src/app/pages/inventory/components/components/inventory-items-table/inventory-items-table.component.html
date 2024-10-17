@@ -12,7 +12,6 @@
     </div>
   </div>
 </div>
-
 <!-- Raw Materials Table -->
 <div class="table-section">
   <h2>Raw Materials</h2>
@@ -61,3 +60,13 @@
         <td>{{ item.batchId }}</td>
         <td>{{ item.lotId }}</td>
         <td>{{ item.safetyStockLevel }}</td>
+        <td>{{ item.consumptionRate }}</td>
+        <td>{{ item.backorderedQty }}</td>
+        <td>{{ item.approvalStatus }}</td>
+        <td>{{ item.receivedDate | date }}</td>
+        <td>{{ item.priceLastUpdated | date }}</td>
+        <td><button class="edit-btn">Edit</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
