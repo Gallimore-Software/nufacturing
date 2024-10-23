@@ -1,0 +1,36 @@
+<div class="wrapper">
+  <div class="container">
+    <div class="exampleHeader">
+      <div class="tabs">
+        <button class="tabButton" (click)="handleTabClick('all')">All</button>
+        <button class="tabButton" (click)="handleTabClick('active')">Active</button>
+        <button class="tabButton" (click)="handleTabClick('paused')">Paused</button>
+        <button class="tabButton" (click)="handleTabClick('outOfStock')">Out of Stock</button>
+      </div>
+      <div class="inputWrapper">
+        <svg class="searchIcon" width="16" height="16">
+          <!-- SVG Path -->
+        </svg>
+        <input
+          type="text"
+          id="filter-text-box"
+          placeholder="Search material..."
+          [(ngModel)]="quickFilterText"
+        />
+      </div>
+    </div>
+
+    <div [class]="themeClass" class="grid">
+      <ag-grid-angular
+        style="height: 100%"
+        (gridReady)="onGridReady($event)"
+        [columnDefs]="columnDefs"
+        [rowData]="rowData"
+        [defaultColDef]="defaultColDef"
+        [quickFilterText]="quickFilterText"
+        [pagination]="pagination"
+        [paginationPageSize]="paginationPageSize"
+      ></ag-grid-angular>
+    </div>
+  </div>
+</div>

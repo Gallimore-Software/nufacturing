@@ -2,14 +2,13 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { LoginComponent } from './pages/users/login/login.component';
-import { AuthGuard } from './components/auth/auth.guard';
-import { RegisterComponent } from './pages/users/signup/register.component';
+import { AuthGuard } from '../infrastructure/auth/auth.guard';
+import { RegisterComponent } from './pages/users/register/register.component';
 import { LogoutComponent } from './pages/logout/logout.component';
-import { DashboardComponent } from 'src/app/pages/dashboard/dashboard.component';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
-  { path: 'login', component: DashboardComponent },
+  { path: '', pathMatch: 'full', redirectTo: 'login' },
+  { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   {
     path: 'dashboard',
@@ -17,7 +16,7 @@ const routes: Routes = [
       import('./pages/dashboard/dashboard.module').then(
         (m) => m.DashboardModule
       ),
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   }, // Dashboard with AuthGuard
   {
     path: 'sales',
@@ -31,7 +30,7 @@ const routes: Routes = [
       import('./pages/inventory/inventory.module').then(
         (m) => m.InventoryModule
       ),
-    // canActivate: [AuthGuard], // Optionally protect this route as well
+    canActivate: [AuthGuard], // Optionally protect this route as well
   },
   {
     path: 'receiving',

@@ -11,12 +11,12 @@ h1 {
 h2 {
   margin-top: 40px;
   margin-bottom: 20px;
-  color: #4CAF50;
+  color: #4caf50;
 }
 
 /* Button Styling */
 .primary-btn {
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
   padding: 10px 20px;
   border: none;
@@ -62,14 +62,15 @@ table {
   border-collapse: collapse;
 }
 
-th, td {
+th,
+td {
   padding: 12px;
   text-align: left;
   border: 1px solid #ddd;
 }
 
 thead {
-  background-color: #EFF1F5;
+  background-color: #eff1f5;
   color: #333;
 }
 
@@ -78,7 +79,7 @@ td img {
 }
 
 .edit-btn {
-  background-color: #2196F3;
+  background-color: #2196f3;
   color: white;
   padding: 5px 10px;
   border: none;
@@ -87,10 +88,10 @@ td img {
 }
 
 .edit-btn:hover {
-  background-color: #1976D2;
+  background-color: #1976d2;
 }
 
 /* Add zebra stripes to the table */
 tbody tr:nth-child(even) {
   background-color: #f9f9f9;
-}
+} /*# sourceMappingURL=inventory-items-table.component.css.map */

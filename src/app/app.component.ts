@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { AuthService } from './components/auth/auth.service';
+import { AuthService } from '../infrastructure/auth/auth.service';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 
@@ -16,15 +16,16 @@ export class AppComponent implements OnInit, OnDestroy {
 
   constructor(
     private authService: AuthService,
-    private router: Router,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
+    this.isLoggedIn = true;
     this.loginStatusSubscription = this.authService.isLoggedIn.subscribe(
       (loginStatus: boolean) => {
-        this.isLoggedIn = true; // Set to true manually for development
+        this.isLoggedIn = loginStatus;
         this.router.navigate(['/dashboard']);
-      },
+      }
     );
   }
 

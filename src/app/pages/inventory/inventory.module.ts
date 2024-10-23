@@ -22,8 +22,9 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
-import { InventoryItemsTableComponent } from 'src/app/pages/inventory/components/component-parts/inventory-items-table/inventory-items-table.component';
+import { InventoryItemsTableComponent } from 'src/app/pages/inventory/components/components/inventory-items-table/inventory-items-table.component';
 import { ComponentsComponent } from 'src/app/pages/inventory/components/component-parts/components.component';
+import { AgGridModule } from 'ag-grid-angular';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { ComponentsComponent } from 'src/app/pages/inventory/components/componen
     MatAutocompleteModule,
     MatSlideToggleModule,
     MatIconModule,
+    AgGridModule,
   ],
   providers: [InventoryService],
 })

@@ -15,8 +15,8 @@
   "private": true,
   "dependencies": {
     "@ag-grid-community/angular": "latest",
-    "@ag-grid-community/client-side-row-model": "latest",
-    "@ag-grid-community/core": "latest",
+    "@ag-grid-community/client-side-row-model": "^32.3.0",
+    "@ag-grid-community/core": "^32.3.0",
     "@ag-grid-community/styles": "latest",
     "@ag-grid-enterprise/excel-export": "latest",
     "@ag-grid-enterprise/master-detail": "latest",
@@ -36,6 +36,7 @@
     "@apollo/client": "^3.11.4",
     "@auth0/angular-jwt": "^5.2.0",
     "@testing-library/angular": "^14.5.1",
+    "ag-grid-angular": "^32.3.0",
     "apollo-angular": "^5.0.2",
     "chart.js": "^4.4.3",
     "esbuild": "^0.23.1",

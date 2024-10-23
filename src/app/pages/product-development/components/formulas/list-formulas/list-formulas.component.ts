@@ -3,7 +3,7 @@ import { ListFormulasService } from './list-formulas.service'; // Adjust the pat
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { AuthService } from 'src/app/components/auth/auth.service';
+import { AuthService } from 'src/infrastructure/auth/auth.service';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateFormulasComponent } from '../create-formulas/create-formulas.component'; // Adjust path
 import { ConfirmDialogComponent } from '../../../../../components/confirm-dialog/confirm-dialog.component';
@@ -52,7 +52,7 @@ export class ListFormulaComponent implements OnInit, AfterViewInit {
   constructor(
     private formulaService: ListFormulasService,
     private authService: AuthService,
-    private dialog: MatDialog,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {

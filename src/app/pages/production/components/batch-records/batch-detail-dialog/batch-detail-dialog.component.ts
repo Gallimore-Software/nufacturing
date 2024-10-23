@@ -9,7 +9,7 @@ import { ConfirmDialogComponent } from 'src/app/components/confirm-dialog/confir
 import { BatchRecord } from '../list-batch-records/list-batch-records.component';
 import { BatchRecordsService } from 'src/app/services/batch-records.service';
 import { UsersService } from 'src/app/services/users.service';
-import { AuthService } from 'src/app/components/auth/auth.service';
+import { AuthService } from 'src/infrastructure/auth/auth.service';
 
 @Component({
   selector: 'app-batch-detail-dialog',
@@ -29,7 +29,7 @@ export class BatchDetailDialogComponent implements OnInit {
     private usersService: UsersService,
     private authService: AuthService,
     private fb: FormBuilder,
-    private dialog: MatDialog, // Inject MatDialog
+    private dialog: MatDialog // Inject MatDialog
   ) {
     this.batchForm = this.fb.group({
       batchNumber: [data.batch.batchNumber],

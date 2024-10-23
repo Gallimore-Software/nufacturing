@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { AuthService } from 'src/app/components/auth/auth.service';
+import { AuthService } from 'src/infrastructure/auth/auth.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ProductSkusService } from 'src/app/services/product-skus.service';
 import { CreateProductSkusComponent } from '../create-product-skus/create-product-skus.component';
@@ -42,7 +42,7 @@ export class ListProductSkusComponent implements OnInit, AfterViewInit {
   constructor(
     private productSkusService: ProductSkusService,
     private authService: AuthService,
-    private dialog: MatDialog,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {

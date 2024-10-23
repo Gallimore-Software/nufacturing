@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { BatchRecordsService } from 'src/app/services/batch-records.service';
-import { AuthService } from 'src/app/components/auth/auth.service';
+import { AuthService } from 'src/infrastructure/auth/auth.service';
 import { BatchDetailDialogComponent } from '../batch-detail-dialog/batch-detail-dialog.component';
 import { CreateBatchRecordsComponent } from '../create-batch-records/create-batch-records.component';
 import { ConfirmDialogComponent } from 'src/app/components/confirm-dialog/confirm-dialog.component';
@@ -40,7 +40,7 @@ export class ListBatchRecordsComponent implements OnInit {
   constructor(
     private batchRecordsService: BatchRecordsService,
     private authService: AuthService,
-    private dialog: MatDialog,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -68,7 +68,7 @@ export class ListBatchRecordsComponent implements OnInit {
     this.filteredBatchRecords = this.batchRecords.filter(
       (batch) =>
         batch.batchNumber.toLowerCase().includes(filterValue) ||
-        batch.productSKU.toLowerCase().includes(filterValue),
+        batch.productSKU.toLowerCase().includes(filterValue)
     );
   }
 

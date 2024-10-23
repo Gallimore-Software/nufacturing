@@ -21,7 +21,7 @@ import { ContainerComponent } from './components/container/container.component';
 import { LoginComponent } from './pages/users/login/login.component';
 import { MatCardModule } from '@angular/material/card';
 import { CarouselComponent } from './components/carousel/carousel.component';
-import { RegisterComponent } from './pages/users/signup/register.component';
+import { RegisterComponent } from './pages/users/register/register.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatPseudoCheckboxModule } from '@angular/material/core';
 import { DashboardModule } from './pages/dashboard/dashboard.module';
@@ -31,16 +31,14 @@ import { HumanResourcesModule } from './pages/human-resources/human-resources.mo
 import { LogoutComponent } from './pages/logout/logout.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { LogoutDialogComponent } from './pages/logout/logout-dialog/logout-dialog.component';
-import { GraphQLModule } from './graphql.module';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { HasuraInterceptor } from './components/auth/hasura.interceptor';
-import { AuthService } from './components/auth/auth.service';
-import { AuthGuard } from './components/auth/auth.guard';
+import { AuthService } from '../infrastructure/auth/auth.service';
+import { AuthGuard } from '../infrastructure/auth/auth.guard';
 import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
-import { AuthInterceptor } from './components/auth/auth.interceptor';
-
+import { AuthInterceptor } from '../infrastructure/auth/auth.interceptor';
 import { SyncStatusComponent } from './components/sync-status/sync-status.component';
 import { SyncStatusService } from './components/sync-status/sync-status.service';
+import { AgGridModule } from 'ag-grid-angular';
 
 @NgModule({
   declarations: [
@@ -65,7 +63,7 @@ import { SyncStatusService } from './components/sync-status/sync-status.service'
     MatTooltipModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatTableModule, // Already imported for displaying the sync status
+    MatTableModule,
     ReactiveFormsModule,
     MatInputModule,
     IngredientsModule,
@@ -79,23 +77,18 @@ import { SyncStatusService } from './components/sync-status/sync-status.service'
     DashboardModule,
     QualityModule,
     HumanResourcesModule,
-    GraphQLModule,
     HttpClientModule,
+    AgGridModule,
   ],
   providers: [
     AuthService,
     AuthGuard,
-    SyncStatusService, // Add SyncStatusService here
+    SyncStatusService,
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
     JwtHelperService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
-      multi: true,
-    },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: HasuraInterceptor,
       multi: true,
     },
   ],

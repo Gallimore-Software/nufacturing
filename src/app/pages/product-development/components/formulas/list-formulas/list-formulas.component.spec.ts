@@ -2,7 +2,7 @@ import { BehaviorSubject, of } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { ListFormulasService } from './list-formulas.service';
-import { AuthService } from 'src/app/components/auth/auth.service';
+import { AuthService } from 'src/infrastructure/auth/auth.service';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ListFormulaComponent } from './list-formulas.component';
 import { ConfirmDialogComponent } from '../../../../../components/confirm-dialog/confirm-dialog.component';

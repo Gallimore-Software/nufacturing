@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/nufacturing", // Adjusted outputPath for local builds
+            "outputPath": "dist/nufacturing",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": ["zone.js"],
@@ -51,8 +51,7 @@
                 }
               ],
               "outputHashing": "all",
-              "sourceMap": false, // Disable source maps for production
-              "extractCss": true,
+              "sourceMap": false,
               "namedChunks": false,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -63,7 +62,7 @@
               "optimization": false,
               "vendorChunk": true,
               "extractLicenses": false,
-              "sourceMap": true, // Ensure source maps are enabled for development
+              "sourceMap": true,
               "namedChunks": true
             }
           },
@@ -117,6 +116,5 @@
   "cli": {
     "analytics": false
   },
-  "schematics": {},
-  "defaultProject": "nufacturing"
+  "schematics": {}
 }

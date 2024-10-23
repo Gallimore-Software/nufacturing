@@ -3,7 +3,7 @@ import { CustomerService } from './customer.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { AuthService } from 'src/app/components/auth/auth.service';
+import { AuthService } from 'src/infrastructure/auth/auth.service';
 import { MatDialog } from '@angular/material/dialog';
 import { CustomerDetailsDialogComponent } from './components/customer-details-dialog/customer-details-dialog.component';
 
@@ -46,7 +46,7 @@ export class CustomersComponent implements OnInit, AfterViewInit {
   constructor(
     private customerService: CustomerService,
     private authService: AuthService,
-    private dialog: MatDialog,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -103,7 +103,7 @@ export class CustomersComponent implements OnInit, AfterViewInit {
   deleteCustomer(customer: Customer) {
     this.customerService.deleteCustomer(customer._id).subscribe(
       () => this.refreshCustomerData(),
-      (error) => console.error('Error deleting customer:', error),
+      (error) => console.error('Error deleting customer:', error)
     );
   }
 
