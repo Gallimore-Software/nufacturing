@@ -10,7 +10,7 @@ export class AuthGuard implements CanActivate {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private jwtHelper: JwtHelperService,
+    private jwtHelper: JwtHelperService
   ) {}
 
   canActivate(): boolean {
@@ -25,7 +25,7 @@ export class AuthGuard implements CanActivate {
     }
 
     // If token is invalid or not present, redirect to login
-    this.router.navigate(['/login']);
+    this.router.navigate(['/dashboard']);
     return false;
   }
 }

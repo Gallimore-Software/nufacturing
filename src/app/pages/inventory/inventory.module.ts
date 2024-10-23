@@ -21,6 +21,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { InventoryDashboardComponent } from './components/inventory-dashboard/inventory-dashboard.component';
+import { FinishedGoodsComponent } from './components/finished-goods/finished-goods.component';
+import { WipComponent } from './components/wip/wip.component';
+import { RawMaterialsComponent } from './components/raw-materials/raw-materials.component';
+import { ComponentsComponent } from './components/components/components.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +33,10 @@ import { InventoryDashboardComponent } from './components/inventory-dashboard/in
     InventoryItemDetailComponent,
     NewInventoryDialogComponent,
     InventoryDashboardComponent,
+    FinishedGoodsComponent,
+    WipComponent,
+    RawMaterialsComponent,
+    ComponentsComponent,
   ],
   imports: [
     CommonModule,
