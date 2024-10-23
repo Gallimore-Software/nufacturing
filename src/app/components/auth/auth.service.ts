@@ -22,13 +22,13 @@ interface AuthResponse {
 export class AuthService {
   private isAuthenticated = new BehaviorSubject<boolean>(this.checkToken());
   private userRoleSubject = new BehaviorSubject<string | null>(
-    this.getUserRoleFromStorage(),
+    this.getUserRoleFromStorage()
   );
 
   constructor(
     private http: HttpClient,
     private router: Router,
-    private jwtHelper: JwtHelperService,
+    private jwtHelper: JwtHelperService
   ) {}
 
   login(email: string, password: string): Observable<AuthResponse> {
@@ -45,7 +45,7 @@ export class AuthService {
       catchError((error: HttpErrorResponse) => {
         console.error('Login failed', error);
         return throwError(error);
-      }),
+      })
     );
   }
 

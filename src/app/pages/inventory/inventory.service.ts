@@ -29,7 +29,7 @@ export class InventoryService {
 
   // Create a new inventory item
   addInventoryItem(
-    item: InventoryItem,
+    item: InventoryItem
   ): Observable<ApiResponse<InventoryItem>> {
     return this.http.post<ApiResponse<InventoryItem>>(this.apiUrl, item);
   }
@@ -37,11 +37,11 @@ export class InventoryService {
   // Update an existing inventory item by ID
   updateInventoryItem(
     id: string,
-    item: InventoryItem,
+    item: InventoryItem
   ): Observable<ApiResponse<InventoryItem>> {
     return this.http.put<ApiResponse<InventoryItem>>(
       `${this.apiUrl}/${id}`,
-      item,
+      item
     );
   }
 
