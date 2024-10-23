@@ -136,7 +136,9 @@ body {
 .grid {
   --ag-header-background-color: transparent !important;
 
-  height: calc(100vh - var(--layout-grid-header-height) - 62px - var(--layout-grid-margin));
+  height: calc(
+    100vh - var(--layout-grid-header-height) - 62px - var(--layout-grid-margin)
+  );
   margin: 0 var(--layout-grid-margin) var(--layout-grid-margin);
 }
 
@@ -208,7 +210,9 @@ body {
   color: var(--color-text-secondary, #39485d);
   cursor: pointer;
   box-shadow: none;
-  transition: background 0.3s, color 0.3s;
+  transition:
+    background 0.3s,
+    color 0.3s;
 }
 
 .tabButton:hover {
