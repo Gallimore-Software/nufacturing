@@ -1,0 +1,26 @@
+/* Styles for the confirmation dialog */
+mat-dialog-title {
+  font-weight: bold;
+  color: #f44336;
+  padding-bottom: 16px;
+  font-size: 20px;
+}
+
+mat-dialog-content {
+  font-size: 16px;
+  padding: 16px 24px;
+}
+
+mat-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 24px 16px;
+}
+mat-dialog-actions button {
+  margin: 0 8px;
+  min-width: 80px;
+}
+
+button.mat-button {
+  min-width: 80px;
+}/*# sourceMappingURL=confirm-dialog.component.css.map */
