@@ -13,10 +13,12 @@ export class AuthInterceptor implements HttpInterceptor {
 
   intercept(
     request: HttpRequest<unknown>,
-    next: HttpHandler,
+    next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
     // Retrieve the token from local storage
-    const authdata = JSON.parse(localStorage.getItem('authData') || '{}');
+    const authdata = JSON.parse(
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6eyJfdmFsdWUiOiI3ZmM2ZDRhYS1hMTVlLTRhZTEtYTA0NS1lZDNlYzRiNzNkNTAifSwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzI5NjkxNDMwLCJleHAiOjE3Mjk2OTUwMzB9.jA86fPfrwWqPNFiW8WJdNR4XvZs8qzPOzJJtX77LgIo'
+    );
     const token = authdata?.token;
 
     if (token) {

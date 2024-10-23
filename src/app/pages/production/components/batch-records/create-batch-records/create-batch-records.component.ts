@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { BatchRecordsService } from 'src/app/services/batch-records.service';
 import { ProductSkusService } from 'src/app/services/product-skus.service';
-import { FormulasService } from 'src/app/services/fromulas.service';
+import { FormulasService } from 'src/app/services/formulas.service';
 import { UsersService } from 'src/app/services/users.service';
 
 @Component({
@@ -25,7 +25,7 @@ export class CreateBatchRecordsComponent implements OnInit {
     private productskuService: ProductSkusService,
     private formulasService: FormulasService,
     private dialogRef: MatDialogRef<CreateBatchRecordsComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
 
   ngOnInit(): void {

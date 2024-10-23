@@ -3,8 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { InventoryDashboardComponent } from './components/inventory-dashboard/inventory-dashboard.component';
 import { FinishedGoodsComponent } from './components/finished-goods/finished-goods.component';
 import { RawMaterialsComponent } from './components/raw-materials/raw-materials.component';
-import { ComponentsComponent } from './components/components/components.component';
 import { WipComponent } from './components/wip/wip.component';
+import { ComponentsComponent } from 'src/app/pages/inventory/components/component-parts/components.component';
 
 const routes: Routes = [
   {

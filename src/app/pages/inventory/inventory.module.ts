@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { InventoryItemDetailComponent } from './components/inventory-item-detail/inventory-item-detail.component';
-import { InventoryItemsTableComponent } from './components/components/inventory-items-table/inventory-items-table.component';
 import { InventoryRoutingModule } from './inventory-routing.module';
 import { InventoryService } from './inventory.service';
 import { NewInventoryDialogComponent } from './components/new-inventory-dialog/new-inventory-dialog.component';
@@ -15,7 +14,6 @@ import { InventoryDashboardComponent } from './components/inventory-dashboard/in
 import { FinishedGoodsComponent } from './components/finished-goods/finished-goods.component';
 import { WipComponent } from './components/wip/wip.component';
 import { RawMaterialsComponent } from './components/raw-materials/raw-materials.component';
-import { ComponentsComponent } from './components/components/components.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -24,6 +22,8 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { InventoryItemsTableComponent } from 'src/app/pages/inventory/components/component-parts/inventory-items-table/inventory-items-table.component';
+import { ComponentsComponent } from 'src/app/pages/inventory/components/component-parts/components.component';
 
 @NgModule({
   declarations: [
