@@ -13,7 +13,7 @@ export class HasuraInterceptor implements HttpInterceptor {
   constructor() {}
   intercept(
     request: HttpRequest<unknown>,
-    next: HttpHandler,
+    next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
     const hasuraSecretKey = environment.HASURA_SERCER_KEY;
     const authReq = request.clone({

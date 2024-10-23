@@ -45,7 +45,3 @@ docs*
 
 # Auto-generated files
 *.css.map
-*.css
-
-# Environments
-src/environments
