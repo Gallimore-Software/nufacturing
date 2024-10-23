@@ -1,23 +1,41 @@
-<div class="dashboard">
-  <h2>Inventory Dashboard</h2>
-
-  <div class="table-section">
-    <h3>Finished Goods</h3>
-    <inventory-inventory-items-table [dataSource]="finishedGoods"></inventory-inventory-items-table>
+<div class="dashboard-container">
+  <h1>Inventory Dashboard</h1>
+  
+  <!-- Inventory Summary Section -->
+  <div class="inventory-summary">
+    <h2>Inventory Overview</h2>
+    <div class="summary-cards">
+      <mat-card class="summary-card">
+        <mat-card-title>Total Raw Materials</mat-card-title>
+        <mat-card-content>{{ rawMaterialsCount }}</mat-card-content>
+      </mat-card>
+      <mat-card class="summary-card">
+        <mat-card-title>Work in Progress</mat-card-title>
+        <mat-card-content>{{ wipCount }}</mat-card-content>
+      </mat-card>
+      <mat-card class="summary-card">
+        <mat-card-title>Finished Goods</mat-card-title>
+        <mat-card-content>{{ finishedGoodsCount }}</mat-card-content>
+      </mat-card>
+      <mat-card class="summary-card">
+        <mat-card-title>Components</mat-card-title>
+        <mat-card-content>{{ componentsCount }}</mat-card-content>
+      </mat-card>
+    </div>
   </div>
 
-  <div class="table-section">
-    <h3>Raw Materials</h3>
-    <inventory-inventory-items-table [dataSource]="rawMaterials"></inventory-inventory-items-table>
-  </div>
+  <!-- Inventory Tables Section -->
+  <div class="inventory-tables">
+    <h2>Raw Materials</h2>
+    <app-inventory-items-table [dataSource]="rawMaterialsData"></app-inventory-items-table>
 
-  <div class="table-section">
-    <h3>Work In Progress</h3>
-    <inventory-inventory-items-table [dataSource]="wip"></inventory-inventory-items-table>
-  </div>
+    <h2>Work In Progress (WIP)</h2>
+    <app-inventory-items-table [dataSource]="wipData"></app-inventory-items-table>
 
-  <div class="table-section">
-    <h3>Components</h3>
-    <inventory-inventory-items-table [dataSource]="components"></inventory-inventory-items-table>
+    <h2>Finished Goods</h2>
+    <app-inventory-items-table [dataSource]="finishedGoodsData"></app-inventory-items-table>
+
+    <h2>Components</h2>
+    <app-inventory-items-table [dataSource]="componentsData"></app-inventory-items-table>
   </div>
 </div>

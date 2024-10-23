@@ -1,1 +1,35 @@
-/*# sourceMappingURL=inventory-dashboard.component.css.map */
+.dashboard-container {
+  padding: 20px;
+  background-color: #f5f5f5;
+}
+
+.inventory-summary {
+  margin-bottom: 30px;
+}
+
+.summary-cards {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.summary-card {
+  flex: 1;
+  min-width: 250px;
+  max-width: 300px;
+  background-color: #fff;
+}
+
+.inventory-tables {
+  margin-top: 20px;
+}
+
+.inventory-tables h2 {
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+
+app-inventory-items-table {
+  margin-bottom: 20px;
+}

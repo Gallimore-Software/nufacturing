@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { InventoryItem } from './inventory-item.model'; // Adjust the path as needed
 
@@ -17,21 +18,35 @@ export class InventoryService {
 
   constructor(private http: HttpClient) {}
 
+  private handleError(error: HttpErrorResponse) {
+    // Handle the error according to your needs
+    console.error('Server Error:', error);
+    return throwError(
+      () => new Error('Error occurred; please try again later.')
+    );
+  }
+
   // Get all inventory items
   getInventory(): Observable<ApiResponse<InventoryItem[]>> {
-    return this.http.get<ApiResponse<InventoryItem[]>>(this.apiUrl);
+    return this.http
+      .get<ApiResponse<InventoryItem[]>>(this.apiUrl)
+      .pipe(catchError(this.handleError));
   }
 
   // Get a specific inventory item by ID
   getInventoryItem(id: string): Observable<ApiResponse<InventoryItem>> {
-    return this.http.get<ApiResponse<InventoryItem>>(`${this.apiUrl}/${id}`);
+    return this.http
+      .get<ApiResponse<InventoryItem>>(`${this.apiUrl}/${id}`)
+      .pipe(catchError(this.handleError));
   }
 
   // Create a new inventory item
   addInventoryItem(
     item: InventoryItem
   ): Observable<ApiResponse<InventoryItem>> {
-    return this.http.post<ApiResponse<InventoryItem>>(this.apiUrl, item);
+    return this.http
+      .post<ApiResponse<InventoryItem>>(this.apiUrl, item)
+      .pipe(catchError(this.handleError));
   }
 
   // Update an existing inventory item by ID
@@ -39,24 +54,36 @@ export class InventoryService {
     id: string,
     item: InventoryItem
   ): Observable<ApiResponse<InventoryItem>> {
-    return this.http.put<ApiResponse<InventoryItem>>(
-      `${this.apiUrl}/${id}`,
-      item
-    );
+    return this.http
+      .put<ApiResponse<InventoryItem>>(`${this.apiUrl}/${id}`, item)
+      .pipe(catchError(this.handleError));
   }
 
   // Check if SKU already exists
   checkSkuExists(sku: string): Observable<boolean> {
-    // This ain't final, must be replace with the correct url endpoint
-    return this.http.get<boolean>(`${this.apiUrl}/check-sku/${sku}`);
+    return this.http
+      .get<boolean>(`${this.apiUrl}/check-sku/${sku}`)
+      .pipe(catchError(this.handleError));
   }
 
   // Delete an inventory item by ID
   deleteInventoryItem(id: string): Observable<ApiResponse<InventoryItem>> {
-    return this.http.delete<ApiResponse<InventoryItem>>(`${this.apiUrl}/${id}`);
+    return this.http
+      .delete<ApiResponse<InventoryItem>>(`${this.apiUrl}/${id}`)
+      .pipe(catchError(this.handleError));
+  }
+
+  // Method to filter inventory items by type
+  getInventoryByType(type: string): Observable<ApiResponse<InventoryItem[]>> {
+    console.log('hit inventory.service.ts');
+    return this.http
+      .get<ApiResponse<InventoryItem[]>>(`${this.apiUrl}`)
+      .pipe(catchError(this.handleError));
   }
 
   createInventory(data: InventoryItem): Observable<ApiResponse<InventoryItem>> {
-    return this.http.post<ApiResponse<InventoryItem>>(this.apiUrl, data);
+    return this.http
+      .post<ApiResponse<InventoryItem>>(this.apiUrl, data)
+      .pipe(catchError(this.handleError));
   }
 }
