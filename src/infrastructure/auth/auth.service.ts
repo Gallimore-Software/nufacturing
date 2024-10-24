@@ -28,7 +28,14 @@ export class AuthService {
     private http: HttpClient,
     private router: Router,
     private jwtHelper: JwtHelperService
-  ) {}
+  ) {
+    // Initialize login state based on token validity
+    this.isAuthenticated.next(this.checkToken());
+
+    // Initialize user role from storage
+    const role = this.getUserRoleFromStorage();
+    this.userRoleSubject.next(role);
+  }
 
   // Login method
   login(email: string, password: string): Observable<AuthResponse> {
@@ -64,24 +71,24 @@ export class AuthService {
   // Check if token exists in local storage and is valid (not expired and properly formatted)
   private checkToken(): boolean {
     try {
-      // Retrieve authentication data from local storage
       const authData = localStorage.getItem('authData');
 
-      // If no authData is found, return false
+      // Check if authData exists and is a valid JSON
       if (!authData) return false;
 
-      // Parse the stored authData to extract the token
       const { token } = JSON.parse(authData);
 
-      // Ensure the token is valid (not expired and in the correct format)
-      if (token && this.isValidToken(token)) {
-        return true;
+      // Check if the token exists and is a string
+      if (typeof token !== 'string') {
+        console.warn('Token is not a valid string:', token);
+        return false;
       }
 
-      return false; // Token is either missing or invalid
+      // Check if the token is not expired
+      return !this.jwtHelper.isTokenExpired(token);
     } catch (error) {
-      console.warn('Error checking token validity:', error); // Log any errors in the process
-      return false; // If any error occurs, treat the token as invalid
+      console.warn('Error checking token validity:', error);
+      return false;
     }
   }
 
@@ -135,10 +142,14 @@ export class AuthService {
 
   // Helper to handle successful authentication
   private handleAuthSuccess(response: AuthResponse): void {
-    localStorage.setItem('authData', JSON.stringify(response));
-    this.isAuthenticated.next(true);
-    this.userRoleSubject.next(response.user.role);
-    this.router.navigate(['/dashboard']);
+    if (response && response.token) {
+      localStorage.setItem('authData', JSON.stringify(response));
+      this.isAuthenticated.next(true);
+      this.userRoleSubject.next(response.user.role);
+      this.router.navigate(['/dashboard']);
+    } else {
+      console.warn('No token found in response:', response);
+    }
   }
 
   // Helper to handle errors
@@ -162,6 +173,19 @@ export class AuthService {
   // Get role from local storage
   private getUserRoleFromStorage(): string | null {
     const authData = localStorage.getItem('authData');
-    return authData ? JSON.parse(authData).user.role : null;
+
+    if (!authData) {
+      return null;
+    }
+
+    try {
+      const { user } = JSON.parse(authData);
+
+      // Ensure user and role exist before returning
+      return user && user.role ? user.role : null;
+    } catch (error) {
+      console.warn('Error parsing authData from local storage:', error);
+      return null;
+    }
   }
 }

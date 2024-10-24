@@ -5,6 +5,7 @@ import { LoginComponent } from './pages/users/login/login.component';
 import { AuthGuard } from '../infrastructure/auth/auth.guard';
 import { RegisterComponent } from './pages/users/register/register.component';
 import { LogoutComponent } from './pages/logout/logout.component';
+import { RoleGuard } from 'src/infrastructure/auth/role.guard';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
@@ -16,13 +17,13 @@ const routes: Routes = [
       import('./pages/dashboard/dashboard.module').then(
         (m) => m.DashboardModule
       ),
-    canActivate: [AuthGuard],
-  }, // Dashboard with AuthGuard
+    canActivate: [AuthGuard, RoleGuard],
+  }, // Dashboard with AuthGuard, RoleGuard
   {
     path: 'sales',
     loadChildren: () =>
       import('./pages/sales/sales.module').then((m) => m.SalesModule),
-    canActivate: [AuthGuard], // Optionally protect this route as well
+    canActivate: [AuthGuard, RoleGuard], // Optionally protect this route as well
   },
   {
     path: 'inventory',
@@ -30,7 +31,7 @@ const routes: Routes = [
       import('./pages/inventory/inventory.module').then(
         (m) => m.InventoryModule
       ),
-    canActivate: [AuthGuard], // Optionally protect this route as well
+    canActivate: [AuthGuard, RoleGuard], // Optionally protect this route as well
   },
   {
     path: 'receiving',
@@ -38,13 +39,13 @@ const routes: Routes = [
       import('./pages/receiving/receiving.module').then(
         (m) => m.ReceivingModule
       ),
-    canActivate: [AuthGuard], // Optionally protect this route as well
+    canActivate: [AuthGuard, RoleGuard], // Optionally protect this route as well
   },
   {
     path: 'vendors',
     loadChildren: () =>
       import('./pages/vendors/vendors.module').then((m) => m.VendorsModule),
-    canActivate: [AuthGuard], // Optionally protect this route as well
+    canActivate: [AuthGuard, RoleGuard], // Optionally protect this route as well
   },
   {
     path: 'production',
@@ -52,7 +53,7 @@ const routes: Routes = [
       import('./pages/production/production.module').then(
         (m) => m.ProductionModule
       ),
-    canActivate: [AuthGuard], // Optionally protect this route as well
+    canActivate: [AuthGuard, RoleGuard], // Optionally protect this route as well
   },
   {
     path: 'product-development',
@@ -60,13 +61,13 @@ const routes: Routes = [
       import('./pages/product-development/product-development.module').then(
         (m) => m.ProductDevelopmentModule
       ),
-    canActivate: [AuthGuard], // Optionally protect this route as well
+    canActivate: [AuthGuard, RoleGuard], // Optionally protect this route as well
   },
   {
     path: 'quality',
     loadChildren: () =>
       import('./pages/quality/quality.module').then((m) => m.QualityModule),
-    canActivate: [AuthGuard], // Optionally protect this route as well
+    canActivate: [AuthGuard, RoleGuard], // Optionally protect this route as well
   },
   {
     path: 'human-resources',
@@ -74,13 +75,13 @@ const routes: Routes = [
       import('./pages/human-resources/human-resources.module').then(
         (m) => m.HumanResourcesModule
       ),
-    canActivate: [AuthGuard], // Optionally protect this route as well
+    canActivate: [AuthGuard, RoleGuard], // Optionally protect this route as well
   },
   {
     path: 'logout',
     component: LogoutComponent,
     pathMatch: 'full',
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard, RoleGuard],
   },
 ];
 
