@@ -24,7 +24,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { InventoryItemsTableComponent } from 'src/app/pages/inventory/components/components/inventory-items-table/inventory-items-table.component';
 import { ComponentsComponent } from 'src/app/pages/inventory/components/component-parts/components.component';
-import { AgGridModule } from 'ag-grid-angular';
+import { AgGridModule } from '@ag-grid-community/angular';
 
 @NgModule({
   declarations: [

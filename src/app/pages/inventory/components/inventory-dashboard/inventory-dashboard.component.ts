@@ -8,11 +8,13 @@ import { InventoryItem } from '../../inventory-item.model';
   styleUrls: ['./inventory-dashboard.component.scss'],
 })
 export class InventoryDashboardComponent implements OnInit {
+  inventoryData: InventoryItem[] = [];
   rawMaterialsData: InventoryItem[] = [];
   wipData: InventoryItem[] = [];
   finishedGoodsData: InventoryItem[] = [];
   componentsData: InventoryItem[] = [];
 
+  inventoryDataCount = 0;
   rawMaterialsCount = 0;
   wipCount = 0;
   finishedGoodsCount = 0;
@@ -22,6 +24,11 @@ export class InventoryDashboardComponent implements OnInit {
 
   ngOnInit(): void {
     console.log('hit inventory-dashboard.component.ts');
+    this.inventoryService.getInventory().subscribe((response) => {
+      this.inventoryData = response.data; // Accessing the data property from ApiResponse
+      this.inventoryDataCount = response.data.length; // Counting the items
+    });
+
     this.inventoryService
       .getInventoryByType('Raw Materials')
       .subscribe((response) => {
