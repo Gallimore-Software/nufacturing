@@ -11,19 +11,19 @@ export class ProductSkusService {
 
   constructor(private http: HttpClient) {}
 
-  getProductSkus(): Observable<any> {
+  getProductSkus(): Observable<unknown> {
     return this.http.get(this.apiUrl);
   }
 
-  createProductSku(productSku: any): Observable<any> {
+  createProductSku(productSku: unknown): Observable<unknown> {
     return this.http.post(`${this.apiUrl}`, productSku);
   }
 
-  updateProductSku(id: string, productSku: any): Observable<any> {
+  updateProductSku(id: string, productSku: unknown): Observable<unknown> {
     return this.http.put(`${this.apiUrl}/${id}`, productSku);
   }
 
-  deleteProductSku(id: string): Observable<any> {
+  deleteProductSku(id: string): Observable<unknown> {
     return this.http.delete(`${this.apiUrl}/${id}`);
   }
 }

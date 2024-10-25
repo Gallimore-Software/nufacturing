@@ -54,7 +54,7 @@ export class CreateBatchRecordsComponent implements OnInit {
     });
   }
 
-  patchFormWithBatchData(batch: any): void {
+  patchFormWithBatchData(batch: unknown): void {
     this.batchForm.patchValue({
       batchNumber: batch.batchNumber,
       productSKU: batch.productSKU,

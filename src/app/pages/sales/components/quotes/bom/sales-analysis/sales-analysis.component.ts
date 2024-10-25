@@ -11,11 +11,11 @@ export class SalesAnalysisComponent implements OnInit {
   scenarioManagerForm: FormGroup;
   dataTableForm: FormGroup;
   displayedColumns: string[] = ['price', 'salesVolume', 'revenue'];
-  dataTable: any[] = [];
-  filteredDataTable: any[] = [];
+  dataTable: unknown[] = [];
+  filteredDataTable: unknown[] = [];
 
-  suggestedPricesWithMOQ: any[] = [];
-  suggestedPricesWithoutMOQ: any[] = [];
+  suggestedPricesWithMOQ: unknown[] = [];
+  suggestedPricesWithoutMOQ: unknown[] = [];
   totalCostPerBottleWithMOQ: number = 6.1; // Example value
   totalCostPerBottleWithoutMOQ: number = 2.9; // Example value
 
@@ -73,7 +73,7 @@ export class SalesAnalysisComponent implements OnInit {
         price: [0, Validators.required],
         salesVolume: [0, Validators.required],
         revenue: [{ value: 0, disabled: true }],
-      }),
+      })
     );
   }
 
@@ -107,8 +107,8 @@ export class SalesAnalysisComponent implements OnInit {
     const salesVolumeRange = this.salesVolumeRange.value;
 
     this.dataTable = [];
-    priceRange.forEach((price: any) => {
-      salesVolumeRange.forEach((volume: any) => {
+    priceRange.forEach((price: unknown) => {
+      salesVolumeRange.forEach((volume: unknown) => {
         this.dataTable.push({
           price: price.price,
           salesVolume: volume.salesVolume,
@@ -126,7 +126,7 @@ export class SalesAnalysisComponent implements OnInit {
       (item) =>
         item.price.toString().includes(filterValue) ||
         item.salesVolume.toString().includes(filterValue) ||
-        item.revenue.toString().includes(filterValue),
+        item.revenue.toString().includes(filterValue)
     );
   }
 

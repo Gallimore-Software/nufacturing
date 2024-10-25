@@ -17,8 +17,8 @@ export class PackageBreakdownComponent implements OnInit {
     'costPerOrder',
     'actions',
   ];
-  dataSource: any[] = [];
-  filteredDataSource: any[] = [];
+  dataSource: unknown[] = [];
+  filteredDataSource: unknown[] = [];
   totalCostPerBottle: number = 0;
   totalCostPerOrder: number = 0;
 
@@ -150,7 +150,7 @@ export class PackageBreakdownComponent implements OnInit {
       .trim()
       .toLowerCase();
     this.filteredDataSource = this.dataSource.filter((item) =>
-      item.item.toLowerCase().includes(filterValue),
+      item.item.toLowerCase().includes(filterValue)
     );
     this.calculateSummary();
   }
@@ -158,24 +158,24 @@ export class PackageBreakdownComponent implements OnInit {
   calculateSummary(): void {
     this.totalCostPerBottle = this.filteredDataSource.reduce(
       (acc, curr) => acc + curr.costPerBottle,
-      0,
+      0
     );
     this.totalCostPerOrder = this.filteredDataSource.reduce(
       (acc, curr) => acc + curr.costPerOrder,
-      0,
+      0
     );
   }
 
-  editItem(element: any): void {
+  editItem(element: unknown): void {
     // Implement edit logic here
     console.log('Edit item:', element);
   }
 
-  deleteItem(element: any): void {
+  deleteItem(element: unknown): void {
     // Implement delete logic here
     this.dataSource = this.dataSource.filter((item) => item !== element);
     this.filteredDataSource = this.filteredDataSource.filter(
-      (item) => item !== element,
+      (item) => item !== element
     );
     this.calculateSummary();
     console.log('Delete item:', element);

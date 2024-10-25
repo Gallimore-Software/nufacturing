@@ -202,7 +202,7 @@ export class BottleInfoComponent implements OnInit {
   ];
   selectedBottle: BottleInfo | undefined;
 
-  dataSource: any[] = [];
+  dataSource: unknown[] = [];
   displayedColumns: string[] = ['property', 'value'];
 
   constructor(private fb: FormBuilder) {
@@ -225,13 +225,13 @@ export class BottleInfoComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onBottlePartChange(event: any) {
+  onBottlePartChange(event: unknown) {
     this.updateForm(event.value);
   }
 
   updateForm(part: string): void {
     this.selectedBottle = this.bottleParts.find(
-      (bottle) => bottle.value === part,
+      (bottle) => bottle.value === part
     );
     if (this.selectedBottle) {
       this.bottleInfoForm.patchValue({

@@ -5,7 +5,7 @@ import { Observable, of } from 'rxjs';
   providedIn: 'root',
 })
 export class DashboardMockService {
-  getKeyMetrics(): Observable<any> {
+  getKeyMetrics(): Observable<unknown> {
     return of({
       totalOrders: 832,
       ordersInProcess: 200,
@@ -15,7 +15,7 @@ export class DashboardMockService {
     });
   }
 
-  getRecentActivity(): Observable<any[]> {
+  getRecentActivity(): Observable<unknown[]> {
     return of([
       { details: 'Order #1234 - Status: In Process', date: new Date() },
       { details: 'Quote #5678 - Status: Active', date: new Date() },
@@ -24,7 +24,7 @@ export class DashboardMockService {
     ]);
   }
 
-  getAlerts(): Observable<any[]> {
+  getAlerts(): Observable<unknown[]> {
     return of([
       { message: 'Payment overdue for Order #1234', date: new Date() },
       { message: 'New Quote #5678 awaiting approval', date: new Date() },

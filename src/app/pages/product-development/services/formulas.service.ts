@@ -11,19 +11,19 @@ export class FormulasService {
 
   private apiUrl = `${environment.apiUrl}/product-development/formulas`;
 
-  getFormulas(): Observable<any> {
+  getFormulas(): Observable<unknown> {
     return this.http.get(this.apiUrl);
   }
 
-  createFormula(data: any): Observable<any> {
+  createFormula(data: unknown): Observable<unknown> {
     return this.http.post(this.apiUrl, data);
   }
 
-  updateFormula(id: string, data: any): Observable<any> {
+  updateFormula(id: string, data: unknown): Observable<unknown> {
     return this.http.put(`${this.apiUrl}/${id}`, data);
   }
 
-  deleteFormula(id: string): Observable<any> {
+  deleteFormula(id: string): Observable<unknown> {
     return this.http.delete(`${this.apiUrl}/${id}`);
   }
 }

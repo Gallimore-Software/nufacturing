@@ -147,7 +147,7 @@ export class ClosureInfoComponent implements OnInit {
   ];
   selectedClosure: ClosureInfo | undefined;
 
-  dataSource: any[] = [];
+  dataSource: unknown[] = [];
   displayedColumns: string[] = ['property', 'value'];
 
   constructor(private fb: FormBuilder) {
@@ -171,13 +171,13 @@ export class ClosureInfoComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onClosurePartChange(event: any) {
+  onClosurePartChange(event: unknown) {
     this.updateForm(event.value);
   }
 
   updateForm(part: string): void {
     this.selectedClosure = this.closureParts.find(
-      (closure) => closure.value === part,
+      (closure) => closure.value === part
     );
     if (this.selectedClosure) {
       this.closureInfoForm.patchValue({

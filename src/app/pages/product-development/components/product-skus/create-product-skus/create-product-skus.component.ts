@@ -18,7 +18,7 @@ export class CreateProductSkusComponent implements OnInit {
   productSkuForm: FormGroup;
   productTypes = ['Capsule', 'Powder', 'Gummy', 'Tablet'];
   statusOptions = ['active', 'inactive'];
-  filteredFormulas: any[] = [];
+  filteredFormulas: unknown[] = [];
 
   constructor(
     private fb: FormBuilder,
@@ -50,7 +50,7 @@ export class CreateProductSkusComponent implements OnInit {
   }
 
   fetchFormulas(searchTerm: string = ''): void {
-    this.formulasService.getFormulas().subscribe((formulas: any[]) => {
+    this.formulasService.getFormulas().subscribe((formulas: unknown[]) => {
       this.filteredFormulas = formulas.filter((formula) =>
         formula.name.toLowerCase().includes(searchTerm.toLowerCase())
       );
@@ -62,7 +62,7 @@ export class CreateProductSkusComponent implements OnInit {
     this.fetchFormulas(input);
   }
 
-  onFormulaSelected(event: any): void {
+  onFormulaSelected(event: unknown): void {
     const selectedFormula = this.filteredFormulas.find(
       (formula) => formula.name === event.option.value
     );

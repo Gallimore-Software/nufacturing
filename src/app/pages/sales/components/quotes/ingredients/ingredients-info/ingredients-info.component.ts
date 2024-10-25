@@ -10,7 +10,7 @@ import { GlobalServiceService } from 'src/app/services/global-service.service';
 })
 export class IngredientsInfoComponent implements OnInit {
   ingredientForm: FormGroup;
-  dataSource: MatTableDataSource<any>;
+  dataSource: MatTableDataSource<unknown>;
   displayedColumns: string[] = [
     'name',
     'perCapsule',
@@ -20,14 +20,14 @@ export class IngredientsInfoComponent implements OnInit {
     'leadTime',
     'actions',
   ];
-  selectedIngredient: any;
+  selectedIngredient: unknown;
 
   constructor(
     private fb: FormBuilder,
-    private globalService: GlobalServiceService,
+    private globalService: GlobalServiceService
   ) {
     this.dataSource = new MatTableDataSource(
-      this.globalService.getIngredients(),
+      this.globalService.getIngredients()
     );
 
     this.ingredientForm = this.fb.group({
@@ -47,17 +47,17 @@ export class IngredientsInfoComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  viewIngredientDetails(ingredient: any) {
+  viewIngredientDetails(ingredient: unknown) {
     this.selectedIngredient = ingredient;
     // Open modal or detailed view
   }
 
-  editIngredient(ingredient: any) {
+  editIngredient(ingredient: unknown) {
     this.ingredientForm.patchValue(ingredient);
     this.selectedIngredient = ingredient;
   }
 
-  deleteIngredient(ingredient: any) {
+  deleteIngredient(ingredient: unknown) {
     const ingredients = this.globalService.getIngredients();
     const index = ingredients.findIndex((ing) => ing.name === ingredient.name);
     if (index >= 0) {
@@ -70,7 +70,7 @@ export class IngredientsInfoComponent implements OnInit {
     const formValue = this.ingredientForm.value;
     const ingredients = this.globalService.getIngredients();
     const existingIngredientIndex = ingredients.findIndex(
-      (ing) => ing.name === formValue.name,
+      (ing) => ing.name === formValue.name
     );
     if (existingIngredientIndex >= 0) {
       ingredients[existingIngredientIndex] = formValue;

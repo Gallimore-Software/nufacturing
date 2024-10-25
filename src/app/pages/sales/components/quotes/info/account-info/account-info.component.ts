@@ -16,7 +16,7 @@ export class AccountInfoComponent implements OnInit {
     'Tony Gorris',
   ];
   displayedColumns: string[] = ['property', 'value'];
-  dataSource: any[];
+  dataSource: unknown[];
 
   constructor(private fb: FormBuilder) {
     this.accountInfoForm = this.fb.group({
@@ -43,7 +43,7 @@ export class AccountInfoComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  private createDataSource(formValues: any): any[] {
+  private createDataSource(formValues: unknown): unknown[] {
     return [
       {
         property: 'Account Manager',

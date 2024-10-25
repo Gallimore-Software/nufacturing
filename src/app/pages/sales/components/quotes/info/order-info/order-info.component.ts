@@ -8,7 +8,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class OrderInfoComponent implements OnInit {
   orderInfoForm: FormGroup;
-  dataSource: any[];
+  dataSource: unknown[];
   displayedColumns: string[] = ['property', 'value'];
 
   constructor(private fb: FormBuilder) {
@@ -29,7 +29,7 @@ export class OrderInfoComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  private createDataSource(formValues: any): any[] {
+  private createDataSource(formValues: unknown): unknown[] {
     return [
       { property: 'Product Type', value: formValues.productType },
       { property: 'Lead Time', value: formValues.leadTime },

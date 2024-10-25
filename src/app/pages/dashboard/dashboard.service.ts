@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -10,15 +9,15 @@ export class DashboardService {
 
   constructor() {}
 
-  getKeyMetrics(): Observable<any> {
+  getKeyMetrics(): Observable<unknown> {
     return new Observable<[]>();
   }
 
-  getRecentActivity(): Observable<any[]> {
+  getRecentActivity(): Observable<unknown[]> {
     return new Observable<[]>();
   }
 
-  getAlerts(): Observable<any[]> {
+  getAlerts(): Observable<unknown[]> {
     return new Observable<[]>();
   }
 }

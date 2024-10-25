@@ -8,9 +8,9 @@ import { Chart, registerables } from 'chart.js';
   styleUrls: ['./dashboard-page.component.scss'],
 })
 export class DashboardPageComponent implements OnInit {
-  keyMetrics: any[] = [];
-  recentActivity: any[] = [];
-  alerts: any[] = [];
+  keyMetrics: unknown[] = [];
+  recentActivity: unknown[] = [];
+  alerts: unknown[] = [];
 
   constructor(private dashboardService: DashboardMockService) {
     Chart.register(...registerables);

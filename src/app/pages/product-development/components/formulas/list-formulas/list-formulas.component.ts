@@ -84,7 +84,7 @@ export class ListFormulaComponent implements OnInit, AfterViewInit {
       if (result) {
         this.formulaService
           .createFormula(result)
-          .subscribe((newFormula: any) => {
+          .subscribe((newFormula: unknown) => {
             this.dataSource.data = [
               ...this.dataSource.data,
               { _id: newFormula._id, ...newFormula },

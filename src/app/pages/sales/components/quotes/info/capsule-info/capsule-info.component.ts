@@ -18,7 +18,7 @@ interface CapsuleDetail {
 })
 export class CapsuleInfoComponent implements OnInit {
   capsuleInfoForm: FormGroup;
-  dataSource: any[];
+  dataSource: unknown[];
   displayedColumns: string[] = ['property', 'value'];
 
   capsuleParts = [
@@ -104,7 +104,7 @@ export class CapsuleInfoComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  private createDataSource(formValues: any): any[] {
+  private createDataSource(formValues: unknown): unknown[] {
     const details: CapsuleDetail =
       this.capsuleDetails[formValues.nfgCapsulePart];
     return [

@@ -10,7 +10,7 @@ export class SyncStatusService {
 
   constructor(private http: HttpClient) {}
 
-  getSyncStatus(): Observable<any> {
-    return this.http.get<any>(this.apiUrl);
+  getSyncStatus(): Observable<unknown> {
+    return this.http.get<unknown>(this.apiUrl);
   }
 }

@@ -72,7 +72,7 @@ export class ListProductSkusComponent implements OnInit, AfterViewInit {
       if (result) {
         this.productSkusService
           .createProductSku(result)
-          .subscribe((newProductSku: any) => {
+          .subscribe((newProductSku: unknown) => {
             this.dataSource.data = [
               ...this.dataSource.data,
               { _id: newProductSku._id, ...newProductSku },

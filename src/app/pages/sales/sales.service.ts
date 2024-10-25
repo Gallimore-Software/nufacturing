@@ -39,7 +39,7 @@ export class SalesService {
     ]);
   }
 
-  getOrderSummaryMetrics(): Observable<any> {
+  getOrderSummaryMetrics(): Observable<unknown> {
     return of({
       totalOrders: 832,
       inProcess: 200,
@@ -48,7 +48,7 @@ export class SalesService {
     });
   }
 
-  getQuoteSummaryMetrics(): Observable<any> {
+  getQuoteSummaryMetrics(): Observable<unknown> {
     return of({
       totalQuotes: 450,
       active: 300,

@@ -119,7 +119,7 @@ export class GlobalServiceService {
     return this.ingredients;
   }
 
-  updateIngredients(newIngredients: any[]) {
+  updateIngredients(newIngredients: unknown[]) {
     this.ingredients = newIngredients;
   }
 
@@ -128,7 +128,7 @@ export class GlobalServiceService {
     return this.orderInfo;
   }
 
-  updateOrderInfo(newOrderInfo: any) {
+  updateOrderInfo(newOrderInfo: unknown) {
     this.orderInfo = newOrderInfo;
   }
 
@@ -137,7 +137,7 @@ export class GlobalServiceService {
     return this.masterCartonInfo;
   }
 
-  updateMasterCartonInfo(newMasterCartonInfo: any) {
+  updateMasterCartonInfo(newMasterCartonInfo: unknown) {
     this.masterCartonInfo = newMasterCartonInfo;
   }
 }

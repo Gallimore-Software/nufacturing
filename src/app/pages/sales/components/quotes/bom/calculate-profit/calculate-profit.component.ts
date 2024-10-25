@@ -9,8 +9,8 @@ export class CalculateProfitComponent {
   totalCostPerBottleWithMOQ: number = 6.1; // Example value
   totalCostPerBottleWithoutMOQ: number = 2.9; // Example value
 
-  suggestedPricesWithMOQ: any[] = [];
-  suggestedPricesWithoutMOQ: any[] = [];
+  suggestedPricesWithMOQ: unknown[] = [];
+  suggestedPricesWithoutMOQ: unknown[] = [];
 
   calculateSuggestedPrices(): void {
     const margins = [10, 15, 20, 25, 30, 35, 40, 45, 50];

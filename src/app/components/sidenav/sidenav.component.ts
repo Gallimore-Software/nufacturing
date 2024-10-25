@@ -214,20 +214,20 @@ export class SidenavComponent implements OnInit {
     this.toggleSubChildMenu(null); // Collapse subchild menu on navigate
   }
 
-  getSubMenuItems(): any[] {
+  getSubMenuItems(): unknown[] {
     const route = this.routeLinks.find(
-      (route) => route.name === this.activeMenu,
+      (route) => route.name === this.activeMenu
     );
     return route ? route.children : [];
   }
 
-  getSubChildMenuItems(parentName: string): any[] {
+  getSubChildMenuItems(parentName: string): unknown[] {
     const parentRoute = this.routeLinks.find(
-      (route) => route.name === this.activeMenu,
+      (route) => route.name === this.activeMenu
     );
     if (parentRoute && parentRoute?.children) {
       const childRoute = parentRoute?.children.find(
-        (child) => child.name === parentName,
+        (child) => child.name === parentName
       );
       return childRoute?.subchildren ? childRoute.subchildren : [];
     }

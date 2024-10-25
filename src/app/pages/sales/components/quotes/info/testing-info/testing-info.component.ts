@@ -8,7 +8,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class TestingInfoComponent implements OnInit {
   testingForm: FormGroup;
-  dataSource: any[];
+  dataSource: unknown[];
   displayedColumns: string[] = ['property', 'value'];
 
   constructor(private fb: FormBuilder) {
@@ -28,7 +28,7 @@ export class TestingInfoComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  private createDataSource(formValues: any): any[] {
+  private createDataSource(formValues: unknown): unknown[] {
     const coaCost = formValues.coaTest === 'NFG Paying' ? 0.26 : 0;
     const preProSampleCost = formValues.preProSamples === 'Yes' ? 200 : 0;
     const preProLabTestingCost =

@@ -14,6 +14,15 @@ export class InventoryDashboardComponent implements OnInit {
   finishedGoodsData: InventoryItem[] = [];
   componentsData: InventoryItem[] = [];
 
+  displayedColumns: string[] = [
+    'itemId',
+    'name',
+    'sku',
+    'pricePerUnit',
+    'status',
+    'availableQuantity',
+  ];
+
   inventoryDataCount = 0;
   rawMaterialsCount = 0;
   wipCount = 0;
@@ -29,32 +38,32 @@ export class InventoryDashboardComponent implements OnInit {
       this.inventoryDataCount = response.data.length; // Counting the items
     });
 
-    this.inventoryService
-      .getInventoryByType('Raw Materials')
-      .subscribe((response) => {
-        this.rawMaterialsData = response.data; // Accessing the data property from ApiResponse
-        this.rawMaterialsCount = response.data.length; // Counting the items
-      });
+    // this.inventoryService
+    //   .getInventoryByType('Raw Materials')
+    //   .subscribe((response) => {
+    //     this.rawMaterialsData = response.data; // Accessing the data property from ApiResponse
+    //     this.rawMaterialsCount = response.data.length; // Counting the items
+    //   });
 
-    this.inventoryService
-      .getInventoryByType('Work in Progress')
-      .subscribe((response) => {
-        this.wipData = response.data;
-        this.wipCount = response.data.length;
-      });
+    // this.inventoryService
+    //   .getInventoryByType('Work in Progress')
+    //   .subscribe((response) => {
+    //     this.wipData = response.data;
+    //     this.wipCount = response.data.length;
+    //   });
 
-    this.inventoryService
-      .getInventoryByType('Finished Goods')
-      .subscribe((response) => {
-        this.finishedGoodsData = response.data;
-        this.finishedGoodsCount = response.data.length;
-      });
+    // this.inventoryService
+    //   .getInventoryByType('Finished Goods')
+    //   .subscribe((response) => {
+    //     this.finishedGoodsData = response.data;
+    //     this.finishedGoodsCount = response.data.length;
+    //   });
 
-    this.inventoryService
-      .getInventoryByType('Components')
-      .subscribe((response) => {
-        this.componentsData = response.data;
-        this.componentsCount = response.data.length;
-      });
+    // this.inventoryService
+    //   .getInventoryByType('Components')
+    //   .subscribe((response) => {
+    //     this.componentsData = response.data;
+    //     this.componentsCount = response.data.length;
+    //   });
   }
 }

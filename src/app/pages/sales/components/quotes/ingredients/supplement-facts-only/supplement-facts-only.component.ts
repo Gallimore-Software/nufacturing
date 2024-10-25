@@ -9,7 +9,7 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class supplementFactsOnlyComponent implements OnInit {
   factForm: FormGroup;
-  dataSource: MatTableDataSource<any>;
+  dataSource: MatTableDataSource<unknown>;
   displayedColumns: string[] = [
     'ingredient',
     'twoCapsulePerServing',
@@ -18,7 +18,7 @@ export class supplementFactsOnlyComponent implements OnInit {
     'dailyValue',
     'actions',
   ];
-  selectedFact: any;
+  selectedFact: unknown;
 
   facts = [
     {
@@ -126,7 +126,7 @@ export class supplementFactsOnlyComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  viewFactDetails(fact: any) {
+  viewFactDetails(fact: unknown) {
     this.selectedFact = fact;
     this.factForm.patchValue(fact);
   }
@@ -134,7 +134,7 @@ export class supplementFactsOnlyComponent implements OnInit {
   onSubmit() {
     const formValue = this.factForm.value;
     const existingFactIndex = this.facts.findIndex(
-      (f) => f.ingredient === formValue.ingredient,
+      (f) => f.ingredient === formValue.ingredient
     );
     if (existingFactIndex >= 0) {
       this.facts[existingFactIndex] = formValue;
@@ -145,11 +145,11 @@ export class supplementFactsOnlyComponent implements OnInit {
     this.factForm.reset();
   }
 
-  editFact(fact: any) {
+  editFact(fact: unknown) {
     this.viewFactDetails(fact);
   }
 
-  deleteFact(fact: any) {
+  deleteFact(fact: unknown) {
     const index = this.facts.indexOf(fact);
     if (index >= 0) {
       this.facts.splice(index, 1);

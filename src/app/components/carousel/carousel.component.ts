@@ -18,14 +18,14 @@ import {
         style({
           opacity: 0,
           transform: 'translateX(100%)',
-        }),
+        })
       ),
       state(
         'active',
         style({
           opacity: 1,
           transform: 'translateX(0)',
-        }),
+        })
       ),
       transition('inactive => active', animate('600ms ease-out')), // Transition for incoming slide
       transition('active => inactive', animate('600ms ease-in')), // Transition for outgoing slide
@@ -39,7 +39,7 @@ export class CarouselComponent implements OnInit, OnDestroy {
     './assets/Image by Elsa Olofsson.webp',
   ];
   currentSlide = 0;
-  intervalId: any;
+  intervalId: ReturnType<typeof setInterval> | undefined;
 
   ngOnInit() {
     this.startAutoplay();

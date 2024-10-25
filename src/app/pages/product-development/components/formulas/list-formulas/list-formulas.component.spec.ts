@@ -120,7 +120,7 @@ describe('ListFormulaComponent - View All Formulas', () => {
     // Spy on the dialog open method
     const dialogSpy = jest.spyOn(mockDialog, 'open').mockReturnValue({
       afterClosed: () => of(true), // Simulate user confirming the action
-    } as any);
+    } as unknown);
 
     // Spy on the delete formula method
     const deleteSpy = jest
@@ -163,7 +163,7 @@ describe('ListFormulaComponent - View All Formulas', () => {
     // Spy on the dialog open method
     const dialogSpy = jest.spyOn(mockDialog, 'open').mockReturnValue({
       afterClosed: () => of(updatedFormula), // Simulate user confirming the updated formula
-    } as any);
+    } as unknown);
 
     // Spy on the update formula method
     const updateSpy = jest

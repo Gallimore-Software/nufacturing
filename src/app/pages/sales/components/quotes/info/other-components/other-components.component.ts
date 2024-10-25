@@ -9,7 +9,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class OtherComponentsComponent implements OnInit {
   otherComponentsForm: FormGroup;
   displayedColumns: string[] = ['property', 'value'];
-  previewData: any[];
+  previewData: unknown[];
 
   tamperEvidentTypes = ['NeckBand', 'Tamper-Proof Sticker'];
   neckBandParts = ['SP7505CPVC', 'SP6505CPVC', 'FULLSLEEVE', 'NA'];
@@ -88,7 +88,7 @@ export class OtherComponentsComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  private updateFormFields(value: any) {
+  private updateFormFields(value: unknown) {
     const neckBandPartDetail =
       this.neckBandPartDetails[value.nfgNeckBandPart] || {};
     this.otherComponentsForm.patchValue(
@@ -100,11 +100,11 @@ export class OtherComponentsComponent implements OnInit {
         silicaCost: (this.silicaDetails[value.silica] || {}).cost,
         cottonCost: (this.cottonDetails[value.cotton] || {}).cost,
       },
-      { emitEvent: false },
+      { emitEvent: false }
     );
   }
 
-  private createPreviewData(formValues: any): any[] {
+  private createPreviewData(formValues: unknown): unknown[] {
     return [
       { property: 'Tamper Evident Type', value: formValues.tamperEvidentType },
       { property: 'NFG Neck Band Part #', value: formValues.nfgNeckBandPart },

@@ -10,7 +10,7 @@ import { GlobalServiceService } from 'src/app/services/global-service.service';
 })
 export class IngredientBreakdownWithMoqComponent implements OnInit {
   breakdownForm: FormGroup;
-  dataSource: MatTableDataSource<any>;
+  dataSource: MatTableDataSource<unknown>;
   displayedColumns: string[] = [
     'item',
     'qtyNeeded',
@@ -28,7 +28,7 @@ export class IngredientBreakdownWithMoqComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private globalService: GlobalServiceService,
+    private globalService: GlobalServiceService
   ) {
     this.breakdownForm = this.fb.group({
       search: [''],
@@ -42,11 +42,11 @@ export class IngredientBreakdownWithMoqComponent implements OnInit {
     this.calculateBreakdown();
   }
 
-  get items(): any[] {
+  get items(): unknown[] {
     return this.globalService.getIngredients();
   }
 
-  getItems(): any[] {
+  getItems(): unknown[] {
     const items = this.items.map((ingredient) => {
       const qtyNeeded = this.calculateQtyNeeded(ingredient.perCapsule);
       const cost = parseFloat(ingredient.pricePerKg.replace('$', ''));
@@ -106,7 +106,7 @@ export class IngredientBreakdownWithMoqComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  editItem(item: any): void {
+  editItem(item: unknown): void {
     // Edit functionality is commented out for now
     // const dialogRef = this.dialog.open(EditItemDialogComponent, {
     //   width: '250px',
@@ -122,7 +122,7 @@ export class IngredientBreakdownWithMoqComponent implements OnInit {
     // });
   }
 
-  deleteItem(item: any): void {
+  deleteItem(item: unknown): void {
     const index = this.dataSource.data.findIndex((i) => i.item === item.item);
     if (index > -1) {
       this.dataSource.data.splice(index, 1);

@@ -7,7 +7,7 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./inventory-items-table.component.scss'],
 })
 export class InventoryItemsTableComponent implements OnInit {
-  @Input() dataSource: any[] = [];
+  @Input() dataSource: unknown[] = [];
   @Input() totalItems: number = 0;
 
   displayedColumns: string[] = [

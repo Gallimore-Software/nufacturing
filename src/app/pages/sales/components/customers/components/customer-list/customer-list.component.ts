@@ -7,7 +7,7 @@ import { CustomerService } from '../../customer.service';
   styleUrls: ['./customer-list.component.scss'],
 })
 export class CustomerListComponent implements OnInit {
-  customers: any[] = [];
+  customers: unknown[] = [];
 
   constructor(private customerService: CustomerService) {}
 

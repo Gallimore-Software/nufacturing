@@ -17,7 +17,7 @@ export class MasterCartonInfoComponent implements OnInit {
     '16"x10"x4" (CEL)',
   ];
 
-  dataSource: any[] = [];
+  dataSource: unknown[] = [];
   displayedColumns: string[] = ['property', 'value'];
 
   constructor(private fb: FormBuilder) {

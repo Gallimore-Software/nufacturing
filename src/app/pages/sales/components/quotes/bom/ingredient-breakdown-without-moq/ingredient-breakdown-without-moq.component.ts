@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 import { GlobalServiceService } from 'src/app/services/global-service.service';
 
@@ -10,7 +10,7 @@ import { GlobalServiceService } from 'src/app/services/global-service.service';
 })
 export class IngredientBreakdownWithoutMoqComponent implements OnInit {
   breakdownForm: FormGroup;
-  dataSource: MatTableDataSource<any>;
+  dataSource: MatTableDataSource<unknown>;
 
   displayedColumns: string[] = [
     'item',
@@ -26,7 +26,7 @@ export class IngredientBreakdownWithoutMoqComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private globalService: GlobalServiceService,
+    private globalService: GlobalServiceService
   ) {
     this.breakdownForm = this.fb.group({
       search: [''],
@@ -44,11 +44,11 @@ export class IngredientBreakdownWithoutMoqComponent implements OnInit {
     this.calculateBreakdown();
   }
 
-  get items(): any[] {
+  get items(): unknown[] {
     return this.globalService.getIngredients();
   }
 
-  getItems(): any[] {
+  getItems(): unknown[] {
     const ingredients = this.globalService.getIngredients();
     const orderInfo = this.globalService.getOrderInfo();
     const totalBottles = orderInfo.launchQty;
@@ -71,6 +71,7 @@ export class IngredientBreakdownWithoutMoqComponent implements OnInit {
   }
 
   calculateQtyNeeded(perCapsule: number): number {
+    console.log(perCapsule);
     const conversionToKg = 0.1; // Example value
     const extraKgOfWaste = 0.01; // Example value
     return conversionToKg + extraKgOfWaste;
@@ -84,7 +85,7 @@ export class IngredientBreakdownWithoutMoqComponent implements OnInit {
     const totalBottles = this.globalService.getOrderInfo().launchQty;
     let totalCostPerBottle = 0;
 
-    this.dataSource.data.forEach((item) => {
+    this.dataSource.data.forEach((item: unknown) => {
       const cost = parseFloat(item.cost.replace('$', ''));
       const withoutMoq = item.withoutMoq;
       const costQtyOrdered = cost * withoutMoq;
@@ -110,12 +111,12 @@ export class IngredientBreakdownWithoutMoqComponent implements OnInit {
     console.log('Form Submitted', this.breakdownForm.value);
   }
 
-  editIngredient(item: any): void {
+  editIngredient(item: unknown): void {
     // Implement the logic to edit the ingredient.
     console.log('Edit ingredient', item);
   }
 
-  deleteIngredient(item: any): void {
+  deleteIngredient(item: unknown): void {
     // Implement the logic to delete the ingredient.
     console.log('Delete ingredient', item);
     this.dataSource.data = this.dataSource.data.filter((data) => data !== item);

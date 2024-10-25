@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GridApi } from '@ag-grid-community/core';
+import { GridReadyEvent } from 'ag-grid-community';
 
 @Component({
   selector: 'app-raw-materials-inventory',
@@ -38,7 +39,7 @@ export class RawMaterialsInventoryComponent implements OnInit {
     this.activeTab = status; // Update active tab status
   }
 
-  onGridReady(params: any): void {
+  onGridReady(params: GridReadyEvent): void {
     this.gridApi = params.api;
   }
 }

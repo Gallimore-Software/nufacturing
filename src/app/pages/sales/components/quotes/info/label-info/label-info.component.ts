@@ -9,7 +9,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class LabelInfoComponent implements OnInit {
   labelInfoForm: FormGroup;
 
-  dataSource: any[] = [];
+  dataSource: unknown[] = [];
   displayedColumns: string[] = ['property', 'value'];
 
   constructor(private fb: FormBuilder) {
