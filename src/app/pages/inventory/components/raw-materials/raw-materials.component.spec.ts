@@ -8,7 +8,7 @@ describe('RawMaterialsComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [RawMaterialsComponent]
+      declarations: [RawMaterialsComponent],
     });
     fixture = TestBed.createComponent(RawMaterialsComponent);
     component = fixture.componentInstance;

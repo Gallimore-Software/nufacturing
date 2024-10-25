@@ -17,6 +17,7 @@ export class OrderCostsComponent implements OnInit {
 
     // Subscribe to form changes to update the preview dynamically
     this.orderCostForm.valueChanges.subscribe((value) => {
+      console.log(value);
       // Update preview data dynamically
       // The view will automatically update due to Angular's change detection
     });

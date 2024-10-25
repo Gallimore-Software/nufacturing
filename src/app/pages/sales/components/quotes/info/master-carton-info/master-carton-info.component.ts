@@ -28,6 +28,7 @@ export class MasterCartonInfoComponent implements OnInit {
 
     this.updateDataSource();
     this.cartonInfoForm.valueChanges.subscribe((value) => {
+      console.log(value);
       this.updateDataSource();
     });
   }

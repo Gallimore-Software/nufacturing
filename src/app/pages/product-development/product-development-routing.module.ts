@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProductDevelopmentComponent } from './product-development.component';
-import { FormulasComponent } from './components/formulas/formulas.component';
-import { ProductSkusComponent } from './components/product-skus/product-skus.component';
 import { ProductTypesComponent } from './components/product-types/product-types.component';
 import { ResearchAndDevelopmentComponent } from './components/research-and-development/research-and-development.component';
 
@@ -15,14 +13,14 @@ const routes: Routes = [
         path: 'formulas',
         loadChildren: () =>
           import('./components/formulas/formulas.module').then(
-            (m) => m.FormulasModule,
+            (m) => m.FormulasModule
           ),
       },
       {
         path: 'product-skus',
         loadChildren: () =>
           import('./components/product-skus/product-skus.module').then(
-            (m) => m.ProductSkusModule,
+            (m) => m.ProductSkusModule
           ),
       },
       {

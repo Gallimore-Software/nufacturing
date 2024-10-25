@@ -8,7 +8,7 @@ describe('WipComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [WipComponent]
+      declarations: [WipComponent],
     });
     fixture = TestBed.createComponent(WipComponent);
     component = fixture.componentInstance;

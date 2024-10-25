@@ -219,6 +219,7 @@ export class BottleInfoComponent implements OnInit {
 
     this.updateForm('CC225PETBL');
     this.bottleInfoForm.valueChanges.subscribe((value) => {
+      console.log(value);
       this.updateDataSource();
     });
   }

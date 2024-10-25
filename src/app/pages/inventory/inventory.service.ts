@@ -75,6 +75,7 @@ export class InventoryService {
 
   // Method to filter inventory items by type
   getInventoryByType(type: string): Observable<ApiResponse<InventoryItem[]>> {
+    console.log(type);
     console.log('hit inventory.service.ts');
     return this.http
       .get<ApiResponse<InventoryItem[]>>(`${this.apiUrl}`)

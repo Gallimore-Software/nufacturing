@@ -50,7 +50,7 @@ export class CustomersComponent implements OnInit, AfterViewInit {
   ) {}
 
   ngOnInit(): void {
-    this.customerService.getCustomers().subscribe((data: Customer[]) => {
+    this.customerService.getCustomers().subscribe((data: unkown) => {
       this.dataSource.data = data;
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
@@ -86,6 +86,7 @@ export class CustomersComponent implements OnInit, AfterViewInit {
   }
 
   editCustomer(customer: Customer) {
+    console.log(customer);
     // const dialogRef = this.dialog.open(NewCustomerDialogComponent, {
     //   width: '450px',
     //   data: customer

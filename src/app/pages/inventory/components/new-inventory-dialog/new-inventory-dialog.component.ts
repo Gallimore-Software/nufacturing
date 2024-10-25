@@ -25,7 +25,7 @@ export class NewInventoryDialogComponent implements OnInit {
     private vendorService: VendorsService,
     private inventoryService: InventoryService,
 
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data
   ) {
     this.inventoryForm = this.fb.group({
       vendor: ['', Validators.required],

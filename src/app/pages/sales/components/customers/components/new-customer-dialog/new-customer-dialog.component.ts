@@ -14,7 +14,7 @@ export class NewCustomerDialogComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<NewCustomerDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
+    @Inject(MAT_DIALOG_DATA) public data: unknown
   ) {
     this.customerForm = this.fb.group({
       companyName: [data?.companyName || '', Validators.required],

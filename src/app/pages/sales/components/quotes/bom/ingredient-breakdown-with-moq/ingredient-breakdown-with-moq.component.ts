@@ -74,6 +74,7 @@ export class IngredientBreakdownWithMoqComponent implements OnInit {
   }
 
   calculateQtyNeeded(perCapsule: number): number {
+    console.log(perCapsule);
     const conversionToKg = 0.1; // Example value
     const extraKgOfWaste = 0.01; // Example value
     return conversionToKg + extraKgOfWaste;
@@ -107,6 +108,7 @@ export class IngredientBreakdownWithMoqComponent implements OnInit {
   }
 
   editItem(item: unknown): void {
+    console.log(item);
     // Edit functionality is commented out for now
     // const dialogRef = this.dialog.open(EditItemDialogComponent, {
     //   width: '250px',

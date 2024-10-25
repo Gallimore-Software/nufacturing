@@ -18,14 +18,15 @@ export class CalculateQuotePricingComponent {
     });
 
     this.quoteForm.valueChanges.subscribe((values) => {
-      this.updateQuotePricing(values.customerSalePrice, values.launchQty);
+      this.updateQuotePricing(values.customerSalePrice);
     });
 
     // Initial calculation
-    this.updateQuotePricing(8.05, 2000);
+    this.updateQuotePricing(8.05);
   }
 
-  updateQuotePricing(customerSalePrice: number, launchQty: number) {
+  // , launchQty: number, 2000
+  updateQuotePricing(customerSalePrice: number) {
     const basePrice = 8.05; // Base price for calculation
     const priceTiers = [
       { moq: 2000, price: 8.05 },
@@ -49,7 +50,6 @@ export class CalculateQuotePricingComponent {
   }
 
   calculateDynamicPrice(customerSalePrice: number, launchQty: number): number {
-    const basePrice = 8.05;
     const baseLaunchQty = 2000;
     const scaleFactor = baseLaunchQty / launchQty;
     return customerSalePrice * scaleFactor;

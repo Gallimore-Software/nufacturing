@@ -7,7 +7,7 @@ import { SalesService } from '../../sales.service';
   styleUrls: ['./quotes-navigation.component.scss'],
 })
 export class QuotesNavigationComponent implements OnInit {
-  summaryMetrics: any = {};
+  summaryMetrics: unknown = {};
 
   constructor(private salesService: SalesService) {}
 

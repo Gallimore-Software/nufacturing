@@ -18,7 +18,7 @@ export class CreateFormulasComponent {
     'Liquid Stickpacks',
     'Pouches',
   ];
-  unitOptions: any = {
+  unitOptions: unknown = {
     Capsules: ['mg', 'g', 'kg'],
     Powder: ['mg', 'g', 'kg'],
     Gummies: ['mcg', 'mg', 'g', 'kg', 'ml', 'liter', 'gallons', 'ounces'],
@@ -31,7 +31,7 @@ export class CreateFormulasComponent {
   constructor(
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<CreateFormulasComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: unknown
   ) {
     this.formulaForm = this.fb.group({
       code: [data?.code || ''],

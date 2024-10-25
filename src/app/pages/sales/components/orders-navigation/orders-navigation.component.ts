@@ -7,7 +7,7 @@ import { SalesService } from '../../sales.service';
   styleUrls: ['./orders-navigation.component.scss'],
 })
 export class OrdersNavigationComponent implements OnInit {
-  summaryMetrics: any = {};
+  summaryMetrics: unknown = {};
 
   constructor(private salesService: SalesService) {}
 

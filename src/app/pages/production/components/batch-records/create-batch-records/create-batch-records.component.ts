@@ -6,6 +6,36 @@ import { ProductSkusService } from 'src/app/pages/product-development/services/p
 import { FormulasService } from 'src/app/pages/product-development/services/formulas.service';
 import { UsersService } from 'src/app/pages/users/services/users.service';
 
+// Define interfaces for the expected data structures
+interface Batch {
+  _id: string;
+  batchNumber: string;
+  productSKU: string;
+  formula: string;
+  productionDate: Date;
+  expirationDate: Date;
+  productionLine: string;
+  shift: string;
+  quantityProduced: number;
+  status: string;
+  operator: string;
+}
+
+interface ProductSKU {
+  _id: string;
+  sku: string;
+}
+
+interface Formula {
+  _id: string;
+  name: string;
+}
+
+interface Operator {
+  _id: string;
+  username: string;
+}
+
 @Component({
   selector: 'app-create-batch-records',
   templateUrl: './create-batch-records.component.html',
@@ -13,9 +43,9 @@ import { UsersService } from 'src/app/pages/users/services/users.service';
 })
 export class CreateBatchRecordsComponent implements OnInit {
   batchForm!: FormGroup;
-  productSKUs: Array<{ _id: string; sku: string }> = [];
-  formulas: Array<{ _id: string; name: string }> = [];
-  operators: Array<{ _id: string; username: string }> = [];
+  productSKUs: ProductSKU[] = [];
+  formulas: Formula[] = [];
+  operators: Operator[] = [];
   isEditMode: boolean = false;
 
   constructor(
@@ -25,7 +55,7 @@ export class CreateBatchRecordsComponent implements OnInit {
     private productskuService: ProductSkusService,
     private formulasService: FormulasService,
     private dialogRef: MatDialogRef<CreateBatchRecordsComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: { batch?: Batch } // Type the batch data
   ) {}
 
   ngOnInit(): void {
@@ -54,7 +84,7 @@ export class CreateBatchRecordsComponent implements OnInit {
     });
   }
 
-  patchFormWithBatchData(batch: unknown): void {
+  patchFormWithBatchData(batch: Batch): void {
     this.batchForm.patchValue({
       batchNumber: batch.batchNumber,
       productSKU: batch.productSKU,
@@ -71,7 +101,7 @@ export class CreateBatchRecordsComponent implements OnInit {
 
   loadProductSKUs(): void {
     this.productskuService.getProductSkus().subscribe({
-      next: (data) => {
+      next: (data: ProductSKU[]) => {
         console.log('Product SKUs:', data); // Debug: Check the data structure
         this.productSKUs = data; // Ensure data is in the expected format
       },
@@ -81,7 +111,7 @@ export class CreateBatchRecordsComponent implements OnInit {
 
   loadFormulas(): void {
     this.formulasService.getFormulas().subscribe({
-      next: (data) => {
+      next: (data: Formula[]) => {
         console.log('Formulas:', data); // Debug: Check the data structure
         this.formulas = data; // Ensure data is in the expected format
       },
@@ -91,7 +121,7 @@ export class CreateBatchRecordsComponent implements OnInit {
 
   loadOperators(): void {
     this.userService.getAllUsers().subscribe({
-      next: (data) => {
+      next: (data: Operator[]) => {
         console.log('Operators:', data); // Debug: Check the data structure
         this.operators = data; // Ensure data is in the expected format
       },
@@ -101,11 +131,11 @@ export class CreateBatchRecordsComponent implements OnInit {
 
   onSubmit(): void {
     if (this.batchForm.valid) {
-      const batchData = this.batchForm.value;
+      const batchData = this.batchForm.value as Batch;
 
       if (this.isEditMode) {
         this.batchRecordsService
-          .updateBatchRecord(this.data.batch._id, batchData)
+          .updateBatchRecord(this.data.batch!._id, batchData)
           .subscribe({
             next: () => this.dialogRef.close(true),
             error: (error) =>

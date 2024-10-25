@@ -25,7 +25,7 @@ export class CreateProductSkusComponent implements OnInit {
     private productSkusService: ProductSkusService,
     private formulasService: ListFormulasService,
     private dialogRef: MatDialogRef<CreateProductSkusComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: unknown
   ) {
     console.log('data:', data);
     this.productSkuForm = this.fb.group({

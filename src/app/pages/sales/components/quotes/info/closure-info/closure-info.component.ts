@@ -165,6 +165,7 @@ export class ClosureInfoComponent implements OnInit {
 
     this.updateForm('CP38400PPWR');
     this.closureInfoForm.valueChanges.subscribe((value) => {
+      console.log(value);
       this.updateDataSource();
     });
   }

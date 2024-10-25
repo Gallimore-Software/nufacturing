@@ -23,6 +23,7 @@ export class LabelInfoComponent implements OnInit {
 
     this.updateDataSource();
     this.labelInfoForm.valueChanges.subscribe((value) => {
+      console.log(value);
       this.updateDataSource();
     });
   }

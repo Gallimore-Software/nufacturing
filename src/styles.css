@@ -8,7 +8,7 @@ html {
 
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
   background: linear-gradient(90deg, #000000, #1a1a1a);
 }
 
@@ -20,7 +20,7 @@ mat-sidenav[style] {
   display: flex !important;
 }
 
-mat-drawer[style*="visibility: hidden"] {
+mat-drawer[style*='visibility: hidden'] {
   display: flex !important;
 }
 
@@ -39,7 +39,7 @@ mat-sidenav {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #126D3D;
+  background: #126d3d;
   border-radius: 10px;
 }
 
@@ -55,4 +55,4 @@ mat-button {
   body {
     margin: 0;
   }
-}/*# sourceMappingURL=styles.css.map */
+} /*# sourceMappingURL=styles.css.map */
