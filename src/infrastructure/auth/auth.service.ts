@@ -7,12 +7,14 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { environment } from 'src/environments/environment';
 
 interface AuthResponse {
-  token: string;
+  accessToken: string;
+  refreshToken: string;
   user: {
     id: string;
     email: string;
     role: string;
   };
+  expiresAt: string;
 }
 
 @Injectable({
@@ -76,16 +78,16 @@ export class AuthService {
       // Check if authData exists and is a valid JSON
       if (!authData) return false;
 
-      const { token } = JSON.parse(authData);
+      const { accessToken } = JSON.parse(authData);
 
       // Check if the token exists and is a string
-      if (typeof token !== 'string') {
-        console.warn('Token is not a valid string:', token);
+      if (typeof accessToken !== 'string') {
+        console.warn('Token is not a valid string:', accessToken);
         return false;
       }
 
       // Check if the token is not expired
-      return !this.jwtHelper.isTokenExpired(token);
+      return !this.jwtHelper.isTokenExpired(accessToken);
     } catch (error) {
       console.warn('Error checking token validity:', error);
       return false;
@@ -142,7 +144,7 @@ export class AuthService {
 
   // Helper to handle successful authentication
   private handleAuthSuccess(response: AuthResponse): void {
-    if (response && response.token) {
+    if (response && response.accessToken) {
       localStorage.setItem('authData', JSON.stringify(response));
       this.isAuthenticated.next(true);
       this.userRoleSubject.next(response.user.role);

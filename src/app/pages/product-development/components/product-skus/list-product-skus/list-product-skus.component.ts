@@ -4,9 +4,9 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { AuthService } from 'src/infrastructure/auth/auth.service';
 import { MatDialog } from '@angular/material/dialog';
-import { ProductSkusService } from 'src/app/services/product-skus.service';
+import { ProductSkusService } from 'src/app/pages/product-development/services/product-skus.service';
 import { CreateProductSkusComponent } from '../create-product-skus/create-product-skus.component';
-import { ConfirmDialogComponent } from '../../../../../components/confirm-dialog/confirm-dialog.component';
+import { ConfirmDialogComponent } from 'src/app/components/confirm-dialog/confirm-dialog.component';
 
 export interface ProductSku {
   _id: string;

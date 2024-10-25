@@ -3,8 +3,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { of } from 'rxjs';
 import { debounceTime, switchMap } from 'rxjs/operators';
-import { VendorsService, Vendor } from 'src/app/services/vendors.service'; // Adjust the path as needed
-import { InventoryService } from '../../inventory.service';
+import { InventoryService } from 'src/app/pages/inventory/inventory.service';
+import {
+  VendorsService,
+  Vendor,
+} from 'src/app/pages/vendors/services/vendors.service'; // Adjust the path as needed
 
 @Component({
   selector: 'app-new-inventory-dialog',
@@ -22,7 +25,7 @@ export class NewInventoryDialogComponent implements OnInit {
     private vendorService: VendorsService,
     private inventoryService: InventoryService,
 
-    @Inject(MAT_DIALOG_DATA) public data: any,
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.inventoryForm = this.fb.group({
       vendor: ['', Validators.required],
@@ -71,19 +74,19 @@ export class NewInventoryDialogComponent implements OnInit {
                     response.filter((vendor) =>
                       vendor.displayName
                         .toLowerCase()
-                        .includes(searchTerm.toLowerCase()),
-                    ),
+                        .includes(searchTerm.toLowerCase())
+                    )
                   );
                 } else {
                   console.log('No Vendor Data: ' + JSON.stringify(response));
                 }
                 return of([]);
-              }),
+              })
             );
           } else {
             return of([]);
           }
-        }),
+        })
       )
       .subscribe((filteredVendors: Vendor[]) => {
         this.filteredVendors = filteredVendors;
@@ -96,7 +99,7 @@ export class NewInventoryDialogComponent implements OnInit {
         debounceTime(300),
         switchMap((skuValue) => {
           if (skuValue) {
-            return this.inventoryService.checkSkuExists(skuValue); 
+            return this.inventoryService.checkSkuExists(skuValue);
           } else {
             return of(null);
           }
@@ -110,7 +113,7 @@ export class NewInventoryDialogComponent implements OnInit {
         } else {
           this.inventoryForm.get('sku')?.setErrors(null);
         }
-      });      
+      });
   }
 
   onSubmit(event: Event): void {
@@ -134,7 +137,7 @@ export class NewInventoryDialogComponent implements OnInit {
         },
         (error) => {
           console.error('Error creating inventory item:', error);
-        },
+        }
       );
     } else {
       console.log('Error while saving');

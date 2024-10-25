@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { BatchRecordsService } from 'src/app/services/batch-records.service';
+import { BatchRecordsService } from 'src/app/pages/production/services/batch-records.service';
 import { AuthService } from 'src/infrastructure/auth/auth.service';
 import { BatchDetailDialogComponent } from '../batch-detail-dialog/batch-detail-dialog.component';
 import { CreateBatchRecordsComponent } from '../create-batch-records/create-batch-records.component';

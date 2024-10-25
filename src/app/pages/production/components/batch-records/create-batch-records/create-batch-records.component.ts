@@ -1,10 +1,10 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { BatchRecordsService } from 'src/app/services/batch-records.service';
-import { ProductSkusService } from 'src/app/services/product-skus.service';
-import { FormulasService } from 'src/app/services/formulas.service';
-import { UsersService } from 'src/app/services/users.service';
+import { BatchRecordsService } from 'src/app/pages/production/services/batch-records.service';
+import { ProductSkusService } from 'src/app/pages/product-development/services/product-skus.service';
+import { FormulasService } from 'src/app/pages/product-development/services/formulas.service';
+import { UsersService } from 'src/app/pages/users/services/users.service';
 
 @Component({
   selector: 'app-create-batch-records',

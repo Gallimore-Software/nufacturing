@@ -3,7 +3,7 @@ import { CanActivate, Router } from '@angular/router';
 import { AuthService } from './auth.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable, of } from 'rxjs';
-import { tap, catchError, switchMap } from 'rxjs/operators';
+import { catchError, switchMap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -21,44 +21,47 @@ export class AuthGuard implements CanActivate {
     // Check if authData is present
     if (authData) {
       try {
-        const { token } = JSON.parse(authData);
+        const { accessToken } = JSON.parse(authData);
 
-        // Ensure token is a valid string before proceeding
-        if (typeof token !== 'string') {
+        // Ensure access token is a valid string before proceeding
+        if (typeof accessToken !== 'string') {
           this.router.navigate(['/login']);
           return false;
         }
 
-        // If token exists and is valid, allow access
-        if (token && !this.jwtHelper.isTokenExpired(token)) {
+        // If access token exists and is valid, allow access
+        if (accessToken && !this.jwtHelper.isTokenExpired(accessToken)) {
           return true; // User is authenticated
         }
 
-        // If token exists but is expired, attempt to refresh it
-        if (token && this.jwtHelper.isTokenExpired(token)) {
+        // If access token exists but is expired, attempt to refresh it
+        if (accessToken && this.jwtHelper.isTokenExpired(accessToken)) {
           return this.authService.refreshToken().pipe(
             switchMap((newToken) => {
               if (newToken) {
-                return of(true); // Token successfully refreshed, allow access
+                return of(true); // Access token successfully refreshed, allow access
               } else {
                 this.router.navigate(['/login']);
-                return of(false); // Token refresh failed, redirect to login
+                return of(false); // Access token refresh failed, redirect to login
               }
             }),
             catchError(() => {
               this.router.navigate(['/login']);
-              return of(false); // Error during token refresh, redirect to login
+              return of(false); // Error during access token refresh, redirect to login
             })
           );
         }
       } catch (error) {
-        console.error('Error parsing authData or checking token:', error);
+        console.error(
+          'Error parsing authData or checking access token:',
+          error
+        );
         this.router.navigate(['/login']);
         return false;
       }
     }
 
-    // If no token, redirect to login
+    // If no access token, redirect to login
     this.router.navigate(['/login']);
     return false;
   }

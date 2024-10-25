@@ -6,7 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ProductSkusService } from 'src/app/services/product-skus.service';
+import { ProductSkusService } from 'src/app/pages/product-development/services/product-skus.service';
 import { ListFormulasService } from '../../formulas/list-formulas/list-formulas.service';
 
 @Component({
@@ -25,7 +25,7 @@ export class CreateProductSkusComponent implements OnInit {
     private productSkusService: ProductSkusService,
     private formulasService: ListFormulasService,
     private dialogRef: MatDialogRef<CreateProductSkusComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     console.log('data:', data);
     this.productSkuForm = this.fb.group({
@@ -52,7 +52,7 @@ export class CreateProductSkusComponent implements OnInit {
   fetchFormulas(searchTerm: string = ''): void {
     this.formulasService.getFormulas().subscribe((formulas: any[]) => {
       this.filteredFormulas = formulas.filter((formula) =>
-        formula.name.toLowerCase().includes(searchTerm.toLowerCase()),
+        formula.name.toLowerCase().includes(searchTerm.toLowerCase())
       );
     });
   }
@@ -64,7 +64,7 @@ export class CreateProductSkusComponent implements OnInit {
 
   onFormulaSelected(event: any): void {
     const selectedFormula = this.filteredFormulas.find(
-      (formula) => formula.name === event.option.value,
+      (formula) => formula.name === event.option.value
     );
     this.productSkuForm.patchValue({ formula: selectedFormula._id });
   }

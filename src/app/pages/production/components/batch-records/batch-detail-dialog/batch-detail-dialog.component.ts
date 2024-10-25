@@ -7,8 +7,8 @@ import {
 } from '@angular/material/dialog'; // Import MatDialog for opening dialogs
 import { ConfirmDialogComponent } from 'src/app/components/confirm-dialog/confirm-dialog.component'; // Import the confirm dialog
 import { BatchRecord } from '../list-batch-records/list-batch-records.component';
-import { BatchRecordsService } from 'src/app/services/batch-records.service';
-import { UsersService } from 'src/app/services/users.service';
+import { BatchRecordsService } from 'src/app/pages/production/services/batch-records.service';
+import { UsersService } from 'src/app/pages/users/services/users.service';
 import { AuthService } from 'src/infrastructure/auth/auth.service';
 
 @Component({
