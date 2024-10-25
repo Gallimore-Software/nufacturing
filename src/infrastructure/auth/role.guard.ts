@@ -16,7 +16,7 @@ export class RoleGuard implements CanActivate {
   canActivate(): Observable<boolean> {
     return this.authService.userRole.pipe(
       map((role) => {
-        if (role === 'Admin') {
+        if (role === 'Admin' || role === 'User') {
           return true; // Allow access if Admin
         } else {
           this.router.navigate(['/unauthorized']);
