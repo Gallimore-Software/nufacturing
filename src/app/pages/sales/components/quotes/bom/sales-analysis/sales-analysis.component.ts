@@ -2,6 +2,17 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 
+interface DataTableItem {
+  price: number;
+  salesVolume: number;
+  revenue: number;
+}
+
+interface SuggestedPrice {
+  margin: string;
+  price: string;
+}
+
 @Component({
   selector: 'app-sales-analysis',
   templateUrl: './sales-analysis.component.html',
@@ -12,11 +23,11 @@ export class SalesAnalysisComponent implements OnInit {
   scenarioManagerForm: FormGroup;
   dataTableForm: FormGroup;
   displayedColumns: string[] = ['price', 'salesVolume', 'revenue'];
-  dataTable: unknown[] = [];
-  filteredDataTable: unknown[] = [];
+  dataTable: DataTableItem[] = [];
+  filteredDataTable: DataTableItem[] = [];
 
-  suggestedPricesWithMOQ: unknown[] = [];
-  suggestedPricesWithoutMOQ: unknown[] = [];
+  suggestedPricesWithMOQ: SuggestedPrice[] = [];
+  suggestedPricesWithoutMOQ: SuggestedPrice[] = [];
   totalCostPerBottleWithMOQ: number = 6.1; // Example value
   totalCostPerBottleWithoutMOQ: number = 2.9; // Example value
 
@@ -42,6 +53,7 @@ export class SalesAnalysisComponent implements OnInit {
   ngOnInit(): void {
     this.initializeScenarios();
     this.calculateDataTable();
+    this.calculateSuggestedPrices();
   }
 
   createPriceRange(): FormGroup {
@@ -108,8 +120,8 @@ export class SalesAnalysisComponent implements OnInit {
     const salesVolumeRange = this.salesVolumeRange.value;
 
     this.dataTable = [];
-    priceRange.forEach((price: unknown) => {
-      salesVolumeRange.forEach((volume: unknown) => {
+    priceRange.forEach((price: { price: number }) => {
+      salesVolumeRange.forEach((volume: { salesVolume: number }) => {
         this.dataTable.push({
           price: price.price,
           salesVolume: volume.salesVolume,

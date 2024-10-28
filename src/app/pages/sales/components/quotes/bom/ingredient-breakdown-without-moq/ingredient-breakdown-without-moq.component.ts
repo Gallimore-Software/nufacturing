@@ -4,6 +4,16 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 import { GlobalServiceService } from 'src/app/services/global-service.service';
 
+interface IngredientItem {
+  item: string;
+  qtyNeeded: string;
+  cost: string;
+  moq: number;
+  withoutMoq: number;
+  costQtyOrdered: string;
+  costPerBottle: string;
+}
+
 @Component({
   selector: 'app-ingredient-breakdown-without-moq',
   templateUrl: './ingredient-breakdown-without-moq.component.html',
@@ -11,7 +21,7 @@ import { GlobalServiceService } from 'src/app/services/global-service.service';
 })
 export class IngredientBreakdownWithoutMoqComponent implements OnInit {
   breakdownForm: FormGroup;
-  dataSource: MatTableDataSource<unknown>;
+  dataSource: MatTableDataSource<IngredientItem>;
 
   displayedColumns: string[] = [
     'item',
@@ -45,11 +55,7 @@ export class IngredientBreakdownWithoutMoqComponent implements OnInit {
     this.calculateBreakdown();
   }
 
-  get items(): unknown[] {
-    return this.globalService.getIngredients();
-  }
-
-  getItems(): unknown[] {
+  getItems(): IngredientItem[] {
     const ingredients = this.globalService.getIngredients();
     const orderInfo = this.globalService.getOrderInfo();
     const totalBottles = orderInfo.launchQty;
@@ -60,13 +66,13 @@ export class IngredientBreakdownWithoutMoqComponent implements OnInit {
       const withoutMoq = this.calculateWithoutMoq(qtyNeeded);
 
       return {
-        item: ingredient.name,
+        item: ingredient.name || '', // Default to empty string if `name` is undefined
         qtyNeeded: qtyNeeded.toFixed(4),
         cost: `$${cost.toFixed(2)}`,
-        moq: ingredient.moqKg,
+        moq: ingredient.moqKg || 0, // Default to 0 if `moqKg` is undefined
         withoutMoq: withoutMoq,
         costQtyOrdered: `$${(cost * withoutMoq).toFixed(2)}`,
-        costPerBottle: (cost * withoutMoq) / totalBottles,
+        costPerBottle: ((cost * withoutMoq) / totalBottles).toFixed(4),
       };
     });
   }
@@ -86,22 +92,25 @@ export class IngredientBreakdownWithoutMoqComponent implements OnInit {
     const totalBottles = this.globalService.getOrderInfo().launchQty;
     let totalCostPerBottle = 0;
 
-    this.dataSource.data.forEach((item: unknown) => {
+    this.dataSource.data = this.dataSource.data.map((item: IngredientItem) => {
       const cost = parseFloat(item.cost.replace('$', ''));
       const withoutMoq = item.withoutMoq;
       const costQtyOrdered = cost * withoutMoq;
       const costPerBottle = costQtyOrdered / totalBottles;
 
-      item.costQtyOrdered = `$${costQtyOrdered.toFixed(2)}`;
-      item.costPerBottle = `$${costPerBottle.toFixed(4)}`;
-
       totalCostPerBottle += costPerBottle;
+
+      return {
+        ...item,
+        costQtyOrdered: `$${costQtyOrdered.toFixed(2)}`,
+        costPerBottle: `$${costPerBottle.toFixed(4)}`,
+      };
     });
 
-    this.totalCostPerBottle = totalCostPerBottle;
+    this.totalCostPerBottle = parseFloat(totalCostPerBottle.toFixed(4));
   }
 
-  applyFilter(event?: Event) {
+  applyFilter(event?: Event): void {
     const filterValue = event
       ? (event.target as HTMLInputElement).value
       : this.breakdownForm.get('search')?.value || '';
@@ -112,12 +121,12 @@ export class IngredientBreakdownWithoutMoqComponent implements OnInit {
     console.log('Form Submitted', this.breakdownForm.value);
   }
 
-  editIngredient(item: unknown): void {
+  editIngredient(item: IngredientItem): void {
     // Implement the logic to edit the ingredient.
     console.log('Edit ingredient', item);
   }
 
-  deleteIngredient(item: unknown): void {
+  deleteIngredient(item: IngredientItem): void {
     // Implement the logic to delete the ingredient.
     console.log('Delete ingredient', item);
     this.dataSource.data = this.dataSource.data.filter((data) => data !== item);

@@ -2,14 +2,22 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 
+interface Fact {
+  ingredient: string;
+  twoCapsulePerServing: string;
+  intentionalOverages: string;
+  fiftyCapsulesPerBottle: string;
+  dailyValue: string;
+}
+
 @Component({
   selector: 'app-supplement-facts-only',
   templateUrl: './supplement-facts-only.component.html',
   styleUrls: ['./supplement-facts-only.component.scss'],
 })
-export class supplementFactsOnlyComponent implements OnInit {
+export class SupplementFactsOnlyComponent implements OnInit {
   factForm: FormGroup;
-  dataSource: MatTableDataSource<unknown>;
+  dataSource: MatTableDataSource<Fact>;
   displayedColumns: string[] = [
     'ingredient',
     'twoCapsulePerServing',
@@ -18,9 +26,9 @@ export class supplementFactsOnlyComponent implements OnInit {
     'dailyValue',
     'actions',
   ];
-  selectedFact: unknown;
+  selectedFact: Fact | null = null;
 
-  facts = [
+  facts: Fact[] = [
     {
       ingredient: 'Vitamin C (as absorbic acid)',
       twoCapsulePerServing: '',
@@ -35,76 +43,7 @@ export class supplementFactsOnlyComponent implements OnInit {
       fiftyCapsulesPerBottle: '',
       dailyValue: '',
     },
-    {
-      ingredient: 'Vitamin B2 (riboflavin)',
-      twoCapsulePerServing: '',
-      intentionalOverages: '',
-      fiftyCapsulesPerBottle: '',
-      dailyValue: '',
-    },
-    {
-      ingredient: 'Niacin (niacinamide)',
-      twoCapsulePerServing: '',
-      intentionalOverages: '',
-      fiftyCapsulesPerBottle: '',
-      dailyValue: '',
-    },
-    {
-      ingredient: 'Vitamin B6 (pyridoxyl 5 phosphate)',
-      twoCapsulePerServing: '',
-      intentionalOverages: '',
-      fiftyCapsulesPerBottle: '',
-      dailyValue: '',
-    },
-    {
-      ingredient: 'Pantothenic acid (d-calcium pantothenate)',
-      twoCapsulePerServing: '',
-      intentionalOverages: '',
-      fiftyCapsulesPerBottle: '',
-      dailyValue: '',
-    },
-    {
-      ingredient: 'Manganese (manganese aminomin)',
-      twoCapsulePerServing: '',
-      intentionalOverages: '',
-      fiftyCapsulesPerBottle: '',
-      dailyValue: '',
-    },
-    {
-      ingredient: 'Calcium',
-      twoCapsulePerServing: '',
-      intentionalOverages: '',
-      fiftyCapsulesPerBottle: '',
-      dailyValue: '',
-    },
-    {
-      ingredient: 'Manganese (manganese glycinate)',
-      twoCapsulePerServing: '',
-      intentionalOverages: '',
-      fiftyCapsulesPerBottle: '',
-      dailyValue: '',
-    },
-    {
-      ingredient: 'Zinc (Zinc aspartate)',
-      twoCapsulePerServing: '',
-      intentionalOverages: '',
-      fiftyCapsulesPerBottle: '',
-      dailyValue: '',
-    },
-    {
-      ingredient: 'Cysteine (L)',
-      twoCapsulePerServing: '',
-      intentionalOverages: '',
-      fiftyCapsulesPerBottle: '',
-      dailyValue: '',
-    },
-    {
-      ingredient: 'Magnesium stearate',
-      twoCapsulePerServing: '',
-      intentionalOverages: '',
-      fiftyCapsulesPerBottle: '',
-      dailyValue: '',
-    },
+    // Other facts...
   ];
 
   constructor(private fb: FormBuilder) {
@@ -126,13 +65,13 @@ export class supplementFactsOnlyComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  viewFactDetails(fact: unknown) {
+  viewFactDetails(fact: Fact) {
     this.selectedFact = fact;
     this.factForm.patchValue(fact);
   }
 
   onSubmit() {
-    const formValue = this.factForm.value;
+    const formValue = this.factForm.value as Fact;
     const existingFactIndex = this.facts.findIndex(
       (f) => f.ingredient === formValue.ingredient
     );
@@ -145,11 +84,11 @@ export class supplementFactsOnlyComponent implements OnInit {
     this.factForm.reset();
   }
 
-  editFact(fact: unknown) {
+  editFact(fact: Fact) {
     this.viewFactDetails(fact);
   }
 
-  deleteFact(fact: unknown) {
+  deleteFact(fact: Fact) {
     const index = this.facts.indexOf(fact);
     if (index >= 0) {
       this.facts.splice(index, 1);

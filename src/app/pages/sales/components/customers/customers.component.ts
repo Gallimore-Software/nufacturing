@@ -37,7 +37,7 @@ export class CustomersComponent implements OnInit, AfterViewInit {
     'website',
     'actions',
   ];
-  dataSource: MatTableDataSource<Customer> = new MatTableDataSource();
+  dataSource: MatTableDataSource<Customer> = new MatTableDataSource<Customer>();
   isAdminOrManager: boolean = false;
   totalCustomers: number = 0;
 
@@ -51,7 +51,7 @@ export class CustomersComponent implements OnInit, AfterViewInit {
   ) {}
 
   ngOnInit(): void {
-    this.customerService.getCustomers().subscribe((data: unkown) => {
+    this.customerService.getCustomers().subscribe((data: Customer[]) => {
       this.dataSource.data = data;
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
@@ -74,6 +74,7 @@ export class CustomersComponent implements OnInit, AfterViewInit {
   }
 
   createNewCustomer() {
+    // Uncomment and implement customer creation dialog if needed.
     // const dialogRef = this.dialog.open(NewCustomerDialogComponent, {
     //   width: '450px',
     // });
@@ -88,6 +89,7 @@ export class CustomersComponent implements OnInit, AfterViewInit {
 
   editCustomer(customer: Customer) {
     console.log(customer);
+    // Uncomment and implement customer editing dialog if needed.
     // const dialogRef = this.dialog.open(NewCustomerDialogComponent, {
     //   width: '450px',
     //   data: customer

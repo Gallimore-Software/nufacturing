@@ -11,6 +11,11 @@ interface CapsuleDetail {
   price: string;
 }
 
+interface CapsuleFormValues {
+  nfgCapsulePart: string;
+  colorOfProduct: string;
+}
+
 @Component({
   selector: 'app-capsule-info',
   templateUrl: './capsule-info.component.html',
@@ -18,7 +23,7 @@ interface CapsuleDetail {
 })
 export class CapsuleInfoComponent implements OnInit {
   capsuleInfoForm: FormGroup;
-  dataSource: unknown[];
+  dataSource: { property: string; value: string | number }[];
   displayedColumns: string[] = ['property', 'value'];
 
   capsuleParts = [
@@ -95,18 +100,24 @@ export class CapsuleInfoComponent implements OnInit {
       colorOfProduct: ['Green'],
     });
 
-    this.dataSource = this.createDataSource(this.capsuleInfoForm.value);
+    // Initialize dataSource with the current form values
+    this.dataSource = this.createDataSource(
+      this.capsuleInfoForm.value as CapsuleFormValues
+    );
 
+    // Update dataSource whenever form values change
     this.capsuleInfoForm.valueChanges.subscribe((value) => {
-      this.dataSource = this.createDataSource(value);
+      this.dataSource = this.createDataSource(value as CapsuleFormValues);
     });
   }
 
   ngOnInit(): void {}
 
-  private createDataSource(formValues: unknown): unknown[] {
-    const details: CapsuleDetail =
-      this.capsuleDetails[formValues.nfgCapsulePart];
+  // Updated method to correctly type formValues
+  private createDataSource(
+    formValues: CapsuleFormValues
+  ): { property: string; value: string | number }[] {
+    const details = this.capsuleDetails[formValues.nfgCapsulePart];
     return [
       { property: 'NFG Capsule Part #', value: formValues.nfgCapsulePart },
       { property: 'Capsule Material', value: details.material },

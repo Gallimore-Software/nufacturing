@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { GlobalServiceService } from 'src/app/services/global-service.service';
 
 @Component({
@@ -63,11 +63,11 @@ export class IngredientCalculationComponent implements OnInit {
       this.ingredients.push(
         this.fb.group({
           name: [ingredient.name],
-          perCapsule: [ingredient.perCapsule],
+          perCapsule: [ingredient.perCapsule, Validators.required],
           nfgTargetCapsule: [
             this.calculateNfgTargetCapsule(ingredient.perCapsule),
           ],
-          perBottle: [50],
+          perBottle: [50, Validators.required],
           mgPerBottle: [{ value: 0, disabled: true }],
           totalMgNeeded: [{ value: 0, disabled: true }],
           conversionToKg: [{ value: 0, disabled: true }],
@@ -172,14 +172,14 @@ export class IngredientCalculationComponent implements OnInit {
     console.log('Form Submitted', this.ingredientForm.value);
   }
 
-  editIngredient(ingredient: unknown) {
-    ingredient.get('perCapsule').enable();
-    ingredient.get('perBottle').enable();
-    // Add more controls to enable if necessary
+  editIngredient(index: number): void {
+    const ingredientControl = this.ingredients.at(index);
+    ingredientControl.get('perCapsule')?.enable();
+    ingredientControl.get('perBottle')?.enable();
   }
 
   deleteIngredient(ingredientIndex: number): void {
     this.ingredients.removeAt(ingredientIndex);
-    this.calculateSummary(); // Recalculate the summary after deleting an ingredient
+    this.calculateSummary();
   }
 }

@@ -1,6 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
+interface AccountFormValues {
+  accountManager: string;
+  newAccountManager: string;
+  customerCode: string;
+  sku: string;
+  formulaCode: string;
+  batchNumber: string;
+  customerBatchNumber: string;
+  nfgBatchCode: string;
+  dateMonth: string;
+  dateDay: string;
+  dateYear: string;
+}
+
 @Component({
   selector: 'app-account-info',
   templateUrl: './account-info.component.html',
@@ -16,7 +30,7 @@ export class AccountInfoComponent implements OnInit {
     'Tony Gorris',
   ];
   displayedColumns: string[] = ['property', 'value'];
-  dataSource: unknown[];
+  dataSource: { property: string; value: string | number }[];
 
   constructor(private fb: FormBuilder) {
     this.accountInfoForm = this.fb.group({
@@ -33,17 +47,23 @@ export class AccountInfoComponent implements OnInit {
       dateYear: ['24'],
     });
 
-    this.dataSource = this.createDataSource(this.accountInfoForm.value);
+    // Initialize dataSource with current form values
+    this.dataSource = this.createDataSource(
+      this.accountInfoForm.value as AccountFormValues
+    );
 
+    // Update dataSource and nfgBatchCode whenever form values change
     this.accountInfoForm.valueChanges.subscribe((value) => {
       this.updateNfgBatchCode();
-      this.dataSource = this.createDataSource(value);
+      this.dataSource = this.createDataSource(value as AccountFormValues);
     });
   }
 
   ngOnInit(): void {}
 
-  private createDataSource(formValues: unknown): unknown[] {
+  private createDataSource(
+    formValues: AccountFormValues
+  ): { property: string; value: string | number }[] {
     return [
       {
         property: 'Account Manager',
@@ -59,7 +79,7 @@ export class AccountInfoComponent implements OnInit {
       { property: 'Customer Batch #', value: formValues.customerBatchNumber },
       {
         property: 'NFG Batch Code',
-        value: this.accountInfoForm.get('nfgBatchCode')?.value,
+        value: this.accountInfoForm.get('nfgBatchCode')?.value || '',
       },
       { property: 'Date Month', value: formValues.dateMonth },
       { property: 'Date Day', value: formValues.dateDay },
@@ -67,13 +87,13 @@ export class AccountInfoComponent implements OnInit {
     ];
   }
 
-  private updateNfgBatchCode() {
-    const formulaCode = this.accountInfoForm.get('formulaCode')?.value;
-    const dateMonth = this.accountInfoForm.get('dateMonth')?.value;
-    const dateDay = this.accountInfoForm.get('dateDay')?.value;
-    const dateYear = this.accountInfoForm.get('dateYear')?.value;
+  private updateNfgBatchCode(): void {
+    const formulaCode = this.accountInfoForm.get('formulaCode')?.value || '';
+    const dateMonth = this.accountInfoForm.get('dateMonth')?.value || '';
+    const dateDay = this.accountInfoForm.get('dateDay')?.value || '';
+    const dateYear = this.accountInfoForm.get('dateYear')?.value || '';
 
     const nfgBatchCode = `${formulaCode}${dateYear}${dateMonth}${dateDay}`;
-    this.accountInfoForm.patchValue({ nfgBatchCode });
+    this.accountInfoForm.patchValue({ nfgBatchCode }, { emitEvent: false }); // Prevent looping by disabling event emission
   }
 }

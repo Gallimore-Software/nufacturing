@@ -1,10 +1,28 @@
 import { Injectable } from '@angular/core';
 
+interface Ingredient {
+  name: string;
+  perCapsule: number;
+  pricePerKg: string;
+  moqKg: number;
+  vendor: string;
+  leadTime: string;
+}
+
+interface OrderInfo {
+  capsulesPerBottle: number;
+  launchQty: number;
+}
+
+interface MasterCartonInfo {
+  bottlesPerMasterCase: number;
+}
+
 @Injectable({
   providedIn: 'root',
 })
 export class GlobalServiceService {
-  private ingredients = [
+  private ingredients: Ingredient[] = [
     {
       name: 'Vitamin C (as absorbic acid)',
       perCapsule: 51,
@@ -103,41 +121,41 @@ export class GlobalServiceService {
     },
   ];
 
-  private orderInfo = {
+  private orderInfo: OrderInfo = {
     capsulesPerBottle: 50,
     launchQty: 2000,
   };
 
-  private masterCartonInfo = {
+  private masterCartonInfo: MasterCartonInfo = {
     bottlesPerMasterCase: 135,
   };
 
   constructor() {}
 
   // Ingredients Methods
-  getIngredients() {
+  getIngredients(): Ingredient[] {
     return this.ingredients;
   }
 
-  updateIngredients(newIngredients: unknown[]) {
+  updateIngredients(newIngredients: Ingredient[]): void {
     this.ingredients = newIngredients;
   }
 
   // Order Info Methods
-  getOrderInfo() {
+  getOrderInfo(): OrderInfo {
     return this.orderInfo;
   }
 
-  updateOrderInfo(newOrderInfo: unknown) {
+  updateOrderInfo(newOrderInfo: OrderInfo): void {
     this.orderInfo = newOrderInfo;
   }
 
   // Master Carton Info Methods
-  getMasterCartonInfo() {
+  getMasterCartonInfo(): MasterCartonInfo {
     return this.masterCartonInfo;
   }
 
-  updateMasterCartonInfo(newMasterCartonInfo: unknown) {
+  updateMasterCartonInfo(newMasterCartonInfo: MasterCartonInfo): void {
     this.masterCartonInfo = newMasterCartonInfo;
   }
 }

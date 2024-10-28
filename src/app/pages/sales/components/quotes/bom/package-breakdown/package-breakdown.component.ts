@@ -2,6 +2,16 @@
 import { Component, OnInit } from '@angular/core';
 import { GlobalServiceService } from 'src/app/services/global-service.service';
 
+interface PackageItem {
+  item: string;
+  qtyNeeded: number;
+  cost: number;
+  minOrderQty: number;
+  costQtyOrdered: number;
+  costPerBottle: number;
+  costPerOrder: number;
+}
+
 @Component({
   selector: 'app-package-breakdown',
   templateUrl: './package-breakdown.component.html',
@@ -18,8 +28,8 @@ export class PackageBreakdownComponent implements OnInit {
     'costPerOrder',
     'actions',
   ];
-  dataSource: unknown[] = [];
-  filteredDataSource: unknown[] = [];
+  dataSource: PackageItem[] = [];
+  filteredDataSource: PackageItem[] = [];
   totalCostPerBottle: number = 0;
   totalCostPerOrder: number = 0;
 
@@ -30,7 +40,7 @@ export class PackageBreakdownComponent implements OnInit {
   }
 
   initializeData(): void {
-    const packageData = [
+    const packageData: PackageItem[] = [
       {
         item: '225 PET Black',
         qtyNeeded: 2000,
@@ -167,13 +177,12 @@ export class PackageBreakdownComponent implements OnInit {
     );
   }
 
-  editItem(element: unknown): void {
+  editItem(element: PackageItem): void {
     // Implement edit logic here
     console.log('Edit item:', element);
   }
 
-  deleteItem(element: unknown): void {
-    // Implement delete logic here
+  deleteItem(element: PackageItem): void {
     this.dataSource = this.dataSource.filter((item) => item !== element);
     this.filteredDataSource = this.filteredDataSource.filter(
       (item) => item !== element

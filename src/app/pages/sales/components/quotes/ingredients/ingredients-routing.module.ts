@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { IngredientsComponent } from './ingredients.component';
 import { IngredientsInfoComponent } from './ingredients-info/ingredients-info.component';
-import { supplementFactsOnlyComponent } from './supplement-facts-only/supplement-facts-only.component';
+import { SupplementFactsOnlyComponent } from './supplement-facts-only/supplement-facts-only.component';
 import { SupplementFactsDetailsComponent } from './supplement-facts-details/supplement-facts-details.component';
 
 const routes: Routes = [
@@ -14,7 +14,7 @@ const routes: Routes = [
       { path: 'ingredients-info', component: IngredientsInfoComponent },
       {
         path: 'supplement-facts-only',
-        component: supplementFactsOnlyComponent,
+        component: SupplementFactsOnlyComponent,
       },
       {
         path: 'supplement-facts-details',

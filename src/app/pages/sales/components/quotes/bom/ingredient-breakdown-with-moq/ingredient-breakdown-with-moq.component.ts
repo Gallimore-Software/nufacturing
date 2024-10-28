@@ -4,6 +4,18 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 import { GlobalServiceService } from 'src/app/services/global-service.service';
 
+interface IngredientItem {
+  item: string;
+  qtyNeeded: string;
+  cost: string;
+  moq: number;
+  withMoq: number;
+  costQtyOrdered: string;
+  costPerBottle: string;
+  maxBottlePerMoq: number;
+  moqInMg: number;
+}
+
 @Component({
   selector: 'app-ingredient-breakdown-with-moq',
   templateUrl: './ingredient-breakdown-with-moq.component.html',
@@ -11,7 +23,7 @@ import { GlobalServiceService } from 'src/app/services/global-service.service';
 })
 export class IngredientBreakdownWithMoqComponent implements OnInit {
   breakdownForm: FormGroup;
-  dataSource: MatTableDataSource<unknown>;
+  dataSource: MatTableDataSource<IngredientItem>;
   displayedColumns: string[] = [
     'item',
     'qtyNeeded',
@@ -43,26 +55,24 @@ export class IngredientBreakdownWithMoqComponent implements OnInit {
     this.calculateBreakdown();
   }
 
-  get items(): unknown[] {
-    return this.globalService.getIngredients();
-  }
+  getItems(): IngredientItem[] {
+    const ingredients = this.globalService.getIngredients();
+    const totalBottles = this.globalService.getOrderInfo().launchQty;
 
-  getItems(): unknown[] {
-    const items = this.items.map((ingredient) => {
+    return ingredients.map((ingredient) => {
       const qtyNeeded = this.calculateQtyNeeded(ingredient.perCapsule);
       const cost = parseFloat(ingredient.pricePerKg.replace('$', ''));
-      const withMoq = ingredient.moqKg;
+      const withMoq = ingredient.moqKg || 0; // Handle case where moqKg might be undefined
       const moqInMg = withMoq * 1000000;
       const maxBottlePerMoq = Math.floor(moqInMg / qtyNeeded);
       const costQtyOrdered = cost * withMoq;
-      const costPerBottle =
-        costQtyOrdered / this.globalService.getOrderInfo().launchQty;
+      const costPerBottle = costQtyOrdered / totalBottles;
 
       return {
-        item: ingredient.name,
+        item: ingredient.name || '',
         qtyNeeded: qtyNeeded.toFixed(4),
         cost: `$${cost.toFixed(2)}`,
-        moq: ingredient.moqKg,
+        moq: withMoq,
         withMoq: withMoq,
         costQtyOrdered: `$${costQtyOrdered.toFixed(2)}`,
         costPerBottle: `$${costPerBottle.toFixed(4)}`,
@@ -70,14 +80,12 @@ export class IngredientBreakdownWithMoqComponent implements OnInit {
         moqInMg: moqInMg,
       };
     });
-
-    return items;
   }
 
   calculateQtyNeeded(perCapsule: number): number {
     console.log(perCapsule);
-    const conversionToKg = 0.1; // Example value
-    const extraKgOfWaste = 0.01; // Example value
+    const conversionToKg = 0.1; // Example conversion
+    const extraKgOfWaste = 0.01; // Example waste
     return conversionToKg + extraKgOfWaste;
   }
 
@@ -86,51 +94,39 @@ export class IngredientBreakdownWithMoqComponent implements OnInit {
     let totalCostPerBottle = 0;
     let totalCost = 0;
 
-    this.dataSource.data.forEach((item) => {
+    this.dataSource.data = this.dataSource.data.map((item) => {
       const cost = parseFloat(item.cost.replace('$', ''));
       const withMoq = item.withMoq;
       const costQtyOrdered = cost * withMoq;
       const costPerBottle = costQtyOrdered / totalBottles;
 
-      item.costQtyOrdered = `$${costQtyOrdered.toFixed(2)}`;
-      item.costPerBottle = `$${costPerBottle.toFixed(4)}`;
-
       totalCostPerBottle += costPerBottle;
       totalCost += costQtyOrdered;
+
+      return {
+        ...item,
+        costQtyOrdered: `$${costQtyOrdered.toFixed(2)}`,
+        costPerBottle: `$${costPerBottle.toFixed(4)}`,
+      };
     });
 
-    this.totalCostPerBottle = totalCostPerBottle;
-    this.totalCost = totalCost;
+    this.totalCostPerBottle = parseFloat(totalCostPerBottle.toFixed(4));
+    this.totalCost = parseFloat(totalCost.toFixed(2));
   }
 
-  applyFilter(event: Event) {
+  applyFilter(event: Event): void {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  editItem(item: unknown): void {
-    console.log(item);
-    // Edit functionality is commented out for now
-    // const dialogRef = this.dialog.open(EditItemDialogComponent, {
-    //   width: '250px',
-    //   data: item
-    // });
-    // dialogRef.afterClosed().subscribe(result => {
-    //   if (result) {
-    //     const index = this.dataSource.data.findIndex(i => i.item === item.item);
-    //     this.dataSource.data[index] = result;
-    //     this.dataSource = new MatTableDataSource(this.dataSource.data);
-    //     this.calculateBreakdown();
-    //   }
-    // });
+  editItem(item: IngredientItem): void {
+    console.log('Edit item:', item);
+    // Implement your edit logic here
   }
 
-  deleteItem(item: unknown): void {
-    const index = this.dataSource.data.findIndex((i) => i.item === item.item);
-    if (index > -1) {
-      this.dataSource.data.splice(index, 1);
-      this.dataSource = new MatTableDataSource(this.dataSource.data);
-      this.calculateBreakdown();
-    }
+  deleteItem(item: IngredientItem): void {
+    this.dataSource.data = this.dataSource.data.filter((data) => data !== item);
+    this.calculateBreakdown();
+    console.log('Deleted item:', item);
   }
 }

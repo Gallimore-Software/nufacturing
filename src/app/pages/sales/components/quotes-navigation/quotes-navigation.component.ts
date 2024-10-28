@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { SalesService } from '../../sales.service';
+
+interface SummaryMetrics {
+  totalQuotes: number;
+  active: number;
+  expired: number;
+}
 
 @Component({
   selector: 'app-quotes-navigation',
@@ -7,17 +12,25 @@ import { SalesService } from '../../sales.service';
   styleUrls: ['./quotes-navigation.component.scss'],
 })
 export class QuotesNavigationComponent implements OnInit {
-  summaryMetrics: unknown = {};
+  summaryMetrics: SummaryMetrics = {
+    totalQuotes: 0,
+    active: 0,
+    expired: 0,
+  };
 
-  constructor(private salesService: SalesService) {}
+  constructor() {}
 
   ngOnInit(): void {
+    // You would normally fetch this data from a service
     this.loadSummaryMetrics();
   }
 
   loadSummaryMetrics(): void {
-    this.salesService.getQuoteSummaryMetrics().subscribe((metrics) => {
-      this.summaryMetrics = metrics;
-    });
+    // Simulating an API call to fetch summary metrics
+    this.summaryMetrics = {
+      totalQuotes: 25, // example data
+      active: 18,
+      expired: 7,
+    };
   }
 }

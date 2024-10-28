@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { MatSelectChange } from '@angular/material/select';
 
 interface ClosureInfo {
   value: string;
@@ -173,7 +174,7 @@ export class ClosureInfoComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onClosurePartChange(event: unknown) {
+  onClosurePartChange(event: MatSelectChange): void {
     this.updateForm(event.value);
   }
 

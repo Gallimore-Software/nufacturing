@@ -9,20 +9,20 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 import { IngredientsRoutingModule } from './ingredients-routing.module';
 import { IngredientsComponent } from './ingredients.component';
 import { IngredientsInfoComponent } from './ingredients-info/ingredients-info.component';
 import { SupplementFactsDetailsComponent } from './supplement-facts-details/supplement-facts-details.component';
-import { supplementFactsOnlyComponent } from './supplement-facts-only/supplement-facts-only.component';
-import { MatIconModule } from '@angular/material/icon';
+import { SupplementFactsOnlyComponent } from './supplement-facts-only/supplement-facts-only.component';
 
 @NgModule({
   declarations: [
-    IngredientsInfoComponent,
     IngredientsComponent,
+    IngredientsInfoComponent,
     SupplementFactsDetailsComponent,
-    supplementFactsOnlyComponent,
+    SupplementFactsOnlyComponent, // Updated to PascalCase for the class name
   ],
   imports: [
     CommonModule,
@@ -37,6 +37,12 @@ import { MatIconModule } from '@angular/material/icon';
     MatSortModule,
     MatButtonModule,
     MatIconModule,
+  ],
+  exports: [
+    IngredientsComponent,
+    IngredientsInfoComponent,
+    SupplementFactsDetailsComponent,
+    SupplementFactsOnlyComponent,
   ],
 })
 export class IngredientsModule {}

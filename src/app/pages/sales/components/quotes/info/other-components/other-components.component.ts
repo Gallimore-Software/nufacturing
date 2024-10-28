@@ -1,6 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
+// Define an interface for the form values to ensure TypeScript knows the structure
+interface OtherComponentsFormValues {
+  tamperEvidentType: string;
+  nfgNeckBandPart: string;
+  tamperEvidentMaterialSize: string;
+  tamperEvidentColor: string;
+  tamperEvidentMaterial: string;
+  tamperEvidentPricing: string;
+  silica: string;
+  silicaCost: string;
+  cotton: string;
+  cottonCost: string;
+  lotCodeBestByDate: string;
+  lotCodeBestByDateType: string;
+}
+
 @Component({
   selector: 'app-other-components',
   templateUrl: './other-components.component.html',
@@ -9,7 +25,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class OtherComponentsComponent implements OnInit {
   otherComponentsForm: FormGroup;
   displayedColumns: string[] = ['property', 'value'];
-  previewData: unknown[];
+  previewData: { property: string; value: string }[]; // Define the type for previewData
 
   tamperEvidentTypes = ['NeckBand', 'Tamper-Proof Sticker'];
   neckBandParts = ['SP7505CPVC', 'SP6505CPVC', 'FULLSLEEVE', 'NA'];
@@ -77,18 +93,24 @@ export class OtherComponentsComponent implements OnInit {
       lotCodeBestByDateType: ['Blue Ink'],
     });
 
-    this.updateFormFields(this.otherComponentsForm.value);
-    this.previewData = this.createPreviewData(this.otherComponentsForm.value);
+    this.updateFormFields(
+      this.otherComponentsForm.value as OtherComponentsFormValues
+    );
+    this.previewData = this.createPreviewData(
+      this.otherComponentsForm.value as OtherComponentsFormValues
+    );
 
     this.otherComponentsForm.valueChanges.subscribe((value) => {
-      this.updateFormFields(value);
-      this.previewData = this.createPreviewData(value);
+      this.updateFormFields(value as OtherComponentsFormValues);
+      this.previewData = this.createPreviewData(
+        value as OtherComponentsFormValues
+      );
     });
   }
 
   ngOnInit(): void {}
 
-  private updateFormFields(value: unknown) {
+  private updateFormFields(value: OtherComponentsFormValues): void {
     const neckBandPartDetail =
       this.neckBandPartDetails[value.nfgNeckBandPart] || {};
     this.otherComponentsForm.patchValue(
@@ -104,7 +126,9 @@ export class OtherComponentsComponent implements OnInit {
     );
   }
 
-  private createPreviewData(formValues: unknown): unknown[] {
+  private createPreviewData(
+    formValues: OtherComponentsFormValues
+  ): { property: string; value: string }[] {
     return [
       { property: 'Tamper Evident Type', value: formValues.tamperEvidentType },
       { property: 'NFG Neck Band Part #', value: formValues.nfgNeckBandPart },

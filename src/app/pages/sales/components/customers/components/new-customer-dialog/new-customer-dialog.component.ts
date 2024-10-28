@@ -2,6 +2,45 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+interface CustomerData {
+  companyName?: string;
+  displayName?: string;
+  primaryContact?: {
+    firstName?: string;
+    lastName?: string;
+    email?: string;
+    phone?: string;
+  };
+  complianceContact?: {
+    firstName?: string;
+    lastName?: string;
+    email?: string;
+    phone?: string;
+  };
+  accountingContact?: {
+    firstName?: string;
+    lastName?: string;
+    email?: string;
+    phone?: string;
+  };
+  website?: string;
+  businessAddress?: {
+    line1?: string;
+    line2?: string;
+    city?: string;
+    state?: string;
+    zip?: string;
+  };
+  fulfillmentAddress?: {
+    line1?: string;
+    line2?: string;
+    city?: string;
+    state?: string;
+    zip?: string;
+  };
+  estimate?: number;
+}
+
 @Component({
   selector: 'app-new-customer-dialog',
   templateUrl: './new-customer-dialog.component.html',
@@ -14,7 +53,7 @@ export class NewCustomerDialogComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<NewCustomerDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: unknown
+    @Inject(MAT_DIALOG_DATA) public data: CustomerData // Use CustomerData type here
   ) {
     this.customerForm = this.fb.group({
       companyName: [data?.companyName || '', Validators.required],
@@ -72,6 +111,7 @@ export class NewCustomerDialogComponent implements OnInit {
       this.currentStep--;
     }
   }
+
   onSave(): void {
     if (this.customerForm.valid) {
       this.dialogRef.close(this.customerForm.value);
