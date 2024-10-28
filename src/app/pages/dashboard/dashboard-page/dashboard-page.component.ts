@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { Component, OnInit } from '@angular/core';
 import { DashboardMockService } from '../dashboard-mock.service';
 import { Chart, registerables } from 'chart.js';
@@ -24,7 +25,7 @@ export class DashboardPageComponent implements OnInit {
   }
 
   loadKeyMetrics(): void {
-    this.dashboardService.getKeyMetrics().subscribe((metrics) => {
+    this.dashboardService.getKeyMetrics().subscribe((metrics: unknown) => {
       // Assuming the metrics come as an object, transform it into an array for the template
       this.keyMetrics = [
         { title: 'Total Orders', value: metrics.totalOrders },

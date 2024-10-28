@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { Component, OnInit } from '@angular/core';
 import { InventoryService } from '../../inventory.service';
 import { InventoryItem } from '../../inventory-item.model';

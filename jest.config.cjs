@@ -3,20 +3,20 @@ module.exports = {
   collectCoverage: true,
   coverageDirectory: 'coverage',
   testPathIgnorePatterns: ['/node_modules/', '/dist/', '/e2e/'],
-  setupFilesAfterEnv: ['<rootDir>/setup-jest.ts'], // The setup-jest file should be configured properly
+  setupFilesAfterEnv: ['<rootDir>/setup-jest.ts'],
   globalSetup: 'jest-preset-angular/global-setup',
   testEnvironment: 'jsdom',
-  extensionsToTreatAsEsm: ['.ts'], // Treat TypeScript files as ESModules
   globals: {
     'ts-jest': {
-      useESM: true, // Enable ESM in ts-jest
-      tsconfig: 'tsconfig.spec.json', // Ensure the correct tsconfig is used
+      tsconfig: 'tsconfig.spec.json',
       stringifyContentPathRegex: '\\.html$',
+      // Remove outdated transformers as they are handled automatically in recent versions of jest-preset-angular
     },
   },
+  extensionsToTreatAsEsm: ['.ts'],
   moduleFileExtensions: ['ts', 'html', 'js', 'json'],
   transform: {
-    '^.+\\.(ts|html)$': 'ts-jest', // Transform TypeScript and HTML files with ts-jest
+    '^.+\\.(ts|html)$': 'ts-jest',
   },
   transformIgnorePatterns: ['node_modules/(?!@ngrx)'],
   moduleNameMapper: {

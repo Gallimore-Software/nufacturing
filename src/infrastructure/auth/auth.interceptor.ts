@@ -16,6 +16,7 @@ export class AuthInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
     // Retrieve the access token from local storage
+    // eslint-disable-next-line no-undef
     const authData = localStorage.getItem('authData');
     let accessToken = null;
 

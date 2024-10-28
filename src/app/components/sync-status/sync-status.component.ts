@@ -18,7 +18,8 @@ export class SyncStatusComponent implements OnInit {
   getStatuses(): void {
     this.syncStatusService.getSyncStatus().subscribe(
       (data) => (this.syncStatuses = data),
-      (error) => console.error('Error fetching sync status', error)
+      // eslint-disable-next-line no-undef
+      (error) => console.log('Error fetching sync status', error)
     );
   }
 }

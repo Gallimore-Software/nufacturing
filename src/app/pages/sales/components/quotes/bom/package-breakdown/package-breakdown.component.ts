@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { Component, OnInit } from '@angular/core';
 import { GlobalServiceService } from 'src/app/services/global-service.service';
 

@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -25,7 +26,7 @@ export class NewInventoryDialogComponent implements OnInit {
     private vendorService: VendorsService,
     private inventoryService: InventoryService,
 
-    @Inject(MAT_DIALOG_DATA) public data
+    @Inject(MAT_DIALOG_DATA) public data: unknown
   ) {
     this.inventoryForm = this.fb.group({
       vendor: ['', Validators.required],

@@ -39,6 +39,7 @@ export class LoginComponent {
         },
         error: (error) => {
           this.errorMessage = 'Invalid username or password';
+          // eslint-disable-next-line no-undef
           console.error('Error logging in:', error);
         },
       });

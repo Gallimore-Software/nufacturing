@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { CustomerService } from './customer.service';
 import { MatTableDataSource } from '@angular/material/table';

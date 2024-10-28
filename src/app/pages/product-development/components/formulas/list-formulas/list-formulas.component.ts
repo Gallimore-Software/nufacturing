@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { ListFormulasService } from './list-formulas.service'; // Adjust the path accordingly
 import { MatTableDataSource } from '@angular/material/table';
