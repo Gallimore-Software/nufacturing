@@ -57,7 +57,7 @@ jobs:
 
       # Run Prettier check
       - name: Run Prettier
-        run: npm run prettier || npm run prettier:fix
+        run: npm run prettier
 
       # Run Jest tests with coverage
       - name: Run unit tests with coverage
