@@ -1,0 +1,72 @@
+{
+  "consumer": {
+    "name": "UserClient"
+  },
+  "interactions": [
+    {
+      "description": "a request to delete a non-existent user",
+      "providerState": "no user exists with ID 999",
+      "request": {
+        "headers": {
+          "Accept": "application/json"
+        },
+        "method": "DELETE",
+        "path": "/api/users/999"
+      },
+      "response": {
+        "body": {
+          "message": "User not found"
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {
+          "$.body": {
+            "match": "type"
+          }
+        },
+        "status": 404
+      }
+    },
+    {
+      "description": "a request to delete a user",
+      "providerState": "a user with ID 123 exists",
+      "request": {
+        "headers": {
+          "Accept": "application/json"
+        },
+        "method": "DELETE",
+        "path": "/api/users/123"
+      },
+      "response": {
+        "body": {
+          "message": "User deleted successfully"
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {
+          "$.body": {
+            "match": "type"
+          }
+        },
+        "status": 200
+      }
+    }
+  ],
+  "metadata": {
+    "pact-js": {
+      "version": "13.1.4"
+    },
+    "pactRust": {
+      "ffi": "0.4.22",
+      "models": "1.2.3"
+    },
+    "pactSpecification": {
+      "version": "2.0.0"
+    }
+  },
+  "provider": {
+    "name": "UserAPI"
+  }
+}
