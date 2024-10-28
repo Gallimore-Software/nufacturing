@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { Verifier } from '@pact-foundation/pact';
 import path from 'path';
 import express from 'express';

@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { Pact, Matchers } from '@pact-foundation/pact';
 import request from 'supertest';
 import * as path from 'path';
