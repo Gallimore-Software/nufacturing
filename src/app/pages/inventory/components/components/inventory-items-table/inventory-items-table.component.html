@@ -1,174 +1,57 @@
-<!-- Header Section -->
-<div class="header">
-  <h1>View Inventory</h1>
-  <div class="buttons-container">
-    <div class="left-buttons">
-      <button mat-raised-button color="primary">Add Item</button>
+<div class="wrapper">
+  <div class="container">
+    <div class="exampleHeader">
+      <div class="tabs">
+        <button
+          *ngFor="let status of statusEntries; trackBy: trackStatus"
+          class="tabButton"
+          [class.active]="activeTab === status[0]"
+          (click)="handleTabClick(status[0])"
+        >
+          {{ status[1] }}
+        </button>
+      </div>
+      <div class="inputWrapper">
+        <svg
+          class="searchIcon"
+          width="16"
+          height="16"
+          viewBox="0 0 16 16"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M11.5014 7.00039C11.5014 7.59133 11.385 8.1765 11.1588 8.72246C10.9327 9.26843 10.6012 9.7645 10.1833 10.1824C9.76548 10.6002 9.2694 10.9317 8.72344 11.1578C8.17747 11.384 7.59231 11.5004 7.00136 11.5004C6.41041 11.5004 5.82525 11.384 5.27929 11.1578C4.73332 10.9317 4.23725 10.6002 3.81938 10.1824C3.40152 9.7645 3.07005 9.26843 2.8439 8.72246C2.61776 8.1765 2.50136 7.59133 2.50136 7.00039C2.50136 5.80691 2.97547 4.66232 3.81938 3.81841C4.6633 2.97449 5.80789 2.50039 7.00136 2.50039C8.19484 2.50039 9.33943 2.97449 10.1833 3.81841C11.0273 4.66232 11.5014 5.80691 11.5014 7.00039ZM10.6814 11.7404C9.47574 12.6764 7.95873 13.1177 6.43916 12.9745C4.91959 12.8314 3.51171 12.1145 2.50211 10.9698C1.49252 9.8251 0.957113 8.33868 1.0049 6.81314C1.05268 5.28759 1.68006 3.83759 2.75932 2.75834C3.83857 1.67908 5.28856 1.0517 6.81411 1.00392C8.33966 0.956136 9.82608 1.49154 10.9708 2.50114C12.1154 3.51073 12.8323 4.91862 12.9755 6.43819C13.1187 7.95775 12.6773 9.47476 11.7414 10.6804L14.5314 13.4704C14.605 13.539 14.6642 13.6218 14.7051 13.7138C14.7461 13.8058 14.7682 13.9052 14.77 14.0059C14.7717 14.1066 14.7532 14.2066 14.7155 14.3C14.6778 14.3934 14.6216 14.4782 14.5504 14.5494C14.4792 14.6206 14.3943 14.6768 14.301 14.7145C14.2076 14.7522 14.1075 14.7708 14.0068 14.769C13.9061 14.7672 13.8068 14.7452 13.7148 14.7042C13.6228 14.6632 13.54 14.6041 13.4714 14.5304L10.6814 11.7404Z"
+            fill="currentColor"
+          />
+        </svg>
+        <input
+          type="text"
+          id="filter-text-box"
+          placeholder="Search product..."
+          [(ngModel)]="quickFilterText"
+        />
+      </div>
     </div>
-    <div class="right-buttons">
-      <button mat-button color="accent">Export</button>
-      <button mat-button color="accent">Filter</button>
-      <button mat-button color="accent">Bulk Import</button>
+    <div [ngClass]="themeClass" class="grid">
+      <ag-grid-angular
+        style="height: 100%"
+        (gridReady)="onGridReady($event)"
+        [columnDefs]="columnDefs"
+        [rowData]="rowData"
+        [defaultColDef]="defaultColDef"
+        [rowHeight]="rowHeight"
+        [autoSizeStrategy]="autoSizeStrategy"
+        [pagination]="pagination"
+        [paginationPageSize]="paginationPageSize"
+        [paginationPageSizeSelector]="paginationPageSizeSelector"
+        [masterDetail]="masterDetail"
+        [detailCellRendererParams]="detailCellRendererParams"
+        [quickFilterText]="quickFilterText"
+        [detailRowAutoHeight]="detailRowAutoHeight"
+      ></ag-grid-angular>
     </div>
   </div>
-</div>
-
-<!-- Raw Materials Table -->
-<div class="table-section">
-  <h2>Raw Materials</h2>
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
-    <!-- Picture Column -->
-    <ng-container matColumnDef="picture">
-      <th mat-header-cell *matHeaderCellDef>Picture</th>
-      <td mat-cell *matCellDef="let item">
-        <img
-          [src]="item.picture"
-          alt="{{ item.name }}"
-          width="50"
-          height="50"
-        />
-      </td>
-    </ng-container>
-
-    <!-- Material ID Column -->
-    <ng-container matColumnDef="materialId">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Material ID</th>
-      <td mat-cell *matCellDef="let item">{{ item.materialId }}</td>
-    </ng-container>
-
-    <!-- Material Name Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Material Name</th>
-      <td mat-cell *matCellDef="let item">{{ item.name }}</td>
-    </ng-container>
-
-    <!-- Supplier Column -->
-    <ng-container matColumnDef="supplier">
-      <th mat-header-cell *matHeaderCellDef>Supplier</th>
-      <td mat-cell *matCellDef="let item">{{ item.supplier }}</td>
-    </ng-container>
-
-    <!-- Qty Avail Column -->
-    <ng-container matColumnDef="qtyAvail">
-      <th mat-header-cell *matHeaderCellDef>Qty Avail</th>
-      <td mat-cell *matCellDef="let item">{{ item.qtyAvail }}</td>
-    </ng-container>
-
-    <!-- Unit Column -->
-    <ng-container matColumnDef="unit">
-      <th mat-header-cell *matHeaderCellDef>Unit</th>
-      <td mat-cell *matCellDef="let item">{{ item.unit }}</td>
-    </ng-container>
-
-    <!-- Location Column -->
-    <ng-container matColumnDef="location">
-      <th mat-header-cell *matHeaderCellDef>Location</th>
-      <td mat-cell *matCellDef="let item">{{ item.location }}</td>
-    </ng-container>
-
-    <!-- Cost Per Unit Column -->
-    <ng-container matColumnDef="costPerUnit">
-      <th mat-header-cell *matHeaderCellDef>Cost Per Unit</th>
-      <td mat-cell *matCellDef="let item">{{ item.costPerUnit | currency }}</td>
-    </ng-container>
-
-    <!-- Lead Time Column -->
-    <ng-container matColumnDef="leadTime">
-      <th mat-header-cell *matHeaderCellDef>Lead Time</th>
-      <td mat-cell *matCellDef="let item">{{ item.leadTime }} days</td>
-    </ng-container>
-
-    <!-- Reorder Level Column -->
-    <ng-container matColumnDef="reorderLevel">
-      <th mat-header-cell *matHeaderCellDef>Reorder Level</th>
-      <td mat-cell *matCellDef="let item">{{ item.reorderLevel }}</td>
-    </ng-container>
-
-    <!-- Min Order Qty Column -->
-    <ng-container matColumnDef="minOrderQty">
-      <th mat-header-cell *matHeaderCellDef>Min Order Qty</th>
-      <td mat-cell *matCellDef="let item">{{ item.minOrderQty }}</td>
-    </ng-container>
-
-    <!-- Last Restock Column -->
-    <ng-container matColumnDef="lastRestock">
-      <th mat-header-cell *matHeaderCellDef>Last Restock</th>
-      <td mat-cell *matCellDef="let item">{{ item.lastRestock | date }}</td>
-    </ng-container>
-
-    <!-- Expiration Date Column -->
-    <ng-container matColumnDef="expDate">
-      <th mat-header-cell *matHeaderCellDef>Exp Date</th>
-      <td mat-cell *matCellDef="let item">{{ item.expDate | date }}</td>
-    </ng-container>
-
-    <!-- Batch ID Column -->
-    <ng-container matColumnDef="batchId">
-      <th mat-header-cell *matHeaderCellDef>Batch ID</th>
-      <td mat-cell *matCellDef="let item">{{ item.batchId }}</td>
-    </ng-container>
-
-    <!-- Lot ID Column -->
-    <ng-container matColumnDef="lotId">
-      <th mat-header-cell *matHeaderCellDef>Lot ID</th>
-      <td mat-cell *matCellDef="let item">{{ item.lotId }}</td>
-    </ng-container>
-
-    <!-- Safety Stock Level Column -->
-    <ng-container matColumnDef="safetyStockLevel">
-      <th mat-header-cell *matHeaderCellDef>Safety Stock Level</th>
-      <td mat-cell *matCellDef="let item">{{ item.safetyStockLevel }}</td>
-    </ng-container>
-
-    <!-- Consumption Rate Column -->
-    <ng-container matColumnDef="consumptionRate">
-      <th mat-header-cell *matHeaderCellDef>Consumption Rate</th>
-      <td mat-cell *matCellDef="let item">{{ item.consumptionRate }}</td>
-    </ng-container>
-
-    <!-- Backordered Qty Column -->
-    <ng-container matColumnDef="backorderedQty">
-      <th mat-header-cell *matHeaderCellDef>Backordered Qty</th>
-      <td mat-cell *matCellDef="let item">{{ item.backorderedQty }}</td>
-    </ng-container>
-
-    <!-- Approval Status Column -->
-    <ng-container matColumnDef="approvalStatus">
-      <th mat-header-cell *matHeaderCellDef>Approval Status</th>
-      <td mat-cell *matCellDef="let item">{{ item.approvalStatus }}</td>
-    </ng-container>
-
-    <!-- Received Date Column -->
-    <ng-container matColumnDef="receivedDate">
-      <th mat-header-cell *matHeaderCellDef>Received Date</th>
-      <td mat-cell *matCellDef="let item">{{ item.receivedDate | date }}</td>
-    </ng-container>
-
-    <!-- Price Last Updated Column -->
-    <ng-container matColumnDef="priceLastUpdated">
-      <th mat-header-cell *matHeaderCellDef>Price Last Updated</th>
-      <td mat-cell *matCellDef="let item">
-        {{ item.priceLastUpdated | date }}
-      </td>
-    </ng-container>
-
-    <!-- Actions Column -->
-    <ng-container matColumnDef="actions">
-      <th mat-header-cell *matHeaderCellDef>Actions</th>
-      <td mat-cell *matCellDef="let item">
-        <button mat-button color="primary">Edit</button>
-        <button mat-button color="warn">Delete</button>
-      </td>
-    </ng-container>
-
-    <!-- Table Header and Rows -->
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-  </table>
-
-  <mat-paginator
-    [length]="totalItems"
-    [pageSize]="10"
-    showFirstLastButtons
-  ></mat-paginator>
 </div>

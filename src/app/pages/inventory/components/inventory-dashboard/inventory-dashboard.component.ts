@@ -16,15 +16,6 @@ export class InventoryDashboardComponent implements OnInit {
   finishedGoodsData: InventoryItem[] = [];
   componentsData: InventoryItem[] = [];
 
-  displayedColumns: string[] = [
-    'itemId',
-    'name',
-    'sku',
-    'pricePerUnit',
-    'status',
-    'availableQuantity',
-  ];
-
   inventoryDataCount = 0;
   rawMaterialsCount = 0;
   wipCount = 0;
@@ -44,6 +35,18 @@ export class InventoryDashboardComponent implements OnInit {
     this.inventoryService.getInventory().subscribe((response) => {
       this.inventoryData = response.data;
       this.inventoryDataCount = response.data.length;
+
+      this.rawMaterialsData = response.data;
+      this.rawMaterialsCount = response.data.length;
+
+      this.wipData = response.data;
+      this.wipCount = response.data.length;
+
+      this.finishedGoodsData = response.data;
+      this.finishedGoodsCount = response.data.length;
+
+      this.componentsData = response.data;
+      this.componentsCount = response.data.length;
     });
   }
 

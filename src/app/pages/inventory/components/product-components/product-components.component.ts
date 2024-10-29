@@ -15,12 +15,28 @@ export class ProductComponentsComponent {
   }
 
   displayedColumns: string[] = [
-    'itemId',
+    'picture',
+    'materialId',
     'name',
-    'sku',
-    'pricePerUnit',
-    'status',
-    'availableQuantity',
+    'supplier',
+    'qtyAvail',
+    'unit',
+    'location',
+    'costPerUnit',
+    'leadTime',
+    'reorderLevel',
+    'minOrderQty',
+    'lastRestock',
+    'expDate',
+    'batchId',
+    'lotId',
+    'safetyStockLevel',
+    'consumptionRate',
+    'backorderedQty',
+    'approvalStatus',
+    'receivedDate',
+    'priceLastUpdated',
+    'actions',
   ];
 
   inventoryDataCount = 0;

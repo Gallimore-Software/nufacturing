@@ -1,8 +1,17 @@
 <div class="dashboard-container">
   <h1>Inventory Dashboard</h1>
 
+  <!-- Button to Open Create Inventory Item Dialog -->
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="openCreateInventoryDialog()"
+  >
+    + Create New Inventory Item
+  </button>
+
   <div class="inventory-summary">
-    <h2>Inventory Overview</h2>
+    <h2>Overview</h2>
     <div class="summary-cards">
       <mat-card class="summary-card">
         <mat-card-title>Total Raw Materials</mat-card-title>
@@ -22,43 +31,8 @@
       </mat-card>
     </div>
 
-    <!-- Button to Open Create Inventory Item Dialog -->
-    <button
-      mat-raised-button
-      color="primary"
-      (click)="openCreateInventoryDialog()"
-    >
-      + Create New Inventory Item
-    </button>
-    
-    <app-raw-materials></app-raw-materials>
-    <app-works-in-progress></app-works-in-progress>
-    <app-product-components></app-product-components>
-    <app-finished-goods></app-finished-goods>
-    
 
-
-    <!-- <div class="inventory-tables">
-      <h2>Raw Materials</h2>
-      <app-inventory-items-table
-        [dataSource]="rawMaterialsData"
-      ></app-inventory-items-table>
-
-      <h2>Work In Progress (WIP)</h2>
-      <app-inventory-items-table
-        [dataSource]="wipData"
-      ></app-inventory-items-table>
-
-      <h2>Finished Goods</h2>
-      <app-inventory-items-table
-        [dataSource]="finishedGoodsData"
-      ></app-inventory-items-table>
-
-      <h2>Components</h2>
-      <app-inventory-items-table
-        [dataSource]="componentsData"
-      ></app-inventory-items-table> 
-    </div> -->
+    <app-inventory-items-table></app-inventory-items-table>
   </div>
 
 </div>

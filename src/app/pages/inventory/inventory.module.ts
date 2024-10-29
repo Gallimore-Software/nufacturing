@@ -22,19 +22,17 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
-import { InventoryItemsTableComponent } from 'src/app/pages/inventory/components/components/inventory-items-table/inventory-items-table.component';
 import { ProductComponentsComponent } from 'src/app/pages/inventory/components/product-components/product-components.component';
-import { RawMaterialsInventoryComponent } from 'src/app/pages/inventory/components/components/inventory-items-table/components/raw-materials-inventory/raw-materials-inventory.component';
 import { AgGridAngular } from '@ag-grid-community/angular';
-import { ActionsCellRenderer } from 'src/app/pages/inventory/components/components/inventory-items-table/components/raw-materials-inventory/cell-renderer/actions-cell-renderer.component';
-import { PriceCellRenderer } from 'src/app/pages/inventory/components/components/inventory-items-table/components/raw-materials-inventory/cell-renderer/price-cell-renderer.component';
-import { ProductCellRenderer } from 'src/app/pages/inventory/components/components/inventory-items-table/components/raw-materials-inventory/cell-renderer/product-cell-renderer.component';
-import { StatusCellRenderer } from 'src/app/pages/inventory/components/components/inventory-items-table/components/raw-materials-inventory/cell-renderer/status-cell-renderer.component';
-import { StockCellRenderer } from 'src/app/pages/inventory/components/components/inventory-items-table/components/raw-materials-inventory/cell-renderer/stock-cell-renderer.component';
+import { ActionsCellRenderer } from 'src/app/pages/inventory/components/components/inventory-items-table/components/cell-renderer/actions-cell-renderer.component';
+import { PriceCellRenderer } from 'src/app/pages/inventory/components/components/inventory-items-table/components/cell-renderer/price-cell-renderer.component';
+import { ProductCellRenderer } from 'src/app/pages/inventory/components/components/inventory-items-table/components/cell-renderer/product-cell-renderer.component';
+import { StatusCellRenderer } from 'src/app/pages/inventory/components/components/inventory-items-table/components/cell-renderer/status-cell-renderer.component';
+import { StockCellRenderer } from 'src/app/pages/inventory/components/components/inventory-items-table/components/cell-renderer/stock-cell-renderer.component';
+import { InventoryItemsTableComponent } from 'src/app/pages/inventory/components/components/inventory-items-table/inventory-items-table.component';
 
 @NgModule({
   declarations: [
-    InventoryItemsTableComponent,
     InventoryItemDetailComponent,
     NewInventoryDialogComponent,
     InventoryDashboardComponent,
@@ -42,7 +40,7 @@ import { StockCellRenderer } from 'src/app/pages/inventory/components/components
     WorksInProgressComponent,
     RawMaterialsComponent,
     ProductComponentsComponent,
-    RawMaterialsInventoryComponent,
+    InventoryItemsTableComponent,
   ],
   imports: [
     CommonModule,
