@@ -7,7 +7,7 @@ import { NewInventoryDialogComponent } from './components/new-inventory-dialog/n
 import { MatOptionModule } from '@angular/material/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { InventoryDashboardComponent } from './components/inventory-dashboard/inventory-dashboard.component';
@@ -24,8 +24,14 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { InventoryItemsTableComponent } from 'src/app/pages/inventory/components/components/inventory-items-table/inventory-items-table.component';
 import { ComponentsComponent } from 'src/app/pages/inventory/components/component-parts/components.component';
-import { AgGridModule } from 'ag-grid-angular';
+// import { AgGridModule } from 'ag-grid-angular';
 import { RawMaterialsInventoryComponent } from 'src/app/pages/inventory/components/components/inventory-items-table/components/raw-materials-inventory/raw-materials-inventory.component';
+import { AgGridAngular } from '@ag-grid-community/angular';
+import { ActionsCellRenderer } from 'src/app/pages/inventory/components/components/inventory-items-table/components/cell-renderer/actions-cell-renderer.component';
+import { PriceCellRenderer } from 'src/app/pages/inventory/components/components/inventory-items-table/components/cell-renderer/price-cell-renderer.component';
+import { ProductCellRenderer } from 'src/app/pages/inventory/components/components/inventory-items-table/components/cell-renderer/product-cell-renderer.component';
+import { StatusCellRenderer } from 'src/app/pages/inventory/components/components/inventory-items-table/components/cell-renderer/status-cell-renderer.component';
+import { StockCellRenderer } from 'src/app/pages/inventory/components/components/inventory-items-table/components/cell-renderer/stock-cell-renderer.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +62,14 @@ import { RawMaterialsInventoryComponent } from 'src/app/pages/inventory/componen
     MatAutocompleteModule,
     MatSlideToggleModule,
     MatIconModule,
-    AgGridModule,
+    // AgGridModule,
+    FormsModule,
+    AgGridAngular,
+    ProductCellRenderer,
+    StatusCellRenderer,
+    StockCellRenderer,
+    PriceCellRenderer,
+    ActionsCellRenderer,
   ],
   providers: [InventoryService],
 })
