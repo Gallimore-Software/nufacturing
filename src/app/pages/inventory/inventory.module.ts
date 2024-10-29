@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { InventoryItemDetailComponent } from './components/inventory-item-detail/inventory-item-detail.component';
 import { InventoryRoutingModule } from './inventory-routing.module';
 import { InventoryService } from './inventory.service';
-import { NewInventoryDialogComponent } from './components/new-inventory-dialog/new-inventory-dialog.component';
+import { NewInventoryDialogComponent } from './components/components/new-inventory-dialog/new-inventory-dialog.component';
 import { MatOptionModule } from '@angular/material/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
@@ -12,7 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { InventoryDashboardComponent } from './components/inventory-dashboard/inventory-dashboard.component';
 import { FinishedGoodsComponent } from './components/finished-goods/finished-goods.component';
-import { WipComponent } from './components/wip/wip.component';
+import { WorksInProgressComponent } from './components/works-in-progress/works-in-progress.component';
 import { RawMaterialsComponent } from './components/raw-materials/raw-materials.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -23,7 +23,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { InventoryItemsTableComponent } from 'src/app/pages/inventory/components/components/inventory-items-table/inventory-items-table.component';
-import { ComponentsComponent } from 'src/app/pages/inventory/components/component-parts/components.component';
+import { ProductComponentsComponent } from 'src/app/pages/inventory/components/product-components/product-components.component';
 import { RawMaterialsInventoryComponent } from 'src/app/pages/inventory/components/components/inventory-items-table/components/raw-materials-inventory/raw-materials-inventory.component';
 import { AgGridAngular } from '@ag-grid-community/angular';
 import { ActionsCellRenderer } from 'src/app/pages/inventory/components/components/inventory-items-table/components/raw-materials-inventory/cell-renderer/actions-cell-renderer.component';
@@ -39,9 +39,9 @@ import { StockCellRenderer } from 'src/app/pages/inventory/components/components
     NewInventoryDialogComponent,
     InventoryDashboardComponent,
     FinishedGoodsComponent,
-    WipComponent,
+    WorksInProgressComponent,
     RawMaterialsComponent,
-    ComponentsComponent,
+    ProductComponentsComponent,
     RawMaterialsInventoryComponent,
   ],
   imports: [

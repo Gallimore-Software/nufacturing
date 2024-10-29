@@ -2,21 +2,21 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { InventoryDashboardComponent } from './components/inventory-dashboard/inventory-dashboard.component';
 import { FinishedGoodsComponent } from './components/finished-goods/finished-goods.component';
-import { WipComponent } from './components/wip/wip.component';
-import { ComponentsComponent } from 'src/app/pages/inventory/components/component-parts/components.component';
+import { WorksInProgressComponent } from './components/works-in-progress/works-in-progress.component';
+import { ProductComponentsComponent } from 'src/app/pages/inventory/components/product-components/product-components.component';
 import { RawMaterialsInventoryComponent } from 'src/app/pages/inventory/components/components/inventory-items-table/components/raw-materials-inventory/raw-materials-inventory.component';
 
 const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'raw-materials', // Redirect the base path to 'dashboard'
+    redirectTo: 'overview',
   },
-  { path: 'dashboard', component: InventoryDashboardComponent },
+  { path: 'overview', component: InventoryDashboardComponent },
   { path: 'finished-goods', component: FinishedGoodsComponent },
   { path: 'raw-materials', component: RawMaterialsInventoryComponent },
-  { path: 'components', component: ComponentsComponent },
-  { path: 'wip', component: WipComponent },
+  { path: 'product-components', component: ProductComponentsComponent },
+  { path: 'works-in-progress', component: WorksInProgressComponent },
 ];
 
 @NgModule({

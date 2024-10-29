@@ -3,11 +3,11 @@ import { InventoryItem } from 'src/app/pages/inventory/inventory-item.model';
 import { InventoryService } from 'src/app/pages/inventory/inventory.service';
 
 @Component({
-  selector: 'app-raw-materials',
-  templateUrl: './raw-materials.component.html',
-  styleUrls: ['./raw-materials.component.scss'],
+  selector: 'app-works-in-progress',
+  templateUrl: './works-in-progress.component.html',
+  styleUrls: ['./works-in-progress.component.scss'],
 })
-export class RawMaterialsComponent {
+export class WorksInProgressComponent {
   constructor(private inventoryService: InventoryService) {}
 
   ngOnInit(): void {

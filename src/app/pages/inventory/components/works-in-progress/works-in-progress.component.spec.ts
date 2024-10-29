@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WipComponent } from './wip.component';
+import { WorksInProgressComponent } from './works-in-progress.component';
 
 describe('WipComponent', () => {
-  let component: WipComponent;
-  let fixture: ComponentFixture<WipComponent>;
+  let component: WorksInProgressComponent;
+  let fixture: ComponentFixture<WorksInProgressComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [WipComponent],
+      declarations: [WorksInProgressComponent],
     });
-    fixture = TestBed.createComponent(WipComponent);
+    fixture = TestBed.createComponent(WorksInProgressComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

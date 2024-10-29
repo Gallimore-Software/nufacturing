@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { InventoryService } from '../../inventory.service';
 import { InventoryItem } from '../../inventory-item.model';
-import { NewInventoryDialogComponent } from '../new-inventory-dialog/new-inventory-dialog.component';
+import { NewInventoryDialogComponent } from '../components/new-inventory-dialog/new-inventory-dialog.component';
 
 @Component({
   selector: 'app-inventory-dashboard',
