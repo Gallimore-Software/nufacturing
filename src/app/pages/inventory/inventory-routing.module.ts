@@ -10,7 +10,7 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'raw-materials', // Redirect the base path to 'dashboard'
+    redirectTo: 'dashboard', // Redirect the base path to 'dashboard'
   },
   { path: 'dashboard', component: InventoryDashboardComponent },
   { path: 'finished-goods', component: FinishedGoodsComponent },
