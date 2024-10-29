@@ -1,11 +1,29 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
+interface KeyMetrics {
+  totalOrders: number;
+  ordersInProcess: number;
+  totalQuotes: number;
+  activeQuotes: number;
+  expiredQuotes: number;
+}
+
+interface RecentActivity {
+  details: string;
+  date: Date;
+}
+
+interface Alert {
+  message: string;
+  date: Date;
+}
+
 @Injectable({
   providedIn: 'root',
 })
 export class DashboardMockService {
-  getKeyMetrics(): Observable<unknown> {
+  getKeyMetrics(): Observable<KeyMetrics> {
     return of({
       totalOrders: 832,
       ordersInProcess: 200,
@@ -15,7 +33,7 @@ export class DashboardMockService {
     });
   }
 
-  getRecentActivity(): Observable<unknown[]> {
+  getRecentActivity(): Observable<RecentActivity[]> {
     return of([
       { details: 'Order #1234 - Status: In Process', date: new Date() },
       { details: 'Quote #5678 - Status: Active', date: new Date() },
@@ -24,7 +42,7 @@ export class DashboardMockService {
     ]);
   }
 
-  getAlerts(): Observable<unknown[]> {
+  getAlerts(): Observable<Alert[]> {
     return of([
       { message: 'Payment overdue for Order #1234', date: new Date() },
       { message: 'New Quote #5678 awaiting approval', date: new Date() },

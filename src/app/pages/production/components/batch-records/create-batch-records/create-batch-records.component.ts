@@ -7,9 +7,8 @@ import { ProductSkusService } from 'src/app/pages/product-development/services/p
 import { FormulasService } from 'src/app/pages/product-development/services/formulas.service';
 import { UsersService } from 'src/app/pages/users/services/users.service';
 
-// Define interfaces for the expected data structures
 interface Batch {
-  _id: string;
+  _id?: string;
   batchNumber: string;
   productSKU: string;
   formula: string;
@@ -56,14 +55,14 @@ export class CreateBatchRecordsComponent implements OnInit {
     private productskuService: ProductSkusService,
     private formulasService: FormulasService,
     private dialogRef: MatDialogRef<CreateBatchRecordsComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { batch?: Batch } // Type the batch data
+    @Inject(MAT_DIALOG_DATA) public data: { batch?: Batch }
   ) {}
 
   ngOnInit(): void {
     this.initializeForm();
     if (this.data?.batch) {
       this.isEditMode = true;
-      this.patchFormWithBatchData(this.data.batch); // Pre-fill form for editing
+      this.patchFormWithBatchData(this.data.batch);
     }
     this.loadProductSKUs();
     this.loadFormulas();
@@ -103,8 +102,7 @@ export class CreateBatchRecordsComponent implements OnInit {
   loadProductSKUs(): void {
     this.productskuService.getProductSkus().subscribe({
       next: (data: ProductSKU[]) => {
-        console.log('Product SKUs:', data); // Debug: Check the data structure
-        this.productSKUs = data; // Ensure data is in the expected format
+        this.productSKUs = data;
       },
       error: (err) => console.error('Error loading Product SKUs:', err),
     });
@@ -113,8 +111,7 @@ export class CreateBatchRecordsComponent implements OnInit {
   loadFormulas(): void {
     this.formulasService.getFormulas().subscribe({
       next: (data: Formula[]) => {
-        console.log('Formulas:', data); // Debug: Check the data structure
-        this.formulas = data; // Ensure data is in the expected format
+        this.formulas = data;
       },
       error: (err) => console.error('Error loading Formulas:', err),
     });
@@ -123,8 +120,7 @@ export class CreateBatchRecordsComponent implements OnInit {
   loadOperators(): void {
     this.userService.getAllUsers().subscribe({
       next: (data: Operator[]) => {
-        console.log('Operators:', data); // Debug: Check the data structure
-        this.operators = data; // Ensure data is in the expected format
+        this.operators = data;
       },
       error: (err) => console.error('Error loading Operators:', err),
     });
@@ -132,23 +128,32 @@ export class CreateBatchRecordsComponent implements OnInit {
 
   onSubmit(): void {
     if (this.batchForm.valid) {
-      const batchData = this.batchForm.value as Batch;
+      // Prepare batch data, including the optional _id field for editing mode
+      const batchData: Partial<Batch> = {
+        ...this.batchForm.value,
+        qualityChecks: this.batchForm.value.qualityChecks || [], // Include _id only in edit mode
+      };
 
       if (this.isEditMode) {
+        // Update existing batch record
         this.batchRecordsService
-          .updateBatchRecord(this.data.batch!._id, batchData)
+          .updateBatchRecord(this.data.batch!._id!, batchData)
           .subscribe({
             next: () => this.dialogRef.close(true),
             error: (error) =>
               console.error('Error updating batch record:', error),
           });
       } else {
-        this.batchRecordsService.createBatchRecord(batchData).subscribe({
-          next: () => this.dialogRef.close(true),
-          error: (error) =>
-            console.error('Error creating batch record:', error),
-        });
+        console.log('test');
+        // Create new batch record
+        // this.batchRecordsService.createBatchRecord(batchData).subscribe({
+        //   next: () => this.dialogRef.close(true),
+        //   error: (error) =>
+        //     console.error('Error creating batch record:', error),
+        // });
       }
+    } else {
+      console.log('Form is invalid.');
     }
   }
 }

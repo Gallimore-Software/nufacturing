@@ -1,6 +1,25 @@
+/* eslint-disable no-undef */
 import { Component, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+
+// Define the Formula interface to ensure proper typing
+interface Ingredient {
+  name: string;
+  scientificName: string;
+  perUnit: number;
+}
+
+interface Formula {
+  code?: string;
+  name: string;
+  productType: string;
+  unitOfMeasurement: string;
+  activeIngredients?: Ingredient[];
+  inactiveIngredients?: Ingredient[];
+  createdAt?: Date;
+  updatedAt?: Date;
+}
 
 @Component({
   selector: 'app-create-formulas',
@@ -18,7 +37,7 @@ export class CreateFormulasComponent {
     'Liquid Stickpacks',
     'Pouches',
   ];
-  unitOptions: unknown = {
+  unitOptions: { [key: string]: string[] } = {
     Capsules: ['mg', 'g', 'kg'],
     Powder: ['mg', 'g', 'kg'],
     Gummies: ['mcg', 'mg', 'g', 'kg', 'ml', 'liter', 'gallons', 'ounces'],
@@ -31,27 +50,24 @@ export class CreateFormulasComponent {
   constructor(
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<CreateFormulasComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: unknown
+    @Inject(MAT_DIALOG_DATA) public data: Formula = {} as Formula // Type the injected data as Formula
   ) {
     this.formulaForm = this.fb.group({
-      code: [data?.code || ''],
-      name: [data?.name || '', Validators.required],
-      productType: [data?.productType || '', Validators.required],
-      unitOfMeasurement: [data?.unitOfMeasurement || '', Validators.required],
+      code: [data.code || ''],
+      name: [data.name || '', Validators.required],
+      productType: [data.productType || '', Validators.required],
+      unitOfMeasurement: [data.unitOfMeasurement || '', Validators.required],
       activeIngredients: this.fb.array([]), // Initialize as empty FormArray
       inactiveIngredients: this.fb.array([]), // Initialize as empty FormArray
-      createdAt: [data?.createdAt || new Date()],
-      updatedAt: [data?.updatedAt || new Date()],
+      createdAt: [data.createdAt || new Date()],
+      updatedAt: [data.updatedAt || new Date()],
     });
 
     // Populate the active and inactive ingredients FormArrays
-    this.populateIngredients(
-      'activeIngredients',
-      data?.activeIngredients || []
-    );
+    this.populateIngredients('activeIngredients', data.activeIngredients || []);
     this.populateIngredients(
       'inactiveIngredients',
-      data?.inactiveIngredients || []
+      data.inactiveIngredients || []
     );
 
     // Update unit options whenever the product type changes
@@ -71,9 +87,9 @@ export class CreateFormulasComponent {
   }
 
   // Populate FormArray with existing data
-  private populateIngredients(arrayName: string, ingredients: unknown[]) {
+  private populateIngredients(arrayName: string, ingredients: Ingredient[]) {
     const ingredientsArray = this.formulaForm.get(arrayName) as FormArray;
-    ingredients.forEach((ingredient) => {
+    ingredients.forEach((ingredient: Ingredient) => {
       ingredientsArray.push(
         this.fb.group({
           name: [ingredient.name, Validators.required],

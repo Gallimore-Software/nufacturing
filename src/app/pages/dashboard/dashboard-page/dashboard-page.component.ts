@@ -3,15 +3,23 @@ import { Component, OnInit } from '@angular/core';
 import { DashboardMockService } from '../dashboard-mock.service';
 import { Chart, registerables } from 'chart.js';
 
+interface KeyMetrics {
+  totalOrders: number;
+  ordersInProcess: number;
+  totalQuotes: number;
+  activeQuotes: number;
+  expiredQuotes: number;
+}
+
 @Component({
   selector: 'app-dashboard-page',
   templateUrl: './dashboard-page.component.html',
   styleUrls: ['./dashboard-page.component.scss'],
 })
 export class DashboardPageComponent implements OnInit {
-  keyMetrics: unknown[] = [];
-  recentActivity: unknown[] = [];
-  alerts: unknown[] = [];
+  keyMetrics: { title: string; value: number }[] = [];
+  recentActivity: any[] = [];
+  alerts: any[] = [];
 
   constructor(private dashboardService: DashboardMockService) {
     Chart.register(...registerables);
@@ -25,8 +33,8 @@ export class DashboardPageComponent implements OnInit {
   }
 
   loadKeyMetrics(): void {
-    this.dashboardService.getKeyMetrics().subscribe((metrics: unknown) => {
-      // Assuming the metrics come as an object, transform it into an array for the template
+    this.dashboardService.getKeyMetrics().subscribe((metrics: KeyMetrics) => {
+      // Transform the metrics object into an array for the template
       this.keyMetrics = [
         { title: 'Total Orders', value: metrics.totalOrders },
         { title: 'Orders In Process', value: metrics.ordersInProcess },
@@ -48,6 +56,7 @@ export class DashboardPageComponent implements OnInit {
       this.alerts = alerts;
     });
   }
+
   initializeCharts(): void {
     const salesPurchaseCanvas = document.getElementById(
       'salesPurchaseChart'
@@ -79,7 +88,7 @@ export class DashboardPageComponent implements OnInit {
                 30000, 40000, 35000, 50000, 45000, 60000, 70000, 80000, 75000,
                 90000, 85000, 100000,
               ],
-              backgroundColor: 'rgba(54, 162, 235, 0.7)', // High contrast
+              backgroundColor: 'rgba(54, 162, 235, 0.7)',
               borderColor: 'rgba(54, 162, 235, 1)',
               borderWidth: 1,
               barPercentage: 0.6,
@@ -91,7 +100,7 @@ export class DashboardPageComponent implements OnInit {
                 20000, 30000, 25000, 40000, 35000, 50000, 60000, 70000, 65000,
                 80000, 75000, 90000,
               ],
-              backgroundColor: 'rgba(75, 192, 192, 0.7)', // High contrast
+              backgroundColor: 'rgba(75, 192, 192, 0.7)',
               borderColor: 'rgba(75, 192, 192, 1)',
               borderWidth: 1,
               barPercentage: 0.6,
@@ -124,14 +133,14 @@ export class DashboardPageComponent implements OnInit {
             {
               label: 'Ordered',
               data: [1000, 2000, 1500, 3000, 2500, 4000],
-              borderColor: 'rgba(255, 159, 64, 1)', // High contrast
+              borderColor: 'rgba(255, 159, 64, 1)',
               backgroundColor: 'rgba(255, 159, 64, 0.2)',
               fill: true,
             },
             {
               label: 'Delivered',
               data: [800, 1800, 1200, 2500, 2300, 3500],
-              borderColor: 'rgba(153, 102, 255, 1)', // High contrast
+              borderColor: 'rgba(153, 102, 255, 1)',
               backgroundColor: 'rgba(153, 102, 255, 0.2)',
               fill: true,
             },

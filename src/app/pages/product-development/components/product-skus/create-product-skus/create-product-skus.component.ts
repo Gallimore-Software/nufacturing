@@ -10,6 +10,20 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ProductSkusService } from 'src/app/pages/product-development/services/product-skus.service';
 import { ListFormulasService } from '../../formulas/list-formulas/list-formulas.service';
 
+interface Formula {
+  _id: string;
+  name: string;
+}
+
+interface ProductSKU {
+  sku: string;
+  productType: string;
+  formula: string;
+  packagingInfo?: string;
+  customerInfo?: string;
+  status?: string;
+}
+
 @Component({
   selector: 'app-create-product-skus',
   templateUrl: './create-product-skus.component.html',
@@ -19,23 +33,20 @@ export class CreateProductSkusComponent implements OnInit {
   productSkuForm: FormGroup;
   productTypes = ['Capsule', 'Powder', 'Gummy', 'Tablet'];
   statusOptions = ['active', 'inactive'];
-  filteredFormulas: unknown[] = [];
+  filteredFormulas: Formula[] = [];
 
   constructor(
     private fb: FormBuilder,
     private productSkusService: ProductSkusService,
     private formulasService: ListFormulasService,
     private dialogRef: MatDialogRef<CreateProductSkusComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: unknown
+    @Inject(MAT_DIALOG_DATA) public data: ProductSKU | null
   ) {
     console.log('data:', data);
     this.productSkuForm = this.fb.group({
       sku: [data?.sku || '', Validators.required],
       productType: [data?.productType || '', Validators.required],
-      formula: [
-        data?.formula?._id || data?.formula?.name || '',
-        Validators.required,
-      ],
+      formula: [data?.formula || '', Validators.required],
       packagingInfo: [data?.packagingInfo || ''],
       customerInfo: [data?.customerInfo || ''],
       status: [data?.status || ''],
@@ -51,7 +62,7 @@ export class CreateProductSkusComponent implements OnInit {
   }
 
   fetchFormulas(searchTerm: string = ''): void {
-    this.formulasService.getFormulas().subscribe((formulas: unknown[]) => {
+    this.formulasService.getFormulas().subscribe((formulas: Formula[]) => {
       this.filteredFormulas = formulas.filter((formula) =>
         formula.name.toLowerCase().includes(searchTerm.toLowerCase())
       );
@@ -63,16 +74,18 @@ export class CreateProductSkusComponent implements OnInit {
     this.fetchFormulas(input);
   }
 
-  onFormulaSelected(event: unknown): void {
+  onFormulaSelected(event: any): void {
     const selectedFormula = this.filteredFormulas.find(
       (formula) => formula.name === event.option.value
     );
-    this.productSkuForm.patchValue({ formula: selectedFormula._id });
+    if (selectedFormula) {
+      this.productSkuForm.patchValue({ formula: selectedFormula._id });
+    }
   }
 
   onSubmit(): void {
     if (this.productSkuForm.valid) {
-      const productSkuData = this.productSkuForm.value;
+      const productSkuData: ProductSKU = this.productSkuForm.value;
       this.dialogRef.close(productSkuData);
     }
   }

@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
-import { ListFormulasService } from './list-formulas.service'; // Adjust the path accordingly
+import { ListFormulasService, Formula } from './list-formulas.service'; // Adjust the path accordingly
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -11,20 +11,7 @@ import { ConfirmDialogComponent } from '../../../../../components/confirm-dialog
 
 export interface Ingredient {
   name: string;
-  // scientificName: string;
   perUnit: number;
-}
-
-export interface FormulaItem {
-  _id: string;
-  code: string;
-  name: string;
-  productType: string;
-  unitOfMeasurement: string;
-  activeIngredients: Ingredient[];
-  inactiveIngredients: Ingredient[];
-  createdAt: Date;
-  updatedAt: Date;
 }
 
 @Component({
@@ -36,7 +23,6 @@ export class ListFormulaComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = [
     'sku',
     'displayName',
-    // 'scientificName',
     'unitOfMeasurement',
     'productType',
     'activeIngredients',
@@ -44,7 +30,7 @@ export class ListFormulaComponent implements OnInit, AfterViewInit {
     'createdAt',
     'actions',
   ];
-  dataSource: MatTableDataSource<FormulaItem> = new MatTableDataSource();
+  dataSource: MatTableDataSource<Formula> = new MatTableDataSource();
   isAdminOrManager: boolean = false;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -66,7 +52,6 @@ export class ListFormulaComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    // Set paginator and sorter after view initialization
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
@@ -81,31 +66,26 @@ export class ListFormulaComponent implements OnInit, AfterViewInit {
       width: '500px',
     });
 
-    dialogRef.afterClosed().subscribe((result: FormulaItem | undefined) => {
+    dialogRef.afterClosed().subscribe((result: Formula | undefined) => {
       if (result) {
         this.formulaService
           .createFormula(result)
-          .subscribe((newFormula: unknown) => {
-            this.dataSource.data = [
-              ...this.dataSource.data,
-              { _id: newFormula._id, ...newFormula },
-            ];
-            console.log(this.dataSource.data);
+          .subscribe((newFormula: Formula) => {
+            this.dataSource.data = [...this.dataSource.data, newFormula];
           });
       }
     });
   }
 
-  editFormulaItem(item: FormulaItem) {
+  editFormulaItem(item: Formula) {
     const dialogRef = this.dialog.open(CreateFormulasComponent, {
       width: '800px',
       data: item,
     });
 
-    dialogRef.afterClosed().subscribe((result: FormulaItem | undefined) => {
+    dialogRef.afterClosed().subscribe((result: Formula | undefined) => {
       if (result) {
         this.formulaService.updateFormula(item._id, result).subscribe(() => {
-          console.log('Formula updated:', result); // Debugging line
           this.refreshFormulas();
         });
       }
@@ -113,19 +93,12 @@ export class ListFormulaComponent implements OnInit, AfterViewInit {
   }
 
   refreshFormulas() {
-    this.formulaService.getFormulas().subscribe((data: FormulaItem[]) => {
-      const transformedData = data.map((item) => ({
-        ...item,
-        sku: item.code,
-        displayName: item.name,
-        // scientificName: item.activeIngredients.length > 0 ? item.activeIngredients[0].scientificName : '', // Display first active ingredient's scientific name
-      }));
-
-      this.dataSource.data = transformedData;
+    this.formulaService.getFormulas().subscribe((data: Formula[]) => {
+      this.dataSource.data = data;
     });
   }
 
-  deleteFormulaItem(item: FormulaItem) {
+  deleteFormulaItem(item: Formula) {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       width: '400px',
       data: {

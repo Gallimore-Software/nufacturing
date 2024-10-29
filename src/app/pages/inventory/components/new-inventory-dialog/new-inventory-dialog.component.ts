@@ -10,6 +10,32 @@ import {
   Vendor,
 } from 'src/app/pages/vendors/services/vendors.service'; // Adjust the path as needed
 
+// Define an interface for the dialog data
+interface DialogData {
+  userId: string;
+  inventoryItem?: InventoryItem;
+}
+
+// Define an interface for InventoryItem if it has specific properties
+interface InventoryItem {
+  vendor: string;
+  displayName: string;
+  sku: string;
+  description: string;
+  inventoryCategory: string;
+  type: string;
+  lotCode: string;
+  unitOfMeasurement: string;
+  pricePerUnit: number;
+  quantities: {
+    minRestockQuantity: number;
+    inStock: number;
+  };
+  availableQuantity: number;
+  onHoldQuantity: number;
+  quarantinedQuantity: number;
+}
+
 @Component({
   selector: 'app-new-inventory-dialog',
   templateUrl: './new-inventory-dialog.component.html',
@@ -25,41 +51,62 @@ export class NewInventoryDialogComponent implements OnInit {
     private fb: FormBuilder,
     private vendorService: VendorsService,
     private inventoryService: InventoryService,
-
-    @Inject(MAT_DIALOG_DATA) public data: unknown
+    @Inject(MAT_DIALOG_DATA) public data: DialogData // Type data as DialogData
   ) {
     this.inventoryForm = this.fb.group({
-      vendor: ['', Validators.required],
-      displayName: ['', Validators.required],
-      sku: ['', Validators.required],
-      description: ['', Validators.required],
-      inventoryCategory: ['', Validators.required],
-      type: ['', Validators.required],
-      lotCode: ['', Validators.required],
-      unitOfMeasurement: ['', Validators.required],
-      pricePerUnit: ['', Validators.required],
+      vendor: [data.inventoryItem?.vendor || '', Validators.required],
+      displayName: [data.inventoryItem?.displayName || '', Validators.required],
+      sku: [data.inventoryItem?.sku || '', Validators.required],
+      description: [data.inventoryItem?.description || '', Validators.required],
+      inventoryCategory: [
+        data.inventoryItem?.inventoryCategory || '',
+        Validators.required,
+      ],
+      type: [data.inventoryItem?.type || '', Validators.required],
+      lotCode: [data.inventoryItem?.lotCode || '', Validators.required],
+      unitOfMeasurement: [
+        data.inventoryItem?.unitOfMeasurement || '',
+        Validators.required,
+      ],
+      pricePerUnit: [
+        data.inventoryItem?.pricePerUnit || 0,
+        Validators.required,
+      ],
       quantities: this.fb.group({
-        minRestockQuantity: [0, Validators.required],
-        inStock: [0, Validators.required],
+        minRestockQuantity: [
+          data.inventoryItem?.quantities.minRestockQuantity || 0,
+          Validators.required,
+        ],
+        inStock: [
+          data.inventoryItem?.quantities.inStock || 0,
+          Validators.required,
+        ],
       }),
-      availableQuantity: [0, Validators.required],
-      onHoldQuantity: [0, Validators.required],
-      quarantinedQuantity: [0, Validators.required],
-      createdBy: [this.data.userId],
+      availableQuantity: [
+        data.inventoryItem?.availableQuantity || 0,
+        Validators.required,
+      ],
+      onHoldQuantity: [
+        data.inventoryItem?.onHoldQuantity || 0,
+        Validators.required,
+      ],
+      quarantinedQuantity: [
+        data.inventoryItem?.quarantinedQuantity || 0,
+        Validators.required,
+      ],
+      createdBy: [data.userId],
     });
   }
 
   ngOnInit() {
-    // If the data has an inventory item, populate the form for editing
     if (this.data.inventoryItem) {
-      console.log('inventory data: ' + this.data.inventoryItem);
+      console.log('inventory data:', this.data.inventoryItem);
       this.inventoryForm.patchValue(this.data.inventoryItem);
     } else {
       console.log('No Data');
     }
 
     // Subscribe to the vendor input value changes
-    console.log('Value Change');
     this.inventoryForm
       .get('vendor')
       ?.valueChanges.pipe(
@@ -79,7 +126,7 @@ export class NewInventoryDialogComponent implements OnInit {
                     )
                   );
                 } else {
-                  console.log('No Vendor Data: ' + JSON.stringify(response));
+                  console.log('No Vendor Data:', JSON.stringify(response));
                 }
                 return of([]);
               })

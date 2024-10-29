@@ -2,6 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+export interface SyncStatus {
+  id: string;
+  status: string;
+  lastSync: Date;
+  message?: string; // Optional field
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -10,7 +17,7 @@ export class SyncStatusService {
 
   constructor(private http: HttpClient) {}
 
-  getSyncStatus(): Observable<unknown> {
-    return this.http.get<unknown>(this.apiUrl);
+  getSyncStatus(): Observable<SyncStatus[]> {
+    return this.http.get<SyncStatus[]>(this.apiUrl);
   }
 }
