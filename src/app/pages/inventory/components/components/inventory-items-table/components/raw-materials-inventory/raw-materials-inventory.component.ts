@@ -22,11 +22,11 @@ import { MultiFilterModule } from '@ag-grid-enterprise/multi-filter';
 import { SetFilterModule } from '@ag-grid-enterprise/set-filter';
 
 import { getData } from './data';
-import { ProductCellRenderer } from '../cell-renderer/product-cell-renderer.component';
-import { StatusCellRenderer } from '../cell-renderer/status-cell-renderer.component';
-import { StockCellRenderer } from '../cell-renderer/stock-cell-renderer.component';
-import { PriceCellRenderer } from '../cell-renderer/price-cell-renderer.component';
-import { ActionsCellRenderer } from '../cell-renderer/actions-cell-renderer.component';
+import { ProductCellRenderer } from './cell-renderer/product-cell-renderer.component';
+import { StatusCellRenderer } from './cell-renderer/status-cell-renderer.component';
+import { StockCellRenderer } from './cell-renderer/stock-cell-renderer.component';
+import { PriceCellRenderer } from './cell-renderer/price-cell-renderer.component';
+import { ActionsCellRenderer } from './cell-renderer/actions-cell-renderer.component';
 
 ModuleRegistry.registerModules([
   ClientSideRowModelModule,

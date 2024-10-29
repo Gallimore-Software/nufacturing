@@ -26,11 +26,11 @@ import { InventoryItemsTableComponent } from 'src/app/pages/inventory/components
 import { ComponentsComponent } from 'src/app/pages/inventory/components/component-parts/components.component';
 import { RawMaterialsInventoryComponent } from 'src/app/pages/inventory/components/components/inventory-items-table/components/raw-materials-inventory/raw-materials-inventory.component';
 import { AgGridAngular } from '@ag-grid-community/angular';
-import { ActionsCellRenderer } from 'src/app/pages/inventory/components/components/inventory-items-table/components/cell-renderer/actions-cell-renderer.component';
-import { PriceCellRenderer } from 'src/app/pages/inventory/components/components/inventory-items-table/components/cell-renderer/price-cell-renderer.component';
-import { ProductCellRenderer } from 'src/app/pages/inventory/components/components/inventory-items-table/components/cell-renderer/product-cell-renderer.component';
-import { StatusCellRenderer } from 'src/app/pages/inventory/components/components/inventory-items-table/components/cell-renderer/status-cell-renderer.component';
-import { StockCellRenderer } from 'src/app/pages/inventory/components/components/inventory-items-table/components/cell-renderer/stock-cell-renderer.component';
+import { ActionsCellRenderer } from 'src/app/pages/inventory/components/components/inventory-items-table/components/raw-materials-inventory/cell-renderer/actions-cell-renderer.component';
+import { PriceCellRenderer } from 'src/app/pages/inventory/components/components/inventory-items-table/components/raw-materials-inventory/cell-renderer/price-cell-renderer.component';
+import { ProductCellRenderer } from 'src/app/pages/inventory/components/components/inventory-items-table/components/raw-materials-inventory/cell-renderer/product-cell-renderer.component';
+import { StatusCellRenderer } from 'src/app/pages/inventory/components/components/inventory-items-table/components/raw-materials-inventory/cell-renderer/status-cell-renderer.component';
+import { StockCellRenderer } from 'src/app/pages/inventory/components/components/inventory-items-table/components/raw-materials-inventory/cell-renderer/stock-cell-renderer.component';
 
 @NgModule({
   declarations: [
