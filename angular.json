@@ -71,14 +71,14 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "nufacturing:build"
+            "buildTarget": "nufacturing:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "nufacturing:build:production"
+              "buildTarget": "nufacturing:build:production"
             },
             "development": {
-              "browserTarget": "nufacturing:build:development"
+              "buildTarget": "nufacturing:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -86,7 +86,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "nufacturing:build"
+            "buildTarget": "nufacturing:build"
           }
         },
         "test": {
