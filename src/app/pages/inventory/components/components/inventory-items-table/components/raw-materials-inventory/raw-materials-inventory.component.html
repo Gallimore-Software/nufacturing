@@ -14,28 +14,24 @@
         </button>
       </div>
       <div class="inputWrapper">
-        <svg class="searchIcon" width="16" height="16">
-          <!-- SVG Path -->
-        </svg>
-        <input
+        <!-- <input
           type="text"
-          id="filter-text-box"
           placeholder="Search material..."
           [(ngModel)]="quickFilterText"
-        />
+        /> -->
       </div>
     </div>
 
-    <div [class]="themeClass" class="grid">
+    <div class="grid">
       <ag-grid-angular
-        style="height: 100%"
-        (gridReady)="onGridReady($event)"
+        style="width: 100%; height: 100%;"
+        class="ag-theme-alpine"
         [columnDefs]="columnDefs"
         [rowData]="rowData"
         [defaultColDef]="defaultColDef"
-        [quickFilterText]="quickFilterText"
-        [pagination]="pagination"
-        [paginationPageSize]="paginationPageSize"
+        [pagination]="true"
+        [paginationPageSize]="10"
+        (gridReady)="onGridReady($event)"
       ></ag-grid-angular>
     </div>
   </div>

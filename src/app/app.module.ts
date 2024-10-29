@@ -38,7 +38,7 @@ import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
 import { AuthInterceptor } from '../infrastructure/auth/auth.interceptor';
 import { SyncStatusComponent } from './components/sync-status/sync-status.component';
 import { SyncStatusService } from './components/sync-status/sync-status.service';
-import { AgGridModule } from '@ag-grid-community/angular';
+import { AgGridModule } from 'ag-grid-angular';
 @NgModule({
   declarations: [
     AppComponent,
