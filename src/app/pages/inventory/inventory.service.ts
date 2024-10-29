@@ -20,7 +20,6 @@ export class InventoryService {
   constructor(private http: HttpClient) {}
 
   private handleError(error: HttpErrorResponse) {
-    // Handle the error according to your needs
     console.error('Server Error:', error);
     return throwError(
       () => new Error('Error occurred; please try again later.')
@@ -76,16 +75,8 @@ export class InventoryService {
 
   // Method to filter inventory items by type
   getInventoryByType(type: string): Observable<ApiResponse<InventoryItem[]>> {
-    console.log(type);
-    console.log('hit inventory.service.ts');
     return this.http
-      .get<ApiResponse<InventoryItem[]>>(`${this.apiUrl}`)
-      .pipe(catchError(this.handleError));
-  }
-
-  createInventory(data: InventoryItem): Observable<ApiResponse<InventoryItem>> {
-    return this.http
-      .post<ApiResponse<InventoryItem>>(this.apiUrl, data)
+      .get<ApiResponse<InventoryItem[]>>(`${this.apiUrl}?type=${type}`)
       .pipe(catchError(this.handleError));
   }
 }

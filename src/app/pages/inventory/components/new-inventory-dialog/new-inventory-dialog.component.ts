@@ -170,14 +170,12 @@ export class NewInventoryDialogComponent implements OnInit {
     if (this.inventoryForm.valid) {
       this.isSubmitting = true;
       const newInventoryItem = this.inventoryForm.value;
-      console.log('New Inventory Item:', newInventoryItem);
 
       this.inventoryService.addInventoryItem(newInventoryItem).subscribe(
         (response) => {
           if (response.success) {
-            console.log('Inventory item created:', response.data);
             this.isSubmitting = false;
-            this.dialogRef.close(response.data);
+            this.dialogRef.close(response.data); // Close dialog and pass new item data back to dashboard
           } else {
             console.error('Failed to create inventory item.');
             this.isSubmitting = false;
@@ -185,12 +183,11 @@ export class NewInventoryDialogComponent implements OnInit {
         },
         (error) => {
           console.error('Error creating inventory item:', error);
+          this.isSubmitting = false;
         }
       );
     } else {
-      console.log('Error while saving');
-      this.inventoryForm.markAllAsTouched(); // Highlight all invalid fields
-      return;
+      this.inventoryForm.markAllAsTouched(); // Highlight any invalid fields
     }
   }
 
