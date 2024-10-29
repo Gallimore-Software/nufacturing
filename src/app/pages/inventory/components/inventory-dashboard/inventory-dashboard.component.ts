@@ -49,7 +49,7 @@ export class InventoryDashboardComponent implements OnInit {
 
   openCreateInventoryDialog(): void {
     const dialogRef = this.dialog.open(NewInventoryDialogComponent, {
-      width: '500px',
+      width: '50%',
       data: { userId: 'yourUserId' },
     });
 
