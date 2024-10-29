@@ -1,105 +1,333 @@
-// Custom Theming for Angular Material
-// For more information: https://material.angular.io/guide/theming
-@use '@angular/material' as mat;
-// Plus imports for other components in your app.
+/* You can add global styles to this file, and also import other style files */
+@use "sass:map";
+@use "@angular/material" as mat;
 
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
 @include mat.core();
 
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue. Available color palettes: https://material.io/design/color/
-$nufacturing-primary: mat.define-palette(mat.$indigo-palette);
-$nufacturing-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+:root {
+  --primary-0: #001a12;         
+  --primary-10: #00291f;        
+  --primary-20: #004134;        
+  --primary-25: #004b3b;        
+  --primary-30: #005543;        
+  --primary-35: #00604b;        
+  --primary-40: #006b54;        
+  --primary-50: #008367;        
+  --primary-60: #33a680;        
+  --primary-70: #53c095;        
+  --primary-80: #75d4a6;        
+  --primary-90: #a6f0bf;        
+  --primary-95: #d0f8dc;        
+  --primary-98: #e9fcf0;        
+  --primary-99: #f2fef5;        
+  --primary-100: #ffffff;       
 
-// The warn palette is optional (defaults to red).
-$nufacturing-warn: mat.define-palette(mat.$red-palette);
+  --p-secondary-0: #001a12;       
+  --p-secondary-10: #00291f;      
+  --p-secondary-20: #004134;      
+  --p-secondary-25: #004b3b;      
+  --p-secondary-30: #005543;      
+  --p-secondary-35: #00604b;      
+  --p-secondary-40: #006b54;      
+  --p-secondary-50: #008367;      
+  --p-secondary-60: #33a680;      
+  --p-secondary-70: #53c095;      
+  --p-secondary-80: #75d4a6;      
+  --p-secondary-90: #a6f0bf;      
+  --p-secondary-95: #d0f8dc;      
+  --p-secondary-98: #e9fcf0;      
+  --p-secondary-99: #f2fef5;      
+  --p-secondary-100: #ffffff;     
 
-// Create the theme object. A theme consists of configurations for individual
-// theming systems such as "color" or "typography".
-$nufacturing-theme: mat.define-light-theme(
-  (
-    color: (
-      primary: $nufacturing-primary,
-      accent: $nufacturing-accent,
-      warn: $nufacturing-warn,
-    ),
-  )
+  --p-neutral-0: #001f1b;         
+  --p-neutral-4: #002923;         
+  --p-neutral-6: #00322b;         
+  --p-neutral-10: #003e35;        
+  --p-neutral-12: #004238;        
+  --p-neutral-17: #004d42;        
+  --p-neutral-20: #00534a;        
+  --p-neutral-22: #00584e;        
+  --p-neutral-24: #005d53;        
+  --p-neutral-25: #006056;        
+  --p-neutral-30: #006b60;        
+  --p-neutral-35: #00766b;        
+  --p-neutral-40: #008274;        
+  --p-neutral-50: #00a18c;        
+  --p-neutral-60: #00bea7;        
+  --p-neutral-70: #4cd6b3;        
+  --p-neutral-80: #7debce;        
+  --p-neutral-87: #a9f5e3;        
+  --p-neutral-90: #c2f8ed;        
+  --p-neutral-92: #ccecf2;        
+  --p-neutral-94: #d9f9f4;        
+  --p-neutral-95: #e3fbf6;        
+  --p-neutral-96: #eafcf8;        
+  --p-neutral-98: #f3fefc;        
+  --p-neutral-99: #f8fefc;        
+  --p-neutral-100: #ffffff;
+
+  --p-neutral-0: #000000;
+  --p-neutral-10: #191c1c;
+  --p-neutral-20: #2e3131;
+  --p-neutral-25: #393c3c;
+  --p-neutral-30: #454748;
+  --p-neutral-35: #505353;
+  --p-neutral-40: #5c5f5f;
+  --p-neutral-50: #757778;
+  --p-neutral-60: #8f9191;
+  --p-neutral-70: #aaabac;
+  --p-neutral-80: #c5c7c7;
+  --p-neutral-90: #e1e3e3;
+  --p-neutral-95: #f0f1f1;
+  --p-neutral-98: #f9f9fa;
+  --p-neutral-99: #fbfcfc;
+  --p-neutral-100: #ffffff;
+
+  
+  --p-neutral-variant-0: #000000;
+  --p-neutral-variant-10: #161d1e;
+  --p-neutral-variant-20: #2b3233;
+  --p-neutral-variant-25: #363d3e;
+  --p-neutral-variant-30: #414849;
+  --p-neutral-variant-35: #4d5455;
+  --p-neutral-variant-40: #586061;
+  --p-neutral-variant-50: #71787a;
+  --p-neutral-variant-60: #8b9293;
+  --p-neutral-variant-70: #a5acae;
+  --p-neutral-variant-80: #c1c8c9;
+  --p-neutral-variant-90: #dde4e5;
+  --p-neutral-variant-95: #ebf2f3;
+  --p-neutral-variant-98: #f4fbfc;
+  --p-neutral-variant-99: #f7fdff;
+  --p-neutral-variant-100: #ffffff;
+
+  --p-error-0: #000000;
+  --p-error-10: #410002;
+  --p-error-20: #690005;
+  --p-error-25: #7e0007;
+  --p-error-30: #93000a;
+  --p-error-35: #a80710;
+  --p-error-40: #ba1a1a;
+  --p-error-50: #de3730;
+  --p-error-60: #ff5449;
+  --p-error-70: #ff897d;
+  --p-error-80: #ffb4ab;
+  --p-error-90: #ffdad6;
+  --p-error-95: #ffedea;
+  --p-error-98: #fff8f7;
+  --p-error-99: #fffbff;
+  --p-error-100: #ffffff;
+
+  --tertiary-0: #000000;
+  --tertiary-10: #410003;
+  --tertiary-20: #690007;
+  --tertiary-25: #7d000a;
+  --tertiary-30: #93000e;
+  --tertiary-35: #a60f16;
+  --tertiary-40: #b81f21;
+  --tertiary-50: #db3a36;
+  --tertiary-60: #ff544c;
+  --tertiary-70: #ff897f;
+  --tertiary-80: #ffb4ac;
+  --tertiary-90: #ffdad6;
+  --tertiary-95: #ffedea;
+  --tertiary-98: #fff8f7;
+  --tertiary-99: #fffbff;
+  --tertiary-100: #ffffff;
+
+  --t-secondary-0: #000000;
+  --t-secondary-10: #350f0d;
+  --t-secondary-20: #4f2320;
+  --t-secondary-25: #5c2e2a;
+  --t-secondary-30: #6a3935;
+  --t-secondary-35: #774440;
+  --t-secondary-40: #85504b;
+  --t-secondary-50: #a26862;
+  --t-secondary-60: #bf817b;
+  --t-secondary-70: #dc9b94;
+  --t-secondary-80: #fab5ae;
+  --t-secondary-90: #ffdad6;
+  --t-secondary-95: #ffedea;
+  --t-secondary-98: #fff8f7;
+  --t-secondary-99: #fffbff;
+  --t-secondary-100: #ffffff;
+
+  --t-neutral-0: #000000;
+  --t-neutral-10: #201a19;
+  --t-neutral-20: #362f2e;
+  --t-neutral-25: #413a39;
+  --t-neutral-30: #4d4544;
+  --t-neutral-35: #59504f;
+  --t-neutral-40: #655c5b;
+  --t-neutral-50: #7f7574;
+  --t-neutral-60: #998e8d;
+  --t-neutral-70: #b4a9a7;
+  --t-neutral-80: #d0c4c2;
+  --t-neutral-90: #ede0de;
+  --t-neutral-95: #fbeeec;
+  --t-neutral-98: #fff8f7;
+  --t-neutral-99: #fffbff;
+  --t-neutral-100: #ffffff;
+
+  --t-neutral-variant-0: #000000;
+  --t-neutral-variant-10: #251917;
+  --t-neutral-variant-20: #3b2d2c;
+  --t-neutral-variant-25: #473836;
+  --t-neutral-variant-30: #534341;
+  --t-neutral-variant-35: #5f4f4d;
+  --t-neutral-variant-40: #6b5a59;
+  --t-neutral-variant-50: #857371;
+  --t-neutral-variant-60: #a08c8a;
+  --t-neutral-variant-70: #bba6a4;
+  --t-neutral-variant-80: #d8c2bf;
+  --t-neutral-variant-90: #f5dddb;
+  --t-neutral-variant-95: #ffedea;
+  --t-neutral-variant-98: #fff8f7;
+  --t-neutral-variant-99: #fffbff;
+  --t-neutral-variant-100: #ffffff;
+}
+
+$_palettes: (
+  primary: (
+    0: var(--primary-0),
+    10: var(--primary-10),
+    20: var(--primary-20),
+    25: var(--primary-25),
+    30: var(--primary-30),
+    35: var(--primary-35),
+    40: var(--primary-40),
+    50: var(--primary-50),
+    60: var(--primary-60),
+    70: var(--primary-70),
+    80: var(--primary-80),
+    90: var(--primary-90),
+    95: var(--primary-95),
+    98: var(--primary-98),
+    99: var(--primary-99),
+    100: var(--primary-100),
+  ),
+  secondary: (
+    0: var(--p-secondary-0),
+    10: var(--p-secondary-10),
+    20: var(--p-secondary-20),
+    25: var(--p-secondary-25),
+    30: var(--p-secondary-30),
+    35: var(--p-secondary-35),
+    40: var(--p-secondary-40),
+    50: var(--p-secondary-50),
+    60: var(--p-secondary-60),
+    70: var(--p-secondary-70),
+    80: var(--p-secondary-80),
+    90: var(--p-secondary-90),
+    95: var(--p-secondary-95),
+    98: var(--p-secondary-98),
+    99: var(--p-secondary-99),
+    100: var(--p-secondary-100),
+  ),
+  neutral: (
+    0: var(--p-neutral-0),
+    4: var(--p-neutral-4),
+    6: var(--p-neutral-6),
+    10: var(--p-neutral-10),
+    12: var(--p-neutral-12),
+    17: var(--p-neutral-17),
+    20: var(--p-neutral-20),
+    22: var(--p-neutral-22),
+    24: var(--p-neutral-24),
+    25: var(--p-neutral-25),
+    30: var(--p-neutral-30),
+    35: var(--p-neutral-35),
+    40: var(--p-neutral-40),
+    50: var(--p-neutral-50),
+    60: var(--p-neutral-60),
+    70: var(--p-neutral-70),
+    80: var(--p-neutral-80),
+    87: var(--p-neutral-87),
+    90: var(--p-neutral-90),
+    92: var(--p-neutral-92),
+    94: var(--p-neutral-94),
+    95: var(--p-neutral-95),
+    96: var(--p-neutral-96),
+    98: var(--p-neutral-98),
+    99: var(--p-neutral-99),
+    100: var(--p-neutral-100),
+  ),
+  neutral-variant: (
+    0: var(--p-neutral-variant-0),
+    10: var(--p-neutral-variant-10),
+    20: var(--p-neutral-variant-20),
+    25: var(--p-neutral-variant-25),
+    30: var(--p-neutral-variant-30),
+    35: var(--p-neutral-variant-35),
+    40: var(--p-neutral-variant-40),
+    50: var(--p-neutral-variant-50),
+    60: var(--p-neutral-variant-60),
+    70: var(--p-neutral-variant-70),
+    80: var(--p-neutral-variant-80),
+    90: var(--p-neutral-variant-90),
+    95: var(--p-neutral-variant-95),
+    98: var(--p-neutral-variant-98),
+    99: var(--p-neutral-variant-99),
+    100: var(--p-neutral-variant-100),
+  ),
+  error: (
+    0: var(--p-error-0),
+    10: var(--p-error-10),
+    20: var(--p-error-20),
+    25: var(--p-error-25),
+    30: var(--p-error-30),
+    35: var(--p-error-35),
+    40: var(--p-error-40),
+    50: var(--p-error-50),
+    60: var(--p-error-60),
+    70: var(--p-error-70),
+    80: var(--p-error-80),
+    90: var(--p-error-90),
+    95: var(--p-error-95),
+    98: var(--p-error-98),
+    99: var(--p-error-99),
+    100: var(--p-error-100),
+  ),
+  tertiary: mat.$violet-palette,
 );
 
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
-@include mat.all-component-themes($nufacturing-theme);
+$_rest: (
+  secondary: map.get($_palettes, secondary),
+  neutral: map.get($_palettes, neutral),
+  neutral-variant: map.get($_palettes,  neutral-variant),
+  error: map.get($_palettes, error),
+);
+$_primary: map.merge(map.get($_palettes, primary), $_rest);
+$_tertiary: map.merge(map.get($_palettes, tertiary), $_rest);
 
-/* You can add global styles to this file, and also import other style files */
+$angular-material-3-theme: mat.define-theme((
+  color: (
+    theme-type: light,
+    primary: $_primary,
+    tertiary: $_tertiary,
+    use-system-variables: true,
+  ),
+));
 
-body,
-html {
-  height: 100%;
-  margin: 0;
-  overflow: hidden;
-}
-body {
-  margin: 0;
-  font-family: Roboto, 'Helvetica Neue', sans-serif;
-  background: linear-gradient(90deg, #000000, #1a1a1a);
-}
-
-mat-sidenav[style] {
-  visibility: visible !important;
-}
-.mat-drawer {
-  display: flex !important;
-}
-mat-drawer[style*='visibility: hidden'] {
-  display: flex !important;
-}
-
-mat-sidenav {
-  visibility: visible !important;
-}
-
-/* For Chrome, Safari, and other WebKit-based browsers */
-::-webkit-scrollbar {
-  width: 4px;
-  height: 4px;
-}
-
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  // background: #000000;
-  background: #126d3d;
-  border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
-
-mat-button {
-  cursor: pointer;
-}
-
-@media only screen and (max-width: 768px) {
-  body {
-    margin: 0;
-  }
-}
+$angular-material-3-theme-dark: mat.define-theme((
+  color: (
+    theme-type: dark,
+    primary: $_primary,
+    tertiary: $_tertiary,
+    use-system-variables: true,
+  ),
+));
 
 html,
 body {
-  height: 100%;
-}
-body {
   margin: 0;
-  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  @include mat.system-level-colors($angular-material-3-theme);
+  @include mat.system-level-typography($angular-material-3-theme);
+  @include mat.all-component-themes($angular-material-3-theme);
+  @include mat.color-variants-backwards-compatibility($angular-material-3-theme);
+  .dark {
+    @include mat.system-level-colors($angular-material-3-theme-dark);
+    @include mat.all-component-colors($angular-material-3-theme-dark);
+  }
 }
-
-@import "~ag-grid-community/styles/ag-grid.css";
-@import "~ag-grid-community/styles/ag-theme-alpine.css";
