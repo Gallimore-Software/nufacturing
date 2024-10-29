@@ -31,7 +31,7 @@ import { HumanResourcesModule } from './pages/human-resources/human-resources.mo
 import { LogoutComponent } from './pages/logout/logout.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { LogoutDialogComponent } from './pages/logout/logout-dialog/logout-dialog.component';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { AuthService } from '../infrastructure/auth/auth.service';
 import { AuthGuard } from '../infrastructure/auth/auth.guard';
 import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
@@ -39,58 +39,52 @@ import { AuthInterceptor } from '../infrastructure/auth/auth.interceptor';
 import { SyncStatusComponent } from './components/sync-status/sync-status.component';
 import { SyncStatusService } from './components/sync-status/sync-status.service';
 import { AgGridModule } from 'ag-grid-angular';
-@NgModule({
-  declarations: [
-    AppComponent,
-    SidenavComponent,
-    ContainerComponent,
-    LoginComponent,
-    CarouselComponent,
-    RegisterComponent,
-    LogoutComponent,
-    LogoutDialogComponent,
-    SyncStatusComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatSidenavModule,
-    MatListModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatTooltipModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatTableModule,
-    ReactiveFormsModule,
-    MatInputModule,
-    IngredientsModule,
-    SalesModule,
-    InfoModule,
-    MatCardModule,
-    MatSelectModule,
-    MatPseudoCheckboxModule,
-    MatDialogModule,
-    ProductionModule,
-    DashboardModule,
-    QualityModule,
-    HumanResourcesModule,
-    HttpClientModule,
-    AgGridModule,
-  ],
-  providers: [
-    AuthService,
-    AuthGuard,
-    SyncStatusService,
-    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
-    JwtHelperService,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true,
-    },
-  ],
-  bootstrap: [AppComponent],
-})
+@NgModule({ declarations: [
+        AppComponent,
+        SidenavComponent,
+        ContainerComponent,
+        LoginComponent,
+        CarouselComponent,
+        RegisterComponent,
+        LogoutComponent,
+        LogoutDialogComponent,
+        SyncStatusComponent,
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatSidenavModule,
+        MatListModule,
+        MatIconModule,
+        MatToolbarModule,
+        MatTooltipModule,
+        MatButtonModule,
+        MatFormFieldModule,
+        MatTableModule,
+        ReactiveFormsModule,
+        MatInputModule,
+        IngredientsModule,
+        SalesModule,
+        InfoModule,
+        MatCardModule,
+        MatSelectModule,
+        MatPseudoCheckboxModule,
+        MatDialogModule,
+        ProductionModule,
+        DashboardModule,
+        QualityModule,
+        HumanResourcesModule,
+        AgGridModule], providers: [
+        AuthService,
+        AuthGuard,
+        SyncStatusService,
+        { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+        JwtHelperService,
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: AuthInterceptor,
+            multi: true,
+        },
+        provideHttpClient(withInterceptorsFromDi()),
+    ] })
 export class AppModule {}
