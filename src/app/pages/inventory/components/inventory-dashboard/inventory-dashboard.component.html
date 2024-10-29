@@ -8,51 +8,64 @@
         <mat-card-title>Total Inventory</mat-card-title>
         <mat-card-content>{{ inventoryDataCount }}</mat-card-content>
       </mat-card>
-  </div>
+    </div>
 
-  <table mat-table [dataSource]="inventoryData" class="mat-elevation-z8">
-    <!-- Item ID Column -->
-    <ng-container matColumnDef="itemId">
-      <th mat-header-cell *matHeaderCellDef> Item ID </th>
-      <td mat-cell *matCellDef="let element"> {{element.itemId}} </td>
-    </ng-container>
+    <!-- Button to Open Create Inventory Item Dialog -->
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="openCreateInventoryDialog()"
+    >
+      + Create New Inventory Item
+    </button>
 
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef> Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-    </ng-container>
+    <table mat-table [dataSource]="inventoryData" class="mat-elevation-z8">
+      <!-- Item ID Column -->
+      <ng-container matColumnDef="itemId">
+        <th mat-header-cell *matHeaderCellDef>Item ID</th>
+        <td mat-cell *matCellDef="let element">{{ element.itemId }}</td>
+      </ng-container>
 
-    <!-- SKU Column -->
-    <ng-container matColumnDef="sku">
-      <th mat-header-cell *matHeaderCellDef> SKU </th>
-      <td mat-cell *matCellDef="let element"> {{element.sku}} </td>
-    </ng-container>
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+      </ng-container>
 
-    <!-- Price Per Unit Column -->
-    <ng-container matColumnDef="pricePerUnit">
-      <th mat-header-cell *matHeaderCellDef> Price Per Unit </th>
-      <td mat-cell *matCellDef="let element"> {{element.pricePerUnit | currency}} </td>
-    </ng-container>
+      <!-- SKU Column -->
+      <ng-container matColumnDef="sku">
+        <th mat-header-cell *matHeaderCellDef>SKU</th>
+        <td mat-cell *matCellDef="let element">{{ element.sku }}</td>
+      </ng-container>
 
-    <!-- Status Column -->
-    <ng-container matColumnDef="status">
-      <th mat-header-cell *matHeaderCellDef> Status </th>
-      <td mat-cell *matCellDef="let element"> {{element.status}} </td>
-    </ng-container>
+      <!-- Price Per Unit Column -->
+      <ng-container matColumnDef="pricePerUnit">
+        <th mat-header-cell *matHeaderCellDef>Price Per Unit</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.pricePerUnit | currency }}
+        </td>
+      </ng-container>
 
-    <!-- Available Quantity Column -->
-    <ng-container matColumnDef="availableQuantity">
-      <th mat-header-cell *matHeaderCellDef> Available Quantity </th>
-      <td mat-cell *matCellDef="let element"> {{element.quantities.availableQuantity}} </td>
-    </ng-container>
+      <!-- Status Column -->
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef>Status</th>
+        <td mat-cell *matCellDef="let element">{{ element.status }}</td>
+      </ng-container>
 
-    <!-- Header and Row Definitions -->
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
+      <!-- Available Quantity Column -->
+      <ng-container matColumnDef="availableQuantity">
+        <th mat-header-cell *matHeaderCellDef>Available Quantity</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.quantities.availableQuantity }}
+        </td>
+      </ng-container>
 
-<!--
+      <!-- Header and Row Definitions -->
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+
+    <!--
   <div class="inventory-summary">
     <h2>Inventory Overview</h2>
     <div class="summary-cards">
@@ -96,4 +109,5 @@
       [dataSource]="componentsData"
     ></app-inventory-items-table>
   </div> -->
+  </div>
 </div>

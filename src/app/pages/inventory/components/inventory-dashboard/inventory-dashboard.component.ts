@@ -1,7 +1,8 @@
-/* eslint-disable no-undef */
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { InventoryService } from '../../inventory.service';
 import { InventoryItem } from '../../inventory-item.model';
+import { NewInventoryDialogComponent } from '../new-inventory-dialog/new-inventory-dialog.component';
 
 @Component({
   selector: 'app-inventory-dashboard',
@@ -30,41 +31,32 @@ export class InventoryDashboardComponent implements OnInit {
   finishedGoodsCount = 0;
   componentsCount = 0;
 
-  constructor(private inventoryService: InventoryService) {}
+  constructor(
+    private inventoryService: InventoryService,
+    private dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
-    console.log('hit inventory-dashboard.component.ts');
+    this.loadAllInventoryData();
+  }
+
+  private loadAllInventoryData(): void {
     this.inventoryService.getInventory().subscribe((response) => {
-      this.inventoryData = response.data; // Accessing the data property from ApiResponse
-      this.inventoryDataCount = response.data.length; // Counting the items
+      this.inventoryData = response.data;
+      this.inventoryDataCount = response.data.length;
+    });
+  }
+
+  openCreateInventoryDialog(): void {
+    const dialogRef = this.dialog.open(NewInventoryDialogComponent, {
+      width: '50%',
+      data: { userId: 'yourUserId' },
     });
 
-    // this.inventoryService
-    //   .getInventoryByType('Raw Materials')
-    //   .subscribe((response) => {
-    //     this.rawMaterialsData = response.data; // Accessing the data property from ApiResponse
-    //     this.rawMaterialsCount = response.data.length; // Counting the items
-    //   });
-
-    // this.inventoryService
-    //   .getInventoryByType('Work in Progress')
-    //   .subscribe((response) => {
-    //     this.wipData = response.data;
-    //     this.wipCount = response.data.length;
-    //   });
-
-    // this.inventoryService
-    //   .getInventoryByType('Finished Goods')
-    //   .subscribe((response) => {
-    //     this.finishedGoodsData = response.data;
-    //     this.finishedGoodsCount = response.data.length;
-    //   });
-
-    // this.inventoryService
-    //   .getInventoryByType('Components')
-    //   .subscribe((response) => {
-    //     this.componentsData = response.data;
-    //     this.componentsCount = response.data.length;
-    //   });
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.loadAllInventoryData();
+      }
+    });
   }
 }
