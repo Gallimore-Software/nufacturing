@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ColDef, GridApi, GridReadyEvent } from 'ag-grid-community';
+import {
+  ColDef,
+  ColGroupDef,
+  GridApi,
+  GridReadyEvent,
+} from 'ag-grid-community';
 import { NewInventoryDialogComponent } from 'src/app/pages/inventory/components/components/new-inventory-dialog/new-inventory-dialog.component';
 import { InventoryItem } from 'src/app/pages/inventory/inventory-item.model';
 import { InventoryService } from 'src/app/pages/inventory/inventory.service';
@@ -12,7 +17,7 @@ import { InventoryService } from 'src/app/pages/inventory/inventory.service';
 })
 export class InventoryItemsTableComponent implements OnInit {
   rawMaterialsData: InventoryItem[] = [];
-  columnDefs: ColDef[] = [
+  columnDefs: (ColDef | ColGroupDef)[] = [
     { field: 'itemId', headerName: 'Item ID', sortable: true, filter: true },
     { field: 'name', headerName: 'Name', sortable: true, filter: true },
     { field: 'sku', headerName: 'SKU', sortable: true, filter: true },
@@ -55,7 +60,7 @@ export class InventoryItemsTableComponent implements OnInit {
     });
   }
 
-  onGridReady(params: GridReadyEvent | string) {
+  onGridReady(params: GridReadyEvent): void {
     this.gridApi = params.api;
     this.gridApi.sizeColumnsToFit();
   }

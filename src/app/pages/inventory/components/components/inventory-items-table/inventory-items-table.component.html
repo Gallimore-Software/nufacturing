@@ -1,16 +1,18 @@
 <h1>Raw Materials</h1>
 <div class="dashboard-container">
-  <button mat-raised-button color="primary" (click)="openCreateInventoryDialog()">
-    + Create New Inventory Item
-  </button>
-  
+  <div class="buttons-container">
+    <button class="primary-btn" (click)="openCreateInventoryDialog()">
+      + Create New Inventory Item
+    </button>
+  </div>
+
   <ag-grid-angular
-    class="ag-theme-alpine"
-    style="width: 100%; height: 500px;"
+    class="ag-theme-alpine custom-grid"
+    style="width: 100%; height: 500px; margin-top: 15px;"
     [rowData]="rawMaterialsData"
     [columnDefs]="columnDefs"
     [pagination]="true"
-    [paginationPageSize]="10"
+    [paginationPageSize]="20"
     [defaultColDef]="defaultColDef"
     (gridReady)="onGridReady($event)"
   ></ag-grid-angular>

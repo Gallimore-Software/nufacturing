@@ -1,17 +1,14 @@
 /* General Styling */
 body {
   font-family: Arial, sans-serif;
+  background-color: #f5f7fa; /* Light background for a clean look */
 }
 
 h1 {
   color: #333;
   margin-bottom: 20px;
-}
-
-h2 {
-  margin-top: 40px;
-  margin-bottom: 20px;
-  color: #4caf50;
+  font-size: 24px;
+  font-weight: bold;
 }
 
 /* Button Styling */
@@ -22,78 +19,53 @@ h2 {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
 }
 
-.secondary-btn {
-  background-color: #f1f1f1;
-  color: #333;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 5px;
-  margin-left: 10px;
-  cursor: pointer;
-}
-
-.primary-btn:hover,
-.secondary-btn:hover {
-  background-color: #ccc;
+.primary-btn:hover {
+  background-color: #43a047;
 }
 
 /* Layout of buttons */
 .buttons-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   margin-bottom: 15px;
 }
 
-.left-buttons {
-  flex-grow: 1;
+/* AG-Grid Custom Styling */
+.custom-grid .ag-theme-alpine {
+  --ag-background-color: white;
+  --ag-header-background-color: #eff1f5;
+  --ag-header-foreground-color: #333;
+  --ag-odd-row-background-color: #f9f9f9; /* Zebra stripe color */
+  --ag-border-color: #ddd;
+  --ag-font-size: 14px;
+  --ag-row-hover-color: #e3f2fd; /* Light blue hover effect */
 }
 
-.right-buttons {
-  display: flex;
-  justify-content: flex-end;
-}
-
-/* Table Styling */
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-th,
-td {
-  padding: 12px;
-  text-align: left;
-  border: 1px solid #ddd;
-}
-
-thead {
-  background-color: #eff1f5;
+.ag-theme-alpine .ag-header-cell {
+  font-weight: bold;
+  font-size: 14px;
   color: #333;
+  border-bottom: 1px solid #ddd;
 }
 
-td img {
-  border-radius: 5px;
+.ag-theme-alpine .ag-cell {
+  padding: 10px;
+  font-size: 13px;
 }
 
-.edit-btn {
-  background-color: #2196f3;
-  color: white;
-  padding: 5px 10px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+/* Table Pagination Styling */
+.ag-theme-alpine .ag-paging-panel {
+  font-size: 13px;
+  color: #333;
+  background-color: #f1f1f1;
+  border-top: 1px solid #ddd;
 }
 
-.edit-btn:hover {
-  background-color: #1976d2;
+.ag-theme-alpine .ag-paging-page-summary-panel {
+  padding: 10px;
 }
-
-/* Add zebra stripes to the table */
-tbody tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
-
-
