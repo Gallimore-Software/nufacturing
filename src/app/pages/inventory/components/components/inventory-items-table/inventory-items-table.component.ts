@@ -1,198 +1,75 @@
-import {
-  Component,
-  Input,
-  ViewEncapsulation,
-  TrackByFunction,
-} from '@angular/core';
-import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
-import type {
-  ColDef,
-  GetDetailRowDataParams,
-  GridApi,
-  GridReadyEvent,
-  SizeColumnsToFitGridStrategy,
-  ValueFormatterFunc,
-  ValueFormatterParams,
-  ValueGetterParams,
-} from '@ag-grid-community/core';
-import { ModuleRegistry } from '@ag-grid-community/core';
-import { ExcelExportModule } from '@ag-grid-enterprise/excel-export';
-import { MasterDetailModule } from '@ag-grid-enterprise/master-detail';
-import { MultiFilterModule } from '@ag-grid-enterprise/multi-filter';
-import { SetFilterModule } from '@ag-grid-enterprise/set-filter';
-
-import { ProductCellRenderer } from './components/cell-renderer/product-cell-renderer.component';
-import { StatusCellRenderer } from './components/cell-renderer/status-cell-renderer.component';
-import { StockCellRenderer } from './components/cell-renderer/stock-cell-renderer.component';
-import { PriceCellRenderer } from './components/cell-renderer/price-cell-renderer.component';
-import { ActionsCellRenderer } from './components/cell-renderer/actions-cell-renderer.component';
-import { getData } from 'src/app/pages/inventory/components/components/inventory-items-table/data';
-
-ModuleRegistry.registerModules([
-  ClientSideRowModelModule,
-  ExcelExportModule,
-  SetFilterModule,
-  MultiFilterModule,
-  MasterDetailModule,
-]);
-
-const statuses = {
-  all: 'All',
-  active: 'Active',
-  paused: 'On Hold',
-  outOfStock: 'Out of Stock',
-};
-
-const statusFormatter: ValueFormatterFunc = ({ value }) =>
-  statuses[value as keyof typeof statuses] ?? '';
+import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { ColDef, GridApi, GridReadyEvent } from 'ag-grid-community';
+import { NewInventoryDialogComponent } from 'src/app/pages/inventory/components/components/new-inventory-dialog/new-inventory-dialog.component';
+import { InventoryItem } from 'src/app/pages/inventory/inventory-item.model';
+import { InventoryService } from 'src/app/pages/inventory/inventory.service';
 
 @Component({
   selector: 'app-inventory-items-table',
   templateUrl: './inventory-items-table.component.html',
   styleUrls: ['./inventory-items-table.component.scss'],
 })
-export class InventoryItemsTableComponent {
-  @Input() gridTheme: string = 'ag-theme-quartz';
-  @Input() isDarkMode: boolean = false;
-  rowData = getData();
-
-  private gridApi!: GridApi;
-
-  themeClass = `${this.gridTheme}${this.isDarkMode ? '-dark' : ''}`;
-
+export class InventoryItemsTableComponent implements OnInit {
+  rawMaterialsData: InventoryItem[] = [];
   columnDefs: ColDef[] = [
+    { field: 'itemId', headerName: 'Item ID', sortable: true, filter: true },
+    { field: 'name', headerName: 'Name', sortable: true, filter: true },
+    { field: 'sku', headerName: 'SKU', sortable: true, filter: true },
     {
-      field: 'product',
-      headerName: 'Album Name',
-      cellRenderer: 'agGroupCellRenderer',
-      headerClass: 'header-product',
-      cellRendererParams: {
-        innerRenderer: ProductCellRenderer,
-      },
-      minWidth: 300,
+      field: 'pricePerUnit',
+      headerName: 'Price Per Unit',
+      valueFormatter: (params) => `£${params.value.toFixed(2)}`,
+      sortable: true,
+      filter: true,
     },
-    { field: 'artist', headerName: 'Artist' },
+    { field: 'status', headerName: 'Status', sortable: true, filter: true },
     {
-      field: 'year',
-      headerName: 'Year',
-      width: 150,
-      headerClass: 'header-sku',
-    },
-    {
-      field: 'status',
-      headerName: 'Status',
-      valueFormatter: statusFormatter,
-      cellRenderer: StatusCellRenderer,
-      filter: 'agSetColumnFilter',
-      filterParams: {
-        valueFormatter: statusFormatter,
-      },
-      headerClass: 'header-status',
-    },
-    {
-      field: 'inventory',
-      headerName: 'Inventory',
-      cellRenderer: StockCellRenderer,
-      headerClass: 'header-inventory',
-      sortable: false,
-    },
-    {
-      field: 'incoming',
-      headerName: 'Incoming',
-      cellEditorParams: {
-        precision: 0,
-        step: 1,
-        showStepperButtons: true,
-      },
-      editable: true,
-    },
-    {
-      field: 'price',
-      headerName: 'Price',
-      width: 120,
-      headerClass: 'header-price',
-      cellRenderer: PriceCellRenderer,
-    },
-    { field: 'sold', headerName: 'Sold', headerClass: 'header-calendar' },
-    {
-      headerName: 'Est. Profit',
-      colId: 'profit',
-      headerClass: 'header-percentage',
-      cellDataType: 'number',
-      valueGetter: ({ data }: ValueGetterParams) =>
-        data.price && data.sold ? (data.price * data.sold) / 10 : null,
-      valueFormatter: ({ value }: ValueFormatterParams) =>
-        value ? `£${value}` : '',
-      width: 150,
-    },
-    {
-      field: 'actions',
-      headerName: 'Actions',
-      cellRenderer: ActionsCellRenderer,
-      minWidth: 194,
+      field: 'availableQuantity',
+      headerName: 'Available Quantity',
+      sortable: true,
+      filter: true,
     },
   ];
 
-  defaultColDef: ColDef = {
+  defaultColDef = {
     resizable: true,
     sortable: true,
     filter: true,
   };
 
-  autoSizeStrategy: SizeColumnsToFitGridStrategy = {
-    type: 'fitGridWidth',
-  };
+  private gridApi!: GridApi;
 
-  detailCellRendererParams = {
-    detailGridOptions: {
-      columnDefs: [
-        { field: 'title', headerName: 'Title', flex: 1.5 },
-        { field: 'available', headerName: 'Available', maxWidth: 120 },
-        { field: 'format', headerName: 'Format', flex: 2 },
-        { field: 'label', headerName: 'Label', flex: 1 },
-        { field: 'country', headerName: 'Country', flex: 0.66 },
-        {
-          field: 'cat',
-          headerName: 'Cat#',
-          type: 'rightAligned',
-          flex: 0.66,
-        },
-        {
-          field: 'year',
-          headerName: 'Year',
-          type: 'rightAligned',
-          maxWidth: 80,
-        },
-      ],
-      headerHeight: 38,
-    },
-    getDetailRowData: ({
-      successCallback,
-      data: { variantDetails },
-    }: GetDetailRowDataParams) => successCallback(variantDetails),
-  };
+  constructor(
+    private inventoryService: InventoryService,
+    private dialog: MatDialog
+  ) {}
 
-  rowHeight = 80;
-  paginationPageSizeSelector = [5, 10, 20];
-  pagination = true;
-  paginationPageSize = 10;
-  masterDetail = true;
-  detailRowAutoHeight = true;
-  readonly trackStatus: TrackByFunction<[string, string]> = (index) => index;
-
-  onGridReady(params: GridReadyEvent) {
-    this.gridApi = params.api;
+  ngOnInit(): void {
+    this.loadAllInventoryData();
   }
 
-  statusEntries = Object.entries(statuses);
-  activeTab = 'all';
-  quickFilterText = '';
-
-  handleTabClick(status: string) {
-    this.gridApi.setFilterModel({
-      status: status === 'all' ? null : { values: [status] },
+  private loadAllInventoryData(): void {
+    this.inventoryService.getInventory().subscribe((response) => {
+      this.rawMaterialsData = response.data; // Assign to raw materials
     });
-    this.gridApi.onFilterChanged();
-    this.activeTab = status;
+  }
+
+  onGridReady(params: GridReadyEvent | string) {
+    this.gridApi = params.api;
+    this.gridApi.sizeColumnsToFit();
+  }
+
+  openCreateInventoryDialog(): void {
+    const dialogRef = this.dialog.open(NewInventoryDialogComponent, {
+      width: '50%',
+      data: { userId: 'yourUserId' },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.loadAllInventoryData();
+      }
+    });
   }
 }
