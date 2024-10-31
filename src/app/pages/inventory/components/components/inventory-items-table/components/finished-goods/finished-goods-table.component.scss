@@ -1,0 +1,71 @@
+/* General Styling */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f7fa; /* Light background for a clean look */
+}
+
+h1 {
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Button Styling */
+.primary-btn {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.primary-btn:hover {
+  background-color: #43a047;
+}
+
+/* Layout of buttons */
+.buttons-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+/* AG-Grid Custom Styling */
+.custom-grid .ag-theme-alpine {
+  --ag-background-color: white;
+  --ag-header-background-color: #eff1f5;
+  --ag-header-foreground-color: #333;
+  --ag-odd-row-background-color: #f9f9f9; /* Zebra stripe color */
+  --ag-border-color: #ddd;
+  --ag-font-size: 14px;
+  --ag-row-hover-color: #e3f2fd; /* Light blue hover effect */
+}
+
+.ag-theme-alpine .ag-header-cell {
+  font-weight: bold;
+  font-size: 14px;
+  color: #333;
+  border-bottom: 1px solid #ddd;
+}
+
+.ag-theme-alpine .ag-cell {
+  padding: 10px;
+  font-size: 13px;
+}
+
+/* Table Pagination Styling */
+.ag-theme-alpine .ag-paging-panel {
+  font-size: 13px;
+  color: #333;
+  background-color: #f1f1f1;
+  border-top: 1px solid #ddd;
+}
+
+.ag-theme-alpine .ag-paging-page-summary-panel {
+  padding: 10px;
+}

@@ -58,7 +58,34 @@ export class SidenavComponent implements OnInit {
         },
       ],
     },
-    { link: 'inventory', name: 'Inventory', icon: 'inventory', children: [] },
+    {
+      link: 'inventory',
+      name: 'Inventory',
+      icon: 'inventory',
+      children: [
+        { link: 'inventory/dashboard', name: 'Overview', icon: 'dashboard' },
+        {
+          link: 'inventory/raw-materials',
+          name: 'Raw Materials',
+          icon: 'inventory_2',
+        },
+        {
+          link: 'inventory/finished-goods',
+          name: 'Finished Goods',
+          icon: 'check_circle',
+        },
+        {
+          link: 'inventory/product-components',
+          name: 'Product Components',
+          icon: 'category',
+        },
+        {
+          link: 'inventory/works-in-progress',
+          name: 'Work in Progress',
+          icon: 'build',
+        },
+      ],
+    },
     {
       link: 'production',
       name: 'Production',

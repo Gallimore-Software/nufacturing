@@ -5,18 +5,21 @@ import { FinishedGoodsComponent } from './components/finished-goods/finished-goo
 import { WorksInProgressComponent } from './components/works-in-progress/works-in-progress.component';
 import { ProductComponentsComponent } from 'src/app/pages/inventory/components/product-components/product-components.component';
 import { RawMaterialsComponent } from 'src/app/pages/inventory/components/raw-materials/raw-materials.component';
+import { InventoryComponent } from 'src/app/pages/inventory/inventory.component';
 
 const routes: Routes = [
   {
     path: '',
-    pathMatch: 'full',
-    redirectTo: 'overview',
+    component: InventoryComponent,
+    children: [
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+      { path: 'dashboard', component: InventoryDashboardComponent },
+      { path: 'raw-materials', component: RawMaterialsComponent },
+      { path: 'finished-goods', component: FinishedGoodsComponent },
+      { path: 'product-components', component: ProductComponentsComponent },
+      { path: 'works-in-progress', component: WorksInProgressComponent },
+    ],
   },
-  { path: 'overview', component: InventoryDashboardComponent },
-  { path: 'finished-goods', component: FinishedGoodsComponent },
-  { path: 'raw-materials', component: RawMaterialsComponent },
-  { path: 'product-components', component: ProductComponentsComponent },
-  { path: 'works-in-progress', component: WorksInProgressComponent },
 ];
 
 @NgModule({

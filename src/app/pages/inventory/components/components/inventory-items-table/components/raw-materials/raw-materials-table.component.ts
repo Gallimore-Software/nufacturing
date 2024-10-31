@@ -12,11 +12,11 @@ import { InventoryItem } from 'src/app/pages/inventory/inventory-item.model';
 import { InventoryService } from 'src/app/pages/inventory/inventory.service';
 
 @Component({
-  selector: 'app-inventory-items-table',
-  templateUrl: './inventory-items-table.component.html',
-  styleUrls: ['./inventory-items-table.component.scss'],
+  selector: 'app-raw-materials-table',
+  templateUrl: './raw-materials-table.component.html',
+  styleUrls: ['./raw-materials-table.component.scss'],
 })
-export class InventoryItemsTableComponent implements OnInit {
+export class RawMaterialsTableComponent implements OnInit {
   rawMaterialsData: InventoryItem[] = [];
   columnDefs: (ColDef | ColGroupDef)[] = [
     {
