@@ -54,10 +54,12 @@
     border: none;
     box-sizing: border-box;
     text-decoration: none;
+    color: #ffffff; // Set text color to white by default
 
     &:hover {
       cursor: pointer;
-      background-color: #000000;
+      background-color: #333333; // Adjust background color on hover
+      color: #ffffff !important; // Force text color to white on hover
     }
   }
 
@@ -67,6 +69,8 @@
     width: 24px;
   }
 }
+
+
 
 .nav-item {
   display: flex;
