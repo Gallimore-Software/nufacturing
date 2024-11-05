@@ -18,7 +18,7 @@ export function getData() {
           title: 'Rumours',
           available: 4,
           format: 'LP, Album, Picture Disc, Reissue',
-          label: 'Warner Records',
+          label: 'Warner Records - Test',
           cat: 'RPD1 3010',
           country: 'Worldwide',
           year: '2024',
