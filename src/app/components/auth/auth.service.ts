@@ -22,31 +22,49 @@ interface AuthResponse {
 export class AuthService {
   private isAuthenticated = new BehaviorSubject<boolean>(this.checkToken());
   private userRoleSubject = new BehaviorSubject<string | null>(
-    this.getUserRoleFromStorage(),
+    this.getUserRoleFromStorage()
   );
 
   constructor(
     private http: HttpClient,
     private router: Router,
-    private jwtHelper: JwtHelperService,
+    private jwtHelper: JwtHelperService
   ) {}
 
   login(email: string, password: string): Observable<AuthResponse> {
-    const loginUrl = `${environment.apiUrl}/users/login`;
+    console.log('hit');
+    const response = {
+      token:
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWUsImlhdCI6MTUxNjIzOTAyMn0.KMUFsIDTnFmyG3nMiGM6H9FNFUROf3wh7SmqJp-QV30',
+      user: {
+        id: '1', // Add ID field
+        email: 'nfgallimore@gmail.com',
+        role: 'admin',
+        // Add other user fields as needed
+      },
+    };
 
-    return this.http.post<AuthResponse>(loginUrl, { email, password }).pipe(
-      tap((response: AuthResponse) => {
-        // Store authentication data in local storage
-        localStorage.setItem('authData', JSON.stringify(response));
-        this.isAuthenticated.next(true);
-        this.userRoleSubject.next(response.user.role); // Update user role
-        this.router.navigate(['/dashboard']);
-      }),
-      catchError((error: HttpErrorResponse) => {
-        console.error('Login failed', error);
-        return throwError(error);
-      }),
-    );
+    this.isAuthenticated.next(true);
+    this.userRoleSubject.next(response.user.role); // Update user role
+    this.router.navigate(['/dashboard']);
+
+    return new BehaviorSubject<AuthResponse>(response);
+
+    // const loginUrl = `${environment.apiUrl}/users/login`;
+
+    // return this.http.post<AuthResponse>(loginUrl, { email, password }).pipe(
+    //   tap((response: AuthResponse) => {
+    //     // Store authentication data in local storage
+    //     localStorage.setItem('authData', JSON.stringify(response));
+    //     this.isAuthenticated.next(true);
+    //     this.userRoleSubject.next(response.user.role); // Update user role
+    //     this.router.navigate(['/dashboard']);
+    //   }),
+    //   catchError((error: HttpErrorResponse) => {
+    //     console.error('Login failed', error);
+    //     return throwError(error);
+    //   }),
+    // );
   }
 
   logout() {
