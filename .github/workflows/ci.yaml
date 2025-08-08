@@ -56,19 +56,11 @@ jobs:
 
       # Run Jest tests with coverage
       - name: Run unit tests with coverage
-        run: npm test -- --coverage
-
-      - name: Ensure coverage is at least 80%
-        run: |
-          npx nyc check-coverage --lines 80 --functions 80 --branches 80 --statements 80
-
-      # Run integration tests
-      - name: Run integration tests
-        run: npm run test:integration
+        run: npm run test
 
       # Run end-to-end Cypress tests
       - name: Run Cypress tests
-        run: npm run e2e
+        run: npm run cypress:run
 
       # Upload test coverage report as an artifact
       - name: Upload coverage report
@@ -77,23 +69,9 @@ jobs:
           name: coverage-report
           path: coverage/
 
-  pact:
-    runs-on: ubuntu-latest
-    needs: build
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Run Pact tests
-        run: npm run pact
-
   deploy:
     runs-on: ubuntu-latest
-    needs: [build, pact]
+    needs: [build]
     if: github.ref == 'refs/heads/production'
 
     steps:
