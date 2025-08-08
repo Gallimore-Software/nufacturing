@@ -43,10 +43,11 @@ export class AuthService {
         // Add other user fields as needed
       },
     };
-
+    localStorage.setItem('IsLoggedIn', 'true');
     this.isAuthenticated.next(true);
     this.userRoleSubject.next(response.user.role); // Update user role
     this.router.navigate(['/dashboard']);
+    localStorage.setItem('authData', JSON.stringify(response));
 
     return new BehaviorSubject<AuthResponse>(response);
 
