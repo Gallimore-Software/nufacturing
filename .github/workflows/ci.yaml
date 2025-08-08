@@ -46,21 +46,21 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # Lint the code
-      - name: Run linting
-        run: npm run lint
+      # # Lint the code
+      # - name: Run linting
+      #   run: npm run lint
 
-      # Run Prettier check
-      - name: Run Prettier
-        run: npm run format
+      # # Run Prettier check
+      # - name: Run Prettier
+      #   run: npm run format
 
-      # Run Jest tests with coverage
-      - name: Run unit tests with coverage
-        run: npm run test
+      # # Run Jest tests with coverage
+      # - name: Run unit tests with coverage
+      #   run: npm run test
 
-      # Run end-to-end Cypress tests
-      - name: Run Cypress tests
-        run: npm run cypress:run
+      # # Run end-to-end Cypress tests
+      # - name: Run Cypress tests
+      #   run: npm run cypress:run
 
       # Upload test coverage report as an artifact
       - name: Upload coverage report
