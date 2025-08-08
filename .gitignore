@@ -48,4 +48,4 @@ docs*
 *.css
 
 # Environments
-src/environments
+src/environment

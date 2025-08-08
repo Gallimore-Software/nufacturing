@@ -4,7 +4,7 @@ import { SyncStatusService } from './sync-status.service';
 @Component({
   selector: 'app-sync-status',
   templateUrl: './sync-status.component.html',
-  styleUrls: ['./sync-status.component.css'],
+  styleUrls: ['./sync-status.component.scss'],
 })
 export class SyncStatusComponent implements OnInit {
   syncStatuses: any[] = [];

@@ -26,6 +26,6 @@ module.exports = {
   transformIgnorePatterns: ["node_modules/(?!@ngrx)"],
   moduleNameMapper: {
     "^src/(.*)$": "<rootDir>/src/$1",
-    "^@env/(.*)$": "<rootDir>/src/environments/$1",
+    "^@env/(.*)$": "<rootDir>/src/environment/$1",
   },
 };
