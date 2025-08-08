@@ -6,16 +6,16 @@ import {
   HttpInterceptor,
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environment/environment';
 
 @Injectable()
 export class HasuraInterceptor implements HttpInterceptor {
   constructor() {}
   intercept(
     request: HttpRequest<unknown>,
-    next: HttpHandler,
+    next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    const hasuraSecretKey = environment.HASURA_SERCER_KEY;
+    const hasuraSecretKey = environment.HASURA_SERVER_KEY;
     const authReq = request.clone({
       headers: request.headers.set('x-hasura-admin-secret', hasuraSecretKey),
     });

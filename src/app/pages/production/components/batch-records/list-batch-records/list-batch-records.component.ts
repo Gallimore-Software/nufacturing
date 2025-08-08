@@ -40,7 +40,7 @@ export class ListBatchRecordsComponent implements OnInit {
   constructor(
     private batchRecordsService: BatchRecordsService,
     private authService: AuthService,
-    private dialog: MatDialog,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -68,7 +68,7 @@ export class ListBatchRecordsComponent implements OnInit {
     this.filteredBatchRecords = this.batchRecords.filter(
       (batch) =>
         batch.batchNumber.toLowerCase().includes(filterValue) ||
-        batch.productSKU.toLowerCase().includes(filterValue),
+        batch.productSKU.toLowerCase().includes(filterValue)
     );
   }
 

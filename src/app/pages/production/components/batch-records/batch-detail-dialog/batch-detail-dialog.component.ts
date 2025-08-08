@@ -29,7 +29,7 @@ export class BatchDetailDialogComponent implements OnInit {
     private usersService: UsersService,
     private authService: AuthService,
     private fb: FormBuilder,
-    private dialog: MatDialog, // Inject MatDialog
+    private dialog: MatDialog // Inject MatDialog
   ) {
     this.batchForm = this.fb.group({
       batchNumber: [data.batch.batchNumber],

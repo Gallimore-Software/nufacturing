@@ -15,14 +15,14 @@ const routes: Routes = [
         path: 'formulas',
         loadChildren: () =>
           import('./components/formulas/formulas.module').then(
-            (m) => m.FormulasModule,
+            (m) => m.FormulasModule
           ),
       },
       {
         path: 'product-skus',
         loadChildren: () =>
           import('./components/product-skus/product-skus.module').then(
-            (m) => m.ProductSkusModule,
+            (m) => m.ProductSkusModule
           ),
       },
       {

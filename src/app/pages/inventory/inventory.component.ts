@@ -30,7 +30,7 @@ export class InventoryComponent implements OnInit {
   constructor(
     private inventoryService: InventoryService,
     private authService: AuthService,
-    private dialog: MatDialog,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -59,13 +59,13 @@ export class InventoryComponent implements OnInit {
         } else {
           console.error(
             'Expected an array in response.data, but got:',
-            response.data,
+            response.data
           );
         }
       },
       (error) => {
         console.error('Failed to fetch inventory:', error); // Error handling
-      },
+      }
     );
   }
 

@@ -16,7 +16,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   constructor(
     private authService: AuthService,
-    private router: Router,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -28,7 +28,7 @@ export class AppComponent implements OnInit, OnDestroy {
         } else {
           this.router.navigate(['/login']);
         }
-      },
+      }
     );
   }
 

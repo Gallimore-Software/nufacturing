@@ -3,14 +3,12 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-inventory-dashboard',
   templateUrl: './inventory-dashboard.component.html',
-  styleUrls: ['./inventory-dashboard.component.scss']
+  styleUrls: ['./inventory-dashboard.component.scss'],
 })
 export class InventoryDashboardComponent {
-
-
   components = [
     {
-      picture: 'assets/bottleCap.png',  // Path to image
+      picture: 'assets/bottleCap.png', // Path to image
       componentId: 'CMP001',
       name: 'Plastic Bottle Cap',
       supplier: 'CapIt Industries',
@@ -28,10 +26,10 @@ export class InventoryDashboardComponent {
       batchIds: 'BATCHCAP101, BATCHCAP102',
       lotIds: 'LOTCAP789, LOTCAP790',
       backorderedQty: 0,
-      status: 'In Stock'
+      status: 'In Stock',
     },
     {
-      picture: 'assets/labels.png',  // Path to image
+      picture: 'assets/labels.png', // Path to image
       componentId: 'CMP002',
       name: 'Pill Bottle Labels',
       supplier: 'LabelPro Supplies',
@@ -49,16 +47,16 @@ export class InventoryDashboardComponent {
       batchIds: 'BATCHLBL103',
       lotIds: 'LOTLBL791',
       backorderedQty: 500,
-      status: 'Backordered'
+      status: 'Backordered',
     },
     {
-      picture: 'assets/silicaGel.png',  // Path to image
+      picture: 'assets/silicaGel.png', // Path to image
       componentId: 'CMP003',
       name: 'Silica Gel Packets',
       supplier: 'DryGuard Corp',
       qtyAvail: 2000,
       unit: 'pcs',
-      costPerUnit: 0.10,
+      costPerUnit: 0.1,
       location: 'Shelf C3',
       reorderLevel: 500,
       leadTime: 4,
@@ -70,10 +68,10 @@ export class InventoryDashboardComponent {
       batchIds: 'BATCHSIL104, BATCHSIL105',
       lotIds: 'LOTSIL792, LOTSIL793',
       backorderedQty: 0,
-      status: 'In Stock'
+      status: 'In Stock',
     },
     {
-      picture: 'assets/cottonBalls.png',  // Path to image
+      picture: 'assets/cottonBalls.png', // Path to image
       componentId: 'CMP004',
       name: 'Cotton Balls',
       supplier: 'PureSoft Materials',
@@ -91,16 +89,16 @@ export class InventoryDashboardComponent {
       batchIds: 'BATCHCTN106',
       lotIds: 'LOTCTN794',
       backorderedQty: 0,
-      status: 'In Stock'
+      status: 'In Stock',
     },
     {
-      picture: 'assets/bottles.png',  // Path to image
+      picture: 'assets/bottles.png', // Path to image
       componentId: 'CMP005',
       name: 'Plastic Pill Bottles',
       supplier: 'PharmaContainer Ltd.',
       qtyAvail: 500,
       unit: 'pcs',
-      costPerUnit: 0.50,
+      costPerUnit: 0.5,
       location: 'Shelf E5',
       reorderLevel: 100,
       leadTime: 8,
@@ -112,7 +110,7 @@ export class InventoryDashboardComponent {
       batchIds: 'BATCHBOT107',
       lotIds: 'LOTBOT795',
       backorderedQty: 50,
-      status: 'Backordered'
-    }
+      status: 'Backordered',
+    },
   ];
 }

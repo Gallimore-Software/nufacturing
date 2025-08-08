@@ -24,10 +24,10 @@ export class IngredientsInfoComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private globalService: GlobalServiceService,
+    private globalService: GlobalServiceService
   ) {
     this.dataSource = new MatTableDataSource(
-      this.globalService.getIngredients(),
+      this.globalService.getIngredients()
     );
 
     this.ingredientForm = this.fb.group({
@@ -70,7 +70,7 @@ export class IngredientsInfoComponent implements OnInit {
     const formValue = this.ingredientForm.value;
     const ingredients = this.globalService.getIngredients();
     const existingIngredientIndex = ingredients.findIndex(
-      (ing) => ing.name === formValue.name,
+      (ing) => ing.name === formValue.name
     );
     if (existingIngredientIndex >= 0) {
       ingredients[existingIngredientIndex] = formValue;

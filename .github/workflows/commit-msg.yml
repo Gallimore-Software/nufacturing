@@ -3,7 +3,7 @@ name: Enforce Commit Message
 on:
   push:
     branches:
-      - "*"
+      - '*'
 
 jobs:
   check-commit-message:

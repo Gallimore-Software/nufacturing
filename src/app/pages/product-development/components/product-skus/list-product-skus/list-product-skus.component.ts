@@ -42,7 +42,7 @@ export class ListProductSkusComponent implements OnInit, AfterViewInit {
   constructor(
     private productSkusService: ProductSkusService,
     private authService: AuthService,
-    private dialog: MatDialog,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {

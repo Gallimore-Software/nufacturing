@@ -4,7 +4,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { tap, catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environment/environment';
 
 interface AuthResponse {
   token: string;
@@ -20,19 +20,37 @@ interface AuthResponse {
   providedIn: 'root',
 })
 export class AuthService {
+  register(form: any) {
+    const registerUrl = `${environment.apiUrl}/auth/register`;
+    return this.http.post<AuthResponse>(registerUrl, form).pipe(
+      tap((response: AuthResponse) => {
+        // Store authentication data in local storage
+        const authData = JSON.stringify(response);
+        localStorage.setItem('authData', authData);
+        this.userRoleSubject.next(response.user.role); // Update user role
+        this.isAuthenticated.next(true);
+        this.router.navigate(['/dashboard']);
+      }),
+      catchError((error: HttpErrorResponse) => {
+        console.error('Login failed', error);
+        return throwError(error);
+      })
+    );
+  }
+
   private isAuthenticated = new BehaviorSubject<boolean>(this.checkToken());
   private userRoleSubject = new BehaviorSubject<string | null>(
-    this.getUserRoleFromStorage(),
+    this.getUserRoleFromStorage()
   );
 
   constructor(
     private http: HttpClient,
     private router: Router,
-    private jwtHelper: JwtHelperService,
+    private jwtHelper: JwtHelperService
   ) {}
 
   login(email: string, password: string): Observable<AuthResponse> {
-    const loginUrl = `${environment.apiUrl}/users/login`;
+    const loginUrl = `${environment.apiUrl}/auth/login`;
 
     return this.http.post<AuthResponse>(loginUrl, { email, password }).pipe(
       tap((response: AuthResponse) => {
@@ -45,7 +63,7 @@ export class AuthService {
       catchError((error: HttpErrorResponse) => {
         console.error('Login failed', error);
         return throwError(error);
-      }),
+      })
     );
   }
 

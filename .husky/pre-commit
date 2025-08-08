@@ -1,3 +1,5 @@
+#!/bin/sh
+
 # This hook checks that branches are named according to the updated convention.
 current_branch=$(git rev-parse --abbrev-ref HEAD)
 branch_regex="^(development|staging|testing|production|(^(chapter|story|bug|feature)/NFG-[0-9]+-.+$)$)"
@@ -11,5 +13,5 @@ if ! echo "$current_branch" | grep -qE "$branch_regex"; then
 fi
 
 # Format staged files using Prettier
-prettier $(git diff --cached --name-only --diff-filter=ACMR | sed 's| |\\ |g') --write --ignore-unknown
+npx prettier $(git diff --cached --name-only --diff-filter=ACMR | sed 's| |\\ |g') --write --ignore-unknown
 git update-index --again

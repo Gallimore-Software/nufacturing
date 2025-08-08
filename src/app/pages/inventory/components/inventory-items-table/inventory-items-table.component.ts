@@ -43,7 +43,7 @@ export class InventoryItemsTableComponent implements OnInit, AfterViewInit {
       backorderedQty: 0,
       approvalStatus: 'Approved',
       receivedDate: new Date('2024-02-01'),
-      priceLastUpdated: new Date('2024-01-25')
+      priceLastUpdated: new Date('2024-01-25'),
     },
     {
       picture: 'assets/manganeseSulfate.png',
@@ -66,7 +66,7 @@ export class InventoryItemsTableComponent implements OnInit, AfterViewInit {
       backorderedQty: 10,
       approvalStatus: 'Pending',
       receivedDate: new Date('2024-01-10'),
-      priceLastUpdated: new Date('2024-01-05')
+      priceLastUpdated: new Date('2024-01-05'),
     },
     {
       picture: 'assets/riboflavin.png',
@@ -89,7 +89,7 @@ export class InventoryItemsTableComponent implements OnInit, AfterViewInit {
       backorderedQty: 5,
       approvalStatus: 'Approved',
       receivedDate: new Date('2024-02-15'),
-      priceLastUpdated: new Date('2024-02-01')
+      priceLastUpdated: new Date('2024-02-01'),
     },
     {
       picture: 'assets/calciferol.png',
@@ -112,8 +112,8 @@ export class InventoryItemsTableComponent implements OnInit, AfterViewInit {
       backorderedQty: 0,
       approvalStatus: 'Rejected',
       receivedDate: new Date('2024-03-05'),
-      priceLastUpdated: new Date('2024-03-01')
-    }
+      priceLastUpdated: new Date('2024-03-01'),
+    },
   ];
   components = [
     {
@@ -135,7 +135,7 @@ export class InventoryItemsTableComponent implements OnInit, AfterViewInit {
       batchIds: 'BATCHCAP101, BATCHCAP102',
       lotIds: 'LOTCAP789, LOTCAP790',
       backorderedQty: 0,
-      status: 'In Stock'
+      status: 'In Stock',
     },
     {
       picture: 'assets/labels.png',
@@ -156,7 +156,7 @@ export class InventoryItemsTableComponent implements OnInit, AfterViewInit {
       batchIds: 'BATCHLBL103',
       lotIds: 'LOTLBL791',
       backorderedQty: 500,
-      status: 'Backordered'
+      status: 'Backordered',
     },
     {
       picture: 'assets/silicaGel.png',
@@ -165,7 +165,7 @@ export class InventoryItemsTableComponent implements OnInit, AfterViewInit {
       supplier: 'DryGuard Corp',
       qtyAvail: 2000,
       unit: 'pcs',
-      costPerUnit: 0.10,
+      costPerUnit: 0.1,
       location: 'Shelf C3',
       reorderLevel: 500,
       leadTime: 4,
@@ -177,7 +177,7 @@ export class InventoryItemsTableComponent implements OnInit, AfterViewInit {
       batchIds: 'BATCHSIL104, BATCHSIL105',
       lotIds: 'LOTSIL792, LOTSIL793',
       backorderedQty: 0,
-      status: 'In Stock'
+      status: 'In Stock',
     },
     {
       picture: 'assets/cottonBalls.png',
@@ -198,7 +198,7 @@ export class InventoryItemsTableComponent implements OnInit, AfterViewInit {
       batchIds: 'BATCHCTN106',
       lotIds: 'LOTCTN794',
       backorderedQty: 0,
-      status: 'In Stock'
+      status: 'In Stock',
     },
     {
       picture: 'assets/bottles.png',
@@ -207,7 +207,7 @@ export class InventoryItemsTableComponent implements OnInit, AfterViewInit {
       supplier: 'PharmaContainer Ltd.',
       qtyAvail: 500,
       unit: 'pcs',
-      costPerUnit: 0.50,
+      costPerUnit: 0.5,
       location: 'Shelf E5',
       reorderLevel: 100,
       leadTime: 8,
@@ -219,13 +219,13 @@ export class InventoryItemsTableComponent implements OnInit, AfterViewInit {
       batchIds: 'BATCHBOT107',
       lotIds: 'LOTBOT795',
       backorderedQty: 50,
-      status: 'Backordered'
-    }
+      status: 'Backordered',
+    },
   ];
-  
+
   wips = [
     {
-      picture: 'assets/probioticCapsules.png',  // Path to image
+      picture: 'assets/probioticCapsules.png', // Path to image
       wipId: 'WIP001',
       productName: 'Probiotic Capsules',
       sku: 'PROB-CAP-001',
@@ -246,7 +246,7 @@ export class InventoryItemsTableComponent implements OnInit, AfterViewInit {
       status: 'In Progress',
     },
     {
-      picture: 'assets/vitaminDPowder.png',  // Path to image
+      picture: 'assets/vitaminDPowder.png', // Path to image
       wipId: 'WIP002',
       productName: 'Vitamin D Powder',
       sku: 'VITD-PWD-001',
@@ -267,7 +267,7 @@ export class InventoryItemsTableComponent implements OnInit, AfterViewInit {
       status: 'Delayed',
     },
     {
-      picture: 'assets/fishOilLiquid.png',  // Path to image
+      picture: 'assets/fishOilLiquid.png', // Path to image
       wipId: 'WIP003',
       productName: 'Omega-3 Fish Oil',
       sku: 'FISH-OIL-001',
@@ -286,18 +286,18 @@ export class InventoryItemsTableComponent implements OnInit, AfterViewInit {
       matsAllocated: 'Fish Oil Concentrate, Gelatin',
       assignee: 'Chris Lee',
       status: 'In Progress',
-    }
+    },
   ];
   finishedGoods = [
     {
-      picture: 'assets/probioticCapsules.png',  // Path to image
+      picture: 'assets/probioticCapsules.png', // Path to image
       productName: 'Probiotic Capsules',
       sku: 'PROB-CAP-001',
       batchIds: 'BATCHC123, BATCHC124',
       lotIds: 'LOT1011, LOT1012',
       qtyAvail: 5000,
       unit: 'capsules',
-      costPerUnit: 0.10,
+      costPerUnit: 0.1,
       sellingPrice: 0.25,
       location: 'Warehouse A1',
       expirationDate: new Date('2025-12-01'),
@@ -306,10 +306,10 @@ export class InventoryItemsTableComponent implements OnInit, AfterViewInit {
       reservedForOrderIds: 'ORD789, ORD123',
       supplier: 'HealthPro Labs',
       orderAllocationDetails: 'Allocated for ORD789, partially fulfilled',
-      status: 'In Stock'
+      status: 'In Stock',
     },
     {
-      picture: 'assets/vitaminDPowder.png',  // Path to image
+      picture: 'assets/vitaminDPowder.png', // Path to image
       productName: 'Vitamin D Powder',
       sku: 'VITD-PWD-001',
       batchIds: 'BATCHD456',
@@ -325,10 +325,10 @@ export class InventoryItemsTableComponent implements OnInit, AfterViewInit {
       reservedForOrderIds: 'ORD456',
       supplier: 'Sunshine Extracts',
       orderAllocationDetails: 'Reserved for ORD456',
-      status: 'Backordered'
+      status: 'Backordered',
     },
     {
-      picture: 'assets/fishOilLiquid.png',  // Path to image
+      picture: 'assets/fishOilLiquid.png', // Path to image
       productName: 'Omega-3 Fish Oil',
       sku: 'FISH-OIL-001',
       batchIds: 'BATCHF789',
@@ -344,10 +344,10 @@ export class InventoryItemsTableComponent implements OnInit, AfterViewInit {
       reservedForOrderIds: 'ORD654, ORD987',
       supplier: 'OmegaLife Solutions',
       orderAllocationDetails: 'Allocated for ORD654, ORD987',
-      status: 'In Stock'
-    }
+      status: 'In Stock',
+    },
   ];
-    
+
   @Input() dataSource: MatTableDataSource<InventoryItem> =
     new MatTableDataSource();
   @Input() displayedColumns: string[] = [];
@@ -368,7 +368,7 @@ export class InventoryItemsTableComponent implements OnInit, AfterViewInit {
   constructor(
     private inventoryService: InventoryService,
     private authService: AuthService,
-    private dialog: MatDialog,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -452,7 +452,7 @@ export class InventoryItemsTableComponent implements OnInit, AfterViewInit {
   private updateInventoryItem(parentId: string, item: InventoryItem) {
     this.inventoryService.updateInventoryItem(parentId, item).subscribe(
       () => this.refreshInventory(),
-      (error) => console.error('Error updating inventory item:', error),
+      (error) => console.error('Error updating inventory item:', error)
     );
   }
 
@@ -468,7 +468,7 @@ export class InventoryItemsTableComponent implements OnInit, AfterViewInit {
         // Call the delete method on the parent item's _id
         this.inventoryService.deleteInventoryItem(parentItem._id).subscribe(
           () => this.refreshInventory(),
-          (error) => console.error('Error deleting inventory item:', error),
+          (error) => console.error('Error deleting inventory item:', error)
         );
       } else {
         console.error('Parent item not found for item ID:', item._id);
@@ -489,7 +489,7 @@ export class InventoryItemsTableComponent implements OnInit, AfterViewInit {
       category.items.map((item: any) => ({
         ...item,
         category: category.category,
-      })),
+      }))
     );
   }
 }

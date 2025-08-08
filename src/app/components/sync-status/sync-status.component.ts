@@ -4,7 +4,7 @@ import { SyncStatusService } from './sync-status.service';
 @Component({
   selector: 'app-sync-status',
   templateUrl: './sync-status.component.html',
-  styleUrls: ['./sync-status.component.css'],
+  styleUrls: ['./sync-status.component.scss'],
 })
 export class SyncStatusComponent implements OnInit {
   syncStatuses: any[] = [];
@@ -18,7 +18,7 @@ export class SyncStatusComponent implements OnInit {
   getStatuses(): void {
     this.syncStatusService.getSyncStatus().subscribe(
       (data) => (this.syncStatuses = data),
-      (error) => console.error('Error fetching sync status', error),
+      (error) => console.error('Error fetching sync status', error)
     );
   }
 }

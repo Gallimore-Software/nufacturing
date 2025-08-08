@@ -42,7 +42,14 @@
       </thead>
       <tbody>
         <tr *ngFor="let item of rawMaterials">
-          <td><img [src]="item.picture" alt="{{ item.name }}" width="50" height="50"></td>
+          <td>
+            <img
+              [src]="item.picture"
+              alt="{{ item.name }}"
+              width="50"
+              height="50"
+            />
+          </td>
           <td>{{ item.materialId }}</td>
           <td>{{ item.name }}</td>
           <td>{{ item.supplier }}</td>
@@ -97,7 +104,14 @@
       </thead>
       <tbody>
         <tr *ngFor="let item of components">
-          <td><img [src]="item.picture" alt="{{ item.name }}" width="50" height="50"></td>
+          <td>
+            <img
+              [src]="item.picture"
+              alt="{{ item.name }}"
+              width="50"
+              height="50"
+            />
+          </td>
           <td>{{ item.componentId }}</td>
           <td>{{ item.name }}</td>
           <td>{{ item.supplier }}</td>
@@ -150,7 +164,14 @@
       </thead>
       <tbody>
         <tr *ngFor="let item of wips">
-          <td><img [src]="item.picture" alt="{{ item.productName }}" width="50" height="50"></td>
+          <td>
+            <img
+              [src]="item.picture"
+              alt="{{ item.productName }}"
+              width="50"
+              height="50"
+            />
+          </td>
           <td>{{ item.wipId }}</td>
           <td>{{ item.productName }}</td>
           <td>{{ item.sku }}</td>
@@ -202,7 +223,14 @@
       </thead>
       <tbody>
         <tr *ngFor="let item of finishedGoods">
-          <td><img [src]="item.picture" alt="{{ item.productName }}" width="50" height="50"></td>
+          <td>
+            <img
+              [src]="item.picture"
+              alt="{{ item.productName }}"
+              width="50"
+              height="50"
+            />
+          </td>
           <td>{{ item.productName }}</td>
           <td>{{ item.sku }}</td>
           <td>{{ item.batchIds }}</td>

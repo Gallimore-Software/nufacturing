@@ -30,6 +30,7 @@
             <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
               Password is required
             </mat-error>
+
             <mat-error *ngIf="loginForm.get('password')?.hasError('minlength')">
               Password must be at least 6 characters
             </mat-error>
