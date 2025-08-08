@@ -8,7 +8,7 @@ html {
 }
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
   background: linear-gradient(90deg, #000000, #1a1a1a);
 }
 
@@ -18,7 +18,7 @@ mat-sidenav[style] {
 .mat-drawer {
   display: flex !important;
 }
-mat-drawer[style*="visibility: hidden"] {
+mat-drawer[style*='visibility: hidden'] {
   display: flex !important;
 }
 

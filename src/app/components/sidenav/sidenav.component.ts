@@ -216,18 +216,18 @@ export class SidenavComponent implements OnInit {
 
   getSubMenuItems(): any[] {
     const route = this.routeLinks.find(
-      (route) => route.name === this.activeMenu,
+      (route) => route.name === this.activeMenu
     );
     return route ? route.children : [];
   }
 
   getSubChildMenuItems(parentName: string): any[] {
     const parentRoute = this.routeLinks.find(
-      (route) => route.name === this.activeMenu,
+      (route) => route.name === this.activeMenu
     );
     if (parentRoute && parentRoute?.children) {
       const childRoute = parentRoute?.children.find(
-        (child) => child.name === parentName,
+        (child) => child.name === parentName
       );
       return childRoute?.subchildren ? childRoute.subchildren : [];
     }

@@ -46,7 +46,7 @@ export class CustomersComponent implements OnInit, AfterViewInit {
   constructor(
     private customerService: CustomerService,
     private authService: AuthService,
-    private dialog: MatDialog,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -103,7 +103,7 @@ export class CustomersComponent implements OnInit, AfterViewInit {
   deleteCustomer(customer: Customer) {
     this.customerService.deleteCustomer(customer._id).subscribe(
       () => this.refreshCustomerData(),
-      (error) => console.error('Error deleting customer:', error),
+      (error) => console.error('Error deleting customer:', error)
     );
   }
 

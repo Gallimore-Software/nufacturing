@@ -106,30 +106,30 @@
     <mat-card-content>
       <p>
         <strong>Suggested Use / Directions:</strong>
-        {{ detailsForm.get("directions")?.value }}
+        {{ detailsForm.get('directions')?.value }}
       </p>
       <p>
-        <strong>Allergens:</strong> {{ detailsForm.get("allergens")?.value }}
+        <strong>Allergens:</strong> {{ detailsForm.get('allergens')?.value }}
       </p>
       <p>
-        <strong>Gluten Free:</strong> {{ detailsForm.get("glutenFree")?.value }}
+        <strong>Gluten Free:</strong> {{ detailsForm.get('glutenFree')?.value }}
       </p>
       <p>
         <strong>Vegan Friendly:</strong>
-        {{ detailsForm.get("veganFriendly")?.value }}
+        {{ detailsForm.get('veganFriendly')?.value }}
       </p>
-      <p><strong>Warnings:</strong> {{ detailsForm.get("warnings")?.value }}</p>
+      <p><strong>Warnings:</strong> {{ detailsForm.get('warnings')?.value }}</p>
       <p *ngIf="detailsForm.get('warnings')?.value === 'Yes'">
         <strong>Warning Instructions:</strong>
-        {{ detailsForm.get("warningInstructions")?.value }}
+        {{ detailsForm.get('warningInstructions')?.value }}
       </p>
       <p>
         <strong>Storage Requirements:</strong>
-        {{ detailsForm.get("storageRequirements")?.value }}
+        {{ detailsForm.get('storageRequirements')?.value }}
       </p>
       <p *ngIf="detailsForm.get('storageRequirements')?.value === 'Yes'">
         <strong>Storage Instructions:</strong>
-        {{ detailsForm.get("storageInstructions")?.value }}
+        {{ detailsForm.get('storageInstructions')?.value }}
       </p>
     </mat-card-content>
   </mat-card>

@@ -22,7 +22,7 @@ export class NewInventoryDialogComponent implements OnInit {
     private vendorService: VendorsService,
     private inventoryService: InventoryService,
 
-    @Inject(MAT_DIALOG_DATA) public data: any,
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.inventoryForm = this.fb.group({
       vendor: ['', Validators.required],
@@ -71,19 +71,19 @@ export class NewInventoryDialogComponent implements OnInit {
                     response.filter((vendor) =>
                       vendor.displayName
                         .toLowerCase()
-                        .includes(searchTerm.toLowerCase()),
-                    ),
+                        .includes(searchTerm.toLowerCase())
+                    )
                   );
                 } else {
                   console.log('No Vendor Data: ' + JSON.stringify(response));
                 }
                 return of([]);
-              }),
+              })
             );
           } else {
             return of([]);
           }
-        }),
+        })
       )
       .subscribe((filteredVendors: Vendor[]) => {
         this.filteredVendors = filteredVendors;
@@ -96,7 +96,7 @@ export class NewInventoryDialogComponent implements OnInit {
         debounceTime(300),
         switchMap((skuValue) => {
           if (skuValue) {
-            return this.inventoryService.checkSkuExists(skuValue); 
+            return this.inventoryService.checkSkuExists(skuValue);
           } else {
             return of(null);
           }
@@ -110,7 +110,7 @@ export class NewInventoryDialogComponent implements OnInit {
         } else {
           this.inventoryForm.get('sku')?.setErrors(null);
         }
-      });      
+      });
   }
 
   onSubmit(event: Event): void {
@@ -134,7 +134,7 @@ export class NewInventoryDialogComponent implements OnInit {
         },
         (error) => {
           console.error('Error creating inventory item:', error);
-        },
+        }
       );
     } else {
       console.log('Error while saving');

@@ -22,7 +22,7 @@ interface CustomerDetails {
 export class CustomerDetailsDialogComponent {
   constructor(
     public dialogRef: MatDialogRef<CustomerDetailsDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: CustomerDetails,
+    @Inject(MAT_DIALOG_DATA) public data: CustomerDetails
   ) {}
 
   closeDialog(): void {

@@ -177,7 +177,7 @@ export class ClosureInfoComponent implements OnInit {
 
   updateForm(part: string): void {
     this.selectedClosure = this.closureParts.find(
-      (closure) => closure.value === part,
+      (closure) => closure.value === part
     );
     if (this.selectedClosure) {
       this.closureInfoForm.patchValue({

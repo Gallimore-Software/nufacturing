@@ -10,7 +10,7 @@ const uri = 'https://perfect-mackerel-74.hasura.app/api/rest'; // <-- add the UR
 export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
   const headers = new HttpHeaders().set(
     'x-hasura-admin-secret',
-    environment.HASURA_SERCER_KEY,
+    environment.HASURA_SERVER_KEY
   );
 
   return {

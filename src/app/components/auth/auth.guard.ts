@@ -14,17 +14,18 @@ export class AuthGuard implements CanActivate {
   ) {}
 
   canActivate(): boolean {
-    return true;
-    // const authData = localStorage.getItem('authData');
-    // if (authData) {
-    //   const { token } = JSON.parse(authData);
-    //   // Check if the token is valid
-    //   if (token && !this.jwtHelper.isTokenExpired(token)) {
-    //     return true;
-    //   }
-    // }
-    // // If token is invalid or not present, redirect to login
-    // this.router.navigate(['/login']);
-    // return false;
+    const authData = localStorage.getItem('authData');
+    if (authData) {
+      const { accessToken } = JSON.parse(authData);
+      // Check if the token is valid
+      if (accessToken && !this.jwtHelper.isTokenExpired(accessToken)) {
+        console.log('Granted permission by Auth Guard');
+        return true;
+      }
+    }
+    // If token is invalid or not present, redirect to login
+    this.router.navigate(['/login']);
+    console.log('Denied permission by Auth Guard');
+    return false;
   }
 }

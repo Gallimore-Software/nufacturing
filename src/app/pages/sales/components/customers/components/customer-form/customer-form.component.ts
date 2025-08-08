@@ -64,7 +64,7 @@ export class CustomerFormComponent implements OnInit {
         brandCode: ['', [Validators.required, Validators.maxLength(3)]],
         brandPhoto: ['', Validators.required],
         brandWebsite: ['', Validators.required],
-      }),
+      })
     );
   }
 

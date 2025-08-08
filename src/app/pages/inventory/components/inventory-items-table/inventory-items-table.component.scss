@@ -3,7 +3,8 @@ table {
   border-collapse: collapse;
 }
 
-th, td {
+th,
+td {
   padding: 10px;
   text-align: left;
   border: 1px solid #ccc;
@@ -12,7 +13,6 @@ th, td {
 img {
   border-radius: 4px;
 }
-
 
 .inventory-table {
   display: flex;

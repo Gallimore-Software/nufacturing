@@ -59,7 +59,7 @@ describe('CreateFormulasComponent', () => {
         name: new FormControl(''),
         scientificName: new FormControl(''),
         perUnit: new FormControl(0),
-      }),
+      })
     );
 
     (component.formulaForm.get('inactiveIngredients') as FormArray).push(
@@ -67,7 +67,7 @@ describe('CreateFormulasComponent', () => {
         name: new FormControl(''),
         scientificName: new FormControl(''),
         perUnit: new FormControl(0),
-      }),
+      })
     );
   });
 
@@ -93,14 +93,14 @@ describe('CreateFormulasComponent', () => {
         name: 'Melatonin',
         scientificName: 'N-Acetyl-5-Methoxytryptamine',
         perUnit: 5,
-      }),
+      })
     );
     activeIngredientsArray.push(
       formBuilder.group({
         name: 'Valerian Root',
         scientificName: 'Valeriana Officinalis',
         perUnit: 50,
-      }),
+      })
     );
 
     const inactiveIngredientsArray = component.formulaForm.controls[
@@ -112,21 +112,21 @@ describe('CreateFormulasComponent', () => {
         name: 'Gelatin',
         scientificName: 'Gelatin',
         perUnit: 500,
-      }),
+      })
     );
     inactiveIngredientsArray.push(
       formBuilder.group({
         name: 'Natural Flavors',
         scientificName: 'Natural Flavors',
         perUnit: 20,
-      }),
+      })
     );
     inactiveIngredientsArray.push(
       formBuilder.group({
         name: 'Citric Acid',
         scientificName: 'Citric Acid',
         perUnit: 10,
-      }),
+      })
     );
 
     expect(component.formulaForm.valid).toBeTruthy(); // The form should be valid
@@ -161,7 +161,7 @@ describe('CreateFormulasComponent', () => {
           },
           { name: 'Citric Acid', scientificName: 'Citric Acid', perUnit: 10 },
         ],
-      }),
+      })
     );
   });
 });

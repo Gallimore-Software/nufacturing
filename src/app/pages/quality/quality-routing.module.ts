@@ -8,14 +8,14 @@ const routes: Routes = [
     path: 'fda-audits',
     loadChildren: () =>
       import('./components/fda-audits/fda-audits.module').then(
-        (m) => m.FdaAuditsModule,
+        (m) => m.FdaAuditsModule
       ),
   },
   {
     path: 'quality-audits',
     loadChildren: () =>
       import('./components/quality-audits/quality-audits.module').then(
-        (m) => m.QualityAuditsModule,
+        (m) => m.QualityAuditsModule
       ),
   },
 ];

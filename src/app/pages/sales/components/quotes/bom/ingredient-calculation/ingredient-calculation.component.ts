@@ -35,7 +35,7 @@ export class IngredientCalculationComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private globalService: GlobalServiceService,
+    private globalService: GlobalServiceService
   ) {
     this.ingredientForm = this.fb.group({
       ingredients: this.fb.array([]),
@@ -76,7 +76,7 @@ export class IngredientCalculationComponent implements OnInit {
           extraKgOfWasteMg: [{ value: 0, disabled: true }],
           extraMgToBottle: [{ value: 0, disabled: true }],
           intentionalOverages: [{ value: 0, disabled: true }],
-        }),
+        })
       );
     });
     this.calculateSummary();
@@ -106,7 +106,7 @@ export class IngredientCalculationComponent implements OnInit {
           totalMgNeeded: this.toFixed(totalMgNeeded, 4),
           conversionToKg: this.toFixed(conversionToKg, 4),
         },
-        { emitEvent: false },
+        { emitEvent: false }
       );
 
       totalKgBeforeWaste += conversionToKg;
@@ -139,7 +139,7 @@ export class IngredientCalculationComponent implements OnInit {
           extraMgToBottle: this.toFixed(extraMgToBottle, 4),
           intentionalOverages: this.toFixed(intentionalOverages, 4),
         },
-        { emitEvent: false },
+        { emitEvent: false }
       );
 
       totalKg += totalKgValue;

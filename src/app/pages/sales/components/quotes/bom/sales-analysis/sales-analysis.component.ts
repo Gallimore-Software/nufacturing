@@ -73,7 +73,7 @@ export class SalesAnalysisComponent implements OnInit {
         price: [0, Validators.required],
         salesVolume: [0, Validators.required],
         revenue: [{ value: 0, disabled: true }],
-      }),
+      })
     );
   }
 
@@ -126,7 +126,7 @@ export class SalesAnalysisComponent implements OnInit {
       (item) =>
         item.price.toString().includes(filterValue) ||
         item.salesVolume.toString().includes(filterValue) ||
-        item.revenue.toString().includes(filterValue),
+        item.revenue.toString().includes(filterValue)
     );
   }
 

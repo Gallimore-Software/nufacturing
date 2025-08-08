@@ -8,7 +8,7 @@ const routes: Routes = [
     path: 'training',
     loadChildren: () =>
       import('./components/training/training.module').then(
-        (m) => m.TrainingModule,
+        (m) => m.TrainingModule
       ),
   },
   {

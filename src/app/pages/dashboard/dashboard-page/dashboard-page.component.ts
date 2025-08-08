@@ -49,7 +49,7 @@ export class DashboardPageComponent implements OnInit {
   }
   initializeCharts(): void {
     const salesPurchaseCanvas = document.getElementById(
-      'salesPurchaseChart',
+      'salesPurchaseChart'
     ) as HTMLCanvasElement;
     const salesPurchaseCtx = salesPurchaseCanvas?.getContext('2d');
 
@@ -110,7 +110,7 @@ export class DashboardPageComponent implements OnInit {
     }
 
     const orderSummaryCanvas = document.getElementById(
-      'orderSummaryChart',
+      'orderSummaryChart'
     ) as HTMLCanvasElement;
     const orderSummaryCtx = orderSummaryCanvas?.getContext('2d');
 

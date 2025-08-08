@@ -52,7 +52,7 @@ export class ListFormulaComponent implements OnInit, AfterViewInit {
   constructor(
     private formulaService: ListFormulasService,
     private authService: AuthService,
-    private dialog: MatDialog,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {

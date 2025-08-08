@@ -25,7 +25,7 @@ export class CreateBatchRecordsComponent implements OnInit {
     private productskuService: ProductSkusService,
     private formulasService: FormulasService,
     private dialogRef: MatDialogRef<CreateBatchRecordsComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
 
   ngOnInit(): void {
