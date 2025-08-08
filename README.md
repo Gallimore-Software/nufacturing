@@ -1,4 +1,4 @@
-# Nufacturing App
+# Nufacturing ERP / CRM App
 
 ## Overview
 
