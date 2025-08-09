@@ -5,7 +5,7 @@
     "ng": "ng",
     "prepare": "husky install",
     "start": "ng serve",
-    "build": "ng build --output dist",
+    "build": "ng build --prod",
     "watch": "ng build --watch --configuration development",
     "lint": "npx eslint src/**.ts",
     "format": "npx prettier --check src/**.ts",
