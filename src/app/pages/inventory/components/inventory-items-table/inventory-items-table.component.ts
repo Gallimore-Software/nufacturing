@@ -23,7 +23,7 @@ export class InventoryItemsTableComponent implements OnInit, AfterViewInit {
   // Sample Table Data
   rawMaterials = [
     {
-      picture: 'assets/ascorbicAcid.png',
+      picture: 'assets/default-product.png',
       materialId: 'RM001',
       name: 'Ascorbic Acid (Vitamin C)',
       supplier: 'HealthPro Labs',
@@ -46,7 +46,7 @@ export class InventoryItemsTableComponent implements OnInit, AfterViewInit {
       priceLastUpdated: new Date('2024-01-25'),
     },
     {
-      picture: 'assets/manganeseSulfate.png',
+      picture: 'assets/default-product.png',
       materialId: 'RM002',
       name: 'Manganese Sulfate (Manganese)',
       supplier: 'Mineral Essentials Co.',
@@ -69,7 +69,7 @@ export class InventoryItemsTableComponent implements OnInit, AfterViewInit {
       priceLastUpdated: new Date('2024-01-05'),
     },
     {
-      picture: 'assets/riboflavin.png',
+      picture: 'assets/default-product.png',
       materialId: 'RM003',
       name: 'Riboflavin (Vitamin B2)',
       supplier: 'VitalSource Pharma',
@@ -92,7 +92,7 @@ export class InventoryItemsTableComponent implements OnInit, AfterViewInit {
       priceLastUpdated: new Date('2024-02-01'),
     },
     {
-      picture: 'assets/calciferol.png',
+      picture: 'assets/default-product.png',
       materialId: 'RM004',
       name: 'Ergocalciferol (Vitamin D2)',
       supplier: 'Sunshine Extracts',
@@ -117,7 +117,7 @@ export class InventoryItemsTableComponent implements OnInit, AfterViewInit {
   ];
   components = [
     {
-      picture: 'assets/bottleCap.png',
+      picture: 'assets/default-product.png',
       componentId: 'CMP001',
       name: 'Plastic Bottle Cap',
       supplier: 'CapIt Industries',
@@ -138,7 +138,7 @@ export class InventoryItemsTableComponent implements OnInit, AfterViewInit {
       status: 'In Stock',
     },
     {
-      picture: 'assets/labels.png',
+      picture: 'assets/default-product.png',
       componentId: 'CMP002',
       name: 'Pill Bottle Labels',
       supplier: 'LabelPro Supplies',
@@ -159,7 +159,7 @@ export class InventoryItemsTableComponent implements OnInit, AfterViewInit {
       status: 'Backordered',
     },
     {
-      picture: 'assets/silicaGel.png',
+      picture: 'assets/default-product.png',
       componentId: 'CMP003',
       name: 'Silica Gel Packets',
       supplier: 'DryGuard Corp',
@@ -180,7 +180,7 @@ export class InventoryItemsTableComponent implements OnInit, AfterViewInit {
       status: 'In Stock',
     },
     {
-      picture: 'assets/cottonBalls.png',
+      picture: 'assets/default-product.png',
       componentId: 'CMP004',
       name: 'Cotton Balls',
       supplier: 'PureSoft Materials',
@@ -201,7 +201,7 @@ export class InventoryItemsTableComponent implements OnInit, AfterViewInit {
       status: 'In Stock',
     },
     {
-      picture: 'assets/bottles.png',
+      picture: 'assets/default-product.png',
       componentId: 'CMP005',
       name: 'Plastic Pill Bottles',
       supplier: 'PharmaContainer Ltd.',
@@ -225,7 +225,7 @@ export class InventoryItemsTableComponent implements OnInit, AfterViewInit {
 
   wips = [
     {
-      picture: 'assets/probioticCapsules.png', // Path to image
+      picture: 'assets/default-product.png', // Path to image
       wipId: 'WIP001',
       productName: 'Probiotic Capsules',
       sku: 'PROB-CAP-001',
@@ -246,7 +246,7 @@ export class InventoryItemsTableComponent implements OnInit, AfterViewInit {
       status: 'In Progress',
     },
     {
-      picture: 'assets/vitaminDPowder.png', // Path to image
+      picture: 'assets/default-product.png', // Path to image
       wipId: 'WIP002',
       productName: 'Vitamin D Powder',
       sku: 'VITD-PWD-001',
@@ -267,7 +267,7 @@ export class InventoryItemsTableComponent implements OnInit, AfterViewInit {
       status: 'Delayed',
     },
     {
-      picture: 'assets/fishOilLiquid.png', // Path to image
+      picture: 'assets/default-product.png', // Path to image
       wipId: 'WIP003',
       productName: 'Omega-3 Fish Oil',
       sku: 'FISH-OIL-001',
@@ -290,7 +290,7 @@ export class InventoryItemsTableComponent implements OnInit, AfterViewInit {
   ];
   finishedGoods = [
     {
-      picture: 'assets/probioticCapsules.png', // Path to image
+      picture: 'assets/default-product.png', // Path to image
       productName: 'Probiotic Capsules',
       sku: 'PROB-CAP-001',
       batchIds: 'BATCHC123, BATCHC124',
@@ -309,7 +309,7 @@ export class InventoryItemsTableComponent implements OnInit, AfterViewInit {
       status: 'In Stock',
     },
     {
-      picture: 'assets/vitaminDPowder.png', // Path to image
+      picture: 'assets/default-product.png', // Path to image
       productName: 'Vitamin D Powder',
       sku: 'VITD-PWD-001',
       batchIds: 'BATCHD456',
@@ -328,7 +328,7 @@ export class InventoryItemsTableComponent implements OnInit, AfterViewInit {
       status: 'Backordered',
     },
     {
-      picture: 'assets/fishOilLiquid.png', // Path to image
+      picture: 'assets/default-product.png', // Path to image
       productName: 'Omega-3 Fish Oil',
       sku: 'FISH-OIL-001',
       batchIds: 'BATCHF789',

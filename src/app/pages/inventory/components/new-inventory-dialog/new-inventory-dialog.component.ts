@@ -16,6 +16,45 @@ export class NewInventoryDialogComponent implements OnInit {
   isSubmitting: boolean = false;
   filteredVendors: Vendor[] = [];
 
+  // Mock vendors for development
+  mockVendors: Vendor[] = [
+    {
+      _id: 'vendor-001',
+      displayName: 'Acme Supplies Inc.',
+      email: 'contact@acmesupplies.com',
+      phone: '+1-800-123-4567',
+      address: '123 Industrial Ave, New York, NY',
+    } as Vendor,
+    {
+      _id: 'vendor-002',
+      displayName: 'Global Materials LLC',
+      email: 'sales@globalmaterials.com',
+      phone: '+1-888-555-0123',
+      address: '456 Commerce St, Los Angeles, CA',
+    } as Vendor,
+    {
+      _id: 'vendor-003',
+      displayName: 'Premium Components Co.',
+      email: 'info@premiumcomponents.com',
+      phone: '+1-866-777-0456',
+      address: '789 Tech Boulevard, Austin, TX',
+    } as Vendor,
+    {
+      _id: 'vendor-004',
+      displayName: 'Quality Imports Ltd.',
+      email: 'ordering@qualityimports.com',
+      phone: '+1-855-888-0789',
+      address: '321 Import Blvd, Chicago, IL',
+    } as Vendor,
+    {
+      _id: 'vendor-005',
+      displayName: 'Direct Wholesale Corp.',
+      email: 'wholesale@directwholesale.com',
+      phone: '+1-844-999-0234',
+      address: '654 Wholesale Pkwy, Houston, TX',
+    } as Vendor,
+  ];
+
   constructor(
     private dialogRef: MatDialogRef<NewInventoryDialogComponent>,
     private fb: FormBuilder,
@@ -46,6 +85,18 @@ export class NewInventoryDialogComponent implements OnInit {
   }
 
   ngOnInit() {
+    // Try to load vendors from service, fall back to mock data
+    this.vendorService.getVendors().subscribe(
+      (vendors) => {
+        this.filteredVendors =
+          vendors && vendors.length > 0 ? vendors : this.mockVendors;
+      },
+      (error) => {
+        console.warn('Error loading vendors, using mock data:', error);
+        this.filteredVendors = this.mockVendors;
+      }
+    );
+
     // If the data has an inventory item, populate the form for editing
     if (this.data.inventoryItem) {
       console.log('inventory data: ' + this.data.inventoryItem);
@@ -53,41 +104,6 @@ export class NewInventoryDialogComponent implements OnInit {
     } else {
       console.log('No Data');
     }
-
-    // Subscribe to the vendor input value changes
-    console.log('Value Change');
-    this.inventoryForm
-      .get('vendor')
-      ?.valueChanges.pipe(
-        debounceTime(300),
-        switchMap((searchTerm) => {
-          if (searchTerm) {
-            return this.vendorService.getVendors().pipe(
-              switchMap((response) => {
-                if (response) {
-                  console.log(response);
-                  // Filter vendors based on the search term
-                  return of(
-                    response.filter((vendor) =>
-                      vendor.displayName
-                        .toLowerCase()
-                        .includes(searchTerm.toLowerCase())
-                    )
-                  );
-                } else {
-                  console.log('No Vendor Data: ' + JSON.stringify(response));
-                }
-                return of([]);
-              })
-            );
-          } else {
-            return of([]);
-          }
-        })
-      )
-      .subscribe((filteredVendors: Vendor[]) => {
-        this.filteredVendors = filteredVendors;
-      });
 
     // Add SKU duplicate check
     this.inventoryForm

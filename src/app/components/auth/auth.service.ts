@@ -25,8 +25,7 @@ export class AuthService {
     return this.http.post<AuthResponse>(registerUrl, form).pipe(
       tap((response: AuthResponse) => {
         // Store authentication data in local storage
-        const authData = JSON.stringify(response);
-        localStorage.setItem('authData', authData);
+        localStorage.setItem('authData', JSON.stringify(response));
         this.userRoleSubject.next(response.user.role); // Update user role
         this.isAuthenticated.next(true);
         this.router.navigate(['/dashboard']);

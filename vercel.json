@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist/nufacturing",
+  "routes": [
+    {
+      "src": "^/(?!api).*",
+      "dest": "index.html"
+    }
+  ]
+}
