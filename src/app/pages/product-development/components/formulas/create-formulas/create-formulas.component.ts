@@ -31,7 +31,7 @@ export class CreateFormulasComponent {
   constructor(
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<CreateFormulasComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.formulaForm = this.fb.group({
       code: [data?.code || ''],
@@ -47,11 +47,11 @@ export class CreateFormulasComponent {
     // Populate the active and inactive ingredients FormArrays
     this.populateIngredients(
       'activeIngredients',
-      data?.activeIngredients || [],
+      data?.activeIngredients || []
     );
     this.populateIngredients(
       'inactiveIngredients',
-      data?.inactiveIngredients || [],
+      data?.inactiveIngredients || []
     );
 
     // Update unit options whenever the product type changes
@@ -82,7 +82,7 @@ export class CreateFormulasComponent {
             ingredient.perUnit,
             [Validators.required, Validators.min(0)],
           ],
-        }),
+        })
       );
     });
   }
@@ -93,7 +93,7 @@ export class CreateFormulasComponent {
         name: ['', Validators.required],
         scientificName: ['', Validators.required],
         perUnit: [0, [Validators.required, Validators.min(0)]],
-      }),
+      })
     );
   }
 
@@ -107,7 +107,7 @@ export class CreateFormulasComponent {
         name: ['', Validators.required],
         scientificName: ['', Validators.required],
         perUnit: [0, [Validators.required, Validators.min(0)]],
-      }),
+      })
     );
   }
 

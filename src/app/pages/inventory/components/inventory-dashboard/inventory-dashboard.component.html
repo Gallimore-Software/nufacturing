@@ -1,0 +1,80 @@
+<div class="dashboard">
+  <!-- Graphs Section Placeholder -->
+  <div class="graphs">
+    <h2>Graphs</h2>
+    <!-- Placeholder for future graphs -->
+  </div>
+  <!-- Header Section -->
+  <div class="header">
+    <h1>View Inventory</h1>
+    <div class="actions">
+      <button>Add New Inventory</button>
+      <button>Add Stock</button>
+      <button>Bulk Import</button>
+    </div>
+  </div>
+
+  <!-- Inventory Tables -->
+  <div class="tables">
+    <inventory-inventory-items-table></inventory-inventory-items-table>
+    <!-- Components Table -->
+    <div class="table-section">
+      <h2>Components</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Picture</th>
+            <th>Component ID</th>
+            <th>Component Name</th>
+            <th>Supplier</th>
+            <th>Qty Avail</th>
+            <th>Unit</th>
+            <th>Cost Per Unit</th>
+            <th>Location</th>
+            <th>Reorder Level</th>
+            <th>Lead Time</th>
+            <th>Min Order Qty</th>
+            <th>Last Restock Date</th>
+            <th>Component Type</th>
+            <th>Weight</th>
+            <th>Dimensions</th>
+            <th>Batch IDs</th>
+            <th>Lot IDs</th>
+            <th>Backordered Qty</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of components">
+            <td>
+              <img
+                [src]="item.picture"
+                alt="{{ item.name }}"
+                width="50"
+                height="50"
+              />
+            </td>
+            <td>{{ item.componentId }}</td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.supplier }}</td>
+            <td>{{ item.qtyAvail }}</td>
+            <td>{{ item.unit }}</td>
+            <td>{{ item.costPerUnit | currency }}</td>
+            <td>{{ item.location }}</td>
+            <td>{{ item.reorderLevel }}</td>
+            <td>{{ item.leadTime }} days</td>
+            <td>{{ item.minOrderQty }}</td>
+            <td>{{ item.lastRestock | date }}</td>
+            <td>{{ item.componentType }}</td>
+            <td>{{ item.weight }}</td>
+            <td>{{ item.dimensions }}</td>
+            <td>{{ item.batchIds }}</td>
+            <td>{{ item.lotIds }}</td>
+            <td>{{ item.backorderedQty }}</td>
+            <td>{{ item.status }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

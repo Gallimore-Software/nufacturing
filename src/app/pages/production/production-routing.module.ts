@@ -8,49 +8,49 @@ const routes: Routes = [
     path: 'batch-records',
     loadChildren: () =>
       import('./components/batch-records/batch-records.module').then(
-        (m) => m.BatchRecordsModule,
+        (m) => m.BatchRecordsModule
       ),
   },
   {
     path: 'shifting-records',
     loadChildren: () =>
       import('./components/shifting-records/shifting-records.module').then(
-        (m) => m.ShiftingRecordsModule,
+        (m) => m.ShiftingRecordsModule
       ),
   },
   {
     path: 'depositor-records',
     loadChildren: () =>
       import('./components/depositor-records/depositor-records.module').then(
-        (m) => m.DepositorRecordsModule,
+        (m) => m.DepositorRecordsModule
       ),
   },
   {
     path: 'packaging-records',
     loadChildren: () =>
       import('./components/packaging-records/packaging-records.module').then(
-        (m) => m.PackagingRecordsModule,
+        (m) => m.PackagingRecordsModule
       ),
   },
   {
     path: 'mixing-records',
     loadChildren: () =>
       import('./components/mixing-records/mixing-records.module').then(
-        (m) => m.MixingRecordsModule,
+        (m) => m.MixingRecordsModule
       ),
   },
   {
     path: 'weighing-records',
     loadChildren: () =>
       import('./components/weighing-records/weighing-records.module').then(
-        (m) => m.WeighingRecordsModule,
+        (m) => m.WeighingRecordsModule
       ),
   },
   {
     path: 'bottling-records',
     loadChildren: () =>
       import('./components/bottling-records/bottling-records.module').then(
-        (m) => m.BottlingRecordsModule,
+        (m) => m.BottlingRecordsModule
       ),
   },
   {
@@ -83,7 +83,7 @@ const routes: Routes = [
     path: 'reporting',
     loadChildren: () =>
       import('./components/reporting/reporting.module').then(
-        (m) => m.ReportingModule,
+        (m) => m.ReportingModule
       ),
   },
 ];

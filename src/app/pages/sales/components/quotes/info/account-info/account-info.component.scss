@@ -1,5 +1,5 @@
 .nufacturing_info {
-  width: 90%;
+  width: 100%;
   padding: 5%;
   margin: auto;
   height: 100vh;
@@ -14,6 +14,15 @@ mat-card {
   margin: 10px;
   width: 100%;
 }
+.container {
+  display: flex;
+  flex-direction: row;
+}
+
+.mat-card-container {
+  display: flex;
+  width: 50%;
+}
 
 mat-card-title {
   font-size: 1.5rem;
@@ -24,6 +33,7 @@ mat-card-title {
 
 mat-form-field {
   margin-bottom: 15px;
+  width: 100%;
 }
 
 table {
@@ -38,4 +48,19 @@ th {
 td,
 th {
   padding: 8px;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .mat-card-container {
+    width: 100%;
+  }
+
+  th {
+    margin: 0 0 0 20px;
+  }
 }

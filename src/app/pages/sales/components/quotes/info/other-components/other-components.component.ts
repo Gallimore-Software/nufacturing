@@ -100,7 +100,7 @@ export class OtherComponentsComponent implements OnInit {
         silicaCost: (this.silicaDetails[value.silica] || {}).cost,
         cottonCost: (this.cottonDetails[value.cotton] || {}).cost,
       },
-      { emitEvent: false },
+      { emitEvent: false }
     );
   }
 

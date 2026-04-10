@@ -1,0 +1,79 @@
+.batch-records-form-container {
+  padding: 20px;
+  display: flex;
+  height: 90vh;
+  flex-direction: column;
+
+  h2 {
+    color: #fff;
+    margin-bottom: 16px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .form-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    mat-form-field {
+      flex: 1;
+      width: 100%;
+      min-width: 250px;
+      margin-bottom: 12px;
+      .mat-form-field-infix {
+        padding: 8px 12px;
+      }
+
+      mat-label {
+        font-weight: 500;
+      }
+    }
+  }
+
+  mat-card {
+    margin-bottom: 16px;
+    max-height: 400px;
+    overflow-y: auto;
+  }
+
+  mat-card-title {
+    font-size: 1.25rem;
+    font-weight: 500;
+    padding-bottom: 0;
+    color: white;
+  }
+
+  mat-card-content {
+    padding-top: 0;
+  }
+
+  .form-actions {
+    padding: 16px 0;
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+
+    button {
+      min-width: 120px;
+
+      &:first-of-type {
+        background: transparent;
+        color: #333;
+      }
+
+      &:last-of-type {
+        background-color: #3f51b5;
+        color: #fff;
+
+        &:hover {
+          background-color: #303f9f;
+        }
+      }
+    }
+  }
+}

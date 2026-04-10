@@ -231,7 +231,7 @@ export class BottleInfoComponent implements OnInit {
 
   updateForm(part: string): void {
     this.selectedBottle = this.bottleParts.find(
-      (bottle) => bottle.value === part,
+      (bottle) => bottle.value === part
     );
     if (this.selectedBottle) {
       this.bottleInfoForm.patchValue({

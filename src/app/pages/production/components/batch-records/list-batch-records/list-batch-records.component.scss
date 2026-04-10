@@ -1,0 +1,78 @@
+.batch-records-container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+
+  .mat-form-field {
+    width: 100%;
+    margin-bottom: 24px;
+
+    input {
+      color: #ffffff;
+      border-radius: 4px;
+
+      &::placeholder {
+        color: #aaaaaa;
+      }
+    }
+  }
+
+  .actions {
+    margin-bottom: 24px;
+  }
+
+  .batch-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+  }
+
+  .batch-card {
+    color: #ffffff;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    .mat-card-title {
+      font-size: 1.25rem;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    .mat-card-content p {
+      margin: 6px 0;
+      font-size: 0.9rem;
+
+      strong {
+        color: #cfd2e8;
+      }
+    }
+
+    .card-actions {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 12px;
+    }
+
+    mat-icon-button {
+      margin-right: 12px;
+    }
+
+    mat-icon {
+      font-size: 24px;
+    }
+
+    mat-tooltip {
+      font-size: 14px;
+    }
+  }
+}

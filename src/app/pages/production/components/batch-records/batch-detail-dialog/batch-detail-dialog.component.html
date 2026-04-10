@@ -1,0 +1,36 @@
+<h1 mat-dialog-title>
+  Batch Details: {{ batchForm.get('batchNumber')?.value }}
+</h1>
+<div mat-dialog-content [formGroup]="batchForm">
+  <!-- Assign Operator Field -->
+  <div *ngIf="isAdminOrManager">
+    <mat-form-field>
+      <mat-label>Operator</mat-label>
+      <mat-select
+        formControlName="operator"
+        [disabled]="!batchForm.get('operator')?.enabled"
+      >
+        <mat-option *ngFor="let operator of operators" [value]="operator._id">
+          {{ operator.username }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Edit button to enable operator selection -->
+    <button
+      mat-icon-button
+      (click)="allowOperatorChange()"
+      *ngIf="!batchForm.get('operator')?.enabled"
+    >
+      <mat-icon>edit</mat-icon>
+    </button>
+  </div>
+
+  <!-- Save and Cancel Buttons -->
+  <div mat-dialog-actions>
+    <button mat-button (click)="closeDialog()">Cancel</button>
+    <button mat-button color="primary" (click)="saveBatchDetails()">
+      Save
+    </button>
+  </div>
+</div>

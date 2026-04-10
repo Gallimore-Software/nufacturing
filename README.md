@@ -1,4 +1,4 @@
-# Nufacturing App
+# Nufacturing ERP / CRM App
 
 ## Overview
 
@@ -68,7 +68,7 @@ The Nufacturing App employs a comprehensive multi-environment setup to facilitat
 
 ### Testing Environment
 
-- **Purpose:** Runs a full suite of automated tests to catch bugs before code reaches staging or production.
+- **Purpose:** Runs a full suite of manual User Acceptance Tests to catch bugs before code reaches staging or production.
 - **Setup:**
   - Testing MongoDB
   - Testing API
@@ -238,4 +238,4 @@ Use tags for marking significant releases or milestones. For example, `v1.0.0`.
 
 By maintaining these five environments, Gallimore Software ensures a robust, reliable, and efficient development and deployment process for the Nufacturing app. This approach leads to higher quality software and improved user satisfaction, aligning with our goals of delivering innovative and customer-centric solutions.
 
-[def]: ./docs/workflow.png
+[def]: ./docs/WORKFLOW.png

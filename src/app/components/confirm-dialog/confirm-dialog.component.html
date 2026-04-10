@@ -1,0 +1,37 @@
+<div
+  mat-dialog-content
+  style="font-size: 16px; padding: 16px 24px; color: white"
+>
+  <h1
+    mat-dialog-title
+    style="
+      font-weight: bold;
+      color: #f44336;
+      padding-bottom: 16px;
+      font-size: 20px;
+    "
+  >
+    Confirm Action
+  </h1>
+  <p>{{ data.message }}</p>
+</div>
+<div
+  mat-dialog-actions
+  style="display: flex; justify-content: flex-end; padding: 0 24px 16px"
+>
+  <button
+    mat-button
+    (click)="onCancel()"
+    style="margin: 0 8px; min-width: 80px"
+  >
+    No
+  </button>
+  <button
+    mat-button
+    color="primary"
+    (click)="onConfirm()"
+    style="margin: 0 8px; min-width: 80px"
+  >
+    Yes
+  </button>
+</div>

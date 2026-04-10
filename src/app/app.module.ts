@@ -15,7 +15,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { InfoModule } from './pages/sales/components/quotes/info/info.module';
 import { IngredientsModule } from './pages/sales/components/quotes/ingredients/ingredients.module';
 import { SalesModule } from './pages/sales/sales.module';
@@ -26,7 +25,6 @@ import { CarouselComponent } from './components/carousel/carousel.component';
 import { RegisterComponent } from './pages/users/signup/register.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatPseudoCheckboxModule } from '@angular/material/core';
-import { ProductDevelopmentModule } from './pages/product-development/product-development.module';
 import { DashboardModule } from './pages/dashboard/dashboard.module';
 import { ProductionModule } from './pages/production/production.module';
 import { QualityModule } from './pages/quality/quality.module';
@@ -42,6 +40,10 @@ import { AuthGuard } from './components/auth/auth.guard';
 import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
 import { AuthInterceptor } from './components/auth/auth.interceptor';
 
+// Import the new SyncStatus components and services
+import { SyncStatusComponent } from './components/sync-status/sync-status.component';
+import { SyncStatusService } from './components/sync-status/sync-status.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,6 +54,8 @@ import { AuthInterceptor } from './components/auth/auth.interceptor';
     RegisterComponent,
     LogoutComponent,
     LogoutDialogComponent,
+    // Add SyncStatusComponent
+    SyncStatusComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,7 +68,7 @@ import { AuthInterceptor } from './components/auth/auth.interceptor';
     MatTooltipModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatTableModule,
+    MatTableModule, // Already imported for displaying the sync status
     ReactiveFormsModule,
     MatInputModule,
     IngredientsModule,
@@ -74,7 +78,6 @@ import { AuthInterceptor } from './components/auth/auth.interceptor';
     MatSelectModule,
     MatPseudoCheckboxModule,
     MatDialogModule,
-    ProductDevelopmentModule,
     ProductionModule,
     DashboardModule,
     QualityModule,
@@ -85,6 +88,7 @@ import { AuthInterceptor } from './components/auth/auth.interceptor';
   providers: [
     AuthService,
     AuthGuard,
+    SyncStatusService, // Add SyncStatusService here
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
     JwtHelperService,
     {

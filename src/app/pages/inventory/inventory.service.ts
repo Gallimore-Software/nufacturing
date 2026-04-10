@@ -1,7 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environment/environment.prod';
+import { environment } from 'src/environment/environment';
+import { InventoryItem } from './inventory-item.model'; // Adjust the path as needed
+
+interface ApiResponse<T> {
+  success: boolean;
+  data: T;
+}
 
 @Injectable({
   providedIn: 'root',
@@ -12,33 +18,45 @@ export class InventoryService {
   constructor(private http: HttpClient) {}
 
   // Get all inventory items
-  getInventory(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl);
+  getInventory(): Observable<ApiResponse<InventoryItem[]>> {
+    return this.http.get<ApiResponse<InventoryItem[]>>(this.apiUrl);
   }
 
   // Get a specific inventory item by ID
-  getInventoryItem(id: string): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/${id}`);
+  getInventoryItem(id: string): Observable<ApiResponse<InventoryItem>> {
+    return this.http.get<ApiResponse<InventoryItem>>(`${this.apiUrl}/${id}`);
   }
 
   // Create a new inventory item
-  addInventoryItem(item: any): Observable<any> {
-    return this.http.post<any>(this.apiUrl, item);
+  addInventoryItem(
+    item: InventoryItem
+  ): Observable<ApiResponse<InventoryItem>> {
+    return this.http.post<ApiResponse<InventoryItem>>(this.apiUrl, item);
   }
 
   // Update an existing inventory item by ID
-  updateInventoryItem(id: string, item: any): Observable<any> {
-    console.log(`Updating inventory item with ID: ${id}`); // Log the ID
-    console.log(`API URL: ${this.apiUrl}/${id}`); // Log the full URL
-    return this.http.put<any>(`${this.apiUrl}/${id}`, item);
+  updateInventoryItem(
+    id: string,
+    item: InventoryItem
+  ): Observable<ApiResponse<InventoryItem>> {
+    return this.http.put<ApiResponse<InventoryItem>>(
+      `${this.apiUrl}/${id}`,
+      item
+    );
+  }
+
+  // Check if SKU already exists
+  checkSkuExists(sku: string): Observable<boolean> {
+    // This ain't final, must be replace with the correct url endpoint
+    return this.http.get<boolean>(`${this.apiUrl}/check-sku/${sku}`);
   }
 
   // Delete an inventory item by ID
-  deleteInventoryItem(id: string): Observable<any> {
-    return this.http.delete<any>(`${this.apiUrl}/${id}`);
+  deleteInventoryItem(id: string): Observable<ApiResponse<InventoryItem>> {
+    return this.http.delete<ApiResponse<InventoryItem>>(`${this.apiUrl}/${id}`);
   }
 
-  createInventory(data: any): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}`, data);
+  createInventory(data: InventoryItem): Observable<ApiResponse<InventoryItem>> {
+    return this.http.post<ApiResponse<InventoryItem>>(this.apiUrl, data);
   }
 }

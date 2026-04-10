@@ -1,0 +1,94 @@
+<div class="batch-records-form-container">
+  <h2>Create Batch Record</h2>
+  <form [formGroup]="batchForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="outline">
+      <mat-label>Batch Number</mat-label>
+      <input matInput formControlName="batchNumber" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Product SKU</mat-label>
+      <mat-select formControlName="productSKU" required>
+        <mat-option *ngFor="let sku of productSKUs" [value]="sku._id">
+          {{ sku.sku }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Formula</mat-label>
+      <mat-select formControlName="formula" required>
+        <mat-option *ngFor="let formula of formulas" [value]="formula._id">
+          {{ formula.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Production Date</mat-label>
+      <input
+        matInput
+        [matDatepicker]="picker"
+        formControlName="productionDate"
+        required
+      />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Expiration Date</mat-label>
+      <input
+        matInput
+        [matDatepicker]="expPicker"
+        formControlName="expirationDate"
+        required
+      />
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="expPicker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #expPicker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Production Line</mat-label>
+      <input matInput formControlName="productionLine" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Shift</mat-label>
+      <mat-select formControlName="shift">
+        <mat-option value="morning">Morning</mat-option>
+        <mat-option value="afternoon">Afternoon</mat-option>
+        <mat-option value="night">Night</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Quantity Produced</mat-label>
+      <input matInput type="number" formControlName="quantityProduced" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Status</mat-label>
+      <mat-select formControlName="status">
+        <mat-option value="In Progress">In Progress</mat-option>
+        <mat-option value="Completed">Completed</mat-option>
+        <mat-option value="Quarantined">Quarintined</mat-option>
+        <mat-option value="Failed">Failed</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Operator</mat-label>
+      <mat-select formControlName="operator" required>
+        <mat-option *ngFor="let operator of operators" [value]="operator._id">
+          {{ operator.username }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit">Save</button>
+  </form>
+</div>

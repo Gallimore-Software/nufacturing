@@ -1,0 +1,73 @@
+<div class="batch-records-container">
+  <!-- Search Field -->
+  <mat-form-field appearance="outline" class="search-field">
+    <mat-label>Search</mat-label>
+    <input
+      matInput
+      (keyup)="applyFilter($event)"
+      placeholder="Search by Batch Number or Product SKU"
+    />
+  </mat-form-field>
+
+  <!-- Create Batch Button - Visible only for Admins -->
+  <div class="actions" *ngIf="isAdmin">
+    <button mat-raised-button color="primary" (click)="createBatch()">
+      Create Batch
+    </button>
+  </div>
+
+  <!-- Batch Cards Display -->
+  <div class="batch-cards">
+    <mat-card
+      class="batch-card"
+      *ngFor="let batch of filteredBatchRecords"
+      (click)="viewBatchDetails(batch)"
+      matRipple
+    >
+      <mat-card-title>{{ batch.batchNumber }}</mat-card-title>
+      <mat-card-content>
+        <p><strong>Product SKU:</strong> {{ batch.productSKU }}</p>
+        <p><strong>Formula:</strong> {{ batch.formula }}</p>
+        <p>
+          <strong>Production Date:</strong> {{ batch.productionDate | date }}
+        </p>
+        <p><strong>Status:</strong> {{ batch.status }}</p>
+      </mat-card-content>
+
+      <!-- Action Buttons for Admins and Managers -->
+      <mat-card-actions *ngIf="isAdmin || isManager" class="card-actions">
+        <button
+          mat-icon-button
+          color="accent"
+          (click)="assignDataToBatch(batch); $event.stopPropagation()"
+          *ngIf="isAdmin || isManager"
+          matTooltip="Assign Data"
+        >
+          <mat-icon>assignment_turned_in</mat-icon>
+        </button>
+
+        <!-- Edit Batch Icon - Only for Admins -->
+        <button
+          mat-icon-button
+          color="primary"
+          (click)="editBatch(batch); $event.stopPropagation()"
+          *ngIf="isAdmin"
+          matTooltip="Edit Batch"
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+
+        <!-- Delete Batch Icon - Only for Admins -->
+        <button
+          mat-icon-button
+          color="warn"
+          (click)="deleteBatch(batch); $event.stopPropagation()"
+          *ngIf="isAdmin"
+          matTooltip="Delete Batch"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

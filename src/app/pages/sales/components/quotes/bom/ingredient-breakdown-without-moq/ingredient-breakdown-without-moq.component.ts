@@ -26,7 +26,7 @@ export class IngredientBreakdownWithoutMoqComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private globalService: GlobalServiceService,
+    private globalService: GlobalServiceService
   ) {
     this.breakdownForm = this.fb.group({
       search: [''],

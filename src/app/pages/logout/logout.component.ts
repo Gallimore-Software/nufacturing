@@ -11,7 +11,7 @@ import { LogoutDialogComponent } from './logout-dialog/logout-dialog.component';
 export class LogoutComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
-    private router: Router,
+    private router: Router
   ) {}
 
   ngOnInit(): void {

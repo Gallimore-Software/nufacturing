@@ -1,0 +1,15 @@
+h1 {
+  margin-bottom: 10px;
+}
+
+mat-dialog-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+mat-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}

@@ -4,11 +4,12 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { tap, catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { environment } from 'src/environment/environment.prod';
+import { environment } from 'src/environment/environment';
 
 interface AuthResponse {
   token: string;
   user: {
+    id: string; // Add ID field
     email: string;
     role: string;
     // Add other user fields as needed
@@ -19,19 +20,36 @@ interface AuthResponse {
   providedIn: 'root',
 })
 export class AuthService {
+  register(form: any) {
+    const registerUrl = `${environment.apiUrl}/auth/register`;
+    return this.http.post<AuthResponse>(registerUrl, form).pipe(
+      tap((response: AuthResponse) => {
+        // Store authentication data in local storage
+        localStorage.setItem('authData', JSON.stringify(response));
+        this.userRoleSubject.next(response.user.role); // Update user role
+        this.isAuthenticated.next(true);
+        this.router.navigate(['/dashboard']);
+      }),
+      catchError((error: HttpErrorResponse) => {
+        console.error('Login failed', error);
+        return throwError(error);
+      })
+    );
+  }
+
   private isAuthenticated = new BehaviorSubject<boolean>(this.checkToken());
   private userRoleSubject = new BehaviorSubject<string | null>(
-    this.getUserRoleFromStorage(),
+    this.getUserRoleFromStorage()
   );
 
   constructor(
     private http: HttpClient,
     private router: Router,
-    private jwtHelper: JwtHelperService,
+    private jwtHelper: JwtHelperService
   ) {}
 
   login(email: string, password: string): Observable<AuthResponse> {
-    const loginUrl = `${environment.apiUrl}/users/login`;
+    const loginUrl = `${environment.apiUrl}/auth/login`;
 
     return this.http.post<AuthResponse>(loginUrl, { email, password }).pipe(
       tap((response: AuthResponse) => {
@@ -43,8 +61,8 @@ export class AuthService {
       }),
       catchError((error: HttpErrorResponse) => {
         console.error('Login failed', error);
-        return throwError(error); // Properly handle errors using throwError
-      }),
+        return throwError(error);
+      })
     );
   }
 
@@ -63,7 +81,6 @@ export class AuthService {
 
     const { token } = JSON.parse(authData);
 
-    // Use JWT helper to check if the token is expired
     return !this.jwtHelper.isTokenExpired(token);
   }
 
@@ -83,5 +100,15 @@ export class AuthService {
 
     const { user } = JSON.parse(authData);
     return user.role;
+  }
+
+  getCurrentUserId(): string | null {
+    const authData = localStorage.getItem('authData');
+    if (!authData) {
+      return null;
+    }
+
+    const { user } = JSON.parse(authData);
+    return user.id; // Return the user's ID
   }
 }
