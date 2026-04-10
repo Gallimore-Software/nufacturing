@@ -1,5 +1,41 @@
 /* You can add global styles to this file, and also import other style files */
 
+// Material Select value text color
+.mat-mdc-select-min-line,
+.mat-select-value-text {
+  color: #1a1a1a !important;
+}
+
+// Material Form Field outline color override
+.mat-mdc-form-field {
+  .mdc-notched-outline__leading,
+  .mdc-notched-outline__notch,
+  .mdc-notched-outline__trailing {
+    border-color: #9e9e9e !important;
+    border-top-color: #9e9e9e !important;
+  }
+}
+
+// Focused state - blue outline
+.mat-mdc-form-field.mat-focused {
+  .mdc-notched-outline__leading,
+  .mdc-notched-outline__notch,
+  .mdc-notched-outline__trailing {
+    border-color: #1976d2 !important;
+    border-top-color: #1976d2 !important;
+  }
+}
+
+// Invalid state - red outline
+.mat-mdc-form-field.mat-form-field-invalid {
+  .mdc-notched-outline__leading,
+  .mdc-notched-outline__notch,
+  .mdc-notched-outline__trailing {
+    border-color: #c62828 !important;
+    border-top-color: #c62828 !important;
+  }
+}
+
 body,
 html {
   height: 100%;
