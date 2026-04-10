@@ -35,7 +35,9 @@ export class InventoryComponent implements OnInit {
 
   ngOnInit(): void {
     this.authService.userRole.subscribe((role: string | null) => {
-      this.isAdminOrManager = role === 'admin' || role === 'manager';
+      // Allow admin, manager, and User roles
+      this.isAdminOrManager =
+        role === 'admin' || role === 'manager' || role === 'User';
     });
     this.refreshInventory();
   }
